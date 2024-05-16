@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+    {% block style %}<link rel="stylesheet" href="{% static 'css/contact.css' %}">{% endblock %}
+
+
+    {% block content %}
+   
+
+
+    <div class="w-100">
+        <div class="contact-page-header">
+            <div class="contact-overlay"></div>
+            <h1>Contact Us</h1>
+            <p class="mt-3">Acquired the skills and knowledge necessary to make your project a success.</p>
+        </div>
+        <div class="container-fluid py-5">
+            <div class="row">
+                <div class="col-lg-3  contact-sidebar">
+                    <h4 class="contact-sidebar-title">
+                        Contact Info
+                    </h4>
+                    <div class="contact-info-list mt-5">
+                        <div class="icon-box-wrapper d-flex align-items-center align-items-md-start">
+                            <div class="icon-box-icon">
+                                <span class="icon ">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26"
+                                        fill="none">
+                                        <path
+                                            d="M18.9045 24.6471C17.6803 24.6471 16.3912 24.3546 15.0587 23.7913C13.7587 23.2388 12.4478 22.4805 11.1695 21.5596C9.90199 20.628 8.67783 19.588 7.51866 18.4505C6.37033 17.2913 5.33033 16.0671 4.40949 14.8105C3.47783 13.5105 2.73033 12.2105 2.19949 10.9538C1.63616 9.61047 1.35449 8.31047 1.35449 7.0863C1.35449 6.2413 1.50616 5.43964 1.79866 4.69214C2.10199 3.92297 2.58949 3.20797 3.25033 2.59047C4.08449 1.76714 5.03783 1.35547 6.05616 1.35547C6.47866 1.35547 6.91199 1.45297 7.28033 1.6263C7.70283 1.8213 8.06033 2.1138 8.32033 2.5038L10.8337 6.0463C11.0612 6.36047 11.2345 6.6638 11.3537 6.96714C11.4945 7.29214 11.5703 7.61714 11.5703 7.9313C11.5703 8.34297 11.4512 8.7438 11.2237 9.12297C11.0612 9.41547 10.812 9.72964 10.4978 10.0438L9.76116 10.813C9.77199 10.8455 9.78283 10.8671 9.79366 10.8888C9.92366 11.1163 10.1837 11.5063 10.682 12.0913C11.2128 12.698 11.7112 13.2505 12.2095 13.7596C12.8487 14.388 13.3795 14.8863 13.8778 15.298C14.4953 15.818 14.8962 16.078 15.1345 16.1971L15.1128 16.2513L15.9037 15.4713C16.2395 15.1355 16.5645 14.8863 16.8787 14.7238C17.4745 14.3555 18.2328 14.2905 18.9912 14.6046C19.2728 14.7238 19.5762 14.8863 19.9012 15.1138L23.4978 17.6705C23.8987 17.9413 24.1912 18.288 24.3645 18.6996C24.527 19.1113 24.6028 19.4905 24.6028 19.8696C24.6028 20.3896 24.4837 20.9096 24.2562 21.3971C24.0287 21.8846 23.747 22.3071 23.3895 22.6971C22.772 23.3796 22.1003 23.8671 21.3203 24.1813C20.5728 24.4846 19.7603 24.6471 18.9045 24.6471ZM6.05616 2.98047C5.46033 2.98047 4.90783 3.24047 4.37699 3.76047C3.87866 4.2263 3.53199 4.73547 3.31533 5.28797C3.08783 5.8513 2.97949 6.44714 2.97949 7.0863C2.97949 8.0938 3.21783 9.18797 3.69449 10.3146C4.18199 11.463 4.86449 12.6546 5.73116 13.8463C6.59783 15.038 7.58366 16.1971 8.66699 17.2913C9.75033 18.3638 10.9203 19.3605 12.1228 20.238C13.2928 21.0938 14.4953 21.7871 15.687 22.2855C17.5395 23.0763 19.2728 23.2605 20.7028 22.6646C21.2553 22.4371 21.7428 22.0905 22.187 21.5921C22.4362 21.3213 22.6312 21.0288 22.7937 20.6821C22.9237 20.4113 22.9887 20.1296 22.9887 19.848C22.9887 19.6746 22.9562 19.5013 22.8695 19.3063C22.837 19.2413 22.772 19.1221 22.5662 18.9813L18.9695 16.4246C18.7528 16.273 18.5578 16.1646 18.3737 16.0888C18.1353 15.9913 18.0378 15.8938 17.6695 16.1213C17.4528 16.2296 17.2578 16.3921 17.0412 16.6088L16.2178 17.4213C15.7953 17.833 15.1453 17.9305 14.647 17.7463L14.3545 17.6163C13.9103 17.378 13.3903 17.0096 12.8162 16.5221C12.2962 16.078 11.7328 15.558 11.0503 14.8863C10.5195 14.3446 9.98866 13.7705 9.43616 13.1313C8.92699 12.5355 8.55866 12.0263 8.33116 11.6038L8.20116 11.2788C8.13616 11.0296 8.11449 10.8888 8.11449 10.7371C8.11449 10.3471 8.25533 10.0005 8.52616 9.72964L9.33866 8.88464C9.55533 8.66797 9.71782 8.46214 9.82616 8.27797C9.91283 8.13714 9.94533 8.01797 9.94533 7.90964C9.94533 7.82297 9.91283 7.69297 9.85866 7.56297C9.78283 7.38964 9.66366 7.19464 9.51199 6.9888L6.99866 3.43547C6.89033 3.2838 6.76033 3.17547 6.59783 3.09964C6.42449 3.0238 6.24033 2.98047 6.05616 2.98047ZM15.1128 16.2621L14.9395 16.9988L15.232 16.2405C15.1778 16.2296 15.1345 16.2405 15.1128 16.2621Z"
+                                            fill="#10143E"></path>
+                                    </svg> </span>
+                            </div>
+                            <div class="icon-box-content">
+                                <h6 class="icon-box-title">
+                                    <span>
+                                        Phone Number </span>
+                                </h6>
+                                <p class="icon-box-description">
+                                    <a class="breadcrumb-color" href="tel:+ (588) 1234-567-8922">+ (588)
+                                        1234-567-8922</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="icon-box-wrapper mt-3 d-flex align-items-center align-items-md-start">
+                            <div class="icon-box-icon">
+                                <span class="icon ">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26"
+                                        fill="none">
+                                        <path
+                                            d="M18.4165 23.0202H7.58317C3.629 23.0202 1.354 20.7452 1.354 16.791V9.20768C1.354 5.25352 3.629 2.97852 7.58317 2.97852H18.4165C22.3707 2.97852 24.6457 5.25352 24.6457 9.20768V16.791C24.6457 20.7452 22.3707 23.0202 18.4165 23.0202ZM7.58317 4.60352C4.48484 4.60352 2.979 6.10935 2.979 9.20768V16.791C2.979 19.8893 4.48484 21.3952 7.58317 21.3952H18.4165C21.5148 21.3952 23.0207 19.8893 23.0207 16.791V9.20768C23.0207 6.10935 21.5148 4.60352 18.4165 4.60352H7.58317Z"
+                                            fill="#10143E"></path>
+                                        <path
+                                            d="M12.9997 13.943C12.0897 13.943 11.1688 13.6613 10.4647 13.0871L7.07384 10.3788C6.72718 10.0971 6.66218 9.58795 6.94385 9.24129C7.22552 8.89462 7.73469 8.82963 8.08135 9.11129L11.4722 11.8196C12.2955 12.4805 13.693 12.4805 14.5163 11.8196L17.9072 9.11129C18.2538 8.82963 18.7738 8.88379 19.0447 9.24129C19.3263 9.58795 19.2722 10.108 18.9147 10.3788L15.5238 13.0871C14.8305 13.6613 13.9097 13.943 12.9997 13.943Z"
+                                            fill="#10143E"></path>
+                                    </svg> </span>
+                            </div>
+                            <div class="icon-box-content">
+                                <h6 class="icon-box-title">
+                                    <span>
+                                        Email Address </span>
+                                </h6>
+                                <p class="icon-box-description">
+                                    <a class="breadcrumb-color"
+                                        href="mailto:postarlaabtestmail@gmail.com">postarlaabtestmail@gmail.com</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="icon-box-wrapper mt-3 d-flex align-items-center align-items-md-start">
+                            <div class="icon-box-icon">
+                                <span class="icon ">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26"
+                                        fill="none">
+                                        <path
+                                            d="M13.0001 15.3488C10.6926 15.3488 8.80762 13.4746 8.80762 11.1563C8.80762 8.83794 10.6926 6.97461 13.0001 6.97461C15.3076 6.97461 17.1926 8.84878 17.1926 11.1671C17.1926 13.4854 15.3076 15.3488 13.0001 15.3488ZM13.0001 8.59961C11.5918 8.59961 10.4326 9.74794 10.4326 11.1671C10.4326 12.5863 11.581 13.7346 13.0001 13.7346C14.4193 13.7346 15.5676 12.5863 15.5676 11.1671C15.5676 9.74794 14.4085 8.59961 13.0001 8.59961Z"
+                                            fill="#10143E"></path>
+                                        <path
+                                            d="M13.0003 24.658C11.397 24.658 9.78281 24.0513 8.52615 22.8488C5.33031 19.7721 1.79865 14.8646 3.13115 9.02547C4.33365 3.72797 8.95948 1.35547 13.0003 1.35547C13.0003 1.35547 13.0003 1.35547 13.0111 1.35547C17.052 1.35547 21.6778 3.72797 22.8803 9.0363C24.202 14.8755 20.6703 19.7721 17.4745 22.8488C16.2178 24.0513 14.6036 24.658 13.0003 24.658ZM13.0003 2.98047C9.84781 2.98047 5.79615 4.65963 4.72365 9.38297C3.55365 14.4855 6.76031 18.8838 9.66365 21.668C11.5378 23.4771 14.4736 23.4771 16.3478 21.668C19.2403 18.8838 22.447 14.4855 21.2986 9.38297C20.2153 4.65963 16.1528 2.98047 13.0003 2.98047Z"
+                                            fill="#10143E"></path>
+                                    </svg> </span>
+                            </div>
+                            <div class="icon-box-content">
+                                <h6 class="icon-box-title">
+                                    <span>
+                                        Location </span>
+                                </h6>
+                                <p class="icon-box-description">
+                                    County Hall, Bishop’s, SE1 7PB, United Kingdom </p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="sidebar-ad-sec d-flex flex-column align-items-center mt-5">
+                        <span class="ad-title text-white">Trendy Collections</span>
+                        <h5 class="heading-title size-default text-white">40% SALE OFF</h5>
+                        <span class="heading-title2 size-default text-white">Top Quality Metal Posters</span>
+                        <a class="button button-link size-sm" href="">
+                            <span class="button-content-wrapper">
+                                <span class="button-text">Shop Now</span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-9 contact-form mt-5 mt-lg-0">
+                    <h4>Contact us for any questions</h4>
+                    <form action="" class="mt-3" method="post">
+                       
+                        <div class="row">
+                            <div class="col-12 col-md-6 mb-4">
+                                <p><label for="visitor-first-name" class="form-label">First name <abbr class="required"
+                                            title="Required">*</abbr></label><br>
+                                    <input id="visitor-first-name"
+                                            size="40"
+                                            class="form-control"
+                                            type="text" placeholder="First Name">
+                                </p>
+                            </div>
+                            <div class="col-12 col-md-6 mb-4">
+                                <p><label for="visitor-last-name" class="form-label">Last name <abbr class="required"
+                                            title="Required">*</abbr></label><br>
+                                    <input size="40"
+                                            class="form-control"
+                                            id="visitor-last-name" type="text" placeholder="Last Name">
+                                </p>
+                            </div>
+                            <div class="col-12 col-md-6 mb-4">
+                                <p><label for="visitor-email" class="form-label">Email <abbr class="required"
+                                            title="Required">*</abbr></label><br>
+                                    <input size="40"
+                                            class="form-control"
+                                            id="visitor-email"  value="" type="email"  placeholder="Email address">
+                                </p>
+                            </div>
+                            <div class="col-12 col-md-6 mb-4">
+                                <p><label for="visitor-phone" class="form-label">Phone <abbr class="required"
+                                            title="Required">*</abbr></label><br>
+                                    <input size="40"
+                                            class="form-control"
+                                            id="visitor-phone" type="tel"  placeholder="Phone number">
+                                </p>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <p><label for="visitor-message" class="form-label">How can we help?</label><br>
+                                   <textarea
+                                            cols="40" rows="10" class="form-control"
+                                            id="visitor-message"  placeholder="Comment or Message"></textarea></span>
+                                </p>
+                            </div>
+                            <div class="col-12">
+                                <p><span class="wpcf7-form-control-wrap wpcf7-submit-wrap"><button
+                                            class="wpcf7-form-btn-control wpcf7-submit"><span class="has-spinner">Send
+                                                Message</span></button></span>
+                                </p>
+                            </div>
+                        </div>
+                       
+                    </form>
+                </div>
+            </div>
+            <div class="map-section bg-white py-5">
+                    <iframe class="w-100 mb-5"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3106.5437768353!2d-77.365192!3d38.86579899999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b64f449e6aaaab%3A0x79ea83efa9bf1535!2zNDAwMCBMZWdhdG8gUmQgIzExMDAsIEZhaXJmYXgsIFZBIDIyMDMzLCBBbWVyaWthIEJpcmzJmcWfbWnFnyDFnnRhdGxhcsSx!5e0!3m2!1saz!2s!4v1670834139416!5m2!1saz!2s"
+                        height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+        
+                        
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}
+
+

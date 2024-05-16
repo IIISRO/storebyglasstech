@@ -1,0 +1,868 @@
+/*Main Header*/
+
+
+.slider-img {
+    position: relative;
+    width: 100%;
+    height: 550px;
+}
+
+.slider-img img {
+    width: 100vw;
+    position: absolute;
+    height: 550px;
+    object-fit: cover;
+}
+
+
+.slider_carousel {
+    position: absolute;
+    width: 100%;
+    z-index: 1000 !important;
+    height: 550px;
+}
+
+
+.owl-direction {
+    display: none;
+}
+
+
+
+.caption {
+    position: absolute;
+    top: 35%;
+    left: 30px;
+    color: #fff;
+    width: 50%;
+    color: #fff;
+    z-index: 1000000 !important;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 2s ease, transform 2s ease;
+}
+
+@media screen and (max-width: 1023px) {
+    .caption {
+        bottom: 50px;
+        left: 20px;
+        padding-right: 20px;
+    }
+}
+
+.slider-title {
+    z-index: 5;
+    font-family: Outfit;
+    height: auto;
+    width: auto;
+    color: rgb(228, 234, 234);
+    text-decoration: none;
+    white-space: nowrap;
+    min-height: 0px;
+    min-width: 0px;
+    max-height: none;
+    max-width: none;
+    text-align: left;
+    line-height: 60px;
+    letter-spacing: 0px;
+    font-weight: 700;
+    font-size: 50px;
+    backdrop-filter: none;
+    filter: none;
+    transform-origin: 50% 50%;
+    opacity: 1;
+    transform: translate(0px, 0px);
+    visibility: visible;
+}
+
+.slider-text {
+    z-index: 6;
+    font-family: Outfit;
+    height: auto;
+    color: rgb(228, 234, 234);
+    text-decoration: none;
+    white-space: nowrap;
+    min-height: 0px;
+    min-width: 0px;
+    max-height: none;
+    max-width: none;
+    text-align: left;
+    line-height: 21px;
+    letter-spacing: 0px;
+    font-weight: 400;
+    font-size: 16px;
+    backdrop-filter: none;
+    filter: none;
+    transform-origin: 50% 50%;
+    opacity: 1;
+    transform: translate(0px, 0px);
+    visibility: visible;
+    width: 30%;
+}
+
+.owl-item.active .caption {
+    opacity: 1;
+    transform: translateY(0%);
+}
+
+
+
+.slider-button {
+    z-index: 7;
+    background-color: #10143e;
+    font-family: Outfit;
+    height: auto;
+    width: max-content;
+    color: #fff;
+    text-decoration: none;
+    white-space: nowrap;
+    min-height: 0px;
+    min-width: 0px;
+    max-height: none;
+    max-width: none;
+    text-align: left;
+    line-height: 20px;
+    letter-spacing: 0px;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 10px 22px;
+    border-radius: 100px;
+    backdrop-filter: none;
+    filter: none;
+    transform-origin: 50% 50%;
+    opacity: 1;
+    transform: translate(0px, 0px);
+    visibility: visible;
+    transition: all .5s ease-in-out;
+}
+
+.slider-button a {
+    text-decoration: none;
+    transition: all .5s ease-in-out;
+}
+
+.slider-button:hover {
+    background: #fff;
+    color: #000 !important;
+}
+
+.slider-button:hover>a {
+    color: #000 !important;
+}
+
+.text-fade {
+    position: absolute;
+    bottom: 10px;
+    color: #fff;
+    z-index: 100;
+    opacity: .2 !important;
+    font-size: 160px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 170px;
+}
+
+.main-section .owl-dots {
+    position: absolute;
+    top: 90%;
+    left: 45%;
+    background: #10143e;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+}
+
+.carousel-section .slider_carousel {
+    border-radius: 20px;
+}
+
+.slider-img img {
+    border-radius: 10px;
+}
+
+.ads-sec1 {
+    height: 260px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    color: #fff;
+    background-size: cover;
+    background-repeat: no-repeat;;
+    border-radius: 10px;
+    background-image: url('https://plus.unsplash.com/premium_photo-1668090758448-45e8ecbe1a8c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZGVza3RvcCUyMHdhbGxwYXBlcnN8ZW58MHx8MHx8fDA%3D');
+}
+
+.ads-sec2 {
+    height: 260px;
+    background-size: cover;
+    background-repeat: no-repeat;;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: center;
+    position: relative;
+    color: #fff;
+    border-radius: 10px;
+    background-image: url('https://plus.unsplash.com/premium_photo-1668090758448-45e8ecbe1a8c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZGVza3RvcCUyMHdhbGxwYXBlcnN8ZW58MHx8MHx8fDA%3D');
+}
+
+.ads {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 550px;
+}
+
+.ads-sec1 .overlay {
+    position: absolute;
+    width: 100%;
+    border-radius: 10px;
+    padding-left: 20px;
+    height: 100%;
+    z-index: 0;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.ads-sec2 .overlay {
+    position: absolute;
+    padding-right: 20px;
+    width: 100%;
+    border-radius: 10px;
+    z-index: 0;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.ads-sec1 h3,
+.ads-sec1 span,
+.ads-sec1 .slider-button {
+    z-index: 1000;
+    margin-left: 20px;
+}
+
+.ads-sec2 h3,
+.ads-sec2 span,
+.ads-sec2 .slider-button {
+    z-index: 1000;
+    margin-right: 20px;
+}
+
+.ads-sec2 .slider-button {
+    background-color: #fff;
+}
+
+.ads-sec2 .slider-button a {
+    color: #000 !important;
+}
+
+.ads-sec2 .slider-button:hover {
+    background: #10143e;
+}
+
+.ads-sec2 .slider-button:hover>a {
+    color: #fff !important;
+}
+
+
+
+
+
+/*Trending Section*/
+
+
+.trending-section h4 {
+    font-weight: 600;
+    font-size: 35px;
+    line-height: 50px;
+}
+
+.trending-products {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    width: 100%;
+    gap: 20px;
+}
+
+.trending-item img {
+    width: 100%;
+    border-radius: 5px;
+    height: 190px;
+}
+
+.trending-item h3 {
+    font-size: 1.2rem;
+
+}
+
+.trending-item h3 a {
+    text-decoration: none;
+    color: #000;
+}
+
+.price-code {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 26px;
+    color: #000;
+}
+
+
+/*Filter Section*/
+
+
+.tab-buttons {
+    display: flex;
+    margin: auto;
+    gap: 8px;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+.tab-btn {
+    border: none;
+    color: #1d2cca;
+    background-color: #fff;
+    font-weight: 500;
+    padding: 10px 25px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.tab-btn:hover {
+    background-color: #1d2cca;
+    color: #fff;
+}
+
+.tab-btn.active {
+    background-color: #1d2cca;
+    color: #fff;
+}
+
+.content {
+    display: none;
+}
+
+.content.show {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0px;
+    height: 400px;
+}
+
+.content svg {
+    width: 50%;
+    height: 200px;
+}
+
+.content-img {
+    width: 100%;
+    height: 400px;
+}
+
+.filter-main {
+    position: relative;
+}
+
+.tab-buttons {
+    position: absolute;
+    bottom: -5%;
+    width: max-content;
+}
+.content-header{
+    color: #10143e;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 36px;
+}
+.content-half{
+    padding-left: 60px;
+    padding-right: 20px;
+    background: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+.content-text{
+    font-size: 16px;
+    color: #3c3f5f;
+    font-weight: 400;
+    line-height: 26px;
+}
+.content-read-btn{
+    color: #1d2cca;
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: 500;
+    line-height: 26px;
+}
+.content-read-btn i{
+    margin-left: 7px;
+}
+
+
+
+/*Best Seller Section*/
+
+
+.best-seller-container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    height: 550px;
+}
+.best-seller-ads{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 50px 20px 0 20px;
+    background-image: url('https://demo.themerox.com/posterlaab-3/wp-content/uploads/2023/06/posterlaab-40-Sale-Off.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.best-seller-items{
+    grid-column-start: 2;
+    grid-column-end: 5;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 15px;
+}
+.ads-small-text{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22px;
+    color: #10143e;
+}
+.ads-header{
+    font-size: 24px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #10143e;
+}
+
+.ads-button{
+    background: #1d2cca;
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: 500;
+    line-height: 26px;
+    color: #FFFFFF;
+    border-radius: 100px 100px 100px 100px;
+    padding: 9px 030px 9px 30px;
+}
+
+
+
+/*Trending Ads*/
+
+
+.trend-ads{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+    height: 250px;
+}
+
+.ads1,.ads2{
+    width: 100%;
+    height: 100%;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-image: url('https://demo.themerox.com/posterlaab-3/wp-content/uploads/2023/06/posterlaab-Banner1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+}
+.ads-small-header{
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    color: #1d2cca;
+    text-transform: uppercase;
+}
+.ad-header{
+    font-size: 30px;
+    font-weight: 600;
+    color: #10143e;
+}
+
+
+
+/*Comments slider*/
+
+
+.swiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+
+  .comment-user{
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+    border-radius: 100%;
+  }
+  .rating-stars{
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    justify-content: center;
+    
+  }
+  .rating-stars i{
+    font-size: 13px;
+  }
+  .comment-text{
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 38px;
+    margin-bottom: 10px;
+    color: #3c3f5f;
+    width: 80%;
+    margin: auto;
+  }
+  .comment-user-name{
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 28px;
+    margin-bottom: 2px;
+    color: #3c3f5f;
+  }
+  .comment-user-status{
+    font-size: 16px;
+    line-height: 20px;
+    color: #3c3f5f;
+    margin-top: 10px;
+  }
+  .swiper-button-prev,.swiper-button-next{
+    width: 11px !important;
+    height: 12px !important;
+    color: rgb(102, 102, 102) !important;
+  }
+  .swiper-button-next:after, .swiper-button-prev:after{
+    font-size: 20px !important;
+    font-weight: 700 !important;
+  }
+
+
+  /*Subscribe*/
+
+
+  .subscribe-container{
+    background-image: url('https://demo.themerox.com/posterlaab-3/wp-content/uploads/2023/06/Get-our-emails-for-info-on-new-items-1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 250px;
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 80px;
+  }
+  .subscribe-input{
+    color: #3c3f5f;
+    border: 1px solid #e1e2ef;
+    padding: 0.7rem 1rem;
+    width: 100%;
+    height: 54px;
+    border-radius: 30px;
+    background-color: #fff;
+
+  }
+  .subscribe-input:focus{
+    border: 1px solid #e1e2ef;
+    outline: none;
+  }
+  .subscribe-button{
+    height: 54px;
+    padding: 0 30px;
+    font-size: 16px;
+    width: 100%;
+    font-weight: 500;
+    line-height: 26px;
+    color: #FFFFFF;
+    background-color: #1d2cca;
+    border-radius: 100px;
+    border: none;
+    outline: none;
+  }
+
+
+
+  /*Blogs*/
+
+
+  .blog-item{
+    display: block;
+    text-decoration: none;
+    width: 100%;
+    display: flex;
+    box-shadow: 0px 10px 10px 0px rgba(22,22,22,0.03);
+    height: 430px;
+    flex-direction: column;
+  }
+  .blog-img{
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.blog-card-content{
+    position: relative;
+    padding: 20px 10px 20px 20px;
+    border: 1px solid #E2E7EF;
+    border-top: none;
+    height: 210px;
+    border-radius: 0 0 12px 12px;
+}
+.meta{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.comment-count,.post-category{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #000;
+}
+.post-category::before{
+    content: "/";
+    padding-right: 10px;
+}
+.blog-item-header{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    color: #000;
+}
+.blog-item-text{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #000;
+}
+.blog-read-btn{
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: underline;
+    line-height: 26px;
+    color: #000;
+    position: absolute;
+    bottom: 20px;
+}
+
+
+
+.hot-deals-container{
+    border: 1px solid #e1e2ef;
+    border-radius: 5px;
+    padding: 34px 20px 40px 20px;
+}
+.hot-deals-header{
+        color: #10143e;
+        font-size: 28px;
+        font-weight: 600;
+        line-height: 36px;
+}
+.header-sec p{
+    color: #3c3f5f;
+}
+
+
+
+/*Responsive best seller*/
+
+
+@media(max-width:1024px){
+    
+    .best-seller-container{
+        height: auto !important;
+display: block;
+    }
+    .best-seller-ads{
+        height: 400px;
+        margin-bottom: 20px;
+    }
+   
+}
+@media(min-width:767px) and (max-width:1024px){
+    .best-seller-ads{
+        display: none;
+    }
+    .best-seller-items{
+        grid-template-columns: repeat(4,1fr);
+    }
+}
+@media(max-width:767px){
+    .best-seller-items{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+@media(max-width:575px){
+    .best-seller-items{
+        width: 90%;
+        margin: auto;
+        grid-template-columns: repeat(1,1fr);
+    }
+}
+
+
+
+
+/*Responsive main section*/
+@media(max-width:767px){
+    .slider-img,.slider-img img,.slider_carousel{
+        height: 500px;
+    }
+    .slider-title{
+        font-size: 40px;
+    }
+    .ads{
+        margin-top: 20px !important;
+    }
+    .caption{
+        width: 100%;
+    }
+    .slider-title,.slider-text{
+        white-space: unset !important;
+        width: 100%;
+    }
+}
+
+/*Trend ads*/
+@media(max-width:991px){
+    .trend-ads{
+        grid-template-columns: repeat(1,1fr);
+        gap: 30px;
+        height: auto;
+    }
+    .ads1,.ads2{
+        height: 250px;
+    }
+    .ad-header{
+        font-size: 20px;
+    }
+
+}
+
+/*Trending items*/
+
+
+@media(min-width:576px) and (max-width:767px){
+    .trending-products{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+@media(min-width:768px) and (max-width:1024px){
+    
+    .trending-products{
+        grid-template-columns: repeat(3,1fr);
+    }
+}
+@media(max-width:575px){
+    .trending-products{
+        display: block;
+        width: 90%;
+        margin: auto;
+    }
+}
+
+
+/*Blogs*/
+@media(max-width:768px){
+    .blogs-container{
+        width: 90%;
+        margin: auto;
+    }
+}
+
+/*Tabs*/
+
+@media(max-width:991px){
+    .tab-buttons{
+        position: static;
+        justify-content: start;
+        overflow-x:scroll;
+        width: 100% !important;
+        margin-bottom: 30px;
+    }
+    .content.show{
+        grid-template-columns: repeat(1,1fr);
+        height: auto;
+    }
+    .content-half{
+        padding: 30px ;
+    }
+}
+
+
+/*Comments*/
+
+@media(max-width:991px){
+    .comment-text{
+        font-size: 18px;
+    }
+    .subscribe-header{
+        flex-direction: column;
+    }
+    .subscribe-container{
+        padding: 20px;
+        height: unset;
+    }
+    .subs-header2{
+        align-items: center;
+
+    }
+    .subscribe-input{
+        width: 90%;
+        margin: auto;
+        height: 43px;
+    }
+    .subs-input{
+        margin: auto;
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    .subscribe-button{
+        height: 43px;
+        width: 90% !important;
+
+    }
+    .subs-btn{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .subscribe-header h5{
+        text-align: center;
+    }
+}

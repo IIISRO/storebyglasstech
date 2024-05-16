@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -23,9 +23,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-uvn6r6p7n0v4!4@+9xk+oe*#46zlvvqb04g)l67oes^wjvtprl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False if os.environ.get('DEBUG') else True 
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = ['*']
+
 
 
 # Application definition
@@ -37,6 +39,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'core.apps.CoreConfig',
+    'product.apps.ProductConfig',
+    'order.apps.OrderConfig',
+    'account.apps.AccountConfig',
+
+
+    'django_ckeditor_5',
+    'rest_framework',
+
+
+
 ]
 
 MIDDLEWARE = [
@@ -48,6 +62,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
 
 ROOT_URLCONF = 'storebyglasstech.urls'
 
@@ -84,6 +100,8 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
+AUTH_USER_MODEL = 'account.User'
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -114,8 +132,191 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
-
 STATIC_URL = 'static/'
+
+if DEBUG:
+    STATICFILES_DIRS = [
+        BASE_DIR / 'static',
+    ]
+    STATIC_PATH = STATICFILES_DIRS
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+    STATIC_PATH = STATIC_ROOT
+
+
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# STATIC_URL = '/static/'
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = BASE_DIR / 'media'
+# STATIC_ROOT = BASE_DIR / 'static'
+
+
+customColorPalette = [
+    {"color": "hsl(4, 90%, 58%)", "label": "Red"},
+    {"color": "hsl(340, 82%, 52%)", "label": "Pink"},
+    {"color": "hsl(291, 64%, 42%)", "label": "Purple"},
+    {"color": "hsl(262, 52%, 47%)", "label": "Deep Purple"},
+    {"color": "hsl(231, 48%, 48%)", "label": "Indigo"},
+    {"color": "hsl(207, 90%, 54%)", "label": "Blue"},
+]
+
+CKEDITOR_5_CONFIGS = {
+    "default": {
+        "toolbar": [
+            "heading",
+            "|",
+            "bold",
+            "italic",
+            "link",
+            "bulletedList",
+            "numberedList",
+            "blockQuote",
+            "imageUpload"
+        ],
+    },
+    "comment": {
+        "language": {"ui": "en", "content": "en"},
+        "toolbar": [
+            "heading",
+            "|",
+            "bold",
+            "italic",
+            "link",
+            "bulletedList",
+            "numberedList",
+            "blockQuote",
+        ],
+    },
+    "extends": {
+        "language": "en",
+        "blockToolbar": [
+            "paragraph",
+            "heading1",
+            "heading2",
+            "heading3",
+            "|",
+            "bulletedList",
+            "numberedList",
+            "|",
+            "blockQuote",
+        ],
+        "toolbar": [
+            "heading",
+            "codeBlock",
+            "|",
+            "outdent",
+            "indent",
+            "|",
+            "bold",
+            "italic",
+            "link",
+            "underline",
+            "strikethrough",
+            "code",
+            "subscript",
+            "superscript",
+            "highlight",
+            "|",
+            "bulletedList",
+            "numberedList",
+            "todoList",
+            "|",
+            "blockQuote",
+            "insertImage",
+            "|",
+            "fontSize",
+            "fontFamily",
+            "fontColor",
+            "fontBackgroundColor",
+            "mediaEmbed",
+            "removeFormat",
+            "insertTable",
+            "sourceEditing",
+        ],
+        "image": {
+            "toolbar": [
+                "imageTextAlternative",
+                "|",
+                "imageStyle:alignLeft",
+                "imageStyle:alignRight",
+                "imageStyle:alignCenter",
+                "imageStyle:side",
+                "|",
+                "toggleImageCaption",
+                "|"
+            ],
+            "styles": [
+                "full",
+                "side",
+                "alignLeft",
+                "alignRight",
+                "alignCenter",
+            ],
+        },
+        "table": {
+            "contentToolbar": [
+                "tableColumn",
+                "tableRow",
+                "mergeTableCells",
+                "tableProperties",
+                "tableCellProperties",
+            ],
+            "tableProperties": {
+                "borderColors": customColorPalette,
+                "backgroundColors": customColorPalette,
+            },
+            "tableCellProperties": {
+                "borderColors": customColorPalette,
+                "backgroundColors": customColorPalette,
+            },
+        },
+        "heading": {
+            "options": [
+                {
+                    "model": "paragraph",
+                    "title": "Paragraph",
+                    "class": "ck-heading_paragraph",
+                },
+                {
+                    "model": "heading1",
+                    "view": "h1",
+                    "title": "Heading 1",
+                    "class": "ck-heading_heading1",
+                },
+                {
+                    "model": "heading2",
+                    "view": "h2",
+                    "title": "Heading 2",
+                    "class": "ck-heading_heading2",
+                },
+                {
+                    "model": "heading3",
+                    "view": "h3",
+                    "title": "Heading 3",
+                    "class": "ck-heading_heading3",
+                },
+            ]
+        },
+        "list": {
+            "properties": {
+                "styles": True,
+                "startIndex": True,
+                "reversed": True,
+            }
+        },
+        "htmlSupport": {
+            "allow": [
+                {"name": "/.*/", "attributes": True, "classes": True, "styles": True}
+            ]
+        },
+    },
+}
+
+CKEDITOR_5_FILE_STORAGE = "storebyglasstech.storage.CustomStorage"
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

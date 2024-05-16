@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+{% load static %}
+    
+    
+    {% block style %}<link rel="stylesheet" href="{% static 'css/cart.css' %}">{% endblock %}
+
+
+    {% block content %}
+
+    <div class="w-100 py-5">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-9">
+                    <form class="cart-form" method="post">
+
+                        <table class="cart_table w-100" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th class="product-name" data-title="Product" colspan="2">Product</th>
+                                    <th class="product-price" data-title="Price">Price</th>
+                                    <th class="product-quantity" data-title="Quantity">Quantity</th>
+                                    <th class="product-subtotal" data-title="Subtotal">Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr class="cart_item">
+
+
+
+                                    <td class="product-thumbnail">
+                                        <a href=""><img fetchpriority="high" decoding="async" width="300" height="300"
+                                                src="https://demo.themerox.com/posterlaab-3/wp-content/uploads/2023/06/3d-Grassy-Blue-Hills-Poster-300x300.jpg"
+                                                class="cart-thumbnail" alt=""
+                                                srcset="https://demo.themerox.com/posterlaab-3/wp-content/uploads/2023/06/3d-Grassy-Blue-Hills-Poster-300x300.jpg 300w, https://demo.themerox.com/posterlaab-3/wp-content/uploads/2023/06/3d-Grassy-Blue-Hills-Poster-150x150.jpg 150w, https://demo.themerox.com/posterlaab-3/wp-content/uploads/2023/06/3d-Grassy-Blue-Hills-Poster-420x420.jpg 420w, https://demo.themerox.com/posterlaab-3/wp-content/uploads/2023/06/3d-Grassy-Blue-Hills-Poster-90x90.jpg 90w"
+                                                sizes="(max-width: 300px) 100vw, 300px"></a>
+                                    </td>
+
+                                    <td class="product-name" data-title="Product">
+                                        <a
+                                            href="" class="mb-3 d-block">3d
+                                            Grassy Blue Hills Poster</a>
+                                        <dl class="variation">
+                                            <dt class="variation-PosterSize">Poster Size:</dt>
+                                            <dd class="variation-PosterSize">
+                                                <p>S</p>
+                                            </dd>
+                                            <dt class="variation-PosterFinish">Poster Finish:</dt>
+                                            <dd class="variation-PosterFinish">
+                                                <p>Matte</p>
+                                            </dd>
+                                            <dt class="variation-PosterFrame">Poster Frame:</dt>
+                                            <dd class="variation-PosterFrame">
+                                                <p>Golden Wood Pattern</p>
+                                            </dd>
+                                            <dt class="variation-Vendor">Vendor:</dt>
+                                            <dd class="variation-Vendor">
+                                                <p>Next Ltd.</p>
+                                            </dd>
+                                        </dl>
+                                    </td>
+
+                                    <td class="product-price" data-title="Price">
+                                        <span class="price_code"><span class="price-amount amount"><bdi><span
+                                                        class="currencySymbol">$</span>15.00</bdi></span></span>
+                                    </td>
+
+                                    <td class="product-quantity" data-title="Quantity">
+                                        <div class="quantity">
+                                            <label class="posterlaab-label" for="quantity_662f3c794bc3a">
+                                                <span class="sr-only">3d Grassy Blue Hills Poster quantity</span>
+                                                <span aria-hidden="true">Qty</span>
+                                            </label>
+                                            <label class="screen-reader-text" for="quantity_662f3c794bc3a">3d Grassy
+                                                Blue Hills Poster quantity</label>
+
+
+                                            <input type="text" id="quantity_662f3c794bc3a" class="input-text qty text"
+                                                name="" value="1" title="Qty" autocomplete="off"><span
+                                                class="plus">+</span><span class="minus">-</span>
+                                        </div>
+                                    </td>
+
+                                    <td class="product-subtotal" data-title="Subtotal">
+                                        <span class="price_code"><span class="price-amount amount"><bdi><span
+                                                        class="currencySymbol">$</span>15.00</bdi></span></span>
+                                    </td>
+
+                                    <td class="product-remove">
+                                        <a href="" class="remove"
+                                            aria-label="Remove 3d Grassy Blue Hills Poster from cart">×</a>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+                                    <td colspan="6" class="actions coupon-sec">
+
+                                        <div class="coupon">
+                                            <label for="coupon_code">Coupon:</label>    <input type="text"
+                                                name="coupon_code" class="input-text" id="coupon_code" value=""
+                                                placeholder="Coupon code"> <button type="submit" class="button"
+                                                name="apply_coupon" value="Apply coupon">Apply coupon</button>
+                                        </div>
+
+                                        <button type="submit" class="button update_cart" name="update_cart"
+                                            value="Update cart" disabled="">Update cart</button>
+
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+                <div class="col-md-3">
+                    <div class="cart-collaterals">
+                        <div class="cart_totals ">
+                            <h2 class="sr-only">Cart totals</h2>
+
+                            <table cellspacing="0" class="cart_table2">
+                                <tbody>
+                                    <tr class="cart_header">
+                                        <th>
+                                            <h5>Cart Totals</h5>
+                                        </th>
+                                    </tr>
+
+                                    <tr class="cart-subtotal">
+                                        <th>Subtotal</th>
+                                        <td data-title="Subtotal"><span class="price_code"><span
+                                                    class="price-amount amount"><bdi><span
+                                                            class="currencySymbol">$</span>15.00</bdi></span></span>
+                                        </td>
+                                    </tr>
+
+
+                                    <tr class="order-total">
+                                        <th>Total</th>
+                                        <td data-title="Total"><strong><span class="price_code"><span
+                                                        class="price-amount amount"><bdi><span
+                                                                class="currencySymbol">$</span>15.00</bdi></span></span></strong>
+                                        </td>
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+
+                            <div class="checkout-sec">
+
+                                <a href="" class="checkout-button button py-2 d-block alt wc-forward">
+                                    Proceed to checkout</a>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    {% endblock %}
+
+        {% block js %}<script src="{% static 'js/cart.js' %}"></script>{% endblock %}
+
+
+
+
+

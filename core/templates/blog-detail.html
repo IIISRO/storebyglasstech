@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!--CSS files-->
+
+    <link rel="stylesheet" href="./static/css/base.css" />
+    <link rel="stylesheet" href="./static/css/blogs.css" />
+
+    <!--Bootstrap-->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/css/bootstrap-select.min.css" />
+
+    <!--Font Awesome-->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <!--Flag icon-->
+
+    <link href="https://cdn.jsdelivr.net/npm/flag-icon-css@4.1.7/css/flag-icons.min.css" rel="stylesheet" />
+
+    <!--Owl Carousel-->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+
+    <!--Animate.css-->
+
+    <link href="https://owlcarousel2.github.io/OwlCarousel2/assets/css/animate.css" rel="stylesheet" />
+
+    <!--Swiper Slider-->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!--Font Family-->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+    <div>
+        <!--Top Header-->
+
+        <div class="w-100 top-header py-4">
+            <div class="container-fluid top-header-content justify-content-between d-flex align-items-center">
+                <div class="d-flex align-items-center">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <a href=""><img class="logo"
+                            src="https://www.tablohane.com/Content/Images/Design/tablohane-logo.png" alt="" /></a>
+                </div>
+                <div class="header-search">
+                    <form role="search" method="get" class="product-search" action="">
+                        <input type="search" class="search-field" placeholder="Search for Posters..." value="" name="s"
+                            required="required" />
+                        <button type="submit" value="Search" class="">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </button>
+                        <input type="hidden" value="product" />
+                    </form>
+                </div>
+                <div class="d-flex align-items-center">
+                    <a href="tel:0(500)123-456" class="header-contact d-none d-md-flex align-items-center">
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                        <div>
+                            <span>Call Us: </span>
+                            <div class="phone">0(500)123-456</div>
+                        </div>
+                    </a>
+
+                    <div class="header-actions d-flex align-items-center">
+                        <a href="" class="wishlist-icon">
+                            <i class="fa fa-heart-o" aria-hidden="true">
+                                <span class="count-badge">0</span>
+                            </i>
+                            <span class="title">Wishlist</span>
+                        </a>
+                        <a href="" class="cart-count">
+                            <i class="fa fa-shopping-bag" aria-hidden="true"><span class="count-badge">0</span></i>
+                            <span class="title">Cart</span>
+                        </a>
+                        <a href="" class="user user-icon">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                            <span class="title">Sign In</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Header Search Mobile-->
+
+        <div class="container-fluid">
+            <div class="header-search-mobile">
+                <form role="search" method="get" class="product-search" action="">
+                    <input type="search" class="search-field" placeholder="Search for Posters..." value="" name="s"
+                        required="required" />
+                    <button type="submit" value="Search" class="">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                    <input type="hidden" value="product" />
+                </form>
+            </div>
+        </div>
+
+        <!--Navbar-->
+
+        <nav class="navbar navbar-expand-lg py-2">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">About</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Posters
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider" />
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contact</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex">
+                        <select class="selectpicker" data-width="fit">
+                            <option data-content='<span class="flag-icon flag-icon-us"></span> English'>
+                                English
+                            </option>
+                            <option data-content='<span class="flag-icon flag-icon-mx"></span> Español'>
+                                Español
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="w-100 py-5">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-9 blog-detail">
+                    <img class="blog-detail-img"
+                        src="https://demo.themerox.com/posterlaab-3/wp-content/uploads/2023/03/posterlaab-blog-GWD-scaled.jpg"
+                        alt="">
+                    <h1 class="post-title entry-title mt-3">The Controller of your personal data</h1>
+                    <div class="entry-meta">
+                        <a class="post-date-link" href="">
+                            <time class="post-date updated">March 9, 2023</time>
+                        </a>
+                        <a href="" class="post-comment-stat">1 Comment<span class="sr-only"> on “The Controller of your
+                                personal data”</span></a>
+                        <p class="post-reading-duration">2 Mins Read</p>
+                    </div>
+                    <p class="blog-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus fugiat et
+                        sapiente hic eos ad quaerat doloribus sed, sunt distinctio? Consequatur, optio qui dolorum fuga
+                        esse assumenda dicta id? Fugit molestias suscipit veritatis quia minus pariatur dolores quae,
+                        aliquid deleniti quod? Harum, sunt autem officia sequi rem ab nostrum ullam porro eveniet nisi
+                        aspernatur, quibusdam mollitia molestiae, quidem in id? Aliquam, aut, quisquam tempore harum
+                        fugit consequuntur ad quas nesciunt ullam ex, temporibus pariatur at sed vitae expedita ipsum
+                        voluptatum architecto. Obcaecati, numquam voluptates consequatur magnam autem minus enim et quos
+                        ratione corrupti, veniam, ullam adipisci provident aspernatur est. Suscipit pariatur a est in
+                        commodi perferendis nihil sint. Voluptatem doloremque quidem et a ex laudantium mollitia
+                        consequatur aperiam possimus alias cum, deserunt iure ratione eos natus doloribus, eum sequi
+                        culpa? Ipsum, beatae enim officia debitis odio iste, illum exercitationem modi quasi quibusdam
+                        atque itaque placeat totam aut consectetur repellendus, ducimus magni sapiente earum. Delectus
+                        pariatur saepe facere officia soluta. Repudiandae nesciunt iusto hic possimus voluptate repellat
+                        ea cum dolorum sed exercitationem eius pariatur praesentium earum fuga, debitis, officiis in
+                        aliquid! Illo ratione accusamus dolorem doloremque autem quas, porro vitae. Adipisci tempore
+                        perspiciatis officia facere magnam, iure at sed officiis, recusandae exercitationem quod
+                        sapiente quam. Maxime alias fugit consequuntur ipsum. Quia odit iure itaque quis eligendi at!
+                        Tempora architecto, fugit ab recusandae autem doloremque corrupti veritatis adipisci in amet
+                        modi provident voluptatibus aut nulla officiis consequatur error quae ad magnam sed? Odit
+                        maxime, laborum libero beatae consectetur nisi. Dolore magni incidunt quis obcaecati inventore
+                        hic delectus harum modi commodi molestias. In, nihil alias similique eligendi obcaecati iure
+                        iusto consequatur nemo labore iste doloribus doloremque illum corrupti ducimus debitis autem
+                        quasi enim! Quo ullam ducimus accusantium, pariatur ipsa est quisquam commodi at vitae ut.
+                        Consequuntur, voluptate. Quo ab facere voluptatibus labore porro, velit provident impedit ut ex!
+                        Eum modi recusandae, eveniet ratione magnam fuga ex, molestias obcaecati quibusdam accusantium
+                        consequatur laboriosam nisi sequi est alias sunt? Officiis quia adipisci velit voluptate
+                        assumenda quibusdam iure dicta voluptates minus at consequuntur qui ea atque eveniet reiciendis
+                        enim perspiciatis dignissimos sint sunt impedit illum quo, debitis quam. Blanditiis earum nam
+                        culpa excepturi, architecto consequatur eveniet ullam, quae, maiores eum adipisci distinctio
+                        enim quibusdam. Molestiae ad exercitationem velit pariatur repellendus animi aperiam. Quis
+                        facere numquam dolores debitis eveniet aperiam vitae ipsum quae fugiat, sint magnam maiores
+                        recusandae illum placeat sapiente accusantium. Rerum exercitationem neque eaque consectetur.</p>
+                    <div class="previous"><a href="" rel="prev">
+                            <div class="text"><i class="fa fa-chevron-left" aria-hidden="true"></i>Previous Post
+                            </div>
+                            <div class="pagination-post-title">The Controller of your personal data is GWD</div>
+                        </a></div>
+                    <div id="about-author" class="author-bio show-avatars mt-4">
+                        <div class="avatar-wrap"><img alt="admin"
+                                src="https://secure.gravatar.com/avatar/2d42d046b3756b100ac49de2cd9adee3?s=90&amp;d=mm&amp;r=g"
+                                srcset="https://secure.gravatar.com/avatar/2d42d046b3756b100ac49de2cd9adee3?s=180&amp;d=mm&amp;r=g 2x"
+                                class="avatar avatar-90 photo" height="90" width="90" decoding="async"></div>
+                        <div class="author-content">
+                            <h5 class="author-title"><a href="" title="Posts by admin" rel="author">admin</a></h5>
+                            <div class="author-description author-bio2">
+                                <p>As you’re tapping, scrolling, and swiping on your phone, you probably don’t give much
+                                    thought to the fact that your apps</p>
+                            </div>
+                            <div class="author-social-profile">
+                                <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-original-title="Facebook"
+                                    class="social-icon" href="#" data-bs-original-title="Facebook"><i
+                                        class="fa fa-facebook" aria-hidden="false"></i><span
+                                        class="sr-only">Facebook</span></a><a data-bs-toggle="tooltip"
+                                    data-bs-placement="bottom" data-original-title="Instagram" class="social-icon"
+                                    href="#" data-bs-original-title="Instagram"><i class="fa fa-instagram"
+                                        aria-hidden="false"></i><span class="sr-only">Instagram</span></a><a
+                                    data-bs-toggle="tooltip" data-bs-placement="bottom" data-original-title="Twitter"
+                                    class="social-icon" href="#" data-bs-original-title="Twitter"><i
+                                        class="fa fa-twitter" aria-hidden="false"></i><span
+                                        class="sr-only">Twitter</span></a><a data-bs-toggle="tooltip"
+                                    data-bs-placement="bottom" data-original-title="Pinterest" class="social-icon"
+                                    href="#" data-bs-original-title="Pinterest"><i class="fa fa-pinterest"
+                                        aria-hidden="false"></i><span class="sr-only">Pinterest</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="comments" class="clearfix mt-5">
+                        <div class="section-heading post-comments-heading">
+                            <h2>
+                                One Comment </h2>
+                        </div>
+                        <div class="comments-container">
+                            <ul class="comment-list">
+                                <li id="comment-74">
+                                    <article
+                                        class="comment byuser comment-author-shuvo586 even thread-even depth-1 clearfix">
+                                        <div class="avatar"><img alt=""
+                                                src="https://secure.gravatar.com/avatar/2ebe4d7160e664ec2815dde0e9bbd5f1?s=70&amp;d=mm&amp;r=g"
+                                                srcset="https://secure.gravatar.com/avatar/2ebe4d7160e664ec2815dde0e9bbd5f1?s=140&amp;d=mm&amp;r=g 2x"
+                                                class="avatar avatar-70 photo" height="70" width="70" decoding="async">
+                                        </div>
+                                        <div class="comment-meta">
+                                            <h5 class="comment-author">shuvo586</h5>
+                                            <span class="comment-date post-date">April 2, 2023 at 2:50 am</span>
+                                            <span class="comment-reply"><a rel="nofollow" class="comment-reply-link"
+                                                    href=""><i
+                                                        class="f fa-reply" aria-hidden="true"></i>Reply</a></span>
+                                        </div>
+                                        <div class="comment-content">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dolor
+                                                purus, aliquam non feugiat sed, mollis quis massa. Suspendisse
+                                                scelerisque interdum volutpat.</p>
+                                        </div>
+                                    </article>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div id="respond" class="comment-respond">
+                            <div id="reply-title" class="section-heading comment-reply-title">
+                                <h2>Leave a Reply <span class="cancel-reply"><a data-bs-toggle="tooltip"
+                                            data-bs-placement="bottom" rel="nofollow" id="cancel-comment-reply-link"
+                                            href=""
+                                            style="display:none;" data-bs-original-title="Cancel reply"><i
+                                                class="pl pl-close" aria-hidden="true"></i><span class="sr-only">Cancel
+                                                reply</span></a></span></h2>
+                            </div>
+                            <form action="" method="post"
+                                id="post-comments-form" class="comment-form">
+                                <p class="logged-in-as">Logged in as lamanmirizada. <a
+                                        href="">Edit your
+                                        profile</a>. <a
+                                        href="">Log
+                                        out?</a> <span class="required-field-message">Required fields are marked <span
+                                            class="required">*</span></span></p>
+                                <div class="col-md-12"><textarea name="comment" id="comment" required=""
+                                        placeholder="Enter your comments *"></textarea></div>
+                                <p class="form-submit"><input name="submit" type="submit" id="submit" class="submit"
+                                        value="Post Comment"> <input type="hidden" name="comment_post_ID" value="39752"
+                                        id="comment_post_ID">
+                                    <input type="hidden" name="comment_parent" id="comment_parent" value="0">
+                                </p><input type="hidden" id="posterlaab_wpnonce" name="posterlaab_wpnonce"
+                                    value="35cb43e2f3">
+                            </form>
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div class="col-lg-3 mt-4 mt-lg-0">
+                    <div id="secondary" class="widget-area main-sidebar w-100" role="complementary">
+                        <aside class="widget widget_block widget_search w-100 sidebar-widget clearfix">
+                            <form role="search" method="get" action=""
+                                class="search__button-inside search__text-button search w-100">
+                                <label class="search__label d-none screen-reader-text"
+                                    for="search__input-2">Search</label>
+                                <div class="search__inside-wrapper">
+                                    <input class="search__input" id="search__input-2" placeholder="Search..." value=""
+                                        type="text" name="s" required="" /><button aria-label="Search"
+                                        class="search__button wp-element-button" type="submit">
+                                        Search
+                                    </button>
+                                </div>
+                            </form>
+                        </aside>
+                        <aside class="widget widget_block sidebar-widget clearfix">
+                            <div class="group">
+                                <div class="group__inner-container is-layout-constrained group-is-layout-constrained">
+                                    <h2 class="heading">Recent Post</h2>
+                                    <ul class="latest-posts__list has-dates latest-posts">
+                                        <li>
+                                            <div class="latest-posts__featured-image alignleft">
+                                                <img decoding="async" width="150" height="75"
+                                                    src="https://demo.themerox.com/posterlaab-3/wp-content/uploads/2023/03/posterlaab-blog-GWD-scaled.jpg"
+                                                    class="attachment-thumbnail size-thumbnail wp-post-image" alt=""
+                                                    style="" />
+                                            </div>
+                                            <a class="latest-posts__post-title"
+                                                href="https://demo.themerox.com/posterlaab-3/2023/03/the-controller-of-your-personal-data/">The
+                                                Controller of your personal data</a><time
+                                                datetime="2023-03-09T13:45:27+00:00"
+                                                class="latest-posts__post-date">March 9, 2023</time>
+                                        </li>
+                                        <li>
+                                            <div class="latest-posts__featured-image alignleft">
+                                                <img decoding="async" width="150" height="150"
+                                                    src="https://demo.themerox.com/posterlaab-3/wp-content/uploads/2022/04/top-view-attractive-woman-hands-drawing-amazing-picture-canvas-modern-cozy-art-workshop-150x150.jpg"
+                                                    class="attachment-thumbnail size-thumbnail wp-post-image" alt=""
+                                                    style="" srcset="
+                              https://demo.themerox.com/posterlaab-3/wp-content/uploads/2022/04/top-view-attractive-woman-hands-drawing-amazing-picture-canvas-modern-cozy-art-workshop-150x150.jpg 150w,
+                              https://demo.themerox.com/posterlaab-3/wp-content/uploads/2022/04/top-view-attractive-woman-hands-drawing-amazing-picture-canvas-modern-cozy-art-workshop-420x420.jpg 420w,
+                              https://demo.themerox.com/posterlaab-3/wp-content/uploads/2022/04/top-view-attractive-woman-hands-drawing-amazing-picture-canvas-modern-cozy-art-workshop-90x90.jpg    90w,
+                              https://demo.themerox.com/posterlaab-3/wp-content/uploads/2022/04/top-view-attractive-woman-hands-drawing-amazing-picture-canvas-modern-cozy-art-workshop-300x300.jpg 300w
+                            " sizes="(max-width: 150px) 100vw, 150px" />
+                                            </div>
+                                            <a class="latest-posts__post-title"
+                                                href="https://demo.themerox.com/posterlaab-3/2023/03/hello-world/">The
+                                                Controller of your personal data is GWD</a><time
+                                                datetime="2023-03-01T04:35:12+00:00"
+                                                class="latest-posts__post-date">March 1, 2023</time>
+                                        </li>
+                                        <li>
+                                            <div class="latest-posts__featured-image alignleft">
+                                                <img loading="lazy" decoding="async" width="150" height="150"
+                                                    src="https://demo.themerox.com/posterlaab-3/wp-content/uploads/2022/06/the_controller-150x150.png"
+                                                    class="attachment-thumbnail size-thumbnail wp-post-image" alt=""
+                                                    style="" srcset="
+                              https://demo.themerox.com/posterlaab-3/wp-content/uploads/2022/06/the_controller-150x150.png 150w,
+                              https://demo.themerox.com/posterlaab-3/wp-content/uploads/2022/06/the_controller-420x420.png 420w,
+                              https://demo.themerox.com/posterlaab-3/wp-content/uploads/2022/06/the_controller-90x90.png    90w,
+                              https://demo.themerox.com/posterlaab-3/wp-content/uploads/2022/06/the_controller-100x100.png 100w,
+                              https://demo.themerox.com/posterlaab-3/wp-content/uploads/2022/06/the_controller-300x300.png 300w
+                            " sizes="(max-width: 150px) 100vw, 150px" />
+                                            </div>
+                                            <a class="latest-posts__post-title"
+                                                href="https://demo.themerox.com/posterlaab-3/2022/06/where-tradition-meets-fashion/">Where
+                                                tradition meets fashion</a><time datetime="2022-06-07T03:16:53+00:00"
+                                                class="latest-posts__post-date">June 7, 2022</time>
+                                        </li>
+                                        <li>
+                                            <div class="latest-posts__featured-image alignleft">
+                                                <img loading="lazy" decoding="async" width="150" height="86"
+                                                    src="https://demo.themerox.com/posterlaab-3/wp-content/uploads/2022/06/blog_2.jpg"
+                                                    class="attachment-thumbnail size-thumbnail wp-post-image" alt=""
+                                                    style="" />
+                                            </div>
+                                            <a class="latest-posts__post-title"
+                                                href="https://demo.themerox.com/posterlaab-3/2022/06/dont-stress-about-the-dress-well-dress/">Don’t
+                                                stress about the dress, we’ll dress</a><time
+                                                datetime="2022-06-07T03:16:30+00:00"
+                                                class="latest-posts__post-date">June 7, 2022</time>
+                                        </li>
+                                        <li>
+                                            <div class="latest-posts__featured-image alignleft">
+                                                <img loading="lazy" decoding="async" width="150" height="150"
+                                                    src="https://demo.themerox.com/posterlaab-3/wp-content/uploads/2022/04/multiethnic-team-sharing-ideas-about-industrial-project-using-two-monitors-with-d-gears-metalic-150x150.jpg"
+                                                    class="attachment-thumbnail size-thumbnail wp-post-image" alt=""
+                                                    style="" srcset="
+                              https://demo.themerox.com/posterlaab-3/wp-content/uploads/2022/04/multiethnic-team-sharing-ideas-about-industrial-project-using-two-monitors-with-d-gears-metalic-150x150.jpg 150w,
+                              https://demo.themerox.com/posterlaab-3/wp-content/uploads/2022/04/multiethnic-team-sharing-ideas-about-industrial-project-using-two-monitors-with-d-gears-metalic-420x420.jpg 420w,
+                              https://demo.themerox.com/posterlaab-3/wp-content/uploads/2022/04/multiethnic-team-sharing-ideas-about-industrial-project-using-two-monitors-with-d-gears-metalic-90x90.jpg    90w,
+                              https://demo.themerox.com/posterlaab-3/wp-content/uploads/2022/04/multiethnic-team-sharing-ideas-about-industrial-project-using-two-monitors-with-d-gears-metalic-300x300.jpg 300w
+                            " sizes="(max-width: 150px) 100vw, 150px" />
+                                            </div>
+                                            <a class="latest-posts__post-title"
+                                                href="https://demo.themerox.com/posterlaab-3/2022/04/the-best-fashion-store-can-deliver/">The
+                                                best fashion store can deliver.</a><time
+                                                datetime="2022-04-14T14:53:54+00:00"
+                                                class="latest-posts__post-date">April 14, 2022</time>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </aside>
+                        <aside class="widget widget_block sidebar-widget clearfix">
+                            <div class="group">
+                                <div class="group__inner-container is-layout-constrained group-is-layout-constrained">
+                                    <h2 class="heading">Recent Comments</h2>
+                                    <ol class="has-avatars latest-comments">
+                                        <li class="latest-comments__comment">
+                                            <img alt=""
+                                                src="https://secure.gravatar.com/avatar/d2b97530835fc236ee29642c2a4433f0?s=48&amp;d=mm&amp;r=g"
+                                                srcset="
+                            https://secure.gravatar.com/avatar/d2b97530835fc236ee29642c2a4433f0?s=96&amp;d=mm&amp;r=g 2x
+                          " class="avatar avatar-48 photo latest-comments__comment-avatar" height="48" width="48" />
+                                            <article>
+                                                <footer class="latest-comments__comment-meta">
+                                                    <a class="latest-comments__comment-author"
+                                                        href="https://www.themeoo.com/">Risul</a>
+                                                    on
+                                                    <a class="latest-comments__comment-link"
+                                                        href="https://demo.themerox.com/posterlaab-3/2022/04/do-well-live-well-dress-really-well/#comment-79">Do
+                                                        well, live well &amp; dress really well</a>
+                                                </footer>
+                                            </article>
+                                        </li>
+                                        <li class="latest-comments__comment">
+                                            <img alt=""
+                                                src="https://secure.gravatar.com/avatar/d2b97530835fc236ee29642c2a4433f0?s=48&amp;d=mm&amp;r=g"
+                                                srcset="
+                            https://secure.gravatar.com/avatar/d2b97530835fc236ee29642c2a4433f0?s=96&amp;d=mm&amp;r=g 2x
+                          " class="avatar avatar-48 photo latest-comments__comment-avatar" height="48" width="48" />
+                                            <article>
+                                                <footer class="latest-comments__comment-meta">
+                                                    <a class="latest-comments__comment-author"
+                                                        href="https://www.themeoo.com/">Risul</a>
+                                                    on
+                                                    <a class="latest-comments__comment-link"
+                                                        href="https://demo.themerox.com/posterlaab-3/2022/04/the-best-fashion-store-can-deliver/#comment-78">The
+                                                        best fashion store can deliver.</a>
+                                                </footer>
+                                            </article>
+                                        </li>
+                                        <li class="latest-comments__comment">
+                                            <img alt=""
+                                                src="https://secure.gravatar.com/avatar/d2b97530835fc236ee29642c2a4433f0?s=48&amp;d=mm&amp;r=g"
+                                                srcset="
+                            https://secure.gravatar.com/avatar/d2b97530835fc236ee29642c2a4433f0?s=96&amp;d=mm&amp;r=g 2x
+                          " class="avatar avatar-48 photo latest-comments__comment-avatar" height="48" width="48" />
+                                            <article>
+                                                <footer class="latest-comments__comment-meta">
+                                                    <a class="latest-comments__comment-author"
+                                                        href="https://niamrox.com/">Ayyash</a>
+                                                    on
+                                                    <a class="latest-comments__comment-link"
+                                                        href="https://demo.themerox.com/posterlaab-3/2022/06/where-tradition-meets-fashion/#comment-76">Where
+                                                        tradition meets fashion</a>
+                                                </footer>
+                                            </article>
+                                        </li>
+                                        <li class="latest-comments__comment">
+                                            <img alt=""
+                                                src="https://secure.gravatar.com/avatar/d2b97530835fc236ee29642c2a4433f0?s=48&amp;d=mm&amp;r=g"
+                                                srcset="
+                            https://secure.gravatar.com/avatar/d2b97530835fc236ee29642c2a4433f0?s=96&amp;d=mm&amp;r=g 2x
+                          " class="avatar avatar-48 photo latest-comments__comment-avatar" height="48" width="48" />
+                                            <article>
+                                                <footer class="latest-comments__comment-meta">
+                                                    <a class="latest-comments__comment-author"
+                                                        href="https://www.themeoo.com/">Risul</a>
+                                                    on
+                                                    <a class="latest-comments__comment-link"
+                                                        href="https://demo.themerox.com/posterlaab-3/2023/03/hello-world/#comment-75">The
+                                                        Controller of your personal data is GWD</a>
+                                                </footer>
+                                            </article>
+                                        </li>
+                                        <li class="latest-comments__comment">
+                                            <img alt=""
+                                                src="https://secure.gravatar.com/avatar/2ebe4d7160e664ec2815dde0e9bbd5f1?s=48&amp;d=mm&amp;r=g"
+                                                srcset="
+                            https://secure.gravatar.com/avatar/2ebe4d7160e664ec2815dde0e9bbd5f1?s=96&amp;d=mm&amp;r=g 2x
+                          " class="avatar avatar-48 photo latest-comments__comment-avatar" height="48" width="48" />
+                                            <article>
+                                                <footer class="latest-comments__comment-meta">
+                                                    <a class="latest-comments__comment-author"
+                                                        href="https://demo.themerox.com/posterlaab-3/author/shuvo586/">shuvo586</a>
+                                                    on
+                                                    <a class="latest-comments__comment-link"
+                                                        href="https://demo.themerox.com/posterlaab-3/2023/03/the-controller-of-your-personal-data/#comment-74">The
+                                                        Controller of your personal data</a>
+                                                </footer>
+                                            </article>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </aside>
+                        <aside class="widget widget_block sidebar-widget clearfix">
+                            <div class="group">
+                                <div class="group__inner-container is-layout-constrained group-is-layout-constrained">
+                                    <h2 class="heading">Categories</h2>
+                                    <ul class="categories-list categories">
+                                        <li class="cat-item cat-item-17">
+                                            <a href="https://demo.themerox.com/posterlaab-3/category/block/">Block</a>
+                                            (6)
+                                        </li>
+                                        <li class="cat-item cat-item-223">
+                                            <a
+                                                href="https://demo.themerox.com/posterlaab-3/category/classic/">Classic</a>
+                                            (6)
+                                        </li>
+                                        <li class="cat-item cat-item-237">
+                                            <a href="https://demo.themerox.com/posterlaab-3/category/media-2/">Media</a>
+                                            (1)
+                                        </li>
+                                        <li class="cat-item cat-item-243">
+                                            <a href="https://demo.themerox.com/posterlaab-3/category/post-formats/">Post
+                                                Formats</a>
+                                            (6)
+                                        </li>
+                                        <li class="cat-item cat-item-249">
+                                            <a
+                                                href="https://demo.themerox.com/posterlaab-3/category/template-2/">Template</a>
+                                            (6)
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Footer-->
+
+    <footer class="footer w-100 pt-3 pb-2">
+        <div class="container-fluid py-5">
+            <div class="row">
+                <div class="col-md-3 footer-item1">
+                    <a href=""><img class="logo"
+                            src="https://www.tablohane.com/Content/Images/Design/tablohane-logo.png" alt="" /></a>
+                    <p class="mt-3">
+                        Fern grows sad when Wilbur grows up and has to be sent away to a
+                        farm owned by her uncle. She has a strong relationship.
+                    </p>
+                    <ul class="social-icons mt-4 mb-4">
+                        <li class="social_wrap">
+                            <span class="index" data-index="0" aria-hidden="true"></span><a href=""
+                                class="social_link"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li class="social_wrap">
+                            <span class="index" data-index="1" aria-hidden="true"></span><a href=""
+                                class="social_link"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li class="social_wrap">
+                            <span class="index" data-index="2" aria-hidden="true"></span><a href=""
+                                class="social_link"><i class="fa fa-youtube"></i></a>
+                        </li>
+                    </ul>
+
+                    <a href="tel:0(500)123-456" class="info-phone"><i class="fa fa-phone"></i>
+                        <div class="phone-content">
+                            <span>Call Us:</span>
+                            <div class="info_phone">0(500)123-456</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-2 footer-item2">
+                    <h2 class="footer-list-title">Main Menu</h2>
+                    <ul class="mt-3">
+                        <li><a href="">Home</a></li>
+                        <li><a href="">Shop</a></li>
+                        <li><a href="">Coming Soon</a></li>
+                        <li><a href="">FAQ</a></li>
+                        <li><a href="">Privacy Policy</a></li>
+                        <li><a href="">About us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 footer-item2">
+                    <h2 class="footer-list-title">Main Menu</h2>
+                    <ul class="mt-3">
+                        <li><a href="">Home</a></li>
+                        <li><a href="">Shop</a></li>
+                        <li><a href="">Coming Soon</a></li>
+                        <li><a href="">FAQ</a></li>
+                        <li><a href="">Privacy Policy</a></li>
+                        <li><a href="">About us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 footer-item2">
+                    <h2 class="footer-list-title">Main Menu</h2>
+                    <ul class="mt-3">
+                        <li><a href="">Home</a></li>
+                        <li><a href="">Shop</a></li>
+                        <li><a href="">Coming Soon</a></li>
+                        <li><a href="">FAQ</a></li>
+                        <li><a href="">Privacy Policy</a></li>
+                        <li><a href="">About us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 footer-item1">
+                    <h2 class="footer-list-title">Main Menu</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor,
+                        officia.
+                    </p>
+                    <div class="w-100 download-sec">
+                        <a href="" class="d-block w-100">
+                            <img class="w-100"
+                                src="https://demo.themerox.com/posterlaab-3/wp-content/uploads/2023/01/googleplay1.jpg"
+                                alt="" />
+                        </a>
+                        <a href="" class="d-block w-100">
+                            <img class="w-100"
+                                src="https://demo.themerox.com/posterlaab-3/wp-content/uploads/2023/01/googleplay1.jpg"
+                                alt="" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="container-fluid powered pt-3 d-flex align-items-center justify-content-center">
+            <p>Powered by <a href=""> Ilgar Sukurov</a></p>
+        </div>
+    </footer>
+
+    <!--Mobile menu-->
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div>
+                Some text as placeholder. In real life you can have the elements you
+                have chosen. Like, text, images, lists, etc.
+            </div>
+            <div class="dropdown mt-3">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-bs-toggle="dropdown">
+                    Dropdown button
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!--JS files-->
+
+    <!--JQuery-->
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <!--Bootstrap JS-->
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"></script>
+
+    <!--Owl Carousel-->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <!--Bootstrap Select -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/js/bootstrap-select.min.js"></script>
+
+    <!--Flag icon-->
+
+    <!--Swiper Slider-->
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!--JS file-->
+</body>
+
+</html>

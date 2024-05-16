@@ -1,0 +1,258 @@
+{% extends 'base.html' %}
+{% load static %}
+    
+    
+    {% block style %}<link rel="stylesheet" href="{% static 'css/checkout.css' %}">{% endblock %}
+
+
+    {% block content %}
+
+    <div class="w-100">
+        <div class="container-fluid py-5">
+            <div class="notice-banner is-info" role="alert">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"
+                    focusable="false">
+                    <path
+                        d="M12 3.2c-4.8 0-8.8 3.9-8.8 8.8 0 4.8 3.9 8.8 8.8 8.8 4.8 0 8.8-3.9 8.8-8.8 0-4.8-4-8.8-8.8-8.8zm0 16c-4 0-7.2-3.3-7.2-7.2C4.8 8 8 4.8 12 4.8s7.2 3.3 7.2 7.2c0 4-3.2 7.2-7.2 7.2zM11 17h2v-6h-2v6zm0-8h2V7h-2v2z">
+                    </path>
+                </svg>
+                <div class="notice-banner-content">
+                    Have a coupon? <a href="#" class="showcoupon">Click here to enter your code</a> </div>
+            </div>
+            <form class="checkout_coupon form-coupon d-none mb-5" method="post">
+                <p>If you have a coupon code, please apply it below.</p>
+                <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
+                    <p class="form-row2 form-row2-first">
+                        <input type="text" name="coupon_code" class="input-text" placeholder="Coupon code" id="coupon_code" value="">
+                        </p>
+                        <p class="form-row2 form-row2-last">
+                        <button type="submit" class="button-apply" name="apply_coupon" value="Apply coupon">Apply coupon</button>
+                        </p>
+                </div>
+             
+                </form>
+
+
+            <form name="checkout" method="post" class="checkout-form w-100" action="" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <div class="w-100" id="customer_details">
+                            <div class="billing-fields">
+                                <h3>Billing details</h3>
+                                <div class="row mb-4 mt-4">
+                                    <div class="col-md-6 d-flex flex-column">
+                                        <label class="">First
+                                            name&nbsp;<abbr class="required" title="required">*</abbr></label><input
+                                            type="text" class="input-text " placeholder="" value="">
+                                    </div>
+                                    <div class="col-md-6 d-flex flex-column">
+                                        <label>Last
+                                            name&nbsp;<abbr class="required" title="required">*</abbr></label><input
+                                            type="text" class="input-text " placeholder="" value="">
+                                    </div>
+                                </div>
+                                <div class="row mb-4">
+                                    <div class="col-md-12">
+                                        <label class="">Company
+                                            name&nbsp;(optional) </label><input type="text" class="input-text "
+                                            placeholder="" value="">
+                                    </div>
+                                </div>
+                                <div class="row mb-4">
+                                    <div class="col-md-12">
+                                        <label class="">Country / Region&nbsp;<abbr class="required"
+                                                title="required">*</abbr> </label>
+                                        <select class="selectpicker  shadow-none" data-live-search="true">
+                                            <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option>
+                                            <option data-tokens="mustard">Burger, Shake and a Smile</option>
+                                            <option data-tokens="frosting">Sugar, Spice and all things nice</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row mb-4">
+                                    <div class="col-md-12 d-flex flex-column">
+                                        <label>Street address
+                                            &nbsp;<abbr class="required" title="required">*</abbr></label><input
+                                            type="text" class="input-text " placeholder="House number and street name"
+                                            value="">
+                                    </div>
+                                    <div class="col-md-12 mt-4 d-flex flex-column">
+                                        <input type="text" class="input-text "
+                                            placeholder="Apartment,suite,unit,etc.(optional)" value="">
+                                    </div>
+                                </div>
+                                <div class="row mb-4">
+                                    <div class="col-md-12 d-flex flex-column">
+                                        <label>Town / City &nbsp;<abbr class="required"
+                                                title="required">*</abbr></label><input type="text" class="input-text "
+                                            placeholder="" value="">
+                                    </div>
+                                </div>
+                                <div class="row mb-4">
+                                    <div class="col-md-12">
+                                        <label class="">State&nbsp;<abbr class="required" title="required">*</abbr>
+                                        </label>
+                                        <select class="selectpicker  shadow-none" data-live-search="true">
+                                            <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option>
+                                            <option data-tokens="mustard">Burger, Shake and a Smile</option>
+                                            <option data-tokens="frosting">Sugar, Spice and all things nice</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row mb-4">
+                                    <div class="col-md-12 d-flex flex-column">
+                                        <label>ZIP Code &nbsp;<abbr class="required"
+                                                title="required">*</abbr></label><input type="text" class="input-text "
+                                            placeholder="" value="">
+                                    </div>
+                                </div>
+                                <div class="row mb-4">
+                                    <div class="col-md-12 d-flex flex-column">
+                                        <label>Phone &nbsp;<abbr class="required"
+                                                title="required">*</abbr></label><input type="text" class="input-text "
+                                            placeholder="" value="">
+                                    </div>
+                                </div>
+                                <div class="row mb-4">
+                                    <div class="col-md-12 d-flex flex-column">
+                                        <label>Email address &nbsp;<abbr class="required"
+                                                title="required">*</abbr></label><input type="text" class="input-text "
+                                            placeholder="" value="">
+                                    </div>
+                                </div>
+                                <h3>Additional information</h3>
+                                <div class="row mb-4">
+                                    <div class="col-md-12 d-flex flex-column">
+                                        <label>Order notes (optional)</label>
+                                        <textarea name="" id="" placeholder="Notes about your order, e.g. special notes for delivery." class="w-100"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="order-checkout">
+                            <h5 id="order_review_heading">Your Order</h5>
+                        </div>
+                        <div id="order_review" class="checkout-review-order">
+                            <table class="shop_table checkout-review-order-table">
+                                <thead>
+                                    <tr>
+                                        <th class="product-name">Product</th>
+                                        <th class="product-total">Subtotal</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="cart_item">
+                                        <td class="product-name">
+                                            3d Grassy Blue Hills Poster&nbsp; <strong
+                                                class="product-quantity">×&nbsp;1</strong>
+                                            <dl class="variation">
+                                                <dt class="variation-PosterSize">Poster Size:</dt>
+                                                <dd class="variation-PosterSize">
+                                                    <p>S</p>
+                                                </dd>
+                                                <dt class="variation-PosterFinish">Poster Finish:</dt>
+                                                <dd class="variation-PosterFinish">
+                                                    <p>Matte</p>
+                                                </dd>
+                                                <dt class="variation-PosterFrame">Poster Frame:</dt>
+                                                <dd class="variation-PosterFrame">
+                                                    <p>Golden Wood Pattern</p>
+                                                </dd>
+                                                <dt class="variation-Vendor">Vendor:</dt>
+                                                <dd class="variation-Vendor">
+                                                    <p>Next Ltd.</p>
+                                                </dd>
+                                            </dl>
+                                        </td>
+                                        <td class="product-total">
+                                            <span class="woocs_special_price_code"><span
+                                                    class="Price-amount amount"><bdi><span
+                                                            class="Price-currencySymbol">$</span>15.00</bdi></span></span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+
+                                    <tr class="cart-subtotal">
+                                        <th>Subtotal</th>
+                                        <td><span class="woocs_special_price_code"><span
+                                                    class="Price-amount amount"><bdi><span
+                                                            class="Price-currencySymbol">$</span>15.00</bdi></span></span>
+                                        </td>
+                                    </tr>
+
+                                    <tr class="order-total">
+                                        <th>Total</th>
+                                        <td><strong><span class="woocs_special_price_code"><span
+                                                        class="Price-amount amount"><bdi><span
+                                                                class="Price-currencySymbol">$</span>15.00</bdi></span></span></strong>
+                                        </td>
+                                    </tr>
+
+
+                                </tfoot>
+                            </table>
+
+                            <div id="payment" class="checkout-payment">
+                                <ul class="payment_methods methods">
+                                    <li>
+                                        <div class="notice-banner is-info" role="alert">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+                                                height="24" aria-hidden="true" focusable="false">
+                                                <path
+                                                    d="M12 3.2c-4.8 0-8.8 3.9-8.8 8.8 0 4.8 3.9 8.8 8.8 8.8 4.8 0 8.8-3.9 8.8-8.8 0-4.8-4-8.8-8.8-8.8zm0 16c-4 0-7.2-3.3-7.2-7.2C4.8 8 8 4.8 12 4.8s7.2 3.3 7.2 7.2c0 4-3.2 7.2-7.2 7.2zM11 17h2v-6h-2v6zm0-8h2V7h-2v2z">
+                                                </path>
+                                            </svg>
+                                            <div class="notice-banner__content">
+                                                Sorry, it seems that there are no available payment methods. Please
+                                                contact
+                                                us if you require assistance or wish to make alternate arrangements.
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="form-row place-order">
+                                    <noscript>
+                                        Since your browser does not support JavaScript, or it is disabled, please ensure
+                                        you
+                                        click the <em>Update Totals</em> button before placing your order. You may be
+                                        charged more than the amount stated above if you fail to do so. <br /><button
+                                            type="submit" class="button alt" name="checkout_update_totals"
+                                            value="Update totals">Update totals</button>
+                                    </noscript>
+
+                                    <div class="terms-and-conditions-wrapper">
+                                        <div class="privacy-policy-text">
+                                            <p>Your personal data will be used to process your order, support your
+                                                experience throughout this website, and for other purposes described in
+                                                our
+                                                <a href="" class="privacy-policy-link" target="_blank">privacy
+                                                    policy</a>.
+                                            </p>
+                                        </div>
+                                    </div>
+
+
+                                    <button type="submit" class="button alt" name="woocommerce_checkout_place_order"
+                                        id="place_order" value="Place order" data-value="Place order">Place
+                                        order</button>
+
+                                    <input type="hidden" id="process-checkout-nonce" name="process-checkout-nonce"
+                                        value="47ccd5781e"><input type="hidden" name="_wp_http_referer"
+                                        value="/posterlaab-3/?wc-ajax=update_order_review">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+    
+    {% endblock %}

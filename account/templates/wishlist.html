@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    {% block style %}
+    <link rel="stylesheet" href="{% static 'css/wishlist.css' %}">
+    {% endblock %}
+
+    {% block content %}  
+
+    
+    <div class="w-100 py-5">
+        <div class="container-fluid">
+            <h2 class="wishlist-title mb-4">My Wishlist</h2>
+            <!--Display on removing product-->
+            <!-- <div class="notice-banner" role="alert">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+                <path d="M16.7 7.1l-6.3 8.5-3.3-2.5-.9 1.2 4.5 3.4L17.9 8z"></path>
+                </svg>
+                <div class="notice-banner-content">
+                Product successfully removed!</div>
+                </div> -->
+            <table class="shop_table">
+                <thead>
+                    <tr>
+                        <th class="product-name" colspan="3">
+                            <span class="nobr">
+                                Product Name </span>
+                        </th>
+                        <th class="product-price">
+                            <span class="nobr">
+                                Unit price </span>
+                        </th>
+                        <th class="product-stock-status">
+                            <span class="nobr">
+                                Stock status </span>
+                        </th>
+                        <th class="product-add-to-cart">
+                            <span class="nobr">
+                            </span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="wishlist-items-wrapper">
+                
+                    <tr>
+                        <!--If wishlist empty-->
+                        <!-- <td colspan="5" class="table-empty"> No products added to the wishlist</td> -->
+                        <!--else-->
+                        <td class="product-remove">
+                            <div>
+                                <a href="" class="remove remove_from_wishlist" title="Remove this product">×</a>
+                            </div>
+                        </td>
+                        <td class="product-thumbnail">
+                            <a href="https://demo.themerox.com/posterlaab-3/product/3d-grassy-blue-hills-poster/">
+                                <img fetchpriority="high" decoding="async" width="300" height="300"
+                                    src="https://demo.themerox.com/posterlaab-3/wp-content/uploads/2023/06/3d-Grassy-Blue-Hills-Poster-300x300.jpg"
+                                    class="product-thumb" alt=""> </a>
+                        </td>
+                        <td class="product-name">
+                            <a href="https://demo.themerox.com/posterlaab-3/product/3d-grassy-blue-hills-poster/">
+                                3d Grassy Blue Hills Poster </a>
+                        </td>
+                        <td class="product-price">
+                            <span class="price_code"><span class="price-amount"><span
+                                        class="currency">$</span>5.00</span> – <span class="price-amount"><span
+                                        class="currency">$</span>70.00</span></span>
+                        </td>
+                        <td class="product-stock-status">
+                            <span class="in-stock">In Stock</span>
+                        </td>
+                        <td class="product-add-to-cart">
+
+                            <div class="view-btn-wrap">
+                                <a href="#" class="button-view"><i class="fa fa-eye"></i><span class="tooltip">Quick
+                                        View</span></a>
+
+                                <a href="" class="add-to-cart"></a>
+
+
+                            </div>
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+            <ul class="shop_table_mobile d-md-none">
+                <li>
+                    <div class="item-wrapper">
+                        <div class="product-thumbnail">
+                            <a href="https://demo.themerox.com/posterlaab-3/product/3d-grassy-blue-hills-poster/">
+                                <img width="300" height="300"
+                                    src="https://demo.themerox.com/posterlaab-3/wp-content/uploads/2023/06/3d-Grassy-Blue-Hills-Poster-300x300.jpg"
+                                    class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt=""> </a>
+                        </div>
+
+                        <div class="item-details">
+                            <div class="product-name">
+                                <h3>
+                                    <a
+                                        href="https://demo.themerox.com/posterlaab-3/product/3d-grassy-blue-hills-poster/">
+                                        3d Grassy Blue Hills Poster </a>
+                                </h3>
+                            </div>
+
+                            <table class="item-details-table">
+
+
+
+                                <tbody>
+                                    <tr>
+                                        <td class="label">
+                                            Price: </td>
+                                        <td class="value">
+                                            <span class="woocs_price_code" data-currency=""
+                                                data-redraw-id="662e007f19bd2" data-product-id="43145"><span
+                                                    class="woocommerce-Price-amount amount"><span
+                                                        class="woocommerce-Price-currencySymbol">$</span>5.00</span> –
+                                                <span class="woocommerce-Price-amount amount"><span
+                                                        class="woocommerce-Price-currencySymbol">$</span>70.00</span></span>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="additional-info-wrapper">
+                        <table class="additional-info">
+
+                            <tbody>
+                                <tr>
+                                    <td class="label">
+                                        Stock: </td>
+                                    <td class="value">
+                                        <span class="wishlist-in-stock">In Stock</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <!-- Add to cart button -->
+                        <div class="product-add-to-cart">
+                            <a href="#" class="button-view"><i class="fa fa-eye"></i><span class="tooltip">Quick
+                                View</span></a>
+
+                        <a href="" class="add-to-cart"></a>
+                        </div>
+
+                        <!-- Change wishlist -->
+
+                        <div class="product-remove">
+                            <a href=""
+                                class="remove_from_wishlist" title="Remove this product"><i class="fa fa-trash"></i></a>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    {% endblock %}
+
+
+   
