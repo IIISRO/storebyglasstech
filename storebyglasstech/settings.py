@@ -322,3 +322,11 @@ CKEDITOR_5_FILE_STORAGE = "storebyglasstech.storage.CustomStorage"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+EMAIL_BACKEND = 'storebyglasstech.email_backend.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'market.bhc@gmail.com'
+EMAIL_HOST_PASSWORD = 'rqxqkpypjuecirfa'

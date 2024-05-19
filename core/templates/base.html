@@ -57,6 +57,8 @@
 
     <body>
         <div>
+
+
             <!--Top Header-->
             <div class="w-100 top-header py-4">
                 <div class="container-fluid top-header-content justify-content-between d-flex align-items-center">
@@ -282,7 +284,13 @@
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
         <!--JS file-->
         <script src="{% static 'js/main.js' %}"></script>
+        <!--Loader JS-->
+        <script src="{% static 'js/loader.js' %}"></script>
 
+        {% csrf_token %}
+        <script>
+            const csrf = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        </script>
         {% block js %}{% endblock %}
 
 
