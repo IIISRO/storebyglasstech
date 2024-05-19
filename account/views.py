@@ -32,4 +32,4 @@ class Profile(View):
     def get(self, request):
         context = {
         }
-        return render(request, 'profile.html', context)
+        return render(request, 'account.html', context)

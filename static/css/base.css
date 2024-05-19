@@ -31,7 +31,9 @@
     outline: none;
     color: #fff;
 }
-
+.prod-drop:hover .dropdown-menu{
+    display: block;
+}
 .bootstrap-select>.dropdown-toggle::after {
     border-right: none !important;
     border-left: none !important;

@@ -3,108 +3,74 @@
     
     {% block style %}
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="{% static 'css/notification.css' %}">
     {% endblock %}
 
     {% block content %}  
 
-    <!--Main content-->
+     <!--Main content-->
 
-    <div class="w-100 py-5">
-        <div class="container-fluid">
-            <div class="login-section w-100">
-                <nav>
-                    <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
-                        <button class="nav-link active" id="nav-login-tab" data-bs-toggle="tab"
-                            data-bs-target="#nav-login" type="button" role="tab" aria-controls="nav-login"
-                            aria-selected="true">Log in</button>
-                        <button class="nav-link" id="nav-register-tab" data-bs-toggle="tab"
-                            data-bs-target="#nav-register" type="button" role="tab" aria-controls="nav-register"
-                            aria-selected="false">Sign up</button>
+     <div id="notification-area">
+	</div>
+
+    
+	<!-- breadcrumb-section -->
+	<div class="breadcrumb-section breadcrumb-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="breadcrumb-text">
+						<p>Daxİl ol</p>
+						<h1>Hesabınıza giriş edin</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end breadcrumb section -->
+
+    <!--  signin section -->
+    <section>
+        <div class="container">
+            <div class="d-flex justify-content-center p-3 row">
+                <div class="pb-4 center col-12">
+                    <div class="w-100 d-flex py-3 align-items-center justify-content-center"><img src="https://www.tablohane.com/Content/Images/Design/tablohane-logo.png" alt=""></div>
+                    <form method="post">
+                    <div class="txt_field">
+                        <input id="phone" type="text" required/>
+                        <span></span>
+                        <label>Mobil nömrə</label>
                     </div>
-                </nav>
-                <div class="tab-content mt-5" id="nav-tabContent">
-                    <div class="tab-pane fade active show" id="nav-login" role="tabpanel"
-                        aria-labelledby="nav-login-tab">
-                        <h2 class="login-header">Login to your account</h2>
-                        <form action="" class="login-form mt-4">
-                            <label for="username">Username or email address&nbsp;<span class="required">*</span></label>
-                            <input type="text" class="login-input-text" name="username" id="username"
-                                autocomplete="username" placeholder="Username or email address" value="">
-                            <label for="current-password" class="mt-4">Password&nbsp;<span
-                                    class="required">*</span></label>
-                            <div class="d-flex align-items-center pass-input">
-                                <input type="password" class="login-input-pass" name="current-password"
-                                    id="current-password" autocomplete="current-password" placeholder="Password"
-                                    value="">
-                                <img src="./static/images/eye.png" id="pass-image" class="pass-image d-none" alt="">
-                            </div>
-                            <div class="w-100 d-flex align-items-center justify-content-between">
-                                <div class="remember mt-4 d-flex align-items-center">
-                                    <input type="checkbox" name="remember" id="" class="remember-checkbox"><label
-                                        for="remember">Remember me</label>
-                                </div>
-                                <a href="" class="lost">Lost your password?</a>
-                            </div>
-                            <button type="submit" class="login-form-btn w-100 mt-4">
-                                Login
-                            </button>
-
-                        </form>
+                    <div id="pass_div" class="d-none  txt_field">
+                        <input id="password" type="password" required/>
+                        <span></span>
+                        <label>Şifrə</label>
                     </div>
-                    <div class="tab-pane fade" id="nav-register" role="tabpanel" aria-labelledby="nav-register-tab">
-                        <form action="" class="register-form mt-4">
-                            <label for="username">Email address&nbsp;<span class="required">*</span></label>
-                            <input type="email" class="register-input-text" name="username" id="username"
-                                autocomplete="username" placeholder="Email address" value="">
-                            <label for="current-password2" class="mt-4">Password&nbsp;<span
-                                    class="required">*</span></label>
-                            <div class="d-flex align-items-center pass-input">
-                                <input type="password" class="register-input-pass" name="current-password2"
-                                    id="current-password2" autocomplete="current-password" placeholder="Password"
-                                    value="">
-                                <img src="./static/images/eye.png" id="pass-image2" class="pass-image d-none" alt="">
-                            </div>
-                            <div class="vendor-section d-none" id="vendor">
-                                <label for="first_name">First Name&nbsp;<span class="required">*</span></label>
-                                <input type="text" class="register-input-text" name="first_name" id="first_name"
-                                    autocomplete="first_name" placeholder="First Name" value="">
-                                <label for="last_name">Last Name&nbsp;<span class="required">*</span></label>
-                                <input type="text" class="register-input-text" name="last_name" id="last_name"
-                                    autocomplete="last_name" placeholder="Last Name" value="">
-                                <label for="shop_name">Shop Name&nbsp;<span class="required">*</span></label>
-                                <input type="text" class="register-input-text" name="shop_name" id="shop_name"
-                                    autocomplete="shop_name" placeholder="Shop Name" value="">
-                                <label for="shop_url">Shop URL&nbsp;<span class="required">*</span></label>
-                                <input type="url" class="register-input-text" name="shop_url" id="shop_url"
-                                    autocomplete="shop_url" placeholder="Shop URL" value="">
-                                <small>Lorem ipsum dolor sit amet consectetur.</small>
-
-                                <label for="phone">Phone Number&nbsp;<span class="required">*</span></label>
-                                <input type="text" class="register-input-text" name="phone" id="phone"
-                                    autocomplete="phone" placeholder="Phone Number" value="">
-                            </div>
-                            <div class="choice1 mt-4 d-flex align-items-center">
-                                <input type="radio" checked name="choice" id="choice1" class="vendor-radio"><label
-                                    for="choice1">I am a customer</label>
-                                   
-                            </div>
-                            <div class="choice2 mt-1 d-flex align-items-center">
-                                <input type="radio" name="choice" id="choice2" class="vendor-radio"><label
-                                    for="choice2">I am a vendor</label>
-                                   
-                            </div>
-                            <p class="mt-4">Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our <a href="" class="privacy">privacy policy</a>.</p>
-                            <button type="submit" class="register-form-btn w-100 mt-2">
-                                Signup
-                            </button>
-
-                        </form>
-                    </div>
-
+                    <button type="button" onclick="checkNumber()" id="next-btn" class="bordered-btn">Davam et</button>
+                    <button type="button" onclick="login()" id="signin_btn" class="d-none cart-btn ">Daxil ol</button>
+                    <div id="reset_pass" class="d-none signup_link">Şifrəni unutmusan? <b  onclick="newPassword()">Yeni Şifrə</b></div>
+                    <div id="resend_pass" class="d-none signup_link">Şifrə göndərilmədi? <b onclick="newPassword()">Yenidən göndər</b></div>
+                    <div id="resend_timer" class="d-none">Yeni şifrə <b id="minutes">3</b><b>:</b><b id="seconds">00</b> sonra</div>
+                    </form>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+
     {% endblock %}
+
+    {% block js%}
+    <script>
+        var notfPassSMSSended = 'Şifrə SMS göndərildi';
+        var notfTryAgain = 'Yenidən cəhd edin';
+        var notfWrongNumber = 'Nömrə yanlış daxil edilib';
+        var notfNewPassSMSSended = 'Yeni şifrə SMS göndərildi';
+        var notfPassAgainSended = 'Şifrə yenidən göndərildi';
+        var notfEnterPass = 'Şifrənizi daxil edin';
+        var notfWrongPass = 'Şifrə yanlışdır!';
+    </script>
+    <script src="{% static 'js/notification.js'%}"></script>
+    <script src="{% static 'js/login.js'%}"></script>
+    {% endblock%}
 
   
