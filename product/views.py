@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import View
+from django.views.generic import View,TemplateView
 from .models import Category, Artist
 from django.shortcuts import get_object_or_404
 
@@ -15,3 +15,6 @@ class Products(View):
             'artists': Artist.objects.all()
         }
         return render(request, 'products.html', context)
+    
+class ProductDetail(TemplateView):
+    template_name = 'product-detail.html'

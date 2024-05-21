@@ -1,0 +1,678 @@
+{% extends 'base.html' %}
+{% load static %}
+  {% block style %}
+   
+  <link rel="stylesheet" href="{% static 'css/product-detail.css' %}">
+  <link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet">
+</link>
+<link rel="stylesheet" href="https://bgrins.github.io/spectrum/spectrum.css">
+
+  {% endblock %}
+
+  {% block content %}
+  
+  <div class="w-100 py-5 product-detail">
+    <div class="container-fluid">
+        <div class="row" style="--bs-gutter-x: 0;">
+            <div class="col-md-7 product-image-sec p-0">
+                <div class=" d-flex align-items-start tabs">
+                    <ul class="nav nav-pills flex-column nav-pills align-items-end" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link  fw-semibold active position-relative" id="pills-home-tab"
+                                data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab"
+                                aria-controls="pills-home" aria-selected="true">
+                                <img src="https://www.tablohane.com/Content/Images/Design/studioicon1.png" alt="">
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link  fw-semibold position-relative" id="pills-profile-tab"
+                                data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab"
+                                aria-controls="pills-profile" aria-selected="false">
+                                <img src="https://www.tablohane.com/Content/Images/Design/studioicon2.png" alt="">
+                            </button>
+                        </li>
+
+                    </ul>
+                    <div class="tab-content w-100" id="pills-tabContent">
+                        <div class="pd-product-type product-color-1">
+                            <img src="https://www.tablohane.com/Content/Images/ProductType/1.png">Kanvas Tablo
+                            Seçildi
+                        </div>
+                        <div class="tab-pane fade show first active" id="pills-home" role="tabpanel"
+                            aria-labelledby="pills-home-tab">
+
+                            <div class="frame-main" id="main-frame">
+                                <img src="https://images.unsplash.com/photo-1552082919-e60010758c47?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTF8fGRlc2t0b3AlMjB3YWxscGFwZXJzfGVufDB8fDB8fHww"
+                                    alt="">
+                            </div>
+                        </div>
+                        <div class="tab-pane fade " id="pills-profile" role="tabpanel"
+                            aria-labelledby="pills-profile-tab">
+                            <div class="wall-overlay"></div>
+                            <div class="sofa-section">
+                                <div class="sofa-color-sec">
+                                    <input type="text" name="preferredHex" id="preferredHex" value="#B90B27">
+                                    <label for="preferredHex" id="label1">KOLTUK RENGI</label>
+                                </div>
+                                <svg class="sofa" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512"
+                                    xml:space="preserve" fill="#000000">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round">
+                                    </g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <path style="fill:#B90B27;"
+                                            d="M490.043,336.371V129.454c0-33.631-27.36-60.99-60.99-60.99H82.947 c-33.631,0-60.99,27.36-60.99,60.99v206.917L490.043,336.371L490.043,336.371z">
+                                        </path>
+                                        <path style="fill:#A70B24;"
+                                            d="M490.043,129.454c0-33.631-27.36-60.99-60.99-60.99H256v267.907h234.043V129.454z">
+                                        </path>
+                                        <rect x="21.957" y="377.31" style="fill:#575759;" width="35.718"
+                                            height="66.226"></rect>
+                                        <rect x="454.322" y="377.31" style="fill:#474748;" width="35.718"
+                                            height="66.226"></rect>
+                                        <rect x="115.267" y="221.128" style="fill:#F1F1F2;" width="131.172"
+                                            height="87.597"></rect>
+                                        <rect x="265.561" y="221.128" style="fill:#D8D8D9;" width="131.172"
+                                            height="87.597"></rect>
+                                        <path style="fill:#A70B24;"
+                                            d="M512,393.277V256.773c0-19.758-16.017-35.774-35.774-35.774h-29.886 c-19.758,0-35.774,16.017-35.774,35.774v43.878h-309.13v-43.878c0-19.758-16.017-35.774-35.774-35.774H35.774 C16.017,220.998,0,237.014,0,256.773v136.505h512V393.277z">
+                                        </path>
+                                        <path style="fill:#A70B24;"
+                                            d="M512,256.773c0-19.758-16.017-35.774-35.774-35.774h-29.886c-19.758,0-35.774,16.017-35.774,35.774 v43.878H256v92.626h256V256.773z">
+                                        </path>
+                                    </g>
+                                </svg>
+                            </div>
+                            <img class="floor"
+                                src="https://static.vecteezy.com/system/resources/thumbnails/011/124/815/small/wooden-floor-isolate-png.png"
+                                alt="">
+                            <img class="vase" src="https://pngimg.com/d/vase_PNG107.png" alt="">
+                            <div class="frame" style="" id="main-frame1">
+                                <img class="main-product-image"
+                                    src="https://images.unsplash.com/photo-1552082919-e60010758c47?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTF8fGRlc2t0b3AlMjB3YWxscGFwZXJzfGVufDB8fDB8fHww"
+                                    alt="">
+
+                            </div>
+                            <div class="wall-color">
+                                <input type="text" name="preferredHex1" id="preferredHex1" value="rgba(0,0,0,0.2)">
+                                <label for="preferredHex1" id="label2">DUVAR RENGI</label>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-5 prod-info">
+                <div class="pd-photedit-title">
+                    <h1>Atatürk - Egemenlik Kayıtsız Şartsız Milletindir - Kanvas Tablosu</h1>
+                </div>
+                <div class="pd-photedit-in">
+                    <p>Ürün Kodu: TH021139</p>
+                </div>
+                <div class="container-fluid py-3">
+                    <div class="size-sec w-100  d-flex align-items-center justify-content-between">
+                        <select class="selectpicker2" data-width="fit">
+                            <option>20 x 30 cm</option>
+                            <option>20 x 30 cm</option>
+                            <option>20 x 30 cm</option>
+                            <option>20 x 30 cm</option>
+                            <option>20 x 30 cm</option>
+                            <option>20 x 30 cm</option>
+                            <option>20 x 30 cm</option>
+                            <option>20 x 30 cm</option>
+                        </select>
+                        <div class="size-select">
+                            <ul>
+                                <li class="select-price" data-price="259,90">
+                                    <span>306,68 ₺</span>
+                                    259,90 ₺
+                                </li>
+                                <li class="select-size">
+                                    <span>KDV Dahil</span>
+                                    20 x 30 cm
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <nav class="mt-3">
+                        <div class="nav nav-tabs " id="nav-tab" role="tablist">
+                            <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
+                                aria-selected="true">Çerçeve</button>
+                            <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile"
+                                aria-selected="false">Efekt</button>
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade active show" id="nav-home" role="tabpanel"
+                            aria-labelledby="nav-home-tab">
+                            <div data-id="pd-edit-3" class="pd-edit-con pd-edit-frame" style="display: block;">
+
+                                <div class="frame-container">
+                                    <ul>
+                                        <li>
+                                            <button class="frame-item frameactive" data-frame="none" id="0"
+                                                style="background-image:url(https://www.tablohane.com/Content/Images/Design/0_1.jpg)">
+                                                <span>Çerçeve Yok</span>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="frame-item"
+                                                data-frame="https://i.pinimg.com/originals/2e/8f/00/2e8f000a5e7c8c419420f181c1235609.png"
+                                                id="1"
+                                                style="background-image:url(https://www.tablohane.com/Content/Images/Design/1.jpg)">
+                                                <span>Siyah</span>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="frame-item" id="2"
+                                                data-frame="https://img.freepik.com/premium-photo/texture-very-old-brown-wood-full-frame-backdrop-designer_116441-10086.jpg"
+                                                style="background-image:url(https://www.tablohane.com/Content/Images/Design/2.jpg)">
+                                                <span>Beyaz</span>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="frame-item" id="9"
+                                                data-frame="https://img.freepik.com/premium-photo/texture-very-old-brown-wood-full-frame-backdrop-designer_116441-10086.jpg"
+                                                style="background-image:url(https://www.tablohane.com/Content/Images/Design/9.jpg)">
+                                                <span>Antik Altın</span>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="frame-item" id="4"
+                                                data-frame="https://img.freepik.com/premium-photo/texture-very-old-brown-wood-full-frame-backdrop-designer_116441-10086.jpg"
+                                                style="background-image:url(https://www.tablohane.com/Content/Images/Design/4.jpg)">
+                                                <span>Kahverengi</span>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="frame-item" id="5"
+                                                data-frame="https://img.freepik.com/premium-photo/texture-very-old-brown-wood-full-frame-backdrop-designer_116441-10086.jpg"
+                                                style="background-image:url(https://www.tablohane.com/Content/Images/Design/5.jpg)">
+                                                <span>Gümüş</span>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="frame-item" id="6"
+                                                data-frame="https://img.freepik.com/premium-photo/texture-very-old-brown-wood-full-frame-backdrop-designer_116441-10086.jpg"
+                                                style="background-image:url(https://www.tablohane.com/Content/Images/Design/6.jpg)">
+                                                <span>Meşe</span>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="frame-item" id="3"
+                                                data-frame="https://img.freepik.com/premium-photo/texture-very-old-brown-wood-full-frame-backdrop-designer_116441-10086.jpg"
+                                                style="background-image:url(https://www.tablohane.com/Content/Images/Design/3.jpg)">
+                                                <span>Altın</span>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="frame-item" id="8"
+                                                data-frame="https://img.freepik.com/premium-photo/texture-very-old-brown-wood-full-frame-backdrop-designer_116441-10086.jpg"
+                                                style="background-image:url(https://www.tablohane.com/Content/Images/Design/8.jpg)">
+                                                <span>Açık Kahverengi</span>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                    <div class="frame-info">Not: Çerçeve genişliği her yönde +3cm olmaktadır</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-profile" role="tabpanel"
+                            aria-labelledby="nav-profile-tab">
+                            <div data-id="pd-edit-1" class="pd-edit-con" style="display: block;">
+                                <div class="effect-container" data-value="BlackWhite-91|">
+                                    <ul class="row">
+                                        <li class="col-md-4 col-xs-4">
+                                            <button class="effect-item effectactive" data-value="0%"
+                                                style="background-image: url(https://www.tablohane.com/Content/Images/EffectIcon/effect.jpg); left: 0%;">
+                                                <span>Efekt Yok</span>
+                                            </button>
+                                        </li>
+                                        <li class="col-md-4 col-xs-4">
+                                            <button id="BlackWhite" title="Siyah Beyaz" data-value="100%"
+                                                class="effect-item" data-modalright="BlackWhite"
+                                                style="background-image: url(https://www.tablohane.com/Content/Images/EffectIcon/effect2.jpg);">
+                                                <span>Siyah Beyaz</span>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="basket-col">
+                    <button type="button" class="basketadd"><i class="fa fa-shopping-cart"></i> Sepete Ekle</button>
+                </div>
+                <div class="col-xs-12 ps-mk">
+                    <a class="ps-mk-icon " href="/uye-girisi" data-productid="103" data-category="21"
+                        data-typeid="1">
+                        <svg viewBox="0 0 48 48" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h48v48h-48z" fill="none"></path>
+                            <path
+                                d="M33 6c-3.48 0-6.82 1.62-9 4.17-2.18-2.55-5.52-4.17-9-4.17-6.17 0-11 4.83-11 11 0 7.55 6.8 13.72 17.1 23.07l2.9 2.63 2.9-2.63c10.3-9.35 17.1-15.52 17.1-23.07 0-6.17-4.83-11-11-11zm-8.79 31.11l-.21.19-.21-.19c-9.51-8.63-15.79-14.33-15.79-20.11 0-3.99 3.01-7 7-7 3.08 0 6.08 1.99 7.13 4.72h3.73c1.06-2.73 4.06-4.72 7.14-4.72 3.99 0 7 3.01 7 7 0 5.78-6.28 11.48-15.79 20.11z">
+                            </path>
+                        </svg>
+                        Beğen
+                    </a>
+                    <a class="ps-mk-icon"
+                        href="whatsapp://send?text=https://www.tablohane.com/ataturk-egemenlik-kayitsiz-sartsiz-milletindir-kanvas-tablosu-TH021139">
+                        <svg width="20px" height="20px" viewBox="0 0 18 20" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <title>share</title>
+                            <desc>Created with Sketch.</desc>
+                            <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g id="Rounded" transform="translate(-817.000000, -4100.000000)">
+                                    <g id="Social" transform="translate(100.000000, 4044.000000)">
+                                        <g id="-Round-/-Social-/-share"
+                                            transform="translate(714.000000, 54.000000)">
+                                            <g>
+                                                <polygon id="Path" points="0 0 24 0 24 24 0 24"></polygon>
+                                                <path
+                                                    d="M18,16.08 C17.24,16.08 16.56,16.38 16.04,16.85 L8.91,12.7 C8.96,12.47 9,12.24 9,12 C9,11.76 8.96,11.53 8.91,11.3 L15.96,7.19 C16.5,7.69 17.21,8 18,8 C19.66,8 21,6.66 21,5 C21,3.34 19.66,2 18,2 C16.34,2 15,3.34 15,5 C15,5.24 15.04,5.47 15.09,5.7 L8.04,9.81 C7.5,9.31 6.79,9 6,9 C4.34,9 3,10.34 3,12 C3,13.66 4.34,15 6,15 C6.79,15 7.5,14.69 8.04,14.19 L15.16,18.35 C15.11,18.56 15.08,18.78 15.08,19 C15.08,20.61 16.39,21.92 18,21.92 C19.61,21.92 20.92,20.61 20.92,19 C20.92,17.39 19.61,16.08 18,16.08 Z"
+                                                    id="🔹-Icon-Color" fill="#1D1D1D"></path>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                        Paylaş
+                    </a>
+                    <a class="ps-mk-icon ps-comment">
+                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="22px" height="20px"
+                            viewBox="0 0 511.626 511.626" xml:space="preserve">
+                            <g>
+                                <g>
+                                    <path
+                                        d="M301.927,327.605c30.926-13.038,55.34-30.785,73.23-53.248c17.888-22.458,26.833-46.915,26.833-73.372
+                                                        c0-26.458-8.945-50.917-26.84-73.376c-17.888-22.459-42.298-40.208-73.228-53.249c-30.93-13.039-64.571-19.556-100.928-19.556
+                                                        c-36.354,0-69.995,6.521-100.927,19.556c-30.929,13.04-55.34,30.789-73.229,53.249C8.947,150.072,0,174.527,0,200.986
+                                                        c0,22.648,6.767,43.975,20.28,63.96c13.512,19.981,32.071,36.829,55.671,50.531c-1.902,4.572-3.853,8.754-5.852,12.566
+                                                        c-2,3.806-4.377,7.467-7.139,10.991c-2.76,3.525-4.899,6.283-6.423,8.275c-1.523,1.998-3.997,4.812-7.425,8.422
+                                                        c-3.427,3.617-5.617,5.996-6.567,7.135c0-0.191-0.381,0.24-1.143,1.287c-0.763,1.047-1.191,1.52-1.285,1.431
+                                                        c-0.096-0.103-0.477,0.373-1.143,1.42c-0.666,1.048-1,1.571-1,1.571l-0.715,1.423c-0.282,0.575-0.476,1.137-0.57,1.712
+                                                        c-0.096,0.567-0.144,1.19-0.144,1.854s0.094,1.28,0.288,1.854c0.381,2.471,1.475,4.466,3.283,5.996
+                                                        c1.807,1.52,3.756,2.279,5.852,2.279h0.857c9.515-1.332,17.701-2.854,24.552-4.569c29.312-7.61,55.771-19.797,79.372-36.545
+                                                        c17.129,3.046,33.879,4.568,50.247,4.568C237.353,347.16,270.998,340.645,301.927,327.605z">
+                                    </path>
+                                    <path
+                                        d="M491.354,338.166c13.518-19.889,20.272-41.247,20.272-64.09c0-23.414-7.146-45.316-21.416-65.68
+                                                            c-14.277-20.362-33.694-37.305-58.245-50.819c4.374,14.274,6.563,28.739,6.563,43.398c0,25.503-6.368,49.676-19.129,72.519
+                                                            c-12.752,22.836-31.025,43.01-54.816,60.524c-22.08,15.988-47.205,28.261-75.377,36.829
+                                                            c-28.164,8.562-57.573,12.848-88.218,12.848c-5.708,0-14.084-0.377-25.122-1.137c38.256,25.119,83.177,37.685,134.756,37.685
+                                                            c16.371,0,33.119-1.526,50.251-4.571c23.6,16.755,50.06,28.931,79.37,36.549c6.852,1.718,15.037,3.237,24.554,4.568
+                                                            c2.283,0.191,4.381-0.476,6.283-1.999c1.903-1.522,3.142-3.61,3.71-6.272c-0.089-1.143,0-1.77,0.287-1.861
+                                                            c0.281-0.09,0.233-0.712-0.144-1.852c-0.376-1.144-0.568-1.715-0.568-1.715l-0.712-1.424c-0.198-0.376-0.52-0.903-0.999-1.567
+                                                            c-0.476-0.66-0.855-1.143-1.143-1.427c-0.28-0.284-0.705-0.763-1.28-1.424c-0.568-0.66-0.951-1.092-1.143-1.283
+                                                            c-0.951-1.143-3.139-3.521-6.564-7.139c-3.429-3.613-5.899-6.42-7.422-8.418c-1.523-1.999-3.665-4.757-6.424-8.282
+                                                            c-2.758-3.518-5.14-7.183-7.139-10.991c-1.998-3.806-3.949-7.995-5.852-12.56C459.289,374.859,477.843,358.062,491.354,338.166z">
+                                    </path>
+                                </g>
+                            </g>
+                        </svg>
+                        Yorum Yap
+                    </a>
+                </div>
+                <div class="col-xs-12 ps-kinfo">
+                    <div class="ps-message-1">
+                        <span>
+                            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                viewBox="0 0 262.2861 247.0561" width="25px" height="25px" style="fill:white"
+                                enable-background="new 0 0 262.2861 247.0561" xml:space="preserve">
+                                <g>
+                                    <polygon
+                                        points="230.4111,242.644 214.8525,234.1987 199.2978,242.6459 183.7402,234.1987 168.1845,242.6459 152.6269,234.1987
+                                                    136.3095,243.0581 137.833,245.4389 152.6269,237.4057 168.1845,245.853 183.7402,237.4057 199.2978,245.853 214.8525,237.4057
+                                                    230.4111,245.851 245.9687,237.4057 260.7636,245.4389 262.2861,243.0581 245.9658,234.1987 ">
+                                    </polygon>
+                                    <polygon
+                                        points="245.9658,225.8754 230.4111,234.3198 214.8525,225.8754 199.2978,234.3198 183.7402,225.8754 168.1845,234.3198
+                                                    152.6269,225.8754 136.3095,234.7358 137.833,237.1166 152.6269,229.0834 168.1845,237.5288 183.7402,229.0834 199.2978,237.5288
+                                                    214.8525,229.0834 230.4111,237.5288 245.9687,229.0834 260.7636,237.1166 262.2861,234.7358 ">
+                                    </polygon>
+                                    <polygon
+                                        points="245.9658,217.5502 230.4111,225.9975 214.8525,217.5502 199.2978,225.9975 183.7402,217.5522 168.1845,225.9975
+                                                    152.6269,217.5502 136.3095,226.4125 137.833,228.7944 152.6269,220.7583 168.1845,229.2065 183.7402,220.7583 199.2978,229.2065
+                                                    214.8525,220.7583 230.4111,229.2065 245.9687,220.7583 260.7636,228.7944 262.2861,226.4125 ">
+                                    </polygon>
+                                    <polygon
+                                        points="245.9658,209.228 230.4111,217.6733 214.8525,209.228 199.2978,217.6752 183.7402,209.228 168.1845,217.6752
+                                                    152.6269,209.228 136.3095,218.0874 137.833,220.4682 152.6269,212.436 168.1845,220.8833 183.7402,212.436 199.2978,220.8833
+                                                    214.8525,212.436 230.4111,220.8833 245.9687,212.436 260.7636,220.4682 262.2861,218.0874 ">
+                                    </polygon>
+                                    <polygon
+                                        points="245.9658,200.9057 230.4111,209.35 214.8525,200.9057 199.2978,209.35 183.7402,200.9057 168.1845,209.35
+                                                    152.6269,200.9057 136.3095,209.7651 137.833,212.1459 152.6269,204.1127 168.1845,212.5581 183.7402,204.1127 199.2978,212.5581
+                                                    214.8525,204.1127 230.4111,212.5581 245.9687,204.1127 260.7636,212.1459 262.2861,209.7651 ">
+                                    </polygon>
+                                    <polygon
+                                        points="245.9658,192.5825 230.4111,201.0268 214.8525,192.5825 199.2978,201.0268 183.7402,192.5825 168.1845,201.0268
+                                                    152.6269,192.5825 136.3095,201.4418 137.833,203.8237 152.6269,195.7905 168.1845,204.2358 183.7402,195.7905 199.2978,204.2358
+                                                    214.8525,195.7905 230.4111,204.2358 245.9687,195.7905 260.7636,203.8237 262.2861,201.4418 	">
+                                    </polygon>
+                                    <polygon
+                                        points="245.9658,184.2573 230.4111,192.7045 214.8525,184.2573 199.2978,192.7026 183.7402,184.2592 168.1845,192.7045
+                                                    152.6269,184.2573 136.3095,193.1166 137.833,195.4975 152.6269,187.4653 168.1845,195.9125 183.7402,187.4653 199.2978,195.9125
+                                                    214.8525,187.4653 230.4111,195.9125 245.9687,187.4653 260.7636,195.4975 262.2861,193.1166 	">
+                                    </polygon>
+                                    <polygon
+                                        points="245.9658,175.935 230.4111,184.3793 214.8525,175.935 199.2978,184.3793 183.7402,175.935 168.1845,184.3793
+                                                    152.6269,175.935 136.3095,184.7944 137.833,187.1752 152.6269,179.142 168.1845,187.5893 183.7402,179.142 199.2978,187.5874
+                                                    214.8525,179.142 230.4111,187.5874 245.9687,179.142 260.7636,187.1752 262.2861,184.7944 	">
+                                    </polygon>
+                                    <polygon
+                                        points="245.9658,167.6108 230.4111,176.0571 214.8525,167.6108 199.2978,176.0571 183.7402,167.6108 168.1845,176.0571
+                                                    152.6269,167.6108 136.3095,176.4711 137.833,178.853 152.6269,170.8198 168.1845,179.2651 183.7402,170.8198 199.2978,179.2651
+                                                    214.8525,170.8198 230.4111,179.2651 245.9687,170.8198 260.7636,178.853 262.2861,176.4711 	">
+                                    </polygon>
+                                    <polygon
+                                        points="245.9658,159.2866 230.4111,167.7338 214.8525,159.2866 199.2978,167.7338 183.7402,159.2866 168.1845,167.7338
+                                                    152.6269,159.2866 136.3095,168.1459 137.833,170.5288 152.6269,162.4956 168.1845,170.9418 183.7402,162.4956 199.2978,170.9418
+                                                    214.8525,162.4956 230.4111,170.9418 245.9687,162.4956 260.7636,170.5288 262.2861,168.1479 	">
+                                    </polygon>
+                                    <polygon
+                                        points="245.9658,150.9643 230.4111,159.4116 214.8525,150.9643 199.2978,159.4116 183.7402,150.9643 168.1845,159.4116
+                                                    152.6269,150.9643 136.3095,159.8237 137.833,162.2045 152.6269,154.1723 168.1845,162.6186 183.7402,154.1723 199.2978,162.6186
+                                                    214.8525,154.1723 230.4111,162.6186 245.9687,154.1723 260.7636,162.2045 262.2861,159.8237 	">
+                                    </polygon>
+                                    <path
+                                        d="M53.5625,234.6928c0,6.8301,5.5371,12.3633,12.3632,12.3633c6.8282,0,12.3653-5.5332,12.3653-12.3633v-44.8681
+                                                    l4.6347-4.6348v49.5029c0,6.8301,5.5371,12.3633,12.3633,12.3633c6.8281,0,12.3653-5.5332,12.3653-12.3633v-74.2314l7.7314-7.7315
+                                                    c1.3447,2.0157,3.5791,3.4034,6.1855,3.5557c0.1582,0.0088,0.3164,0.0137,0.4737,0.0137c4.2041,0,7.7314-3.2832,7.9795-7.5342
+                                                    c0.2265-3.8975,0.3769-7.5967,0.4716-11.1455l15.876-15.876l-17.166-17.1665c-1.8965-15.144-5.5547-25.0654-10.0273-31.8989
+                                                    c-3.2832-4.9854-7.126-8.1831-10.6778-9.9532c-1.9463-0.9819-3.7519-1.5229-5.2871-1.8183
+                                                    c0.4024,3.9814,1.3184,12.186,2.7451,20.4233L89.8085,65.1791l1.6465-4.6079H69.7617l5.373,15.0303L51.2734,99.4624l-2.7666,2.7666
+                                                    c1.3281-8.1309,3.2051-13.7159,5.0557-17.5059v5.1167c2.4169-10.4556,3.8974-23.5664,4.4414-28.9429
+                                                    c-3.3731,0.6719-8.0899,2.5845-12.3711,7.2031c-5.9082,6.3155-10.8789,16.7842-13.375,34.566c0,0.0014-0.001,0.0024-0.001,0.0039
+                                                    c-0.7139,5.102-1.2168,10.8413-1.4707,17.2798L0,150.7358l53.5625,53.5615V234.6928z M4.2421,150.7338l26.4131-26.413
+                                                    c-0.0351,1.7187-0.0595,3.4677-0.0595,5.2832c0,0.9794,0.0136,1.9951,0.0234,3.0048l-19.1865,19.1866l1.8847,1.8857
+                                                    l17.3653-17.3652c0.0908,3.9414,0.2509,8.0713,0.5107,12.4541c0.0879,1.5019,0.5918,2.8779,1.3838,4.0361l-10.0674,10.0674
+                                                    l1.8858,1.8857l10.0322-10.0322c1.3349,0.9873,2.9785,1.5723,4.7461,1.5723c0.1582,0,0.3174-0.0049,0.4775-0.0147
+                                                    c4.4102-0.2597,7.7754-4.0469,7.5137-8.458c-0.1123-1.9043-0.2022-3.748-0.2803-5.5566l54.8213-54.8213l-1.8857-1.8853
+                                                    L46.747,138.6362c-0.0996-3.1592-0.1494-6.1729-0.1494-9.0322c0-3.3331,0.0703-6.4502,0.1914-9.3946L90.6279,76.371l-1.8858-1.8857
+                                                    l-41.7529,41.7524c0.2041-3.2763,0.4815-6.2929,0.8184-9.0693l39.873-39.8721l54.4483,54.4483l-83.4375,83.4375L4.2421,150.7338z">
+                                    </path>
+                                    <path d="M58.1084,32.164c0,12.4258,10.0742,22.5,22.5,22.5c12.4257,0,22.5-10.0742,22.5-22.5c0-0.3266-0.0108-0.6509-0.0245-0.9746
+                                                    H58.1328C58.1191,31.5131,58.1084,31.8374,58.1084,32.164z">
+                                    </path>
+                                    <path
+                                        d="M57.0751,22.4033c-1.666,0-3.0156,1.3525-3.0156,3.0185c0,1.668,1.3496,3.0176,3.0156,3.0176h0.4024h46.2617h0.4004
+                                                    c1.668,0,3.0176-1.3496,3.0176-3.0176c0-1.666-1.3496-3.0185-3.0176-3.0185h-0.416c-0.0108-0.4195-0.0322-0.8365-0.0654-1.25
+                                                    c-0.5684-7.167-4.4004-13.4146-10.0147-17.2525V5.748c0,1.3184-1.0684,2.3887-2.3867,2.3887c-1.3184,0-2.3887-1.0703-2.3887-2.3887
+                                                    V1.4023c-1.8555-0.71-3.8232-1.1919-5.873-1.4023v5.748c0,1.3184-1.0684,2.3887-2.3867,2.3887
+                                                    c-1.3204,0-2.3887-1.0703-2.3887-2.3887V0.0004c-2.0498,0.21-4.0176,0.6929-5.8731,1.4029V5.748
+                                                    c0,1.3184-1.0683,2.3887-2.3886,2.3887c-1.3184,0-2.3868-1.0703-2.3868-2.3887V3.9023
+                                                    c-5.6132,3.8379-9.4443,10.0845-10.0127,17.251c-0.0332,0.4135-0.0546,0.8305-0.0654,1.25H57.0751z">
+                                    </path>
+                                    <rect x="18.5192" y="134.9058"
+                                        transform="matrix(0.7072 -0.707 0.707 0.7072 -74.8942 91.6342)"
+                                        width="109.3334" height="2.667"></rect>
+                                    <rect x="29.5976" y="145.9839"
+                                        transform="matrix(0.7069 -0.7073 0.7073 0.7069 -79.5017 102.7798)"
+                                        width="109.3329" height="2.6668"></rect>
+                                    <rect x="40.6753" y="157.0621"
+                                        transform="matrix(0.7071 -0.7071 0.7071 0.7071 -84.0764 113.805)"
+                                        width="109.333" height="2.6668"></rect>
+                                </g>
+                            </svg>
+                        </span>
+                        2
+                        iş gününde<br>kargoda
+                    </div>
+                    <div class="ps-message-2">
+                        <span>
+                            <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 512 512" width="25px" height="25px" style="fill:white">
+                                <title>Delivery Truck</title>
+                                <path
+                                    d="M72.078,341.333H21.334a32,32,0,0,0,32,32h5.6A58.374,58.374,0,0,1,72.078,341.333Z">
+                                </path>
+                                <path
+                                    d="M320,341.333H162.589a58.374,58.374,0,0,1,13.142,32H320a10.667,10.667,0,0,0,10.667-10.667V352A10.667,10.667,0,0,0,320,341.333Z">
+                                </path>
+                                <circle cx="117.334" cy="378.667" r="37.333"></circle>
+                                <path
+                                    d="M507.219,275.173,466.234,185.01A42.749,42.749,0,0,0,427.4,160H362.667A10.667,10.667,0,0,0,352,170.667V338.484a58.588,58.588,0,0,1,101.064,34.849H480a32,32,0,0,0,32-32V297.242A53.32,53.32,0,0,0,507.219,275.173Zm-48.633-8.507H389.333A10.667,10.667,0,0,1,378.667,256V213.333a10.667,10.667,0,0,1,10.667-10.667h42.991a21.333,21.333,0,0,1,19.421,12.5L468.3,251.586A10.667,10.667,0,0,1,458.586,266.667Z">
+                                </path>
+                                <circle cx="394.667" cy="378.667" r="37.333"></circle>
+                                <path
+                                    d="M298.667,96H53.333a32,32,0,0,0-32,32V256h-10.1C5.925,256,1,259.63.146,264.875a10.675,10.675,0,0,0,10.521,12.459h26.1c5.314,0,10.238,3.63,11.092,8.875a10.675,10.675,0,0,1-10.521,12.459h-26.1C5.925,298.667,1,302.3.146,307.541A10.675,10.675,0,0,0,10.667,320H320a10.667,10.667,0,0,0,10.667-10.667V128A32,32,0,0,0,298.667,96Z">
+                                </path>
+                            </svg>
+                        </span>
+                        Ücretsiz<br>Kargo
+                    </div>
+                    <div class="ps-message-3">
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42.67 64" width="25px"
+                                height="25px" style="fill:white">
+                                <g id="Layer_2" data-name="Layer 2">
+                                    <g id="Layer_1-2" data-name="Layer 1">
+                                        <path class="cls-1"
+                                            d="M34.67,26.08V13.33A13.34,13.34,0,0,0,8,13.33V26.08a21.34,21.34,0,1,0,26.67,0ZM21.33,5.33a8,8,0,0,1,8,8V23a21.78,21.78,0,0,0-16,0V13.33A8,8,0,0,1,21.33,5.33ZM24,58.43v-8.5a5.34,5.34,0,1,0-5.33,0v8.5a16,16,0,0,1-6.48-28.88,16.19,16.19,0,0,1,18.28,0A16,16,0,0,1,24,58.43Z">
+                                        </path>
+                                    </g>
+                                </g>
+                            </svg>
+                        </span>
+                        Güvenli<br>Ödeme
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<div class="product-type-in w-100">
+    <div class="container-fluid">
+        <div class="pt-in-header">
+            <div title="farklı ürün çeşitleri" class="title-h3">FARKLI ÜRÜN ÇEŞİTLERİ</div>
+            <p class="pt-in-des">Atatürk - Egemenlik Kayıtsız Şartsız Milletindir görselini 6 farklı ürüne göre
+                seçip,
+                sipariş oluşturabilirsiniz</p>
+        </div>
+        <ul>
+            <li>
+                <a href="ataturk-egemenlik-kayitsiz-sartsiz-milletindir-cam-tablosu-TH021139">
+                    <img class="pt-in-img"
+                        src="https://images.tablohane.com/photos/TH021139/9/650/0/650x580/100/5/ataturk-egemenlik-kayitsiz-sartsiz-milletindir.jpg"
+                        data-imgloading="" style="visibility:visible;">
+                    <div class="pt-in-icon"><span><img
+                                src="https://www.tablohane.com/Content/Images/ProductType/5.png"></span></div>
+                    <div class="pt-in-info">
+                        <span class="product-color-5">Cam Tablo</span>
+                        <p>Atatürk - Egemenlik Kayıtsız Şartsız Milletindir görselini <b>Cam Tablo</b> olarak
+                            sipariş
+                            verebilirisin</p>
+                        <div class="pt-in-btn">Geç ⊳</div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="ataturk-egemenlik-kayitsiz-sartsiz-milletindir-mdf-tablosu-TH021139">
+                    <img class="pt-in-img"
+                        src="https://images.tablohane.com/photos/TH021139/9/650/0/650x580/100/6/ataturk-egemenlik-kayitsiz-sartsiz-milletindir.jpg"
+                        data-imgloading="" style="visibility:visible;">
+                    <div class="pt-in-icon"><span><img
+                                src="https://www.tablohane.com/Content/Images/ProductType/6.png"></span></div>
+                    <div class="pt-in-info">
+                        <span class="product-color-6">Mdf Tablo</span>
+                        <p>Atatürk - Egemenlik Kayıtsız Şartsız Milletindir görselini <b>Mdf Tablo</b> olarak
+                            sipariş
+                            verebilirisin</p>
+                        <div class="pt-in-btn">Geç ⊳</div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="ataturk-egemenlik-kayitsiz-sartsiz-milletindir-ahsap-puzzle-TH021139">
+                    <img class="pt-in-img"
+                        src="https://images.tablohane.com/photos/TH021139/9/650/0/650x580/100/7/ataturk-egemenlik-kayitsiz-sartsiz-milletindir.jpg"
+                        data-imgloading="" style="visibility:visible;">
+                    <div class="pt-in-icon"><span><img
+                                src="https://www.tablohane.com/Content/Images/ProductType/7.png"></span></div>
+                    <div class="pt-in-info">
+                        <span class="product-color-7">Puzzle</span>
+                        <p>Atatürk - Egemenlik Kayıtsız Şartsız Milletindir görselini <b>Puzzle</b> olarak sipariş
+                            verebilirisin</p>
+                        <div class="pt-in-btn">Geç ⊳</div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="ataturk-egemenlik-kayitsiz-sartsiz-milletindir-yapboz-resim-TH021139">
+                    <img class="pt-in-img"
+                        src="https://images.tablohane.com/photos/TH021139/9/650/0/650x580/100/10/ataturk-egemenlik-kayitsiz-sartsiz-milletindir.jpg"
+                        data-imgloading="" style="visibility:visible;">
+                    <div class="pt-in-icon"><span><img
+                                src="https://www.tablohane.com/Content/Images/ProductType/10.png"></span></div>
+                    <div class="pt-in-info">
+                        <span class="product-color-10">Yapboz Resim</span>
+                        <p>Atatürk - Egemenlik Kayıtsız Şartsız Milletindir görselini <b>Yapboz Resim</b> olarak
+                            sipariş
+                            verebilirisin</p>
+                        <div class="pt-in-btn">Geç ⊳</div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="ataturk-egemenlik-kayitsiz-sartsiz-milletindir-tas-tablosu-TH021139">
+                    <img class="pt-in-img"
+                        src="https://images.tablohane.com/photos/TH021139/9/650/0/650x580/100/11/ataturk-egemenlik-kayitsiz-sartsiz-milletindir.jpg"
+                        data-imgloading="" style="visibility:visible;">
+                    <div class="pt-in-icon"><span><img
+                                src="https://www.tablohane.com/Content/Images/ProductType/11.png"></span></div>
+                    <div class="pt-in-info">
+                        <span class="product-color-11">Taş Tablo</span>
+                        <p>Atatürk - Egemenlik Kayıtsız Şartsız Milletindir görselini <b>Taş Tablo</b> olarak
+                            sipariş
+                            verebilirisin</p>
+                        <div class="pt-in-btn">Geç ⊳</div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="product-category-info w-100">
+    <div class="container-fluid">
+    <nav class="mt-3">
+        <div class="nav nav-tabs mb-2 " id="nav-tab" role="tablist">
+            <button class="nav-link active" id="nav-first-tab" data-bs-toggle="tab" data-bs-target="#nav-first"
+                type="button" role="tab" aria-controls="nav-first" aria-selected="true">Çerçeve</button>
+            <button class="nav-link" id="nav-second-tab" data-bs-toggle="tab" data-bs-target="#nav-second"
+                type="button" role="tab" aria-controls="nav-second" aria-selected="false">Efekt</button>
+            <button class="nav-link" id="nav-third-tab" data-bs-toggle="tab" data-bs-target="#nav-third"
+                type="button" role="tab" aria-controls="nav-third" aria-selected="false">Efekt</button>
+        </div>
+    </nav>
+    <div class="tab-content py-5" id="nav-tabContent">
+        <div class="tab-pane fade active show" id="nav-first" role="tabpanel" aria-labelledby="nav-first-tab">
+            <div class="container">
+                <div class="cq-title">KANVAS TABLO NEDİR?</div>
+                <div class="cq-item-title">
+                    <div style="float: right;"><span style="width: 200px;"></span>
+                        <div>KANVAS TABLO</div>
+                    </div>
+                </div>
+                <div class="cq-item cq-item1">
+                    <ul style="float: right;">
+                        <li>
+                            <p class="cq-p-title">3cm kenar kalınlığı</p>
+                            <p>Kanvas tablolar 3cm kenar kalınlığına sahiptir.</p>
+                        </li>
+                        <li>
+                            <p class="cq-p-title">%100 pamuk kanvas (tuval)</p>
+                            <p>Yerli olarak üretilen 1.sınıf santsal kanvas üzerine baskı yapmaktayız. Renklerinde
+                                bozulma veya kanvasında bollaşma yapmaz.</p>
+                        </li>
+                        <li>
+                            <p class="cq-p-title">Ahşap Şase</p>
+                            <p>Fırınlanmış masif ahşaplardan üretilmektedir. Zaman içerisinde eğilmez ve şekli
+                                bozulmaz.</p>
+                        </li>
+                        <li>
+                            <p class="cq-p-title">Epson Baskı</p>
+                            <p>EPSON teknolojisi ile bilgisayar ekranında göründüğü gibi basılabilme. Sağlığa
+                                zararlı olmayan Epson marka su bazlı mürekkep kullanılmakta.</p>
+                        </li>
+                        <li>
+                            <p class="cq-p-title">Kenar baskısı</p>
+                            <p>Orijinal resmin bütünlüğü bozulmadan dokusu devam etirilerek kenar payları verilir.
+                            </p>
+                        </li>
+                        <li>
+                            <p class="cq-p-title">Askı ve Çivi</p>
+                            <p>Askısı ve çivisi tablonun üsütüne monte edilerek üretimi tamamlanır. Asmaya hazır
+                                şekilde sevkiyatı yapılır.</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="cq-item-title">
+                    <div style="float: left;">
+                        <div>ÇERÇEVELİ TABLO</div><span style="width: 400px;"></span>
+                    </div>
+                </div>
+                <div class="cq-item cq-item2 py-4">
+                    <ul style="float: left;">
+                        <li>
+                            <p class="cq-p-title">3cm Çerçeve kalınlığı</p>
+                            <p>Çerçeve ile tablo arasında 2cm boşluk bulunmaktadır bu durum tabloya fark
+                                katmaktadır. Çerçeveler poliüretan'den üretlmiştir </p>
+                        </li>
+                        <li>
+                            <p class="cq-p-title">Renk seçenekleri</p>
+                            <p>Bir çok renk seçeneği ile tabloya ve ortama renk katabilme imkanı</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="cq-item-title">
+                    <div style="float: right;"><span style="width: 400px;"></span>
+                        <div>PAKETLEME</div>
+                    </div>
+                </div>
+                <div class="cq-item cq-item3 py-5">
+                    <ul style="float: right;">
+                        <li>
+                            <p class="cq-p-title">Dayanıklı mukavva</p>
+                            <p>Üretim işleminden sonra kenarları zarar görmemesi için sarılır ve daha sonra kalın
+                                mukavva ile darbelere karşı dayanıklı paketi yapılır.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="nav-second" role="tabpanel" aria-labelledby="nav-second-tab">
+
+        </div>
+        <div class="tab-pane fade" id="nav-third" role="tabpanel" aria-labelledby="nav-third-tab">
+
+        </div>
+
+    </div>
+</div>
+</div>
+
+  {% endblock %}
+
+
+{% block js%}
+
+<script src="https://bgrins.github.io/spectrum/spectrum.js"></script>
+<script src="{% static 'js/product-detail.js' %}"></script>
+{% endblock%}

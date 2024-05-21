@@ -406,3 +406,36 @@ background-color: #fbfbfb;
   font-size: 17px;
   color: #10143e;
 }
+
+
+
+
+.pagination {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.pagination li {
+  margin: 0 5px;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  display: flex;align-items: center;justify-content: center;
+  font-size: 17px;
+  cursor: pointer;
+}
+.pagination li i{
+  -webkit-text-stroke: 1px #fff;
+}
+.pagination li.active {
+  font-weight: bold;
+}
+
+.pagination li.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}

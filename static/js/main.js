@@ -5,6 +5,12 @@ $(function () {
 });
 
 
+$(function () {
+  $('.selectpicker2').selectpicker();
+  $('.selectpicker2').parent('.bootstrap-select').find('.filter-option-inner-inner').text('Ölçü seçin...')
+});
+
+
 
 /*Carousel*/
 
