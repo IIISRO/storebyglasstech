@@ -1,5 +1,3 @@
-
-
 document.getElementById('phone').addEventListener('input', function(e){
     let input  = e.target
     if(e.data===null && input.value.length > 4){
@@ -35,29 +33,84 @@ document.getElementById('phone').addEventListener('input', function(e){
 function checkNumber(){
     jQuery(".loader_wait_response").show();
     if (/^[0-9+\s]+$/.test($("#phone").val()) && $("#phone").val().length === 17 && $("#phone").val().replace(/\D/g, '').length === 12) {
-      
+        fetch(getOrCreateUserAPI,{
+            method:"POST",
+            headers: {
+                "X-CSRFToken": csrf,
+                "Accept": "application/json",
+                'Content-Type': 'application/json'
+            },
+            body:JSON.stringify({
+                'number': $("#phone").val(),
+            })
+        })
+
+        .then((response)=>{
+            if (response.status == 200){
                 $("#next-btn").remove();
                 $("#phone").attr('disabled', true);
                 $("#pass_div").removeClass('d-none');
                 $("#signin_btn").removeClass('d-none');
                 $("#reset_pass").removeClass('d-none');
+            }else if(response.status == 201){
+                $("#next-btn").remove();
+                $("#phone").attr('disabled', true);
+                $("#pass_div").removeClass('d-none');
+                $("#signin_btn").removeClass('d-none');
                 notfSuccess(notfPassSMSSended);
                 resendSMSTimer();
+            }else{
+                notfWrong(notfTryAgain);
+            }
+		    return response.json()
+	    })
+        .finally(() => {
+            jQuery(".loader_wait_response").hide();
+        });
+
+
+
+        return true
     }
-    else{
-        jQuery(".loader_wait_response").hide();
-        notfWrong(notfWrongNumber);
-    }
-    
+    jQuery(".loader_wait_response").hide();
+    notfWrong(notfWrongNumber);
 }
 
 function newPassword(){
     jQuery(".loader_wait_response").show();
-    
+    var elementID = event.target.parentElement.id
+    fetch(createAndSendNewPasswordAPI,{
+            method:"POST",
+            headers: {
+                "X-CSRFToken": csrf,
+                "Accept": "application/json",
+                'Content-Type': 'application/json'
+            },
+            body:JSON.stringify({
+                'number': $("#phone").val(),
+            })
+        })
+
+        .then((response)=>{
+            if(response.status == 200){
+                if (elementID === 'reset_pass'){
                     $("#reset_pass").remove();
                     notfSuccess(notfNewPassSMSSended);
                     resendSMSTimer();
-              
+                }else if (elementID == 'resend_pass'){
+                    $("#resend_pass").addClass('d-none');
+                    notfSuccess(notfPassAgainSended);
+                    resendSMSTimer();
+                }
+                
+            }else{
+                notfWrong(notfTryAgain);
+            }
+		    return response.json()
+	    })
+        .finally(() => {
+            jQuery(".loader_wait_response").hide();
+        });
 }
 function login(){
     if(!/^[0-9+\s]+$/.test($("#phone").val()) && $("#phone").val().length === 17 && $("#phone").val().replace(/\D/g, '').length === 12){
@@ -68,7 +121,40 @@ function login(){
         notfWrong(notfEnterPass)
         return false;
     }
+    jQuery(".loader_wait_response").show();
+    fetch(loginURL,{
+    method:"POST",
+            headers: {
+                "X-CSRFToken": csrf,
+                "Accept": "application/json",
+                'Content-Type': 'application/json'
+            },
+            body:JSON.stringify({
+                'phone': $("#phone").val(),
+                'password': $("#password").val(),
+            })
+        })
 
+    .then((response)=>{
+        if(response.status == 200){
+            let params = new URLSearchParams(document.location.search);
+            if(params.get("next")){
+                window.location.href = params.get("next")
+                return;
+            }
+            window.location.href = profileURL
+            
+        }else if(response.status == 404){
+            notfWrong(notfWrongPass);
+        }
+        else{
+            notfWrong(notfTryAgain);
+        }
+        return response.json()
+    })
+    .finally(() => {
+        return jQuery(".loader_wait_response").hide();
+    });
 
     
 }
@@ -114,4 +200,3 @@ function resendSMSTimer(){
 
    
 }
-

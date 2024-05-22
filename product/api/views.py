@@ -34,6 +34,10 @@ class ProductsListAPI(APIView):
             'category': category.title.capitalize(),
             }
 
+        p_type = self.request.GET.get('type', '')
+        if p_type:
+            products = products.filter(type=p_type.upper())
+
         artist = self.request.GET.get('artist', '')
         if artist:
             products = products.filter(artist__full_name__in=artist.split(',')).distinct()

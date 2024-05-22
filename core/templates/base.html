@@ -137,8 +137,8 @@
                                     Məhsullar
                                   </a>
                                   <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Şüşə tablolar</a></li>
-                                    <li><a class="dropdown-item" href="#">MDF tablolar</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'product:products' category_slug='all' %}?type=glass">Şüşə tablolar</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'product:products' category_slug='all' %}?type=mdf">MDF tablolar</a></li>
                                     <li><a class="dropdown-item" href="#">Saatlar</a></li>
                                     <li><a class="dropdown-item" href="#">Özün yarat</a></li>
                                    
@@ -302,6 +302,16 @@
         {% csrf_token %}
         <script>
             const csrf = document.querySelector('[name=csrfmiddlewaretoken]').value;
+            var getOrCreateUserAPI =  "{% url 'accountAPI:get_or_create_user' %}";
+            var createAndSendNewPasswordAPI = "{% url 'accountAPI:create_and_send_new_password' %}";
+            var loginURL = "{% url 'account:login' %}";
+            var profileURL = "{% url 'account:profile' %}";
+            var addAddressAPI = "{% url 'accountAPI:create_address' %}";
+            '{% if request.user.is_authenticated %}'
+            var userBasketID = "{{request.user.basket.id}}"
+            var updateUserAPI = "{% url 'accountAPI:update_user' pk=request.user.id %}";
+            var changeUserPassAPI = "{% url 'accountAPI:change_password' pk=request.user.id %}";
+            '{% endif %}'
         </script>
         {% block js %}{% endblock %}
 
