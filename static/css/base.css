@@ -427,3 +427,6 @@ body{
   .footer{
     margin-top:auto; 
   }
+  .row{
+    margin-left: 0 !important;
+  }

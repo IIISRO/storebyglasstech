@@ -439,3 +439,9 @@ background-color: #fbfbfb;
   cursor: not-allowed;
   opacity: 0.5;
 }
+#mdf, #glass {
+  transition: all 0.5s linear; /* Adjust the duration and easing function as needed */
+}
+.shop-options .row{
+       --bs-gutter-x: 0 !important;
+}

@@ -270,8 +270,8 @@
 
 
 
-
-/*Trending Section*/
+/* 
+Trending Section
 
 
 .trending-section h4 {
@@ -308,7 +308,7 @@
     font-size: 14px;
     line-height: 26px;
     color: #000;
-}
+} */
 
 
 /*Filter Section*/
@@ -432,9 +432,9 @@
 .best-seller-items{
     grid-column-start: 2;
     grid-column-end: 5;
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    gap: 15px;
+    /* display: grid; */
+    /* grid-template-columns: repeat(4,1fr); */
+    /* gap: 15px; */
 }
 .ads-small-text{
     font-size: 14px;
@@ -728,7 +728,7 @@ display: block;
 }
 @media(max-width:575px){
     .best-seller-items{
-        width: 90%;
+        /* width: 90%; */
         margin: auto;
         grid-template-columns: repeat(1,1fr);
     }
@@ -790,7 +790,7 @@ display: block;
 @media(max-width:575px){
     .trending-products{
         display: block;
-        width: 90%;
+        /* width: 90%; */
         margin: auto;
     }
 }

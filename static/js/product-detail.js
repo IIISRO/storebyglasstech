@@ -65,46 +65,55 @@ $( document ).ready(function() {
           
 })
 
-let btns=document.querySelectorAll(".frame-item")
-let frame1=document.getElementById("main-frame1")
-let frame1Img=document.querySelector("#main-frame1 img")
-let frame=document.getElementById("main-frame")
-let frameImg=document.querySelector("#main-frame img")
-for(let i=0;i<btns.length;i++){
-btns[i].addEventListener("click", () => {
-    btns.forEach((btn) => btn.classList.remove("frameactive")); // Remove 'active' class from all buttons
-    btns[i].classList.add("frameactive");
-    console.log(btns[i].getAttribute("data-frame"));
-    if(btns[i].getAttribute("data-frame")!=="none"){
-    frame1.style.backgroundImage = `url(${btns[i].getAttribute("data-frame")})`;
-    frame1.style.backgroundRepeat = "no-repeat";
-    frame1.style.backgroundPosition = "center center";
-    // Optionally, set the background size
-    frame1.style.backgroundSize = "cover";
-    }
-    else{
-        frame1.style.background="none"
-    }
+// let btns=document.querySelectorAll(".frame-item")
+// let frame1=document.getElementById("main-frame1")
+let mainImage1=document.querySelector("#main-frame1 img")
+let sizeSelector=document.querySelector(".selectpicker2")
+// let frame=document.getElementById("main-frame")
+let mainImage=document.querySelector("#main-frame img")
+document.addEventListener("DOMContentLoaded", function() {
+    const frameItems = document.querySelectorAll(".frame-item");
+    const mainFrame = document.getElementById("main-frame");
+    let mainFrame1=document.getElementById("main-frame1")
 
-})}
+    frameItems.forEach(item => {
+        item.addEventListener("click", function() {
+            // Remove active class from all frame items
+            frameItems.forEach(frame => frame.classList.remove("frameactive"));
 
-for(let i=0;i<btns.length;i++){
-    btns[i].addEventListener("click", () => {
-        btns.forEach((btn) => btn.classList.remove("frameactive")); // Remove 'active' class from all buttons
-        btns[i].classList.add("frameactive");
-        console.log(btns[i].getAttribute("data-frame"));
-        if(btns[i].getAttribute("data-frame")!=="none"){
-        frame.style.backgroundImage = `url(${btns[i].getAttribute("data-frame")})`;
-        frame.style.backgroundRepeat = "no-repeat";
-        frame.style.backgroundPosition = "center center";
-        // Optionally, set the background size
-        frame.style.backgroundSize = "cover";
-        }
-        else{
-            frame.style.background="none"
-        }
-    
-    })}
+            // Add active class to the clicked frame item
+            this.classList.add("frameactive");
+
+            // Get the frame URL from the clicked frame item
+            const frameUrl = this.getAttribute("data-frame");
+
+            // Update the main frame background with the selected frame
+            if (frameUrl === "none") {
+                mainFrame.style.backgroundImage = "none";
+                mainFrame.style.background = "none"; 
+                mainFrame1.style.backgroundImage = "none";
+                mainFrame1.style.background = "none"; // Clear any background set by ::before
+            } else {
+                mainFrame.style.background = `url(${frameUrl}) no-repeat center center`;
+                mainFrame.style.backgroundSize = "cover";
+                mainFrame1.style.background = `url(${frameUrl}) no-repeat center center`;
+                mainFrame1.style.backgroundSize = "cover";
+            }
+        });
+    });
+    sizeSelector.addEventListener("change", function() {
+        const selectedSize = this.value.split("x");
+        const width = selectedSize[0];
+        const height = selectedSize[1];
+
+        // Update the main image size based on the selected option
+        mainFrame.style.width = width + "px";
+        mainFrame.style.height = height + "px";
+        mainFrame1.style.width = width + "px";
+        mainFrame1.style.height = height + "px";
+    });
+});
+
 
 
 let effects=document.querySelectorAll(".effect-item")    
@@ -127,3 +136,14 @@ for(let i=0;i<effects.length;i++){
     )}
 
 
+let likeBtn=document.getElementById("like")
+let likeIcon=document.querySelector("#like svg")
+likeBtn.addEventListener("click",()=>{
+    let result=likeBtn.classList.toggle("active")
+    if(result){
+        likeIcon.style.fill="red"
+    }
+    else{
+        likeIcon.style.fill="#10143e"
+    }
+})

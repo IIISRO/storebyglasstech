@@ -196,6 +196,34 @@ width: 120px;
 
 
 }
+/*
+#main-frame {
+  display: inline-block;
+  position: relative;
+  padding: 10px; /
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: auto; 
+}
+#main-frame img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 1; 
+}
+#main-frame::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+*/
 .frame {
 max-width: 250px; 
 width: 180px;
@@ -217,20 +245,33 @@ max-width: 100%;
 margin: auto;
 height: 100%;
 padding: 15px; /* Adjust this to create the frame width */
-
-background-size: cover; /* Adjust as needed */
+position: relative;
+/* padding: 10px;  */
+background-size: cover;
+background-repeat: no-repeat;
+width: auto; 
 display: flex;
 align-items: center;
 justify-content: center;
 z-index: 10000;
 }
-
+#main-frame::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 .frame-main img {
-max-width: 100%; /* Ensure the image width does not exceed the frame */
-max-height: 100%; /* Ensure the image height does not exceed the frame */
-width: auto; /* Maintain aspect ratio */
-height: auto; /* Maintain aspect ratio */
-display: block; 
+  display: block;
+  max-width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 1; 
 }
 .frame img {
 max-width: 230px; 
@@ -444,17 +485,48 @@ padding-top: 12px;
 }
 .basket-col {
 text-align: center;
-padding: 18px 0 19px 0;
+padding: 18px 10px;
 width: 100%;
+}
+.basket-col svg{
+  width: 60px;
+  height: 60px;
+  padding: 10px;
+
+}
+.comment-btn{
+  background: #10143e;
+  color: #fff;
+  font-size: 18px;
+  text-transform: uppercase;
+  margin: auto;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
+.title-h2{
+  font-size: 25px;
+  color: #10143e;
+  font-weight: 700;
+  
 }
 .basketadd {
 font-size: 22px;
-padding: 9px 0;
+/* padding: 9px 0; */
 border-radius: 3px;
 border: 0;
-width: 85%;
-background-color: #f28b00;
+width: 70%;
+background-color: #10143e;
 color: #fff;
+}
+.like-btn svg{
+  fill: #10143e;
+  margin-top: -10px;
+}
+.like-btn{
+  background: transparent;
+  outline: none;
+  border: none;
 }
 .ps-mk {
 padding: 0 10px 10px;
@@ -664,10 +736,10 @@ overflow: hidden;
 width: 100%;
 padding: 5px;
 text-align: end;
-background-color: #f3d300;
-color: #38381f;
+background-color: #10143e;
+color: #fff;
 font-weight: 600;
-border-top: 5px solid #e0c622;
+border-top: 5px solid #10143e;
 }
 .cq-title {
 width: 100%;
