@@ -47,7 +47,7 @@ $("#preferredHex1").spectrum({
 $( document ).ready(function() {
     $("#preferredHex").on('change', function(){
         var colorVal =  $("#preferredHex").val();
-        let element2=document.querySelectorAll('.product-detail svg g path')
+        let element2=document.querySelectorAll('.sofa-section svg g path')
        
         for(let i=0;i<element2.length;i++){
             element2[i].style.fill=`${colorVal}`
