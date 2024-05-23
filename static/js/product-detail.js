@@ -121,7 +121,7 @@ for(let i=0;i<effects.length;i++){
     effects[i].addEventListener("click", () => {
         effects.forEach((btn) => btn.classList.remove("effectactive")); // Remove 'active' class from all buttons
         effects[i].classList.add("effectactive");
-    frame1Img.style.filter = `grayscale(${effects[i].getAttribute("data-value")})`;
+    mainImage1.style.filter = `grayscale(${effects[i].getAttribute("data-value")})`;
     
 })}
 
@@ -129,7 +129,7 @@ for(let i=0;i<effects.length;i++){
     effects[i].addEventListener("click", () => {
         effects.forEach((btn) => btn.classList.remove("effectactive")); // Remove 'active' class from all buttons
         effects[i].classList.add("effectactive");
-    frameImg.style.filter = `grayscale(${effects[i].getAttribute("data-value")})`;
+    mainImage.style.filter = `grayscale(${effects[i].getAttribute("data-value")})`;
     
       
     }

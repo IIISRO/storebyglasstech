@@ -225,60 +225,48 @@ width: 120px;
 }
 */
 .frame {
-max-width: 250px; 
-width: 180px;
-max-height: 210px; /* Set the max height of the frame */
-margin: auto;
-padding: 10px; /* Adjust this to create the frame width */
-background-size: cover; /* Adjust as needed */
-display: flex;
-align-items: center;
-justify-content: center;
+  display: inline-block;
+  position: relative;
+  padding: 15px; /* Adjust this to create the frame width */
+  background-image: url('/mnt/data/image.png'); /* Frame background image */
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  width: 250px;
+  height: 180px;
 position: absolute;
 z-index: 10000;
 top: 8%;
 left: 30%;
 /* overflow: hidden;  */
 }
-.frame-main{
-max-width: 100%;
-margin: auto;
-height: 100%;
-padding: 15px; /* Adjust this to create the frame width */
-position: relative;
-/* padding: 10px;  */
-background-size: cover;
-background-repeat: no-repeat;
-width: auto; 
-display: flex;
-align-items: center;
-justify-content: center;
-z-index: 10000;
+.frame-main {
+  display: inline-block;
+  position: relative;
+  padding: 15px; /* Adjust this to create the frame width */
+  background-image: url('/mnt/data/image.png'); /* Frame background image */
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
 }
-#main-frame::before {
+.frame-main::before,.frame::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 0;
+  background-image: url('/mnt/data/image.png'); /* Frame background image */
   background-size: cover;
   background-repeat: no-repeat;
+  z-index: -1;
 }
-.frame-main img {
+.frame-main img,.frame img {
   display: block;
-  max-width: 100%;
-  height: auto;
-  position: relative;
-  z-index: 1; 
-}
-.frame img {
-max-width: 230px; 
-width: 160px; /* Ensure the image width does not exceed the frame */
-max-height: 190px; /* Ensure the image height does not exceed the frame */
-height: auto; /* Maintain aspect ratio */
-display: block; 
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  box-sizing: border-box;
 }
 
 .wall-overlay{
@@ -884,6 +872,7 @@ position: relative;
 }
 .frame {
   max-width: 170px;
+  height: 100px;
   width: 140px;
 }
 .sofa-section {
