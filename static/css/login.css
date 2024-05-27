@@ -115,7 +115,7 @@
   input:-webkit-autofill:focus ~ label, 
   input:-webkit-autofill:active ~ label{
       top: -5px;
-      color: #5d721a;
+      color: #1a2072;
   }
   input:-webkit-autofill ~ span::before,
   input:-webkit-autofill:hover ~ span::before, 

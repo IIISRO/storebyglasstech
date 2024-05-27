@@ -294,3 +294,23 @@ button.bordered-btn {
     content: "";
     background: no-repeat 50% / 50% 50%;
 }
+
+.nav-logout{
+    background-color: #007bff!important;
+    display: flex!important;
+    justify-content: center!important;
+    align-items: center!important;
+    -webkit-box-shadow: 0px 3px 31px -10px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 0px 3px 31px -10px rgba(66, 68, 90, 1);
+    box-shadow: 0px 3px 31px -10px rgba(66, 68, 90, 1);
+
+}
+
+.nav-logout:active{
+    background-color: #0665ca!important;
+}
+
+.nav-logout>p,.nav-logout>i{
+   color: #cccdcf;
+
+}

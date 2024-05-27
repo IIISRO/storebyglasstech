@@ -28,7 +28,7 @@
                 role="tab"
                 aria-controls="orders-tab"
                 aria-selected="false" data-bs-toggle="tab" class="nav-item nav-link has-icon nav-link-faded">
-                    <i class="fa fa-square"></i> Sifarişlərim
+                  <i class="fas fa-solid fa-box"></i> Sifarişlərim
                 </a>
                 <a href="#address-tab"
                 data-mdb-tab-init
@@ -47,8 +47,8 @@
                 aria-selected="false"data-bs-toggle="tab" class="nav-item nav-link has-icon nav-link-faded">
                     <i class="fa fa-lock"></i> Şifrə tənzimləməsi
                 </a>
-                <a href="{% url 'account:logout' %}" data-mdb-tab-init class="nav-item nav-link has-icon nav-link-faded">
-                    <i class="fa fa-lock"></i> Çıxış
+                <a  href="{% url 'account:logout' %}" data-mdb-tab-init class="nav-logout nav-item nav-link has-icon nav-link-faded">
+                    <i style="width: 25px; height: 20px;" class="m-0 p-0 fas fa-duotone fa-right-from-bracket"></i> <p class="m-0 p-0">Çıxış</p> 
                 </a>
             </nav>
           </div>
@@ -70,7 +70,7 @@
                     id="orders"
                     role="tab"
                     aria-controls="orders-tab"
-                    aria-selected="false" data-bs-toggle="tab" class="nav-link has-icon"><i class="fa fa-square"></i></a>
+                    aria-selected="false" data-bs-toggle="tab" class="nav-link has-icon"><i class="fas fa-solid fa-box"></i></a>
                 </li>
                 <li class="nav-item">
                     <a href="#address-tab" data-mdb-tab-init
@@ -89,7 +89,7 @@
                 </li>
 
                 <li class="nav-item">
-                  <a href="{% url 'account:logout' %}" data-mdb-tab-init class="nav-link has-icon"> <i class="fa fa-lock"></i></a>
+                  <a href="{% url 'account:logout' %}" data-mdb-tab-init class="nav-logout nav-link has-icon"><i style="width: 20px;" class="fas fa-duotone fa-right-from-bracket"></i> </a>
                 </li>
                 
             </ul>

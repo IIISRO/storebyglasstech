@@ -77,7 +77,7 @@ function checkNumber(){
 }
 
 function newPassword(){
-    jQuery(".loader_wait_response").show();
+    loader.show();
     var elementID = event.target.parentElement.id
     fetch(createAndSendNewPasswordAPI,{
             method:"POST",
@@ -109,7 +109,7 @@ function newPassword(){
 		    return response.json()
 	    })
         .finally(() => {
-            jQuery(".loader_wait_response").hide();
+           loader.hide();
         });
 }
 function login(){

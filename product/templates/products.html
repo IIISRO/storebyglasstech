@@ -47,9 +47,9 @@
           <div class="product-categories w-100 d-flex flex-column">
             <h2 class="mb-3">Kateqoriyalar</h2>
             <ul class="categories-list">
-              <li><a href="" type="button" class="category selected" name="all" data-value="all" >all</a></li>
+              <li><a href="" type="button" class="category selected" name="all" data-value="all" >Hamısı</a></li>
               {% for category in categories %}
-              <li><a href="" type="button" class="category" name="{{category}}" data-value="{{category}}" >{{category}}</a></li>
+              <li><a href="" type="button" class="category" name="{{category}}" data-value="{{category}}" >{{category.title}}</a></li>
               {% endfor %}
             </ul>
           </div>

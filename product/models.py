@@ -125,12 +125,21 @@ class Category(AbstractModel):
     
     def get_absolute_url(self):
         return f'{self.slug}/'
+    def save(self, *args, **kwargs):
+        self.title = self.title.capitalize()
+        super(Category, self).save(*args, **kwargs)
+
     
 class Artist(AbstractModel):
     full_name = models.CharField(max_length=150)
 
     def __str__(self):
         return self.full_name
+    
+    def save(self, *args, **kwargs):
+        self.title = self.full_name.capitalize()
+        super(Artist, self).save(*args, **kwargs)
+
     
 
 
