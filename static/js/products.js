@@ -2,6 +2,7 @@ let mdf=document.getElementById("mdf")
 let glass=document.getElementById("glass")
 let mdfText=document.querySelector("#mdf span")
 let glassText=document.querySelector("#glass span")
+
 mdf.addEventListener("click",()=>{
     if(mdf.classList.contains("col-6")){
         mdf.classList.add("col-10")

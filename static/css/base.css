@@ -6,7 +6,9 @@
     position: relative;
     height: 3.125em;
 }
-
+a:hover{
+    text-decoration: none !important;
+}
 .header-search form input {
     font-size: 14px;
     width: 100%;

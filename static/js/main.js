@@ -165,3 +165,10 @@ $(document).ready(function () {
       }
   });      
 })
+
+
+document.getElementById('productLink').addEventListener('click', function(event) {
+  var dropdown = new bootstrap.Dropdown(this);
+  dropdown.toggle();
+  window.location.href = this.href;
+});

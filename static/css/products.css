@@ -77,7 +77,7 @@
   row-gap: 40px;
 } */
 .product-item-img{
-padding: 15px 5px;
+padding: 15px 10px;
 display: flex;
 align-items: center;
 justify-content: center;
@@ -444,4 +444,13 @@ background-color: #fbfbfb;
 }
 .shop-options .row{
        --bs-gutter-x: 0 !important;
+}
+
+@media(min-width:576px){
+  .product-item{
+    height: 310px;
+  }
+}
+.category-list li a{
+  text-transform: uppercase;
 }
