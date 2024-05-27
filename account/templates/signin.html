@@ -3,15 +3,13 @@
     
     {% block style %}
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
-    <link rel="stylesheet" href="{% static 'css/notification.css' %}">
     {% endblock %}
 
     {% block content %}  
 
      <!--Main content-->
 
-     <div id="notification-area">
-	</div>
+
 
     
 	<!-- breadcrumb-section -->
@@ -69,7 +67,6 @@
         var notfEnterPass = 'Şifrənizi daxil edin';
         var notfWrongPass = 'Şifrə yanlışdır!';
     </script>
-    <script src="{% static 'js/notification.js'%}"></script>
     <script src="{% static 'js/login.js'%}"></script>
     {% endblock%}
 

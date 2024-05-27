@@ -47,6 +47,9 @@
                 aria-selected="false"data-bs-toggle="tab" class="nav-item nav-link has-icon nav-link-faded">
                     <i class="fa fa-lock"></i> Şifrə tənzimləməsi
                 </a>
+                <a href="{% url 'account:logout' %}" data-mdb-tab-init class="nav-item nav-link has-icon nav-link-faded">
+                    <i class="fa fa-lock"></i> Çıxış
+                </a>
             </nav>
           </div>
         </div>
@@ -84,6 +87,11 @@
                   aria-controls="security-tab"
                   aria-selected="false" data-bs-toggle="tab"  class="nav-link has-icon"> <i class="fa fa-lock"></i></a>
                 </li>
+
+                <li class="nav-item">
+                  <a href="{% url 'account:logout' %}" data-mdb-tab-init class="nav-link has-icon"> <i class="fa fa-lock"></i></a>
+                </li>
+                
             </ul>
           </div>
           <div class="card-body tab-content">
@@ -99,12 +107,12 @@
                         <div class="col-md-6 col-sm-12 ">
 
                             <label for="fullName" class="mb-2">Ad</label>
-                            <input type="text" class="form-control" disabled="" id="userfirstname" value="" placeholder="Ad">
+                            <input type="text" class="form-control" disabled="" id="userfirstname" value="{{request.user.first_name}}" placeholder="Ad">
                         </div>
                         <div class="col-md-6 col-sm-12">
 
                             <label for="fullName" class="mb-2">Soyad</label>
-                            <input type="text" class="form-control" disabled="" id="userlastname" value="" placeholder="Soyad">
+                            <input type="text" class="form-control" disabled="" id="userlastname" value="{{ request.user.last_name }}" placeholder="Soyad">
                         </div>
                     </div>
                 
@@ -114,12 +122,12 @@
                         <div class="col-md-6 col-sm-12 ">
 
                             <label for="fullName" class="mb-2">E-mail</label>
-                            <input type="text" class="form-control" disabled="" id="useremail" value="" placeholder="Email">
+                            <input type="text" class="form-control" disabled="" id="useremail" value="{{ request.user.email }}" placeholder="Email">
                         </div>
                         <div class="col-md-6 col-sm-12">
 
                             <label for="fullName" class="mb-2">Mobil nömrə</label>
-                            <input type="text" disabled="" class="form-control" value="+994 51 621 90 83" placeholder="Nömrə">
+                            <input type="text" disabled="" class="form-control" value="{{ request.user.number }}" placeholder="Nömrə">
                         </div>
                     </div>
                 
@@ -149,6 +157,9 @@
                 
 
             </div>
+
+
+
             <div class="tab-pane"  id="address-tab"
             role="tabpanel"
             aria-labelledby="address">
@@ -158,7 +169,28 @@
                   <label class="d-block">Ünvanlarım</label>
                   <button type="button" data-bs-toggle="modal" data-bs-target="#addAddressModal" id="add-address-btn"><i class="fa  fa-plus"></i></button>
               </div>
-              <ul id="addresseslist" class="list-group address-list list-group-sm"><div class="border border-gray-500 bg-gray-200 p-3 text-center font-size-sm">Qeyd olunmuş ünvanınız yoxdur</div></ul>
+              <ul id="addresseslist" class="list-group address-list list-group-sm">
+                {% if default_address %}
+                <li class="mb-4 address-item list-group-item has-icon">
+                  <div>
+                      <h6 class="mb-0"><i class="fa-solid fa-location-dot"></i> {{default_address.address_line}}</h6>
+                      <small class="text-muted">{{default_address.first_name}} {{default_address.last_name}}, {{default_address.region}}, {{default_address.street}}, {{default_address.building}}, {{default_address.flat}}</small>
+                  </div>
+                  <button class="address-buttons default_address btn btn-light btn-sm ml-auto" type="button"><i class="default_address_check fa-solid fa-circle-check"></i></button>
+                  <button onclick="removeAddress('{{default_address.id}}')" class="address-buttons btn address-remove-btn btn-light btn-sm ml-auto" type="button"><i class="fa-regular fa-circle-xmark"></i></button>
+                </li>
+                {% endif %}
+                {% for address in all_addresses %}
+                  <li class="mb-4 address-item list-group-item has-icon">
+                    <div>
+                        <h6 class="mb-0"><i class="fa-solid fa-location-dot"></i> {{address.address_line}}</h6>
+                        <small class="text-muted">{{address.first_name}} {{address.last_name}}, {{address.region}}, {{address.street}}, {{address.building}}, {{address.flat}}</small>
+                    </div>
+                    <button onclick="setDefault('{{address.id}}')" class="address-buttons btn btn-light btn-sm ml-auto" type="button"><i class="fa-regular fa-circle-check"></i></button>
+                    <button onclick="removeAddress('{{address.id}}')" class="address-buttons btn address-remove-btn btn-light btn-sm ml-auto" type="button"><i class="fa-regular fa-circle-xmark"></i></button>  
+                  </li>
+                {% endfor %}
+              </ul>
               <!-- address elave etme -->
               <div class="modal fade" id="addAddressModal" tabindex="-1" role="dialog" aria-labelledby="addAddressModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -208,7 +240,8 @@
                 </div>
               </div>
             </div>
-          
+
+
             <div class="tab-pane" id="security-tab"  role="tabpanel"
             aria-labelledby="security">
                 <h6>ŞİFRƏ TƏNZİMLƏMƏSİ</h6>
@@ -228,7 +261,7 @@
              
 
             </div>
-          
+            
           </div>
         </div>
       </div>
@@ -238,6 +271,33 @@
 {%endblock%}
 
 {% block js%}
-<script src="./static/js/notification.js"></script>
-<script src="./static/js/account-info.js"></script>
+
+<script>
+  var notfWrongEmailMessage = "Email yanlışdır!"
+  var notfDatasUpdated = "Məlumatlar yeniləndi!"
+  var notfRepPassWrong = "Şifrə təkrarı doğru deyil!"
+  var notfOldPassWrong = "Köhnə şifrə yanlışdır!"
+  var notfPassUpdated = "Şifrəniz yeniləndi!"
+  var notfNewAddressAdded = "Yeni ünvan əlavə edildi!"
+  var notfAddressDeleted = "Ünvan silindi!"
+  var notfDefAddressChnged = "Daimi ünvan dəyişildi!"
+  var notfPassUpdated = "Şifrəniz yeniləndi!"
+  var notfPassUpdated = "Şifrəniz yeniləndi!"
+  var notfOrderConf = "Sifarişiniz təsdiqləndi!"
+
+
+  var transNoAddress = "Qeyd olunmuş ünvanınız yoxdur"
+  var transSave = "Yadda saxla"
+  var transCancel = "Ləğv et"
+  var transEdit = "Düzəliş et"
+  var notfPassUpdated = "Şifrəniz yeniləndi!"
+  var notfPassUpdated = "Şifrəniz yeniləndi!"
+
+  var confSoundPTH = '{% static "order_conf.mp3" %}';
+
+</script>
+
+</script>
+<script src="{% static 'js/profile.js' %}"></script>
+
 {% endblock %}

@@ -29,13 +29,12 @@ class Signin(View):
     
 class Profile(LoginRequiredMixin, View):
     def get(self, request):
-        # context = {
-        #     'all_addresses':request.user.user_addresses.filter(is_default = False).order_by('-created_at'),
-        #     'default_address':request.user.user_addresses.filter(is_default = True).first(),
-        #     'user_orders': request.user.user_orders.all().order_by('-created_at')
-        # }
+        context = {
+            'all_addresses':request.user.user_addresses.filter(is_default = False).order_by('-created_at'),
+            'default_address':request.user.user_addresses.filter(is_default = True).first(),
+        }
         
-        return render(request, 'profile.html')
+        return render(request, 'profile.html', context)
     
 def login_view(request):
     if not request.user.is_authenticated:

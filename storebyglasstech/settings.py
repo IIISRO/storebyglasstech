@@ -323,6 +323,12 @@ CKEDITOR_5_FILE_STORAGE = "storebyglasstech.storage.CustomStorage"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+from django.urls import reverse_lazy
+ 
+LOGIN_URL = reverse_lazy('account:signin')
+LOGIN_REDIRECT_URL = reverse_lazy('account:profile')
+LOGOUT_URL = reverse_lazy('account:logout')
+LOGOUT_REDIRECT_URL = reverse_lazy('core:home')
 
 EMAIL_BACKEND = 'storebyglasstech.email_backend.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
