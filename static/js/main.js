@@ -166,9 +166,20 @@ $(document).ready(function () {
   });      
 })
 
-
-document.getElementById('productLink').addEventListener('click', function(event) {
-  var dropdown = new bootstrap.Dropdown(this);
-  dropdown.toggle();
-  window.location.href = this.href;
+document.addEventListener('DOMContentLoaded', () => {
+  const searchForm = document.getElementById('searchForm');
+  searchForm.addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent default form submission
+      
+      const searchInput = document.getElementById('searchInput');
+      const searchQuery = searchInput.value.trim(); // Get the search query
+      
+      if (searchQuery !== '') {
+          const url = new URL(`${location.origin}/products/all/`);
+          const params = new URLSearchParams(url.search);
+          params.set('search', searchQuery); // Append search query to URL parameters
+          url.search = params.toString();
+          window.location.href = url.toString(); // Redirect to products page with search query
+      }
+  });
 });

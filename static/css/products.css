@@ -227,7 +227,7 @@ background-color: #fbfbfb;
 }
 .product-categories ul li a{
   
-  font-size: 14px;
+  font-size: 16px;
   color: #3c3f5f;
   text-decoration: none;
   margin-bottom: 15px;
@@ -453,4 +453,9 @@ background-color: #fbfbfb;
 }
 .category-list li a{
   text-transform: uppercase;
+
+}
+.product-categories ul li a.selected{
+  color: #1d2cca;
+  font-weight: 500;
 }

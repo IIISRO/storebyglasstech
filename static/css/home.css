@@ -68,6 +68,9 @@
     border-bottom-left-radius: 2px;
     padding: 9px 10px;
     }
+    .ads-sec2 h3, .ads-sec2 span, .ads-sec2 .slider-button{
+      text-align: end;
+    }
     
     .stage a:after {
     content: "";

@@ -1,4 +1,5 @@
 let productSection = document.getElementById('products')
+let currentPage=1
 
 
 
@@ -6,6 +7,7 @@ function displayResults(results) {
   console.log(results.products);
   let products = document.querySelector("#products");
   products.innerHTML = "";
+  if(results.products.length>0){
   for (const product of results.products) {
     products.innerHTML += `
       <div class="col-sm-6 col-lg-3">
@@ -59,9 +61,13 @@ function displayResults(results) {
             </div>
           </div>
       `
+    
   }
-
-
+  createPagination(results.pagination.all_pages_num,currentPage)
+}
+else{
+  products.innerHTML+=`<div class="alert alert-danger">Təəssüf ki,seçdiyiniz filterlərə uyğun məhsul tapılmadı!</div>`
+}
 
 }
 
@@ -71,7 +77,7 @@ function updateTypeUI(selectedType) {
   document.querySelectorAll('.type-list li').forEach(typeItem => {
     const typeValue = typeItem.getAttribute('data-value');
     const typeText = typeItem.querySelector('span');
-    console.log(selectedType);
+    // console.log(selectedType);
     if (selectedType != undefined) {
       console.log("Aaaaa");
       if (typeValue === selectedType) {
@@ -88,8 +94,8 @@ function updateTypeUI(selectedType) {
 }
 
 
-async function filterProducts(category, filters) {
-  let apiUrl = new URL(`${location.origin}/api/v1/products/${category}/?`);
+async function filterProducts(category, filters,pageNumber) {
+  let apiUrl = new URL(`${location.origin}/api/v1/products/${category}/?page=${pageNumber}`);
 
   for (let key in filters) {
     if (Array.isArray(filters[key])) {
@@ -113,9 +119,8 @@ async function filterProducts(category, filters) {
 }
 
 
-
 function handleFilterChange() {
-  const category = document.querySelector('.categories-list .selected').textContent.trim();
+  const category = document.querySelector('.categories-list .selected').getAttribute("data-value").trim();
 
   const filters = {};
 
@@ -124,12 +129,23 @@ function handleFilterChange() {
     filters['type'] = selectedType.querySelector('span').textContent.trim();
   }
 
+
+  const selectedSort = document.querySelector('#filterSelect .selected');
+  if (selectedSort!=="") {
+    filters['sort'] = selectedSort.getAttribute('data-value').trim();
+  }
+  const searchQuery = new URLSearchParams(window.location.search).get('search');
+
+  if(searchQuery){
+    filters['search'] = searchQuery.trim()
+  }
+  
   const selectedArtists = Array.from(document.querySelectorAll('.checkbox-artist:checked')).map(checkbox => checkbox.value);
   if (selectedArtists.length > 0) {
     filters['artist'] = selectedArtists;
   }
 
-  filterProducts(category, filters);
+  filterProducts(category, filters,currentPage);
   updateTypeUI(filters['type']);
 }
 
@@ -194,6 +210,7 @@ function preselectFiltersFromURL() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+
   preselectFiltersFromURL();
   handleFilterChange();
 });
@@ -203,42 +220,104 @@ document.querySelectorAll('.checkbox-artist').forEach(checkbox => {
   checkbox.addEventListener('change', handleFilterChange);
 });
 
-
-
-function preselectFiltersFromURL() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const categoryParam = urlParams.get('category');
-
-  if (categoryParam) {
-    const categoryItem = document.querySelector(`.categories-list li a[data-value="${categoryParam}"]`);
-    if (categoryItem) {
-      categoryItem.classList.add('selected');
-    }
-  }
-
-  const typeParam = urlParams.get('type');
-  if (typeParam) {
-    const typeItem = document.querySelector(`.type-list li[data-value="${typeParam}"]`);
-    if (typeItem) {
-      typeItem.classList.add('selected');
-    }
-  }
-
-  const artistParams = urlParams.get('artist');
-  if (artistParams) {
-    const artists = artistParams.split(',');
-    artists.forEach(artistParam => {
-      const artistCheckbox = document.querySelector(`.checkbox-artist[value="${artistParam}"]`);
-      if (artistCheckbox) {
-        artistCheckbox.checked = true;
+document.getElementById('filterSelect').addEventListener('change', function() {
+  var options = this.options;
+  for (var i = 0; i < options.length; i++) {
+      if (options[i].selected) {
+          options[i].classList.add('selected');
+          
+      } else {
+          options[i].classList.remove('selected');
       }
-    });
   }
+  handleFilterChange()
+
+});
+
+
+
+function createPagination(totalPages, currentPage) {
+  const paginationContainer = document.getElementById('pagination');
+  paginationContainer.innerHTML = '';
+
+  const ul = document.createElement('ul');
+  ul.className = 'pagination';
+
+  const createPaginationItem = (pageNumber, text, isDisabled) => {
+      const li = document.createElement('li');
+      li.innerHTML = text;
+      li.className = isDisabled ? 'disabled' : (currentPage === pageNumber ? 'active' : '');
+      if (!isDisabled) {
+          li.addEventListener('click', () => {
+              if (currentPage !== pageNumber) {
+                  updatePage(pageNumber);
+              }
+          });
+      }
+      return li;
+  };
+
+  const addItem = (pageNumber, text, isDisabled = false) => ul.appendChild(createPaginationItem(pageNumber, text, isDisabled));
+
+  // Previous Button
+  addItem(currentPage - 1, '<i class="fa fa-chevron-left"></i>', currentPage === 1);
+
+  // First Page
+  addItem(1, '1', false);
+
+  // Dots before currentPage if necessary
+  if (currentPage > 3) {
+      ul.appendChild(document.createElement('li')).innerHTML = '...';
+  }
+
+  // Pages around currentPage
+  for (let i = Math.max(2, currentPage - 1); i <= Math.min(totalPages - 1, currentPage + 1); i++) {
+      addItem(i, i, false);
+  }
+
+  // Dots after currentPage if necessary
+  if (currentPage < totalPages - 2) {
+      ul.appendChild(document.createElement('li')).innerHTML = '...';
+  }
+
+  // Last Page
+  if (totalPages > 1) {
+      addItem(totalPages, totalPages, false);
+  }
+
+  // Next Button
+  addItem(currentPage + 1, '<i class="fa fa-chevron-right"></i>', currentPage === totalPages);
+
+  paginationContainer.appendChild(ul);
 }
 
-
-
-document.addEventListener('DOMContentLoaded', () => {
-  preselectFiltersFromURL();
+function updatePage(pageNumber) {
+  currentPage = pageNumber;
+  const urlParams = new URLSearchParams(window.location.search);
+  urlParams.set('page', pageNumber);
+  const newUrl = `${location.pathname}?${urlParams.toString()}`;
+  window.history.pushState({ path: newUrl }, '', newUrl);
   handleFilterChange();
-});
+}
+
+async function fetchAndDisplayResults(category, filters, pageNumber) {
+  let apiUrl = new URL(`${location.origin}/api/v1/products/${category}/?page=${pageNumber}`);
+
+  for (let key in filters) {
+    if (Array.isArray(filters[key])) {
+      apiUrl.searchParams.append(key, filters[key].join(','));
+    } else if (filters[key]) {
+      apiUrl.searchParams.append(key, filters[key]);
+    }
+  }
+
+  const response = await fetch(apiUrl);
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
+
+  let responseData = await response.json();
+  displayResults(responseData);
+  createPagination(responseData.pagination.all_pages_num, pageNumber);
+}
+

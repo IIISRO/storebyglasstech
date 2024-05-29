@@ -74,12 +74,9 @@
                         <a href="{% url 'core:home' %}"><img class="logo" src="https://www.tablohane.com/Content/Images/Design/tablohane-logo.png" alt=""></a>
                     </div>
                     <div class="header-search">
-                        <form role="search" method="get" class="product-search" action="">
-                            <input type="search" class="search-field" placeholder="Search for Posters..." value="" name="s"
-                                required="required">
-                            <button type="submit" value="Search" class=""><i class="fa fa-search"
-                                    aria-hidden="true"></i></button>
-                            <input type="hidden" value="product">
+                        <form id="searchForm" role="search" method="get" class="product-search">
+                            <input type="search" class="search-field" id="searchInput" placeholder="Search for Posters..." value="" name="s" required="required">
+                            <button type="submit" value="Search" class=""><i class="fa fa-search" aria-hidden="true"></i></button>
                         </form>
                     </div>
                     <div class="d-flex align-items-center">
@@ -266,27 +263,44 @@
         <!--Mobile menu-->
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+                <img src="https://www.tablohane.com/Content/Images/Design/tablohane-logo.png" width="200" alt="">
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
-                <div>
-                Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists,
-                etc.
-                </div>
-                <div class="dropdown mt-3">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                        data-bs-toggle="dropdown">
-                        Dropdown button
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </div>
+                <ul class="mobile-nav">
+                    <li class="w-100 d-flex align-items-center justify-content-between mobile-link mb-3 py-3" style="border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;"><a
+                        class=""
+                        href="{% url 'product:products' category_slug='all' %}">Məhsullar</a><a data-bs-toggle="offcanvas"href="#secondOffcanvas"> <i class="fa fa-chevron-right"></i></a></li>
+            
+                    <li class="mobile-link mb-3 py-2"><a class="w-100 d-flex align-items-center justify-content-between"
+                        href="{% url 'core:home' %}">Ana Səhifə<i class="fa fa-chevron-right"></i></a></li>
+                    <li class="mobile-link mb-3 py-2"><a class="w-100 d-flex align-items-center justify-content-between"
+                        href="{% url 'core:about' %}">Haqqımızda <i class="fa fa-chevron-right"></i></a></li>
+                    <li class="mobile-link mb-3 py-2"><a class="w-100 d-flex align-items-center justify-content-between"
+                        href="{% url 'core:contact' %}">Bizimlə Əlaqə <i class="fa fa-chevron-right"></i></a></li>
+                  </ul>
+                
+    
             </div>
         </div>
+        <div class="offcanvas offcanvas-start" style="padding-top: 20px;" tabindex="-1" id="secondOffcanvas">
+            <div class="offcanvas-header">
+              <button class="mobile-toggle" type="button" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                <i class="fa fa-chevron-left"></i>
+              </button>
+              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="mobile-nav" id="mobile-cat">
+                <li class="mobile-link mb-4"><a class="" href="{% url 'product:products' category_slug='all' %}?type=glass">Şüşə tablolar</a></li>
+                <li class="mobile-link mb-4"><a class="" href="{% url 'product:products' category_slug='all' %}?type=mdf">MDF tablolar</a></li>
+                <li class="mobile-link mb-4"><a class="" href="#">Saatlar</a></li>
+                <li class="mobile-link mb-4"><a class="" href="#">Özün yarat</a></li>
+              </ul>
+            </div>
+          </div>
+        
         <!--JS files-->
 
         <!--JQuery-->

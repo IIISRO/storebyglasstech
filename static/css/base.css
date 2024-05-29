@@ -9,6 +9,41 @@
 a:hover{
     text-decoration: none !important;
 }
+.offcanvas{
+    background-color: #10143e !important;
+    color: #fff;
+}
+
+.mobile-nav{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.mobile-link a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+}
+.mobile-link a i{
+  font-size: 17px;
+  color: #fff;
+  -webkit-text-stroke: 1px white;
+}
+.secondOffcanvas .mobile-link{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.mobile-toggle{
+    width: 30px;
+    height: 30px;
+    color: #fff;
+    -webkit-text-stroke: 1px white;
+    background: transparent;
+    border: none;
+    outline: none;
+  }
 .header-search form input {
     font-size: 14px;
     width: 100%;
