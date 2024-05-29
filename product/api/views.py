@@ -44,12 +44,12 @@ class ProductsListAPI(APIView):
 
         sort = self.request.GET.get('sort', '')
         if sort == 'htl':
-            products = sorted(products, key=lambda x: x.actual_price)
+            products = sorted(products, key=lambda x: x.actual_price, reverse=True)
         elif sort == 'lth':
             products = sorted(products, key=lambda x: x.actual_price, reverse=False)
             
 
-        product_per_page = 6
+        product_per_page = 8
 
         page = self.request.GET.get('page', 1)
         product_paginator = Paginator(products, product_per_page)

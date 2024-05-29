@@ -4,7 +4,6 @@ let currentPage=1
 
 
 function displayResults(results) {
-  console.log(results.products);
   let products = document.querySelector("#products");
   products.innerHTML = "";
   if(results.products.length>0){
