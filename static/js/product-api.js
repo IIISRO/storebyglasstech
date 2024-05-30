@@ -114,6 +114,7 @@ async function filterProducts(category, filters,pageNumber) {
   displayResults(responseData);
 
   const newUrl = `${location.origin}/products/${category}/${apiUrl.search}`;
+  console.log(newUrl);
   window.history.pushState({ path: newUrl }, '', newUrl);
 }
 
@@ -163,28 +164,28 @@ document.querySelectorAll('.categories-list li a').forEach(categoryItem => {
 
 
 
-document.querySelectorAll('.type-list li').forEach(typeItem => {
-  typeItem.addEventListener('click', () => {
-    document.querySelectorAll('.type-list li').forEach(item => {
-      item.classList.remove('selected');
-    });
-    typeItem.classList.add('selected');
-    handleFilterChange();
-  });
-});
-
-
-
 function preselectFiltersFromURL() {
   const urlParams = new URLSearchParams(window.location.search);
-
-  const categoryParam = urlParams.get('category');
+  const pathname = window.location.pathname; // '/products/vveten/'
+  console.log(pathname);
+  // Split the pathname to get the parts
+  const pathParts = pathname.split('/');
+  
+  // The category name is the second last part in the path array
+  const categoryParam = pathParts[pathParts.length - 2]; 
   if (categoryParam) {
+    // Remove 'selected' class from all category items
+    document.querySelectorAll('.categories-list li a').forEach(item => {
+      item.classList.remove('selected');
+    });
+
+    // Add 'selected' class to the current category item
     const categoryItem = document.querySelector(`.categories-list li a[data-value="${categoryParam}"]`);
     if (categoryItem) {
       categoryItem.classList.add('selected');
     }
   }
+
 
   const typeParam = urlParams.get('type');
   if (typeParam) {
@@ -208,16 +209,6 @@ function preselectFiltersFromURL() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-
-  preselectFiltersFromURL();
-  handleFilterChange();
-});
-
-
-document.querySelectorAll('.checkbox-artist').forEach(checkbox => {
-  checkbox.addEventListener('change', handleFilterChange);
-});
 
 document.getElementById('filterSelect').addEventListener('change', function() {
   var options = this.options;
@@ -234,6 +225,28 @@ document.getElementById('filterSelect').addEventListener('change', function() {
 });
 
 
+document.addEventListener('DOMContentLoaded', () => {
+
+  preselectFiltersFromURL();
+  handleFilterChange();
+});
+
+
+document.querySelectorAll('.checkbox-artist').forEach(checkbox => {
+  checkbox.addEventListener('change', handleFilterChange);
+});
+
+
+
+document.querySelectorAll('.type-list li').forEach(typeItem => {
+  typeItem.addEventListener('click', () => {
+    document.querySelectorAll('.type-list li').forEach(item => {
+      item.classList.remove('selected');
+    });
+    typeItem.classList.add('selected');
+    handleFilterChange();
+  });
+});
 
 function createPagination(totalPages, currentPage) {
   const paginationContainer = document.getElementById('pagination');
