@@ -4,7 +4,6 @@ from django_ckeditor_5.fields import CKEditor5Field
 from datetime import timedelta
 from django.core.exceptions import ValidationError
 from django.utils import timezone
-from account.models import  User
 import random
 from django.template.defaultfilters import slugify
 
@@ -230,6 +229,8 @@ class Coupon(AbstractModel):
             
         else:
             return False, 'Expired'
+        
+from account.models import  User
     
 class UsedCoupon(AbstractModel):
     coupon = models.ForeignKey("Coupon", null = False, blank = False, on_delete = models.CASCADE, related_name = 'used')

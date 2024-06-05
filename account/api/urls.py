@@ -7,6 +7,9 @@ from .views import (get_or_create_user,
                     CreateNewAddressAPIView, 
                     set_default_address, 
                     DeleteAddressAPIView,
+                    AddWishlistAPIView,
+                    RemoveWishlistAPIView,
+                    WishlistAPIView
                     )
 
 app_name = 'accountAPI'
@@ -19,4 +22,9 @@ urlpatterns = [
     path('create/address/', CreateNewAddressAPIView.as_view(), name='create_address'),
     path('set_default/address/<int:pk>/', set_default_address, name='set_default_address'),
     path('delete/address/<int:pk>/', DeleteAddressAPIView.as_view(), name='delete_address'),
+    path('wishlist/add/', AddWishlistAPIView.as_view(), name='addwishlist'),
+    path('wishlist/remove/<int:pk>/', RemoveWishlistAPIView.as_view(), name='removewishlist'),
+    path('wishlist/', WishlistAPIView.as_view(), name='wishlistAPI'),
+
+
 ]

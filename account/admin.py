@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.models import Group
-from .models import User, UserAddress
+from .models import User, UserAddress, UserWishlistItem, UserWishlist
 from django.contrib.auth.admin import UserAdmin, GroupAdmin
 from storebyglasstech.storeglasstech_admin import storeglasstech_admin_site
 from django.utils.translation import gettext_lazy as _
@@ -39,4 +39,7 @@ class CustomUserAdmin(UserAdmin):
 storeglasstech_admin_site.register(User, CustomUserAdmin)
 storeglasstech_admin_site.register(Group, GroupAdmin)
 storeglasstech_admin_site.register(UserAddress)
+storeglasstech_admin_site.register(UserWishlist)
+storeglasstech_admin_site.register(UserWishlistItem)
+
 

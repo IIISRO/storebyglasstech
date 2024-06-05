@@ -11,7 +11,7 @@ function displayResults(results) {
     products.innerHTML += `
       <div class="col-sm-6 col-lg-3">
             <div class="product-item">
-              <a href="">
+              <a href="${product.url}">
                 <div class="product-item-img">
                   <img
                   src="${product.image}"

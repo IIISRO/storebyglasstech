@@ -1,14 +1,16 @@
-from rest_framework.generics import CreateAPIView, DestroyAPIView, UpdateAPIView, ListAPIView
-from rest_framework.status import HTTP_200_OK, HTTP_201_CREATED, HTTP_400_BAD_REQUEST, HTTP_404_NOT_FOUND
+from rest_framework.generics import CreateAPIView, DestroyAPIView, UpdateAPIView 
+from rest_framework.status import HTTP_200_OK, HTTP_201_CREATED, HTTP_204_NO_CONTENT, HTTP_400_BAD_REQUEST, HTTP_404_NOT_FOUND
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
-from .serializers import UserSerializer, UserAddressSerializer
+from rest_framework.views import APIView
+from .serializers import UserSerializer, UserAddressSerializer, UserWishlistItemSerializer, UserWishlistSerializer
 from rest_framework.decorators import api_view
 from account.models import User
 from account.helpers import create_and_send_password
 from django.contrib.auth.hashers import check_password
-from account.models import UserAddress
-
+from account.models import UserAddress, UserWishlist,  UserWishlistItem
+import json
+from product.models import Product
 
 @api_view(['POST'])
 def get_or_create_user(request):
@@ -120,3 +122,109 @@ class DeleteAddressAPIView(DestroyAPIView):
         user_addresses = UserAddress.objects.filter(user = user).order_by('-created_at')
         serializer = UserAddressSerializer(user_addresses, many = True)
         return Response(serializer.data)
+
+
+
+
+class AddWishlistAPIView(CreateAPIView):
+    http_method_names = ["post"]
+    serializer_class = UserWishlistItemSerializer
+
+    def create(self, request, *args, **kwargs):
+        #basket item  datasi 
+        basket_item_data = request.data
+        serializer = UserWishlistItemSerializer(data=basket_item_data)
+
+        if serializer.is_valid():
+            # serializerden kecmish data
+            serialized_data = serializer.data
+
+            if not request.user.is_authenticated:
+                
+                # login  deyilse user respone yadilir ve cokiden user_wishlist_itemsleri cekmeye  calisir gelmese bos  list  verilir
+                response = Response(status=HTTP_200_OK)
+                user_wishlist_items = json.loads(request.COOKIES.get('user_wishlist_items')) if request.COOKIES.get('user_wishlist_items') else []
+
+                # eger gelse  gelen datani yoxlayir
+                if user_wishlist_items:
+                    serialized_data['id'] = user_wishlist_items[-1]['id'] + 1
+                    exist_item = False
+                    # data varsa  onu  user_wishlist_items sayin update edir
+                    for item in user_wishlist_items: 
+                        if item['product'] == serialized_data['product']:
+                            exist_item = True
+                            break
+                    # eger yoxdursa yeni item yaradir
+                    if not exist_item:
+                        user_wishlist_items.append(serialized_data)
+                # user_wishlist_items ilkdefe  yaranirssa ilk items yaradilir
+                else:
+                    serialized_data['id'] = 1
+                    user_wishlist_items.append(serialized_data)
+
+                # basket modelini  simulatsiya  eden dictt yaranir
+                wishlist = {
+                    'user_wishlist_items': user_wishlist_items
+                }
+                # response olaraq wishlist modelinin cokiedeki itemler ile response  simuliasiya  edilir ve cookie data yazilir
+                response = Response(status=HTTP_201_CREATED)
+                response.set_cookie('user_wishlist_items', json.dumps(user_wishlist_items))
+                basket_serializer = UserWishlistSerializer(wishlist, context={'request':request})
+                response.data = basket_serializer.data
+                return response
+            # user logindirse  onun  basketinin  olub olmadigini  yoxlayir  yoxdursa  yaradir
+            else:
+                
+                user_wishlist,s = UserWishlist.objects.get_or_create(user=request.user)
+
+                product_id = serialized_data['product']
+                # productu  tapir  userin basketindeki  butun  itemsleri cagirib check  edir  yoxdusa  yaradir
+                product = Product.objects.get(id=product_id)
+                wishlist_items = user_wishlist.wish_items.all()
+                wish_items, created = wishlist_items.get_or_create(wishlist = user_wishlist, product=product)
+                
+              
+                # basket modelini response verir
+                basket_serializer = UserWishlistSerializer(user_wishlist, context={'request':request})
+                return Response(basket_serializer.data, status=HTTP_201_CREATED)
+            
+        else:
+            return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
+       
+    
+class RemoveWishlistAPIView(DestroyAPIView):
+    http_method_names = ["delete"]
+    serializer_class = UserWishlistItemSerializer
+    queryset = UserWishlistItem
+    def destroy(self, request, *args, **kwargs):
+        # eger logindirse default silir
+        if request.user.is_authenticated:
+            return super().destroy(request, *args, **kwargs)
+        # eks halda cookide tapib silir
+        user_wishlist_items = json.loads(request.COOKIES.get('user_wishlist_items')) if request.COOKIES.get('user_wishlist_items') else []
+        if user_wishlist_items:
+            for item in user_wishlist_items: 
+                if item['id'] == kwargs['pk']:
+                    user_wishlist_items.remove(item)
+                    response = Response(status=HTTP_204_NO_CONTENT)
+                    response.set_cookie('user_wishlist_items', json.dumps(user_wishlist_items))
+                    break
+            return response
+        return Response(status=HTTP_404_NOT_FOUND)
+    
+
+class WishlistAPIView(APIView):
+    http_method_names = ["get"]
+    def get(self, request, *args, **kwarg):
+        # eger  login deyilse basket modelinii simulasiya edir ve cookideki itemleri  qaytarir
+        if not request.user.is_authenticated:
+            user_wishlist_items = json.loads(request.COOKIES.get('user_wishlist_items')) if request.COOKIES.get('user_wishlist_items') else []
+            wishlist = {
+                'user_wishlist_items': user_wishlist_items
+            }
+            serializer = UserWishlistSerializer(wishlist, context={'request':request})
+            return Response(serializer.data, status=HTTP_200_OK)
+            
+        wishlist = request.user.wishlist
+        serializer = UserWishlistSerializer(wishlist, context={'request':request})
+        return Response(serializer.data, status=HTTP_200_OK)

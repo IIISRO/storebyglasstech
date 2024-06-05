@@ -11,6 +11,7 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 # from order.models import BasketItem, Basket
 from product.models import Coupon
+from .models  import UserWishlist, UserWishlistItem
 # Create your views here.
 
 
@@ -46,6 +47,19 @@ def login_view(request):
             user = authenticate(request, username = username, password =  password)
             
             if user:
+
+                cookie_user_wishlist_items = json.loads(request.COOKIES.get('user_wishlist_items')) if request.COOKIES.get('user_wishlist_items') else []
+                if cookie_user_wishlist_items:
+                    user_wishlist,s = UserWishlist.objects.get_or_create(user=user)
+                    user_wishlist_items = user_wishlist.wish_items.all()
+                    # kohne wishlisti temizle
+                    user_wishlist_items.delete()
+                    for cookie_item in cookie_user_wishlist_items:
+                        if not user_wishlist_items.filter(product_id=cookie_item['product']).exists():
+                            UserWishlistItem.objects.create(wishlist = user_wishlist, product_id = int(cookie_item['product']))
+
+                
+                    response.delete_cookie('user_wishlist_items')
 
                 # cookie_user_basket_items = json.loads(request.COOKIES.get('user_basket_items')) if request.COOKIES.get('user_basket_items') else []
                 # if cookie_user_basket_items:
