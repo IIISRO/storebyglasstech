@@ -334,27 +334,47 @@ a:hover{
         gap: 0.938rem;
     }
 
-    .user-icon {
-        display: none !important;
-    }
-
     .header-actions .title {
         margin-top: 5px;
     }
 
     .logo {
-        max-width: 150px;
+        max-width: 160px;
     }
 }
-
-
+.navbar-toggler{
+    padding: 0 !important;
+    margin-right: 13px;
+}
+.navbar-toggler:focus{
+    box-shadow: none !important;
+}
+.offcanvas {
+    transition: transform 0.3s linear !important;
+}
+.btn-close{
+background: transparent url('../images/close.png') center / 1em auto no-repeat !important;
+opacity: 1 !important;
+}
 /*Responsive navbar*/
 
 @media(max-width:767px){
     .logo{
-        width: 50px;
+        width: 150px;
+        height: 20px;
         max-width: unset;
         margin-left: 10px;
+    }
+    .header-actions .count-badge{
+        width: 15px;
+        height: 15px;
+        font-size: 12px;
+    }
+    .header-actions .title{
+        font-size: 11px;
+    }
+    .header-actions i{
+        font-size: 1rem;
     }
 }
 
