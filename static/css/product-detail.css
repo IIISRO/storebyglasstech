@@ -1051,7 +1051,7 @@ height: 220px;
   gap: 15px;
 }
 
-.frame-list button,.size-list button,.effect-list button{
+.size-list button,.effect-list button{
   background-color: #fff;
   border-radius: 30px;
   border: 2px solid #10143e;
@@ -1060,9 +1060,45 @@ height: 220px;
   color: #10143e;
   padding: 5px 20px;
 }
-.frame-list .selected,.size-list .selected,.effect-list .selected{
+.frame-list button{
+  border: none !important;
+  border-radius: 100%;
+  background-color: transparent;
+  width: 40px;
+  height: 40px;
+}
+.size-list .selected,.effect-list .selected{
   color: #fff !important;
   background-color: #10143e !important;
+}
+.frame-list li{
+  position: relative;
+}
+.active-overlay{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.6);
+  top: 0;
+  left: 0;
+  display: none;
+}
+.selected{
+  margin-top: -7px;
+}
+.selected .active-overlay{
+  display: flex !important;
+}
+.frame-list li img{
+  width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 .price-sec del{
   color: red;

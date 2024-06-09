@@ -196,10 +196,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const height = selectedSize[1];
 
             // Update the main image size based on the selected option
-            mainFrame.style.width = width + "px";
-            mainFrame.style.height = height + "px";
-            mainFrame1.style.width = width + "px";
-            mainFrame1.style.height = height + "px";
+            mainFrame.style.width = width*0.8 + "px";
+            mainFrame.style.height = height*0.8 + "px";
+            mainFrame1.style.width = width*0.8 + "px";
+            mainFrame1.style.height = height*0.8 + "px";
             console.log(width,height);
         });
     });

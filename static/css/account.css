@@ -314,3 +314,33 @@ button.bordered-btn {
    color: #cccdcf;
 
 }
+.order-name h4{
+    text-transform: uppercase;
+    font-size: 16px;
+    color: #10143e;
+  }
+  .order-name{
+    margin-left: 15px;
+  }
+  .order-name span{
+    text-transform: uppercase;
+    letter-spacing: 0.01rem;
+    font-size: 14px;
+  }
+  .order-price-info{
+    color: #4a5568;
+  }
+  .total-price{
+    color: #4a5568;
+    font-weight: 600;
+    font-size: 20px;
+  }
+  .order-card{
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    padding: 10px;
+  }
+  .delivery{
+    padding-top: 10px !important;
+    display: flex;
+    border-top: 1px solid #ccc;
+  }
