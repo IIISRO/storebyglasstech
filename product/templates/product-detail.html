@@ -38,6 +38,31 @@
                             <img src="https://www.tablohane.com/Content/Images/ProductType/1.png">Kanvas Tablo
                             Seçildi
                         </div>
+                        <div class="prod-categories">
+                            <div style="display: block;">
+                                <ul>
+                                    <li>
+                                        <a href="">
+                                            <div class="pti-in-icon" style="display: block;"><span><img
+                                                        src="https://www.tablohane.com/Content/Images/ProductType/5.png"></span></div>
+                                            <div class="pti-in-info" style="display: block;">
+                                                <span class="product-color-5">Glass</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <div class="pti-in-icon" style="display: block;"><span><img
+                                                        src="https://www.tablohane.com/Content/Images/ProductType/6.png"></span></div>
+                                            <div class="pti-in-info" style="display: block;">
+                                                <span class="product-color-6">Mdf</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
                         <div class="tab-pane fade show first active" id="pills-home" role="tabpanel"
                             aria-labelledby="pills-home-tab">
 
@@ -45,6 +70,7 @@
                                 <img src="https://images.unsplash.com/photo-1552082919-e60010758c47?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTF8fGRlc2t0b3AlMjB3YWxscGFwZXJzfGVufDB8fDB8fHww"
                                     alt="">
                             </div>
+
                         </div>
                         <div class="tab-pane fade " id="pills-profile" role="tabpanel"
                             aria-labelledby="pills-profile-tab">
@@ -79,6 +105,7 @@
             </div>
             <div class="col-xl-5 prod-info">
                 <h2 class="prod-info-title mb-3">Harmony of Hues</h2>
+                <hr>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit suscipit maiores cupiditate mollitia earum dolorem nulla doloribus ea quae eaque provident vero et error, consectetur quisquam, dignissimos sint ipsa itaque eius aspernatur quam? Accusamus est excepturi ullam impedit modi accusantium.</p>
                 <div class="price-sec w-100 d-flex align-items-center justify-content-end">
                     <del>$300</del>
@@ -102,8 +129,8 @@
                 </ul>
                 <span class="effect-title mt-4">Effect</span>
                 <ul class="effect-list">
-                    <li><button class="selected" data-value="0%">No effect</button></li>
-                    <li><button data-value="100%">Dark</button></li>
+                    <li><button class="selected" data-value="0%" data-bg="none"><img  src="{% static 'images/none.png'%}" alt=""></button></li>
+                    <li><button data-value="100%" data-bg="black"><div class="active-overlay"><i class="fa fa-check"></i></div></button></li>
                     
                 </ul>
                 <div class="basket-col d-flex align-items-center">

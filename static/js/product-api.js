@@ -16,6 +16,8 @@ function displayResults(results) {
                   <img
                   src="${product.image}"
                   alt="">
+                  <span class="product-icon1"><i class="fa fa-search"></i></span>
+                  <span class="product-icon2"><i class="fa fa-search"></i></span>
                 </div>
                 </a>
                 <div class="product-col-info p-2">

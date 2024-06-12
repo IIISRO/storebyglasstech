@@ -196,14 +196,24 @@ document.addEventListener('DOMContentLoaded', () => {
             const height = selectedSize[1];
 
             // Update the main image size based on the selected option
-            mainFrame.style.width = width*0.8 + "px";
-            mainFrame.style.height = height*0.8 + "px";
-            mainFrame1.style.width = width*0.8 + "px";
-            mainFrame1.style.height = height*0.8 + "px";
+            if(window.innerWidth<=767){
+                mainFrame.style.width = width*0.8 + "px";
+                mainFrame.style.height = height*0.8 + "px";
+                mainFrame1.style.width = width*0.5 + "px";
+                mainFrame1.style.height = height*0.5 + "px";
+            }
+            else{
+                mainFrame.style.width = width*0.8 + "px";
+                mainFrame.style.height = height*0.8 + "px";
+                mainFrame1.style.width = width*0.8 + "px";
+                mainFrame1.style.height = height*0.8 + "px";
+            }
+          
             console.log(width,height);
         });
     });
     effects.forEach(effect => {
+        effect.style.backgroundColor =effect.getAttribute('data-bg')
         effect.addEventListener('click', () => {
             // Remove the 'selected' class from all buttons
             effects.forEach(btn => btn.classList.remove('selected'));

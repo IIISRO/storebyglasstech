@@ -46,9 +46,7 @@
     box-shadow: none!important;
 }
 .tab-content{
-    -webkit-box-shadow: 0px 0px 41px 5px #10143e78;
-	-moz-box-shadow: 0px 0px 41px 5px #10143e78;
-	box-shadow: 0px 0px 41px 5px #10143e78;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .form-control:focus{
     border-color: #10143e;
@@ -314,6 +312,9 @@ button.bordered-btn {
    color: #cccdcf;
 
 }
+.order-card{
+    margin-bottom: 15px;
+}
 .order-name h4{
     text-transform: uppercase;
     font-size: 16px;
@@ -336,11 +337,46 @@ button.bordered-btn {
     font-size: 20px;
   }
   .order-card{
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
     padding: 10px;
   }
   .delivery{
     padding-top: 10px !important;
     display: flex;
     border-top: 1px solid #ccc;
+  }
+  .order-tabs{
+    justify-content: center !important;
+    border-bottom: none !important;
+    gap: 10px;
+    margin-top: 13px;
+    margin-bottom: 13px;
+  }
+  .order-history{
+    padding: 10px;
+    width: max-content;
+    border: 1px solid #ccc;
+    background: transparent;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .order-tabs .nav-link{
+    padding: 10px 20px !important;
+    color: #fff !important;
+    margin-right: 15px;
+    border-radius: 30px !important;   
+    font-size: 14px; 
+    border: none !important;
+  }
+  .order-tabs .nav-link:first-child{
+    background-color: rgb(4, 161, 4) !important;
+  }
+  .order-tabs .nav-link:nth-child(2){
+    background-color: rgb(220, 147, 28) !important;
+  }
+  .order-tabs .nav-link:nth-child(3){
+    background-color: red !important;
+  }
+  .order-tabs .nav-link.active{
+    background-color: #10143e !important;
   }
