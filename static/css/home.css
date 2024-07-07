@@ -82,3 +82,15 @@
     border-left: 18px solid red;
     border-bottom: 18px solid transparent;
     }  
+    .product-item-price del{
+      font-size: 14px;
+      color: #333;
+  
+    }
+    .product-item-price span{
+      font-size: 22px;
+      font-weight: 600;
+      color: red;
+      margin-top: -6px;
+      margin-left: 6px;
+    }

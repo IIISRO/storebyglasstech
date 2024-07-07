@@ -9,7 +9,7 @@ function displayResults(results) {
   if(results.products.length>0){
   for (const product of results.products) {
     products.innerHTML += `
-      <div class="col-sm-6 col-lg-3">
+      <div class="col-sm-6 col-lg-3 mb-4">
             <div class="product-item">
               <a href="${product.url}">
                 <div class="product-item-img">
@@ -24,7 +24,7 @@ function displayResults(results) {
                   
                   <h3 class="product-item-title mt-2"><a href="">${product.title}</a></h3>
                   <div class="product-item-price-section">
-                    <div class="product-item-price d-flex align-items-center">
+                  
                     ${(function Items() {
         let items = []
 
@@ -33,15 +33,15 @@ function displayResults(results) {
                         ${(function Items2() {
               let items2 = []
               if (product.discount_type == 'Precent') {
-                items2.push(`<div class="stage"><a href="">${product.discount_amount}%</a></div>`)
+                items2.push(`  <div class="product-item-price d-flex align-items-center justify-content-between"><div class="stage"><a href="">${product.discount_amount}%</a></div>`)
               }
               else {
-                items2.push(`<div class="stage"><a href="">${product.discount_amount}$</a></div>`)
+                items2.push(`  <div class="product-item-price d-flex align-items-center justify-content-between"><div class="stage"><a href="">${product.discount_amount}$</a></div>`)
               }
               return items2.join('')
             })()}
                         
-                     <div class="d-flex flex-column">
+                     <div class="d-flex align-items-center">
                       <del>${product.price}$</del>
                       <span>${product.actual_price}$</span>
                      </div>
@@ -49,7 +49,7 @@ function displayResults(results) {
                         `)
         }
         else {
-          items.push(` <span>${product.price}$</span>`)
+          items.push(`  <div class="product-item-price d-flex align-items-center justify-content-end"> <span class="text-dark">${product.price}$</span>`)
         }
         return items.join('')
       }

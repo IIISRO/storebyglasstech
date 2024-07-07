@@ -507,12 +507,15 @@ width: 100%;
   
 }
 .basketadd {
-font-size: 22px;
+font-size: 16px;
 /* padding: 9px 0; */
 border-radius: 30px;
 border: 0;
 /* width: 70%; */
 background-color: #10143e;
+padding: 20px 30px;
+gap: 15px;display: flex;
+align-items: center;
 color: #fff;
 }
 .like-btn svg{
@@ -523,6 +526,21 @@ color: #fff;
   background: transparent;
   outline: none;
   border: none;
+  color: red;
+  background-color: #ececec;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.like-btn img{
+  width: 30px;
+  height: 30px;
+
+  filter: grayscale(1);
 }
 .ps-mk {
 padding: 0 10px 10px;
@@ -1051,7 +1069,7 @@ height: 220px;
   font-size: 45px;
 }
 .frame-title,.size-title,.effect-title{
-  font-weight: 700;
+  font-weight: 600;
   font-size: 17px;
   display: block;
   margin-bottom: 12px;
@@ -1067,18 +1085,18 @@ height: 220px;
 .size-list button{
   background-color: #fff;
   border-radius: 30px;
-  border: 2px solid #10143e;
+  border: 1px solid #ccc;
   outline: none;
-  font-weight: 500;
-  color: #10143e;
+  font-weight: 400;
+  color: #2b2a2a;
   padding: 5px 20px;
 }
 .frame-list button{
   border: none !important;
   border-radius: 100%;
   background-color: transparent;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
 }
 .size-list .selected{
   color: #fff !important;
@@ -1119,11 +1137,27 @@ height: 220px;
 .price-sec del{
   color: red;
   margin-right: 10px;
-  margin-top: 17px;
+  /* margin-top: 17px; */
+  font-size: 20px;
 }
 .price-sec span{
   font-size: 36px;
   font-weight: 700;
+}
+@media(max-width:1199px){
+  .prod-info{
+    margin-top: 100px !important;
+  }
+}
+.discount-section{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid red;
+  border-radius: 10px;
+  font-weight: 600;
+  color: red;
+  font-size: 20px;
 }
 .prod-cat .nav-pills li{
   background-color: rgb(249, 247, 247);
@@ -1232,3 +1266,101 @@ height: 220px;
         overflow: hidden;
     }
 }
+.product-item-img{
+  padding: 15px 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 200px;
+  position: relative;
+  /* background: rgba(0,0,0,.3); */
+  background: linear-gradient(-180deg, rgba(255,255,255,0.50) 0%, rgba(0,0,0,0.40) 100%);
+  }
+  .product-item img {
+    object-fit: contain;
+    max-width: 100%;
+    max-height: 100%;
+  }
+  .product-item:hover img{
+      transform: scale(1.05);
+      }
+      .product-item img{
+      transition: all .4s ease-in-out;
+      }
+      .product-item{
+      background-color: #fbfbfb;
+        box-shadow: rgb(0 0 0 / 12%) 0px 1px 2px 0px;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        -ms-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+        position: relative;
+      }
+      .product-item h3 {
+        font-size: 0.9rem;
+      
+      }
+      
+      .product-item h3 a {
+        text-decoration: none;
+        color: #000;
+      }
+      
+.price-code {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 26px;
+  color: #000;
+}
+
+.stage {
+  float: left;
+  height: 30px;
+  line-height: 40px;
+  position: relative;
+  margin: 0 1em 0.6em 0;
+  }
+  
+  .stage  a {
+  background:red;
+  color: #fff;
+  font-size: 14px;
+  text-decoration: none;
+  -webkit-border-top-left-radius: 6px;
+  -webkit-border-bottom-left-radius: 6px;
+  -moz-border-radius-topleft: 6px;
+  -moz-border-radius-bottomleft: 6px;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+  padding: 9px 10px;
+  }
+  .ads-sec2 h3, .ads-sec2 span, .ads-sec2 .slider-button{
+    text-align: end;
+  }
+  
+  .stage a:after {
+  content: "";
+  float: right;
+  width: 0;
+  height: 0;
+  margin-top: 2.8px;
+  border-top: 18px solid transparent;
+  border-left: 18px solid red;
+  border-bottom: 18px solid transparent;
+  }  
+
+  .product-item-price del{
+    font-size: 14px;
+    color: #333;
+
+  }
+  .product-item-price span{
+    font-size: 22px;
+    font-weight: 600;
+    color: red;
+    margin-top: -6px;
+    margin-left: 6px;
+  }

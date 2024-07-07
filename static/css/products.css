@@ -93,9 +93,6 @@ background: linear-gradient(-180deg, rgba(255,255,255,0.50) 0%, rgba(0,0,0,0.40)
   max-width: 100%;
   max-height: 100%;
 }
-.product-col-info{
-position: relative;
-}
 
 .discount-tag {
 position: relative;
@@ -502,3 +499,19 @@ background-color: #fbfbfb;
   position: absolute;
   z-index: 0;
 } */
+.product-item-price del{
+  font-size: 14px;
+  color: #333;
+
+}.product-item-price-section{
+  position: absolute;
+  bottom: 20px;
+  width: 90%;
+}
+.product-item-price span{
+  font-size: 22px;
+  font-weight: 600;
+  color: red;
+  margin-top: -6px;
+  margin-left: 6px;
+}

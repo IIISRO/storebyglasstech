@@ -139,14 +139,14 @@ $( document ).ready(function() {
 
 
 let likeBtn=document.getElementById("like")
-let likeIcon=document.querySelector("#like svg")
+let likeIcon=document.querySelector("#like img")
 likeBtn.addEventListener("click",()=>{
     let result=likeBtn.classList.toggle("active")
     if(result){
-        likeIcon.style.fill="red"
+        likeIcon.style.filter="grayscale(0)"
     }
     else{
-        likeIcon.style.fill="#10143e"
+        likeIcon.style.filter="grayscale(1)"
     }
 })
 
