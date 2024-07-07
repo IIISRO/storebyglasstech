@@ -27,9 +27,8 @@ class Basket(AbstractModel):
 class BasketItem(AbstractModel):
     basket  = models.ForeignKey(Basket, on_delete=models.CASCADE, null=False, blank=False, related_name = 'basket_items')
     product = models.ForeignKey(Product, null=False, blank=False, on_delete = models.CASCADE)
-    frame = models.ForeignKey(Frame, null=False, blank=False, on_delete = models.CASCADE)
+    frame = models.ForeignKey(Frame, null=True, blank=True, on_delete = models.CASCADE)
     size = models.ForeignKey(Size, null=False, blank=False, on_delete = models.CASCADE)
-    image = models.ImageField(null=True, blank=True, upload_to='basketIMGs/')
     quantity =  models.PositiveIntegerField(default = 1)
 
     def __str__(self):
