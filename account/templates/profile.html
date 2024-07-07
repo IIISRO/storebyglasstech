@@ -1,0 +1,402 @@
+{% extends 'base.html' %}
+{% load static %}
+  {% block style %}
+   
+  <link rel="stylesheet" href="{% static 'css/account.css' %}">
+
+  {% endblock %}
+
+  {% block content %}
+  <div class="mt-5 mb-5 container-fluid account-sec">
+  
+    <div class="row gutters-sm">
+      <div class="col-md-4 d-none d-md-block">
+        <div class="card">
+          <div class="card-body">
+            <nav class="nav flex-column nav-pills nav-gap-y-1">
+                <a data-mdb-tab-init
+                id="profile"
+                href="#profile-tab"
+                role="tab"
+                aria-controls="profile-tab"
+                aria-selected="false"  data-bs-toggle="tab"  class="nav-item nav-link has-icon nav-link-faded active">
+                    <i class="fa fa-user"></i> Şəxsi məlumatlarım
+                </a>
+                <a href="#orders-tab"
+                data-mdb-tab-init
+                id="orders"
+                role="tab"
+                aria-controls="orders-tab"
+                aria-selected="false" data-bs-toggle="tab" class="nav-item nav-link has-icon nav-link-faded">
+                  <i class="fas fa-solid fa-box"></i> Sifarişlərim
+                </a>
+                <a href="#address-tab"
+                data-mdb-tab-init
+                id="address"
+                role="tab"
+                aria-controls="address-tab"
+                aria-selected="false" data-bs-toggle="tab" class="nav-item nav-link has-icon nav-link-faded">
+                    <i class="fa fa-map-marker"></i> Ünvan tənzimləmələri
+                </a>
+             
+                <a href="#security-tab" 
+                data-mdb-tab-init
+                id="security"
+                role="tab"
+                aria-controls="security-tab"
+                aria-selected="false"data-bs-toggle="tab" class="nav-item nav-link has-icon nav-link-faded">
+                    <i class="fa fa-lock"></i> Şifrə tənzimləməsi
+                </a>
+                <a  href="{% url 'account:logout' %}" data-mdb-tab-init class="nav-logout nav-item nav-link has-icon nav-link-faded">
+                    <i style="width: 25px; height: 20px;" class="m-0 p-0 fas fa-duotone fa-right-from-bracket"></i> <p class="m-0 p-0">Çıxış</p> 
+                </a>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header border-bottom mb-3 d-flex d-md-none">
+            <ul class="nav nav-tabs card-header-tabs nav-gap-x-1" role="tablist">
+                <li class="nav-item">
+                    <a href="#profile-tab" data-mdb-tab-init
+                    id="profile"
+                    role="tab"
+                    aria-controls="profile-tab"
+                    aria-selected="false" data-bs-toggle="tab"  class="nav-link has-icon active"><i class="fa fa-user"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a href="#orders-tab" data-mdb-tab-init
+                    id="orders"
+                    role="tab"
+                    aria-controls="orders-tab"
+                    aria-selected="false" data-bs-toggle="tab" class="nav-link has-icon"><i class="fas fa-solid fa-box"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a href="#address-tab" data-mdb-tab-init
+                    id="address"
+                    role="tab"
+                    aria-controls="address-tab"
+                    aria-selected="false" data-bs-toggle="tab" class="nav-link has-icon"><i class="fa fa-map-marker"></i></a>
+                </li>
+               
+                <li class="nav-item">
+                  <a href="#security-tab" data-mdb-tab-init
+                  id="security"
+                  role="tab"
+                  aria-controls="security-tab"
+                  aria-selected="false" data-bs-toggle="tab"  class="nav-link has-icon"> <i class="fa fa-lock"></i></a>
+                </li>
+
+                <li class="nav-item">
+                  <a href="{% url 'account:logout' %}" data-mdb-tab-init class="nav-logout nav-link has-icon"><i style="width: 20px;" class="fas fa-duotone fa-right-from-bracket"></i> </a>
+                </li>
+                
+            </ul>
+          </div>
+          <div class="card-body tab-content">
+            <div class="tab-pane active"   class="tab-pane fade show active"
+            id="profile-tab"
+            role="tabpanel"
+            aria-labelledby="profile">
+              <h6>ŞƏXSİ MƏLUMATLARIM</h6>
+              <hr>
+              <form id="updateuserdataform">
+                <div class="form-group">
+                    <div class="row mb-4">
+                        <div class="col-md-6 col-sm-12 ">
+
+                            <label for="fullName" class="mb-2">Ad</label>
+                            <input type="text" class="form-control" disabled="" id="userfirstname" value="{{request.user.first_name}}" placeholder="Ad">
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+
+                            <label for="fullName" class="mb-2">Soyad</label>
+                            <input type="text" class="form-control" disabled="" id="userlastname" value="{{ request.user.last_name }}" placeholder="Soyad">
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="form-group">
+                    <div class="row mb-4">
+                        <div class="col-md-6 col-sm-12 ">
+
+                            <label for="fullName" class="mb-2">E-mail</label>
+                            <input type="text" class="form-control" disabled="" id="useremail" value="{{ request.user.email }}" placeholder="Email">
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+
+                            <label for="fullName" class="mb-2">Mobil nömrə</label>
+                            <input type="text" disabled="" class="form-control" value="{{ request.user.number }}" placeholder="Nömrə">
+                        </div>
+                    </div>
+                
+                </div>
+                
+                <div class="form-group small text-muted mb-4">
+                    Burdakı xanaları doldurmağınız sizə daha rahat xidmət göstərməyimizə kömək edəcək. Məcburi deyil və istənilən zaman <b>mobil nömrə</b> xaric bütün xanalarda dəyişiklik edə bilərsiz.
+                </div>
+
+                <button type="button" onclick="editModeUserData(this, true)" class="profile-bordered-btn bordered-btn">Düzəliş et</button>
+
+              </form>
+            </div>
+            <div class="tab-pane" id="orders-tab"  
+            role="tabpanel"
+            aria-labelledby="orders">
+                <h6>SİFARİŞLƏRİM</h6>
+                <hr>
+                <label class="d-block order-history">Sifariş Tarixçəm</label>
+                <nav>
+                  <div class="nav order-tabs nav-tabs mb-3" id="nav-tab" role="tablist">
+                    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Təsdiqlənib</button>
+                    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">İcradadır</button>
+                    <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Təsdiqlənməyib</button>
+                  </div>
+                </nav>
+                <div class="tab-content " id="nav-tabContent">
+                 
+                  <!-- <div class="border border-gray-500 bg-gray-200 p-3 text-center font-size-sm">Heç bir sifarişiniz yoxdur.</div> -->
+                <div class="tab-pane fade active show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <div class="w-100 order-card">
+                      <div class="d-flex align-items-center justify-content-between">
+                        <div class="order-icon d-flex align-items-center"><img width="25" height="25" src="{% static 'images/order.png' %}" alt=""><span style="margin-left: 10px;" class="fw-bold">Parcel picked up</span></div>
+                      <small class="text-muted">May 3,2024,02:46 AM</small>
+                      </div>
+                      <hr>
+                      <a href="" class="p-0 d-flex row w-100 m-0 mt-3">
+                        <div class="col-md-8  w-100 d-flex" style="padding-left: 0;">
+                          <img width="60" height="60" src="https://images.unsplash.com/photo-1511300636408-a63a89df3482?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZGVza3RvcCUyMHdhbGxwYXBlcnN8ZW58MHx8MHx8fDA%3D" alt="">
+                          <div class="order-name"><h4>5D carbon foil with scraple</h4><span>rate the product</span></div>
+                        </div>
+                        <div class="col-md-4 order-price-info" style="padding-right: 0;">
+                          <div class="row">
+                            <div class="col-md-6 d-flex justify-content-end">
+                              <span>1 x $30.00</span>
+                            </div>
+                            <div class="col-md-6 d-flex justify-content-end">
+                              <span>$30.00</span>
+                            </div>
+                          </div>
+
+                        </div>
+                        
+                        <div class="col-md-12  p-0 mt-3 delivery d-flex align-items-center justify-content-between">
+                          
+                          <span class="text-dark">With Delivery</span>
+                          <span class="total-price">$30.00</span>
+                        </div>
+                      </a>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <div class="w-100 order-card">
+                      <div class="d-flex align-items-center justify-content-between">
+                        <div class="order-icon d-flex align-items-center"><img width="25" height="25" src="{% static 'images/order.png' %}" alt=""><span style="margin-left: 10px;" class="fw-bold">Parcel picked up</span></div>
+                      <small class="text-muted">May 3,2024,02:46 AM</small>
+                      </div>
+                      <hr>
+                      <a href="" class="p-0 d-flex row w-100 m-0 mt-3">
+                        <div class="col-md-8  w-100 d-flex" style="padding-left: 0;">
+                          <img width="60" height="60" src="https://images.unsplash.com/photo-1511300636408-a63a89df3482?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZGVza3RvcCUyMHdhbGxwYXBlcnN8ZW58MHx8MHx8fDA%3D" alt="">
+                          <div class="order-name"><h4>5D carbon foil with scraple</h4><span>rate the product</span></div>
+                        </div>
+                        <div class="col-md-4 order-price-info" style="padding-right: 0;">
+                          <div class="row">
+                            <div class="col-md-6 d-flex justify-content-end">
+                              <span>1 x $30.00</span>
+                            </div>
+                            <div class="col-md-6 d-flex justify-content-end">
+                              <span>$30.00</span>
+                            </div>
+                          </div>
+
+                        </div>
+                        
+                        <div class="col-md-12  p-0 mt-3 delivery d-flex align-items-center justify-content-between">
+                          
+                          <span class="text-dark">With Delivery</span>
+                          <span class="total-price">$30.00</span>
+                        </div>
+                      </a>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                    <div class="w-100 order-card">
+                      <div class="d-flex align-items-center justify-content-between">
+                        <div class="order-icon d-flex align-items-center"><img width="25" height="25" src="{% static 'images/order.png' %}" alt=""><span style="margin-left: 10px;" class="fw-bold">Parcel picked up</span></div>
+                      <small class="text-muted">May 3,2024,02:46 AM</small>
+                      </div>
+                      <hr>
+                      <a href="" class="p-0 d-flex row w-100 m-0 mt-3">
+                        <div class="col-md-8  w-100 d-flex" style="padding-left: 0;">
+                          <img width="60" height="60" src="https://images.unsplash.com/photo-1511300636408-a63a89df3482?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZGVza3RvcCUyMHdhbGxwYXBlcnN8ZW58MHx8MHx8fDA%3D" alt="">
+                          <div class="order-name"><h4>5D carbon foil with scraple</h4><span>rate the product</span></div>
+                        </div>
+                        <div class="col-md-4 order-price-info" style="padding-right: 0;">
+                          <div class="row">
+                            <div class="col-md-6 d-flex justify-content-end">
+                              <span>1 x $30.00</span>
+                            </div>
+                            <div class="col-md-6 d-flex justify-content-end">
+                              <span>$30.00</span>
+                            </div>
+                          </div>
+
+                        </div>
+                        
+                        <div class="col-md-12  p-0 mt-3 delivery d-flex align-items-center justify-content-between">
+                          
+                          <span class="text-dark">With Delivery</span>
+                          <span class="total-price">$30.00</span>
+                        </div>
+                      </a>
+                    </div>
+                </div>
+                
+                </div>
+            </div>
+
+
+
+            <div class="tab-pane"  id="address-tab"
+            role="tabpanel"
+            aria-labelledby="address">
+              <h6>ÜNVAN TƏNZİMLƏMƏLƏRİ</h6>
+              <hr>
+              <div class="d-flex justify-content-between">
+                  <label class="d-block">Ünvanlarım</label>
+                  <button type="button" data-bs-toggle="modal" data-bs-target="#addAddressModal" id="add-address-btn"><i class="fa  fa-plus"></i></button>
+              </div>
+              <ul id="addresseslist" class="list-group address-list list-group-sm">
+                {% if default_address %}
+                <li class="mb-4 address-item list-group-item has-icon">
+                  <div>
+                      <h6 class="mb-0"><i class="fa-solid fa-location-dot"></i> {{default_address.address_line}}</h6>
+                      <small class="text-muted">{{default_address.first_name}} {{default_address.last_name}}, {{default_address.region}}, {{default_address.street}}, {{default_address.building}}, {{default_address.flat}}</small>
+                  </div>
+                  <button class="address-buttons default_address btn btn-light btn-sm ml-auto" type="button"><i class="default_address_check fa-solid fa-circle-check"></i></button>
+                  <button onclick="removeAddress('{{default_address.id}}')" class="address-buttons btn address-remove-btn btn-light btn-sm ml-auto" type="button"><i class="fa-regular fa-circle-xmark"></i></button>
+                </li>
+                {% endif %}
+                {% for address in all_addresses %}
+                  <li class="mb-4 address-item list-group-item has-icon">
+                    <div>
+                        <h6 class="mb-0"><i class="fa-solid fa-location-dot"></i> {{address.address_line}}</h6>
+                        <small class="text-muted">{{address.first_name}} {{address.last_name}}, {{address.region}}, {{address.street}}, {{address.building}}, {{address.flat}}</small>
+                    </div>
+                    <button onclick="setDefault('{{address.id}}')" class="address-buttons btn btn-light btn-sm ml-auto" type="button"><i class="fa-regular fa-circle-check"></i></button>
+                    <button onclick="removeAddress('{{address.id}}')" class="address-buttons btn address-remove-btn btn-light btn-sm ml-auto" type="button"><i class="fa-regular fa-circle-xmark"></i></button>  
+                  </li>
+                {% endfor %}
+              </ul>
+              <!-- address elave etme -->
+              <div class="modal fade" id="addAddressModal" tabindex="-1" role="dialog" aria-labelledby="addAddressModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <form id="addnewaddress">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="addAddressModalLabel">Yeni ünvan</h5>
+                      </div>
+                      <div class="modal-body">
+                        <div class="row">
+                          <div class="col-6 mb-3">
+                            <label for="" class="mb-2">Ad:</label>
+                            <input class="form-control" id="addressfirstname" placeholder="Adınız" value="" type="text">
+                          </div>
+                          <div class="col-6 mb-3">
+                            <label for="" class="mb-2">Soyad:</label>
+                            <input class="form-control" id="addresslastname" placeholder="Soyadınız" value="" type="text">
+                          </div>
+                          <div class="col-12 mb-3">
+                            <label for="" class="mb-2">Ünvan Başlığı:</label>
+                            <input class="form-control" id="addressline" placeholder="ünvan başlığı yaxınlığında ne var..." type="text">
+                          </div>
+                          <div class="col-12 mb-3">
+                            <label for="" class="mb-2">Rayon:</label>
+                            <input class="form-control" id="addressregion" placeholder="rayon" type="text">
+                          </div>
+                          <div class="col-12 mb-3">
+                            <label for="" class="mb-2">Küçə/Məhəllə:</label>
+                            <input class="form-control" id="addressstreet" placeholder="küçə" type="text">
+                          </div>
+                          <div class="col-6 mb-3">
+                            <label for="" class="mb-2">Bina/Ev:</label>
+                            <input class="form-control" id="addressbuilding" placeholder="bina nömrəsi" type="text">
+                          </div>
+                          <div class="col-6 mb-3">
+                            <label for="" class="mb-2">Mənzil:</label>
+                            <input class="form-control" id="addressflat" placeholder="qapı nömrəsi" type="text">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="submit" class="profile-save-btn bordered-btn">Əlavə et</button>
+                        <button type="button" class="profile-bordered-btn bordered-btn" data-bs-dismiss="modal">Ləğv et</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="tab-pane" id="security-tab"  role="tabpanel"
+            aria-labelledby="security">
+                <h6>ŞİFRƏ TƏNZİMLƏMƏSİ</h6>
+                <hr>
+                <form id="updatepasswordform">
+                  <div class="form-group">
+                    <label class="d-block mb-3">Şifrəmi Dəyiş</label>
+                    <input type="password" oninput="checkChangePassSaveBtn()" id="oldpass" class="pass form-control mb-3" placeholder="Köhnə şifrə">
+                    <input type="password" oninput="checkChangePassSaveBtn()" id="newpass" class="pass form-control mt-1 mb-3" placeholder="Yeni şifrə">
+                    <input type="password" oninput="checkChangePassSaveBtn()" id="renewpass" class="pass form-control mt-1 mb-3" placeholder="Yeni şifrəni təsdiq edin">
+                    <small id="fullNameHelp" class="form-text text-muted ">*Şifrə minimum 6 xanalı olmalıdır!</small>
+                    
+                  </div>
+                  <button type="button" id="changepassbtn" class="mt-2 disabled-chng-pass profile-bordered-btn bordered-btn">Dəyiş</button>
+
+                </form>
+             
+
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+{%endblock%}
+
+{% block js%}
+
+<script>
+  var notfWrongEmailMessage = "Email yanlışdır!"
+  var notfDatasUpdated = "Məlumatlar yeniləndi!"
+  var notfRepPassWrong = "Şifrə təkrarı doğru deyil!"
+  var notfOldPassWrong = "Köhnə şifrə yanlışdır!"
+  var notfPassUpdated = "Şifrəniz yeniləndi!"
+  var notfNewAddressAdded = "Yeni ünvan əlavə edildi!"
+  var notfAddressDeleted = "Ünvan silindi!"
+  var notfDefAddressChnged = "Daimi ünvan dəyişildi!"
+  var notfPassUpdated = "Şifrəniz yeniləndi!"
+  var notfPassUpdated = "Şifrəniz yeniləndi!"
+  var notfOrderConf = "Sifarişiniz təsdiqləndi!"
+
+
+  var transNoAddress = "Qeyd olunmuş ünvanınız yoxdur"
+  var transSave = "Yadda saxla"
+  var transCancel = "Ləğv et"
+  var transEdit = "Düzəliş et"
+  var notfPassUpdated = "Şifrəniz yeniləndi!"
+  var notfPassUpdated = "Şifrəniz yeniləndi!"
+
+  var confSoundPTH = '{% static "order_conf.mp3" %}';
+
+</script>
+
+</script>
+<script src="{% static 'js/profile.js' %}"></script>
+
+{% endblock %}

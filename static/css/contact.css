@@ -1,0 +1,179 @@
+.contact-overlay{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    background-image: linear-gradient(122deg, #FFFFFF78 75%, #D9D9D900 97%);
+    opacity: 0;
+    transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
+}
+.contact-page-header{
+    background-image: url('https://demo.themerox.com/posterlaab-3/wp-content/uploads/2023/03/posterlaab-contact-banner.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+    padding: 100px 20px;
+    position: relative;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@media(min-width:1024px){
+    .contact-page-header{
+
+    }
+}
+.contact-page-header h1{
+    font-weight: 700;
+    color: #10143e;
+    font-size: 50px;
+    line-height: 1.3;
+}
+.contact-sidebar h4,.contact-form h4{
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+.icon-box-icon{
+    margin-right: 15px;
+}
+.icon{
+    fill: #FFFFFF00;
+    color: #FFFFFF00;
+    border-color: #FFFFFF00;
+}
+.icon svg {
+    width: 26px;
+    height: 26px;
+    position: relative;
+    display: block;
+}
+.icon-box-title{
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 16px;
+}
+.breadcrumb-color{
+    color: #10143e;
+    text-decoration: none;
+}
+.sidebar-ad-sec{
+    background-image: url('https://demo.themerox.com/posterlaab-3/wp-content/uploads/2023/02/tranding-poster.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-radius: 7px;
+    padding-bottom: 170px;
+}
+.ad-title{
+    margin-top: 30px;
+}
+.heading-title{
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 40px;
+    margin: 10px 0;
+}
+.contact-form label {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 26px;
+}.required {
+    color: red;
+}
+.contact-form input{
+        height: 54px;
+       
+}
+.contact-form input,.contact-form textarea{
+    border-radius: 5px;
+    padding: 15px 20px;
+    border: 1px solid #e1e2ef;
+    position: relative;
+    resize: none;
+}
+.contact-form button {
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    line-height: 26px;
+    padding: 14px 30px 14px 30px;
+    border-radius: 100px;
+    border: 0;
+    background: #1d2cca;
+}
+.contact-form{
+    padding-left: 20px;
+}
+@media(max-width:575px){
+    .contact-page-header h1{
+        font-size: 35px;
+    }
+    .contact-page-header p{
+        text-align: center;
+    }
+}
+
+.checksvg {
+    width: 100px;
+    display: block;
+    margin: 40px auto 0;
+}
+
+.pathsvg {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 0;
+    &.circle {
+        -webkit-animation: dash .9s ease-in-out;
+        animation: dash .9s ease-in-out;
+    }
+    &.line {
+        stroke-dashoffset: 1000;
+        -webkit-animation: dash .9s .35s ease-in-out forwards;
+        animation: dash .9s .35s ease-in-out forwards;
+    }
+    &.check {
+        stroke-dashoffset: -100;
+        -webkit-animation: dash-check .9s .35s ease-in-out forwards;
+        animation: dash-check .9s .35s ease-in-out forwards;
+    }
+}
+
+@-webkit-keyframes dash {
+    0% {
+        stroke-dashoffset: 1000;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes dash {
+    0% {
+        stroke-dashoffset: 1000;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@-webkit-keyframes dash-check {
+    0% {
+        stroke-dashoffset: -100;
+    }
+    100% {
+        stroke-dashoffset: 900;
+    }
+}
+
+@keyframes dash-check {
+    0% {
+        stroke-dashoffset: -100;
+    }
+    100% {
+        stroke-dashoffset: 900;
+}
+}

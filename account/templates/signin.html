@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}    
+    
+    {% block style %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    {% endblock %}
+
+    {% block content %}  
+
+     <!--Main content-->
+
+
+
+    
+	<!-- breadcrumb-section -->
+	<div class="breadcrumb-section breadcrumb-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="breadcrumb-text">
+						<p>Daxİl ol</p>
+						<h1>Hesabınıza giriş edin</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end breadcrumb section -->
+
+    <!--  signin section -->
+    <section>
+        <div class="container">
+            <div class="d-flex justify-content-center p-3 row">
+                <div class="pb-4 center col-12">
+                    <div class="w-100 d-flex py-3 align-items-center justify-content-center"><img src="https://www.tablohane.com/Content/Images/Design/tablohane-logo.png" alt=""></div>
+                    <form method="post">
+                    <div class="txt_field">
+                        <input id="phone" type="text" required/>
+                        <span></span>
+                        <label>Mobil nömrə</label>
+                    </div>
+                    <div id="pass_div" class="d-none  txt_field">
+                        <input id="password" type="password" required/>
+                        <span></span>
+                        <label>Şifrə</label>
+                    </div>
+                    <button type="button" onclick="checkNumber()" id="next-btn" class="bordered-btn">Davam et</button>
+                    <button type="button" onclick="login()" id="signin_btn" class="d-none cart-btn ">Daxil ol</button>
+                    <div id="reset_pass" class="d-none signup_link">Şifrəni unutmusan? <b  onclick="newPassword()">Yeni Şifrə</b></div>
+                    <div id="resend_pass" class="d-none signup_link">Şifrə göndərilmədi? <b onclick="newPassword()">Yenidən göndər</b></div>
+                    <div id="resend_timer" class="d-none">Yeni şifrə <b id="minutes">3</b><b>:</b><b id="seconds">00</b> sonra</div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% endblock %}
+
+    {% block js%}
+    <script>
+        var notfPassSMSSended = 'Şifrə SMS göndərildi';
+        var notfTryAgain = 'Yenidən cəhd edin';
+        var notfWrongNumber = 'Nömrə yanlış daxil edilib';
+        var notfNewPassSMSSended = 'Yeni şifrə SMS göndərildi';
+        var notfPassAgainSended = 'Şifrə yenidən göndərildi';
+        var notfEnterPass = 'Şifrənizi daxil edin';
+        var notfWrongPass = 'Şifrə yanlışdır!';
+    </script>
+    <script src="{% static 'js/login.js'%}"></script>
+    {% endblock%}
+
+  

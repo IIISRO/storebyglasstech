@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+  {% block style %}
+   
+  <link rel="stylesheet" href="{% static 'css/products.css' %}">
+
+  {% endblock %}
+
+  {% block content %}
+
+  <div class="w-100 py-5">
+    <div class="container-fluid">
+    <div class="products-ad w-100">
+        <h2>Öz dizaynını et!</h2>
+        <p class="mt-3">İndi <b>Storeglasstech</b> də istədiyin tablonu dizayın edib sifariş edə bilərsən.</p>
+        <a href="" class="products-ad-btn px-5 py-2">Hazırla</a>
+
+    
+    </div>
+    <div class="product-list-section mx-auto w-100 py-5 mt-5">
+      <div class="shop-options w-100 mb-5">
+        <ul class="row type-list w-100" style="margin-bottom: 0;">
+
+          <li class="col-6 py-1" id="mdf" data-name="type" data-value="mdf" data-value="mdf">
+              <img src="{% static 'images/poster.png'%}" width="30" height="30"  alt="">
+              <span>mdf</span>
+          </li>
+          <li class="col-6 py-1" id="glass"  data-name="type" data-value="glass" data-value="glass">
+            <img src="{% static 'images/poster.png'%}"  width="30" height="30" alt="">
+            <span>glass</span>
+          </li>
+        </ul>
+    </div>
+      <div class="product-list-header w-100 d-flex align-items-center justify-content-between">
+
+        <h3>Shop</h3>
+        <div class="shop-filter d-flex align-items-center">
+          <select class="filter1 py-2 px-5" name="" id="filterSelect">
+            <option class="selected" selected value="" data-value="">Tarixə görə</option>
+            <option value="" data-value="lth">Ucuzdan bahaya</option>
+            <option value="" data-value="htl">Bahadan ucuza</option>
+          </select>
+        </div>
+      </div>
+      <div class="product-list mx-auto w-100 row mt-5 pt-2 pb-5">
+        <div class="col-md-3">
+          <div class="product-categories w-100 d-flex flex-column">
+            <h2 class="mb-3">Kateqoriyalar</h2>
+            <ul class="categories-list">
+              <li><a href="" type="button" class="category selected" name="all" data-value="all" >Hamısı</a></li>
+              {% for category in categories %}
+              <li><a href="" type="button" class="category" name="{{category}}" data-value="{{category}}" >{{category.title}}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+         
+          <div class="filter-size w-100 flex-column py-5">
+            <h2 class="mb-3">Rəssamlar</h2>
+            <ul>
+              {% for artist in artists %}
+              <li class="mb-2"><input class="checkbox-size checkbox-artist" type="checkbox" value="{{artist}}"><label for="">{{ artist }}</label></li>
+              {% endfor %}
+            </ul>
+          </div>
+       
+        </div>
+        <div class="col-md-9">
+          <div class="w-100 row product-cards" id="products">
+          
+          
+
+    
+          </div>
+          <div id="pagination" class="pt-5 pb-3"></div>
+
+        </div>
+      </div>
+    </div>
+</div>
+  </div>
+
+  {% endblock %}
+
+
+{% block js%}
+<script src="{% static 'js/product-api.js'%}"></script>
+
+<script src="{% static 'js/products.js'%}"></script>
+{% endblock%}
