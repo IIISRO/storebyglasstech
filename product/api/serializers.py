@@ -4,7 +4,21 @@ from product.models import Product, Coupon, Category, Size, Frame
 from django.urls import reverse_lazy
 
 
-
+class CouponSerializer(serializers.ModelSerializer):
+    is_valid = serializers.SerializerMethodField()
+    class Meta:
+        model = Coupon
+        fields = [
+            'code',
+            'discount_precent',
+            'one_time',
+            'is_valid',
+        ]
+    def get_is_valid(self, obj):
+        request = self.context.get('request')
+        valid = obj.is_valid(request.user)
+        return valid
+    
 class ProductSizeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Size

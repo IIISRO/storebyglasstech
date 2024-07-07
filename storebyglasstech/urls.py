@@ -28,6 +28,7 @@ urlpatterns = [
     path('', include('order.urls', namespace='order')),
     path('api/v1/', include('product.api.urls', namespace='productAPI')),
     path('api/v1/account/', include('account.api.urls', namespace='accountAPI')),
+    path('api/v1/order/', include('order.api.urls', namespace='orderAPI')),
     path("ckeditor5/", include('django_ckeditor_5.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
 
