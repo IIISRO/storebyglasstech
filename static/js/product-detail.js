@@ -197,14 +197,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Update the main image size based on the selected option
             if(window.innerWidth<=767){
-                mainFrame.style.width = width*0.8 + "px";
-                mainFrame.style.height = height*0.8 + "px";
+                // mainFrame.style.width = width*0.8 + "px";
+                // mainFrame.style.height = height*0.8 + "px";
                 mainFrame1.style.width = width*0.5 + "px";
                 mainFrame1.style.height = height*0.5 + "px";
             }
             else{
-                mainFrame.style.width = width*0.8 + "px";
-                mainFrame.style.height = height*0.8 + "px";
+                // mainFrame.style.width = width*0.8 + "px";
+                // mainFrame.style.height = height*0.8 + "px";
                 mainFrame1.style.width = width*0.8 + "px";
                 mainFrame1.style.height = height*0.8 + "px";
             }
