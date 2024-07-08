@@ -26,18 +26,18 @@ class Product(AbstractModel):
     title = models.CharField(max_length=150, null=False, blank=False)
     category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name='category_products')
     sizes = models.ManyToManyField('Size')
-    frames = models.ManyToManyField('Frame')
+    frames = models.ManyToManyField('Frame',  blank=True)
     status = models.CharField(max_length=50,default='New', choices=STATUS)
     type = models.CharField(max_length=50, null=False, blank=False, choices=TYPE)
     artist = models.ForeignKey('Artist', on_delete=models.CASCADE, related_name='artist_products')
-    detail = models.TextField(null=False, blank=False)
-    description = CKEditor5Field(null=False, blank=False, config_name='extends')
+    description = models.TextField(null=False, blank=False)
+    detail = CKEditor5Field(null=False, blank=False, config_name='extends')
     image = models.ImageField(upload_to='PosterIMGs/', null=False, blank=False)
     price = models.FloatField(null=False, blank=False)
     slug = models.SlugField(null=False, unique=True)
 
     def __str__(self):
-        return self.title
+        return f'{self.title} - {self.type}'
 
     def save(self, *args, **kwargs):
        self.slug = slugify(f'{self.title} - {self.type}')

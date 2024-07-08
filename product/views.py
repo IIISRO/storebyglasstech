@@ -19,5 +19,9 @@ class Products(View):
 class ProductDetail(View):
     def get(self, request, category_slug, product_slug):
         get_object_or_404(Product, slug = product_slug, category__slug = category_slug)
-        return render(request, 'product-detail.html')
+        context={
+            'category_slug':category_slug,
+            'product_slug':product_slug
+        }
+        return render(request, 'product-detail.html', context)
 

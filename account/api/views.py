@@ -81,7 +81,6 @@ class UpdateAddressAPIView(UpdateAPIView):
     queryset = UserAddress
 
     def update(self, request, *args, **kwargs):
-        print(request.data)
         super().update(request, *args, **kwargs)
         
         user_addresses = UserAddress.objects.filter(user = self.get_object().user).order_by('-created_at')
@@ -149,7 +148,7 @@ class AddWishlistAPIView(CreateAPIView):
                 if user_wishlist_items:
                     serialized_data['id'] = user_wishlist_items[-1]['id'] + 1
                     exist_item = False
-                    # data varsa  onu  user_wishlist_items sayin update edir
+                    # data varsa  onu  user_wishlist_items hecne etmir
                     for item in user_wishlist_items: 
                         if item['product'] == serialized_data['product']:
                             exist_item = True
@@ -192,19 +191,19 @@ class AddWishlistAPIView(CreateAPIView):
             return Response(serializer.errors, status=HTTP_400_BAD_REQUEST)
        
     
-class RemoveWishlistAPIView(DestroyAPIView):
-    http_method_names = ["delete"]
-    serializer_class = UserWishlistItemSerializer
-    queryset = UserWishlistItem
-    def destroy(self, request, *args, **kwargs):
+class RemoveWishlistAPIView(APIView):
+    http_method_names = ["post"]
+    def post(self, request, pk, *args, **kwargs):
         # eger logindirse default silir
         if request.user.is_authenticated:
-            return super().destroy(request, *args, **kwargs)
+            item = UserWishlistItem.objects.get(wishlist__user=request.user, product__id = pk)
+            item.delete()
+            return Response(status=HTTP_204_NO_CONTENT)
         # eks halda cookide tapib silir
         user_wishlist_items = json.loads(request.COOKIES.get('user_wishlist_items')) if request.COOKIES.get('user_wishlist_items') else []
         if user_wishlist_items:
             for item in user_wishlist_items: 
-                if item['id'] == kwargs['pk']:
+                if item['product'] == pk:
                     user_wishlist_items.remove(item)
                     response = Response(status=HTTP_204_NO_CONTENT)
                     response.set_cookie('user_wishlist_items', json.dumps(user_wishlist_items))
@@ -228,3 +227,11 @@ class WishlistAPIView(APIView):
         wishlist = request.user.wishlist
         serializer = UserWishlistSerializer(wishlist, context={'request':request})
         return Response(serializer.data, status=HTTP_200_OK)
+
+@api_view(['GET']) 
+def get_all_wish_item_number(request):
+    if request.user.is_authenticated:
+       return Response({'wish_count':request.user.wishlist.wish_items.count()}, status=HTTP_200_OK)
+   
+    user_wishlist_items = json.loads(request.COOKIES.get('user_wishlist_items')) if request.COOKIES.get('user_wishlist_items') else []
+    return Response({'wish_count':len(user_wishlist_items)}, status=HTTP_200_OK)

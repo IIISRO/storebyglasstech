@@ -465,36 +465,7 @@ background-color: #fbfbfb;
 .product-item-img{
   position: relative;
 }
-.product-icon1{
-  width: 30px;
-  height: 30px;
-  background-color: #fff;
-  left: 10px;
-  bottom: 10px;
-  display: flex;
-  color: red;
-  font-size: 12px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  z-index: 10;
-  position: absolute;
-}
-.product-icon2{
-  width: 30px;
-  height: 30px;
-  background-color: #fff;
-  left: 50px;
-  bottom: 10px;
-  display: flex;
-  color: red;
-  font-size: 12px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  z-index: 10;
-  position: absolute;
-}
+
 /* .product-item-img img{
   position: absolute;
   z-index: 0;

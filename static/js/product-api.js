@@ -16,8 +16,7 @@ function displayResults(results) {
                   <img
                   src="${product.image}"
                   alt="">
-                  <span class="product-icon1"><i class="fa fa-search"></i></span>
-                  <span class="product-icon2"><i class="fa fa-search"></i></span>
+                  
                 </div>
                 </a>
                 <div class="product-col-info p-2">
@@ -27,7 +26,7 @@ function displayResults(results) {
                   
                     ${(function Items() {
         let items = []
-
+        
         if (product.has_discount) {
           items.push(`
                         ${(function Items2() {
@@ -36,20 +35,20 @@ function displayResults(results) {
                 items2.push(`  <div class="product-item-price d-flex align-items-center justify-content-between"><div class="stage"><a href="">${product.discount_amount}%</a></div>`)
               }
               else {
-                items2.push(`  <div class="product-item-price d-flex align-items-center justify-content-between"><div class="stage"><a href="">${product.discount_amount}$</a></div>`)
+                items2.push(`  <div class="product-item-price d-flex align-items-center justify-content-between"><div class="stage"><a href="">${product.discount_amount} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i></a></div>`)
               }
               return items2.join('')
             })()}
                         
                      <div class="d-flex align-items-center">
-                      <del>${product.price}$</del>
-                      <span>${product.actual_price}$</span>
+                      <del>${product.price} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i></del>
+                      <span>${product.actual_price} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i></span>
                      </div>
                     </div>
                         `)
         }
         else {
-          items.push(`  <div class="product-item-price d-flex align-items-center justify-content-end"> <span class="text-dark">${product.price}$</span>`)
+          items.push(`<div class="product-item-price d-flex align-items-center justify-content-end"> <span class="text-dark">${product.price} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i></span>`)
         }
         return items.join('')
       }

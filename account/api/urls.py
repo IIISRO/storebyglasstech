@@ -9,7 +9,8 @@ from .views import (get_or_create_user,
                     DeleteAddressAPIView,
                     AddWishlistAPIView,
                     RemoveWishlistAPIView,
-                    WishlistAPIView
+                    WishlistAPIView,
+                    get_all_wish_item_number
                     )
 
 app_name = 'accountAPI'
@@ -25,6 +26,8 @@ urlpatterns = [
     path('wishlist/add/', AddWishlistAPIView.as_view(), name='addwishlist'),
     path('wishlist/remove/<int:pk>/', RemoveWishlistAPIView.as_view(), name='removewishlist'),
     path('wishlist/', WishlistAPIView.as_view(), name='wishlistAPI'),
+    path('get_all_wish_item_number/', get_all_wish_item_number, name='get_all_wish_item_number'),
+
 
 
 ]

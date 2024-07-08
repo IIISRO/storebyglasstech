@@ -94,7 +94,7 @@
                         <div class="header-actions d-flex align-items-center">
                             <a href="{% url 'account:wishlist' %}" class="wishlist-icon">
                                 <i class="fa fa-heart" aria-hidden="true">
-                                    <span class="count-badge">0</span>
+                                    <span id="wish-count" class="count-badge">0</span>
                                 </i>
                                 <span class="title">Wishlist</span>
                             </a>
@@ -347,10 +347,29 @@
             var changeUserPassAPI = "{% url 'accountAPI:change_password' pk=request.user.id %}";
             '{% endif %}'
 
-
+            // notf
             var notfAddedBasketMessage = 'Səbətə Əlavə Olundu';
             var notfError = 'Xəta baş verdi!';
             var notfDatasMiss = 'Məlumatlar tam deyil!';
+
+            // wish  counter
+            function wishCounter(){
+                fetch('{% url "accountAPI:get_all_wish_item_number" %}',{
+                method:"get",
+                headers: {
+                    "X-CSRFToken": csrf,
+                    "Accept": "application/json",
+                    'Content-Type': 'application/json'
+                }
+                })
+                .then((response)=>{
+                    return response.json()
+                })
+                .then((data)=>{
+                    $("#wish-count").text(data.wish_count)
+                })
+            }
+            wishCounter()
 
         </script>
         {% block js %}{% endblock %}

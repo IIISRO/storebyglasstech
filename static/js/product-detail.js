@@ -144,9 +144,12 @@ likeBtn.addEventListener("click",()=>{
     let result=likeBtn.classList.toggle("active")
     if(result){
         likeIcon.style.filter="grayscale(0)"
+        addWish(likeBtn.dataset.prod_id)
     }
     else{
         likeIcon.style.filter="grayscale(1)"
+        removeWish(likeBtn.dataset.prod_id)
+
     }
 })
 
@@ -155,7 +158,6 @@ likeBtn.addEventListener("click",()=>{
 document.addEventListener('DOMContentLoaded', () => {
     const buttons = document.querySelectorAll('.frame-list li button');
     const sizes = document.querySelectorAll('.size-list li button');
-    const effects = document.querySelectorAll('.effect-list li button');
     const mainFrame = document.getElementById("main-frame");
     let mainFrame1=document.getElementById("main-frame1")
     let mainImage1=document.querySelector("#main-frame1 img")
@@ -212,16 +214,5 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(width,height);
         });
     });
-    effects.forEach(effect => {
-        effect.style.backgroundColor =effect.getAttribute('data-bg')
-        effect.addEventListener('click', () => {
-            // Remove the 'selected' class from all buttons
-            effects.forEach(btn => btn.classList.remove('selected'));
-
-            // Add the 'selected' class to the clicked button
-            effect.classList.add('selected');
-            mainImage.style.filter = `grayscale(${effect.getAttribute("data-value")})`;
-            mainImage1.style.filter = `grayscale(${effect.getAttribute("data-value")})`;
-        })
-    })
+   
 });

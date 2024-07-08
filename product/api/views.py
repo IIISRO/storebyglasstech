@@ -81,7 +81,11 @@ class ProductsListAPI(APIView):
 
 class ProductDetailAPI(APIView):
     http_method_names = ["get"]
-   
+    
+    def get_serializer_context(self):
+        return {'request': self.request}
+    
     def get(self, request, category_slug, product_slug, *args, **kwarg):
         product = Product.objects.get(slug=product_slug)
-        return Response(ProductSerializer(product).data, status=HTTP_200_OK)
+        context = self.get_serializer_context()
+        return Response(ProductSerializer(product, context=context).data, status=HTTP_200_OK)

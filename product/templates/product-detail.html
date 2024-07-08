@@ -4,8 +4,8 @@
    
   <link rel="stylesheet" href="{% static 'css/product-detail.css' %}">
   <link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet">
-</link>
-<link rel="stylesheet" href="https://bgrins.github.io/spectrum/spectrum.css">
+  </link>
+  <link rel="stylesheet" href="https://bgrins.github.io/spectrum/spectrum.css">
 
   {% endblock %}
 
@@ -35,31 +35,14 @@
                     
                     </ul>
                     <div class="tab-content w-100" id="pills-tabContent">
-                        <div class="pd-product-type product-color-1">
-                            <img src="https://www.tablohane.com/Content/Images/ProductType/1.png">Kanvas Tablo
-                            Seçildi
+                        <div id="prod-selected" class="pd-product-type product-color-1">
+                           
                         </div>
                         <div class="prod-categories">
                             <div style="display: block;">
-                                <ul>
-                                    <li>
-                                        <a href="">
-                                            <div class="pti-in-icon" style="display: block;"><span><img
-                                                        src="https://www.tablohane.com/Content/Images/ProductType/5.png"></span></div>
-                                            <div class="pti-in-info" style="display: block;">
-                                                <span class="product-color-5">Glass</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="">
-                                            <div class="pti-in-icon" style="display: block;"><span><img
-                                                        src="https://www.tablohane.com/Content/Images/ProductType/6.png"></span></div>
-                                            <div class="pti-in-info" style="display: block;">
-                                                <span class="product-color-6">Mdf</span>
-                                            </div>
-                                        </a>
-                                    </li>
+                                <ul id="prod-types">
+                                    
+                                 
                                     
                                 </ul>
                             </div>
@@ -68,7 +51,7 @@
                             aria-labelledby="pills-home-tab">
 
                             <div class="frame-main" id="main-frame">
-                                <img src="https://images.unsplash.com/photo-1552082919-e60010758c47?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTF8fGRlc2t0b3AlMjB3YWxscGFwZXJzfGVufDB8fDB8fHww"
+                                <img id="main-frame-img" src=""
                                     alt="">
                             </div>
 
@@ -105,9 +88,9 @@
 
             </div>
             <div class="col-xl-5 prod-info">
-                <h2 class="prod-info-title mb-3">Harmony of Hues</h2>
+                <h2 id="prod-title" class="prod-info-title mb-3"></h2>
                 <hr>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit suscipit maiores cupiditate mollitia earum dolorem nulla doloribus ea quae eaque provident vero et error, consectetur quisquam, dignissimos sint ipsa itaque eius aspernatur quam? Accusamus est excepturi ullam impedit modi accusantium.</p>
+                <p id="prod-desc"></p>
                
                 <span class="frame-title">Frame</span>
                 <ul class="frame-list">
@@ -117,7 +100,7 @@
                     <li><button style="background-image: url('https://img.freepik.com/free-photo/wood-with-coarse-surface-chipping_23-2148394666.jpg?size=626&ext=jpg&ga=GA1.1.876311657.1717677308&semt=ais_user');" data-frame="https://i.pinimg.com/originals/2e/8f/00/2e8f000a5e7c8c419420f181c1235609.png"><div class="active-overlay"><i class="fa fa-check"></i></div></button></li>
                 </ul>
                 <span class="size-title mt-4">Size</span>
-                <ul class="size-list">
+                <ul id="size-list" class="size-list">
                     <li><button  data-size="200*300">20x30"</button></li>
                     <li><button data-size="220*220">30x30"</button></li>
                     <li><button data-size="250*150">30*40"</button></li>
@@ -125,25 +108,13 @@
                     <li><button data-size="200*200">20x20"</button></li>
                     
                 </ul>
-                <span class="effect-title mt-4">Effect</span>
-                <ul class="effect-list">
-                    <li><button class="selected" data-value="0%" data-bg="none"><img  src="{% static 'images/none.png'%}" alt=""></button></li>
-                    <li><button data-value="100%" data-bg="black"><div class="active-overlay"><i class="fa fa-check"></i></div></button></li>
-                    
-                </ul>
                 <div class="basket-col d-flex align-items-end  align-items-lg-center flex-column flex-lg-row justify-content-between mt-4">
-                    <div class="d-flex  align-items-center mb-4 mb-md-0" style="gap: 20px;">
-                    <div class="discount-section py-2 px-4">
-                        -15%
+                    <div id="prod-price" class="d-flex  align-items-center mb-4 mb-md-0" style="gap: 20px;">
+                       
                     </div>
-                    <div class="price-sec d-flex align-items-center">
-                        <del>$300</del>
-                        <span>$250</span>
-                    </div>
-                </div>
                    <div class="d-flex align-items-center" style="gap: 20px;">
                     <button type="button" class="basketadd py-3"><i class="fa fa-shopping-cart"></i> Səbətə at</button>
-                    <button class="like-btn" id="like">
+                    <button data-prod_id="" class="like-btn" id="like">
                         <!-- <svg fill="#000000" height="200px" width="200px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M2.5,209.1C1,221.1,0,233.3,0,245.7c0,109,59.7,203.9,148.1,254.2l16.5-34.8V227.4l-18.3-18.3H2.5z M512,227.4 c0-18.3-18.3-36.6-36.6-36.6H329.1c9.1-36.6,18.3-73.1,18.3-91.4c0-36.6-18.3-73.1-27.4-82.3c-0.2-0.2-9.1-9.1-27.4-9.1 c-27.4,0-27.4,27.4-27.4,27.4c0,0.5-9.1,45.7-9.1,64s-36.6,91.4-54.9,109.7l-18.3,9.1v256l18.3,9.1h201.1 c36.6,0,54.9-18.3,54.9-36.6s-18.3-36.6-36.6-36.6c36.6,0,54.9-18.3,54.9-36.6c0-18.3-18.3-36.6-36.6-36.6 c36.6,0,54.9-18.3,54.9-36.6c0-18.3-18.3-36.6-36.6-36.6C493.7,264,512,245.7,512,227.4z"></path> </g></svg> -->
                         <img class="like-img" src="{% static 'images/heart2.png'%}" alt="">
                     </button>
@@ -439,21 +410,11 @@
         <div class="tab-pane fade active show" id="nav-first" role="tabpanel" aria-labelledby="nav-first-tab">
         
             <div class="prod-cat  mt-5">
-                <ul class="w-100 nav nav-pills flex-row justify-content-between d-flex nav-pills" id="pills-tab" role="tablist">
-                  <!-- <li class="nav-item" role="presentation">
-                    <button class="nav-link  fw-semibold active position-relative" id="pills-home-tab1" data-bs-toggle="pill" data-bs-target="#pills-home1" type="button" role="tab" aria-controls="pills-home1" aria-selected="true">KANVAS TABLO</button>
-                  </li> -->
-                  <!-- <li class="nav-item" role="presentation">
-                    <button class="nav-link fw-semibold position-relative" id="pills-profile-tab1" data-bs-toggle="pill" data-bs-target="#pills-profile1" type="button" role="tab" aria-controls="pills-profile1" aria-selected="false">ÇERÇEVELİ TABLO</button>
-                  </li>
-                  <li class="nav-item" role="presentation">
-                    <button class="nav-link  fw-semibold position-relative" id="pills-contact-tab1" data-bs-toggle="pill" data-bs-target="#pills-contact1" type="button" role="tab" aria-controls="pills-contact1" aria-selected="false">PAKETLEME</button>
-                  </li> -->
-                </ul>
+           
                 <div class="w-100 mt-5 tab-content " id="pills-tabContent">
                   <div class="tab-pane fade show active" id="pills-home1" role="tabpanel" aria-labelledby="pills-home-tab1">
                    
-                    <div class="cq-item cq-item1">
+                    <div id="prod-detail" class="cq-item cq-item1">
                         <ul style="float: right;">
                             <li>
                                 <p class="cq-p-title">3cm kenar kalınlığı</p>
@@ -486,30 +447,7 @@
                             </li>
                         </ul>
                     </div> </div>
-                  <!-- <div class="tab-pane fade" id="pills-profile1" role="tabpanel" aria-labelledby="pills-profile-tab1">
-                    <div class="cq-item cq-item2 py-4">
-                        <ul style="float: left;">
-                            <li>
-                                <p class="cq-p-title">3cm Çerçeve kalınlığı</p>
-                                <p>Çerçeve ile tablo arasında 2cm boşluk bulunmaktadır bu durum tabloya fark
-                                    katmaktadır. Çerçeveler poliüretan'den üretlmiştir </p>
-                            </li>
-                            <li>
-                                <p class="cq-p-title">Renk seçenekleri</p>
-                                <p>Bir çok renk seçeneği ile tabloya ve ortama renk katabilme imkanı</p>
-                            </li>
-                        </ul>
-                    </div> </div>
-                  <div class="tab-pane fade" id="pills-contact1" role="tabpanel" aria-labelledby="pills-contact-tab1">
-                    <div class="cq-item cq-item3 py-5">
-                        <ul style="float: right;">
-                            <li>
-                                <p class="cq-p-title">Dayanıklı mukavva</p>
-                                <p>Üretim işleminden sonra kenarları zarar görmemesi için sarılır ve daha sonra kalın
-                                    mukavva ile darbelere karşı dayanıklı paketi yapılır.</p>
-                            </li>
-                        </ul>
-                    </div>  </div> -->
+                  
                 </div>
               </div>
         </div>
@@ -537,7 +475,13 @@
 
 
 {% block js%}
+<script>
+    var productDetailAPI = "{% url 'productAPI:api-product-detail' category_slug=category_slug product_slug=product_slug %}";
+    var addWishAPI = "{% url 'accountAPI:addwishlist' %}";
 
+</script>
 <script src="https://bgrins.github.io/spectrum/spectrum.js"></script>
 <script src="{% static 'js/product-detail.js' %}"></script>
+<script src="{% static 'js/product-detail-api.js' %}"></script>
+
 {% endblock%}
