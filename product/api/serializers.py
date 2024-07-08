@@ -73,6 +73,8 @@ class ProductSerializer(serializers.ModelSerializer):
     category =  serializers.SerializerMethodField()
     sizes =  serializers.SerializerMethodField()
     frames =  serializers.SerializerMethodField()
+    same_products = serializers.SerializerMethodField()
+
 
     class Meta:
         model = Product
@@ -84,6 +86,7 @@ class ProductSerializer(serializers.ModelSerializer):
             'sizes',
             'frames',
             'type',
+            'same_products',
             'artist',
             'actual_price',
             'image',
@@ -108,4 +111,6 @@ class ProductSerializer(serializers.ModelSerializer):
     def get_frames(self, obj):
         return ProductFrameSerializer(obj.frames, many = True).data
 
-
+    def get_same_products(self, obj):
+        return [{'type': product.type, 'url':reverse_lazy('product:product-detail', kwargs = {'category_slug':product.category.slug, 'product_slug':product.slug})} 
+                for product in obj.same_products]

@@ -2,7 +2,7 @@
 from rest_framework.response import Response
 from product.models import Product, Category, Artist
 from rest_framework.views import APIView
-from .serializers import ProductListSerializer
+from .serializers import ProductListSerializer, ProductSerializer
 from rest_framework.status import HTTP_200_OK, HTTP_404_NOT_FOUND
 from django.db.models import Q
 from django.shortcuts import get_object_or_404
@@ -77,3 +77,11 @@ class ProductsListAPI(APIView):
         response_data['products'] = product_serializer.data
        
         return Response(response_data, status=HTTP_200_OK)
+    
+
+class ProductDetailAPI(APIView):
+    http_method_names = ["get"]
+   
+    def get(self, request, category_slug, product_slug, *args, **kwarg):
+        product = Product.objects.get(slug=product_slug)
+        return Response(ProductSerializer(product).data, status=HTTP_200_OK)

@@ -30,6 +30,7 @@ class Product(AbstractModel):
     status = models.CharField(max_length=50,default='New', choices=STATUS)
     type = models.CharField(max_length=50, null=False, blank=False, choices=TYPE)
     artist = models.ForeignKey('Artist', on_delete=models.CASCADE, related_name='artist_products')
+    detail = models.TextField(null=False, blank=False)
     description = CKEditor5Field(null=False, blank=False, config_name='extends')
     image = models.ImageField(upload_to='PosterIMGs/', null=False, blank=False)
     price = models.FloatField(null=False, blank=False)
@@ -96,6 +97,7 @@ class Product(AbstractModel):
 
 class Frame(AbstractModel):
     title=models.CharField(max_length=50)
+    cover = models.ImageField(upload_to='FrameCoverIMGs/', null=False, blank=False) 
     frame = models.ImageField(upload_to='FrameIMGs/', null=False, blank=False) 
 
   
