@@ -173,6 +173,9 @@ function removeWish(productid){
     })
 	
 }
+let cartMessage=document.getElementById("cartMessage");
+cartMessage.classList.remove('d-flex')
+cartMessage.classList.add('d-none')
 
 let basketAddButton = document.getElementById("basketadd")
     basketAddButton.addEventListener("click",()=>{
@@ -190,6 +193,9 @@ let basketAddButton = document.getElementById("basketadd")
             basketAddButton.innerHTML=`<i class="fa-regular fa-circle-check"></i> Səbətə əlavə olundu`
             basketAddButton.style.backgroundColor="green"
             basketAddButton.classList.add("clicked")
+            cartMessage.classList.remove("d-none")
+            cartMessage.classList.add("d-flex")
+
         }
         
     })

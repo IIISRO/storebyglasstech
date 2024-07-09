@@ -10,17 +10,20 @@ const loader = {
             divContainer.style.width = '100%';
             divContainer.style.height = '100%';
             divContainer.style.zIndex = '9998';
-            // divContainer.style.backgroundColor = 'rgba(250, 250, 250, 0.80)';
+            divContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.90)';
+            divContainer.classList.add('d-flex');
+            divContainer.style.alignItems = 'center';
+            divContainer.style.justifyContent = 'center';
 
             var div = document.createElement('div');
             div.setAttribute('id', 'loader')
             div.style.position = 'absolute';
-            div.style.left = '50%';
-            div.style.top = '50%';
+            // div.style.left = '50%';
+            // div.style.top = '50%';
             div.style.zIndex = '9999';
             // div.style.height = '64px';
             // div.style.width = '64px';
-            div.style.margin = '-76px 0px 0px -76px';
+            div.style.margin = 'auto';
             // div.style.border = '8px solid #e1e1e1';
             // div.style.borderRadius = '50%';
             // div.style.borderTop = '8px solid rgb(0, 150, 250)';
