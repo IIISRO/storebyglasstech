@@ -1,4 +1,5 @@
 function getDetail(){
+    loader.show()
     var api_url = productDetailAPI
     async function Products(api_url=api_url) {
         const response = await fetch(api_url, {
@@ -11,6 +12,7 @@ function getDetail(){
     
     Products(api_url)
     .then((data) => {
+        // secilen mehsul isaresi
         if(data.type==="MDF"){
             $("#prod-selected").html(`<img src="/static/images/mdf.png">MDF Tablo Seçildi`);
             $("#glass-overlay").css('display', 'none');
@@ -19,8 +21,10 @@ function getDetail(){
             $("#glass-overlay").css('display', 'inline-block');
 
         }
-
+        // sekil
         $("#main-frame-img").attr('src',data.image);
+
+        // benzer mehsul
         for(let type of data.same_products){
             if(type.type==='MDF'){
                 $("#prod-types").append(
@@ -53,11 +57,16 @@ function getDetail(){
                 )
             }
         }
+        // title, desc, detail
         $("#prod-title").html(`${data.title}  <small>| ${data.type}</small>`)
         $("#prod-desc").text(data.description)
+        $("#prod-detail").html(data.detail)
+
+        // olculer
         for(let size of data.sizes){
-            $("#size-list").append(`<li><button class="size-element" data-size="${size.height}*${size.width}">${size.height}x${size.width}</button></li>`)
+            $("#size-list").append(`<li><button class="size-element" data-id=${size.id} data-size="${size.height}*${size.width}">${size.height}x${size.width}</button></li>`)
         }
+        // qiymet
         if (data.has_discount){
             $("#prod-price").html(
                 `
@@ -87,20 +96,19 @@ function getDetail(){
                 </div>`
             )
         }
-        $("#prod-detail").html(data.detail)
+        // wishbtn
         likeBtn.dataset.prod_id=data.id
         if(data.in_wish){
             likeBtn.classList.toggle("active")
             likeIcon.style.filter="grayscale(0)"
         }
+
+        // olcu selectoru
         const sizes = document.querySelectorAll('.size-element');
-        console.log(sizes);
         const mainFrame1 = document.getElementById("main-frame1");
 
         sizes.forEach(size => {
-            console.log(size);
             size.addEventListener('click', () => {
-                console.log(1);
                 sizes.forEach(btn => btn.classList.remove('selected'));
                 size.classList.add('selected');
                 const selectedSize = size.getAttribute("data-size").split("*");
@@ -113,13 +121,19 @@ function getDetail(){
                     mainFrame1.style.width = width * 0.8 + "px";
                     mainFrame1.style.height = height * 0.8 + "px";
                 }
-                console.log(width, height);
             });
         });
 
+        // addtobasket duymesi
+        var addBasketBTN = document.getElementById('basketadd');
+        addBasketBTN.dataset.prod_id = data.id;
+
+
+    })
+    .finally(()=>{
+        loader.hide();
     })
   
-    
 }
 
 getDetail()
@@ -158,4 +172,55 @@ function removeWish(productid){
         wishCounter();
     })
 	
+}
+
+let basketAddButton = document.getElementById("basketadd")
+    basketAddButton.addEventListener("click",()=>{
+        if(!basketAddButton.classList.contains('clicked')){
+            let selectedSize = $('.size-element.selected').data('id');
+            let selectedFrame = null;
+            
+            if(!selectedSize){
+                return notfWrong('Məhsul seçilməyib!');
+            }
+            
+            addBasket(basketAddButton.dataset.prod_id, selectedSize, selectedFrame);
+
+            basketAddButton.style.transition = "all 1s";
+            basketAddButton.innerHTML=`<i class="fa-regular fa-circle-check"></i> Səbətə əlavə olundu`
+            basketAddButton.style.backgroundColor="green"
+            basketAddButton.classList.add("clicked")
+        }
+        
+    })
+
+function addBasket(productid, selectedSize, selectedFrame){
+	loader.show();
+	fetch(addBasketAPI,{
+		method:"POST",
+		headers: {
+			"X-CSRFToken": csrf,
+			"Accept": "application/json",
+			'Content-Type': 'application/json'
+		  },
+		body:JSON.stringify({
+			'product':  parseInt(productid),
+			'size':  parseInt(selectedSize),
+			'frame':  selectedFrame,
+			'quantity':  1,
+
+		})
+	})
+	.then((response)=>{
+		if (response.status === 201){
+			notfSuccessAddBasket()
+		}else if(response.status === 403){
+            location.href = `${signinURL}?next=${location.href}`
+        }else{ notfWrong(); }
+		return response.json()
+	})
+	.finally(()=>{
+		loader.hide();
+		// updateBasketCount()
+	})
 }

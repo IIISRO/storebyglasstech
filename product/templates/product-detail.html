@@ -72,7 +72,7 @@
                                 alt=""> -->
                             <img src="{% static 'images/floor.png'%}" alt="" class="floor">
                             <img class="vase" src="{% static 'images/vase.png'%}" alt="">
-                            <div class="frame" style="" id="main-frame1">
+                            <div class="frame" id="main-frame1">
                                 <img class="main-product-image"
                                     src="{% static 'images/prod-img.avif'%}"
                                     alt="">
@@ -93,13 +93,13 @@
                 <hr>
                 <p id="prod-desc"></p>
                
-                <span class="frame-title">Frame</span>
+                <!-- <span class="frame-title">Frame</span>
                 <ul class="frame-list">
                     <li><button style="background: transparent;" class="selected" data-frame="none"><img  src="{% static 'images/none.png'%}" alt=""></button></li>
                     <li><button style="background-image: url('https://img.freepik.com/free-photo/wooden-textured-background_53876-14865.jpg?size=626&ext=jpg&ga=GA1.1.876311657.1717677308&semt=ais_user');" data-frame="https://i.pinimg.com/originals/2e/8f/00/2e8f000a5e7c8c419420f181c1235609.png"><div class="active-overlay"><i class="fa fa-check"></i></div></button></li>
                     <li><button style="background-image: url('https://img.freepik.com/free-photo/weathered-while-wall-surface-textured_23-2148210236.jpg?size=626&ext=jpg&ga=GA1.1.876311657.1717677308&semt=ais_user');" data-frame="https://i.pinimg.com/originals/2e/8f/00/2e8f000a5e7c8c419420f181c1235609.png"><div class="active-overlay"><i class="fa fa-check"></i></div></button></li>
                     <li><button style="background-image: url('https://img.freepik.com/free-photo/wood-with-coarse-surface-chipping_23-2148394666.jpg?size=626&ext=jpg&ga=GA1.1.876311657.1717677308&semt=ais_user');" data-frame="https://i.pinimg.com/originals/2e/8f/00/2e8f000a5e7c8c419420f181c1235609.png"><div class="active-overlay"><i class="fa fa-check"></i></div></button></li>
-                </ul>
+                </ul> -->
                 <span class="size-title mt-4">Size</span>
                 <ul id="size-list" class="size-list">
                   
@@ -110,7 +110,7 @@
                        
                     </div>
                    <div class="d-flex align-items-center" style="gap: 20px;">
-                    <button type="button" class="basketadd py-3" id="basketadd"><i class="fa fa-shopping-cart"></i> Səbətə at</button>
+                    <button type="button" class="basketadd py-3" data-prod_id="" id="basketadd"><i class="fa fa-shopping-cart"></i> Səbətə at</button>
                     <button data-prod_id="" class="like-btn" id="like">
                         <img class="like-img" src="{% static 'images/heart2.png'%}" alt="">
                     </button>
@@ -325,6 +325,8 @@
 {% block js%}
 <script>
     var productDetailAPI = "{% url 'productAPI:api-product-detail' category_slug=category_slug product_slug=product_slug %}";
+    var addBasketAPI = "{% url 'orderAPI:addbasket' %}";
+
     var addWishAPI = "{% url 'accountAPI:addwishlist' %}";
 
 </script>

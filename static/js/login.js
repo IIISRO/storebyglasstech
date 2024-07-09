@@ -31,7 +31,7 @@ document.getElementById('phone').addEventListener('input', function(e){
 })
 
 function checkNumber(){
-    jQuery(".loader_wait_response").show();
+    loader.show();
     if (/^[0-9+\s]+$/.test($("#phone").val()) && $("#phone").val().length === 17 && $("#phone").val().replace(/\D/g, '').length === 12) {
         fetch(getOrCreateUserAPI,{
             method:"POST",
@@ -65,14 +65,14 @@ function checkNumber(){
 		    return response.json()
 	    })
         .finally(() => {
-            jQuery(".loader_wait_response").hide();
+            loader.hide();
         });
 
 
 
         return true
     }
-    jQuery(".loader_wait_response").hide();
+    loader.hide();
     notfWrong(notfWrongNumber);
 }
 
@@ -121,7 +121,7 @@ function login(){
         notfWrong(notfEnterPass)
         return false;
     }
-    jQuery(".loader_wait_response").show();
+    loader.show();
     fetch(loginURL,{
     method:"POST",
             headers: {
@@ -153,7 +153,7 @@ function login(){
         return response.json()
     })
     .finally(() => {
-        return jQuery(".loader_wait_response").hide();
+        return loader.hide();
     });
 
     

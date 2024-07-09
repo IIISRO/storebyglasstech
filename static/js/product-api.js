@@ -4,6 +4,7 @@ let currentPage=1
 
 
 function displayResults(results) {
+
   let products = document.querySelector("#products");
   products.innerHTML = "";
   if(results.products.length>0){
@@ -68,7 +69,7 @@ function displayResults(results) {
 else{
   products.innerHTML+=`<div class="alert alert-danger">Təəssüf ki,seçdiyiniz filterlərə uyğun məhsul tapılmadı!</div>`
 }
-
+loader.hide()
 }
 
 
@@ -77,9 +78,7 @@ function updateTypeUI(selectedType) {
   document.querySelectorAll('.type-list li').forEach(typeItem => {
     const typeValue = typeItem.getAttribute('data-value');
     const typeText = typeItem.querySelector('span');
-    // console.log(selectedType);
     if (selectedType != undefined) {
-      console.log("Aaaaa");
       if (typeValue === selectedType) {
         typeItem.classList.add('col-10', 'bg-light');
         typeItem.classList.remove('col-6');
@@ -95,6 +94,7 @@ function updateTypeUI(selectedType) {
 
 
 async function filterProducts(category, filters,pageNumber) {
+  loader.show()
   let apiUrl = new URL(`${location.origin}/api/v1/products/${category}/?page=${pageNumber}`);
 
   for (let key in filters) {
@@ -111,11 +111,9 @@ async function filterProducts(category, filters,pageNumber) {
   }
 
   let responseData = await response.json();
-  console.log(responseData);
   displayResults(responseData);
 
   const newUrl = `${location.origin}/products/${category}/${apiUrl.search}`;
-  console.log(newUrl);
   window.history.pushState({ path: newUrl }, '', newUrl);
 }
 
@@ -168,7 +166,6 @@ document.querySelectorAll('.categories-list li a').forEach(categoryItem => {
 function preselectFiltersFromURL() {
   const urlParams = new URLSearchParams(window.location.search);
   const pathname = window.location.pathname; // '/products/vveten/'
-  console.log(pathname);
   // Split the pathname to get the parts
   const pathParts = pathname.split('/');
   
@@ -314,6 +311,7 @@ function updatePage(pageNumber) {
 }
 
 async function fetchAndDisplayResults(category, filters, pageNumber) {
+  loader.show()
   let apiUrl = new URL(`${location.origin}/api/v1/products/${category}/?page=${pageNumber}`);
 
   for (let key in filters) {
@@ -323,13 +321,14 @@ async function fetchAndDisplayResults(category, filters, pageNumber) {
       apiUrl.searchParams.append(key, filters[key]);
     }
   }
-
+  
   const response = await fetch(apiUrl);
   if (!response.ok) {
     throw new Error('Network response was not ok');
   }
 
   let responseData = await response.json();
+
   displayResults(responseData);
   createPagination(responseData.pagination.all_pages_num, pageNumber);
 }

@@ -58,7 +58,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Cactus+Classical+Serif&display=swap" rel="stylesheet">
-
+        
     </head>
 
     <body>
@@ -325,10 +325,10 @@
         <script src="https://cdn.jsdelivr.net/npm/flag-icon-css@4.1.7/svgo.config.min.js"></script>
         <!--Swiper Slider-->
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-        <!--JS file-->
-        <script src="{% static 'js/main.js' %}"></script>
         <!--Loader JS-->
         <script src="{% static 'js/loader.js' %}"></script>
+        <!--JS file-->
+        <script src="{% static 'js/main.js' %}"></script>
         <!-- Notf JS -->
         <script src="{% static 'js/notification.js'%}"></script>
 
@@ -339,6 +339,7 @@
             var getOrCreateUserAPI =  "{% url 'accountAPI:get_or_create_user' %}";
             var createAndSendNewPasswordAPI = "{% url 'accountAPI:create_and_send_new_password' %}";
             var loginURL = "{% url 'account:login' %}";
+            var signinURL = "{% url 'account:signin' %}";
             var profileURL = "{% url 'account:profile' %}";
             var addAddressAPI = "{% url 'accountAPI:create_address' %}";
             '{% if request.user.is_authenticated %}'

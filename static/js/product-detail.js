@@ -190,18 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    let basketAddButton = document.getElementById("basketadd")
-    basketAddButton.addEventListener("click",()=>{
-        let result=basketAddButton.classList.toggle("active")
-        if(result){
-            basketAddButton.innerHTML=`<i class="fa fa-shopping-cart"></i> Səbətdən çıxar`
-            basketAddButton.style.backgroundColor="red"
-        }
-        else{
-              basketAddButton.innerHTML=`<i class="fa fa-shopping-cart"></i> Səbətə at`
-            basketAddButton.style.backgroundColor="#10143e"
-        }
-    })
+    
     
     // sizes.forEach(size => {
     //     console.log(size);

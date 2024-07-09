@@ -1,4 +1,6 @@
 async function fetchAndDisplayResults() {
+    loader.show()
+
     let apiUrl = new URL(`${location.origin}/api/v1/account/wishlist/`)
 
     const response = await fetch(apiUrl);
@@ -119,6 +121,7 @@ async function fetchAndDisplayResults() {
 
 
     }
+    loader.hide()
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -126,6 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 })
 function removeWish(productid) {
+    loader.show()
     fetch(`/api/v1/account/wishlist/remove/${productid}/`, {
         method: "post",
         headers: {
@@ -136,6 +140,7 @@ function removeWish(productid) {
     })
         .finally(() => {
             wishCounter();
+            loader.hide()
         })
 
 }

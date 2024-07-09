@@ -9,7 +9,10 @@ function addBasket(productid, quantity){
 		  },
 		body:JSON.stringify({
 			'product':  parseInt(productid),
-			'quantity':  parseInt(quantity)
+			'size':  parseInt(productid),
+			'frame':  parseInt(productid),
+			'quantity':  parseInt(quantity),
+
 		})
 	})
 	.then((response)=>{
