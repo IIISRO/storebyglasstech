@@ -107,6 +107,7 @@ background: linear-gradient(-180deg, rgba(255,255,255,0.50) 0%, rgba(0,0,0,0.40)
 }
 .product-image-sec .tab-content,.product-image-sec .tabs{
 position: absolute;
+z-index: 0;
 width: 100%;
 height: 100%;
 }
@@ -251,11 +252,11 @@ left: 30%;
 .frame-main {
   display: inline-block;
   position: relative;
-  padding: 15px; /* Adjust this to create the frame width */
   background-image: url('/mnt/data/image.png'); /* Frame background image */
   background-size: cover;
   background-repeat: no-repeat;
   box-sizing: border-box;
+  height: 100%;
 }
 .frame-main::before,.frame::before {
   content: '';
@@ -275,6 +276,8 @@ left: 30%;
   height: 100%;
   object-fit: cover;
   box-sizing: border-box;
+  position: relative;
+  z-index: 0;
 }
 
 .wall-overlay{
@@ -318,6 +321,15 @@ float: right;
 font-size: 14px;
 color: #373737;
 margin: 0;
+}
+.glass-overlay{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+*{
+  box-sizing: border-box;
 }
 /* .prod-info .bootstrap-select>.dropdown-toggle {
 background: transparent !important;
@@ -822,11 +834,7 @@ display: block;
 float: left;
 height: 1px;
 }
-@media (min-width: 1200px) {
-.cq-item1 {
-background-image: url(https://www.tablohane.com/Content/Images/Design/cq10.png);
-background-position: left top;
-}}
+
 .cq-item {
 width: 100%;
 background-repeat: no-repeat;

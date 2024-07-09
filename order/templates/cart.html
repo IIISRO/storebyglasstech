@@ -30,11 +30,11 @@
 
 
                                     <td class="product-thumbnail">
-                                        <a href=""><img fetchpriority="high" decoding="async" width="300" height="300"
-                                                src="https://demo.themerox.com/posterlaab-3/wp-content/uploads/2023/06/3d-Grassy-Blue-Hills-Poster-300x300.jpg"
-                                                class="cart-thumbnail" alt=""
-                                                srcset="https://demo.themerox.com/posterlaab-3/wp-content/uploads/2023/06/3d-Grassy-Blue-Hills-Poster-300x300.jpg 300w, https://demo.themerox.com/posterlaab-3/wp-content/uploads/2023/06/3d-Grassy-Blue-Hills-Poster-150x150.jpg 150w, https://demo.themerox.com/posterlaab-3/wp-content/uploads/2023/06/3d-Grassy-Blue-Hills-Poster-420x420.jpg 420w, https://demo.themerox.com/posterlaab-3/wp-content/uploads/2023/06/3d-Grassy-Blue-Hills-Poster-90x90.jpg 90w"
-                                                sizes="(max-width: 300px) 100vw, 300px"></a>
+                                        <a href="">
+                                            <div class="frame-cart">
+                                            <img fetchpriority="high"
+                                                src="{% static 'images/prod-img.avif'%}"
+                                                class="cart-thumbnail" alt=""></div></a>
                                     </td>
 
                                     <td class="product-name" data-title="Product">
@@ -88,8 +88,7 @@
                                     </td>
 
                                     <td class="product-remove">
-                                        <a href="" class="remove"
-                                            aria-label="Remove 3d Grassy Blue Hills Poster from cart">×</a>
+                                        <a href="" class="remove"><i class="fa fa-trash"></i></a>
                                     </td>
 
                                 </tr>
@@ -105,8 +104,7 @@
                                                 name="apply_coupon" value="Apply coupon">Apply coupon</button>
                                         </div>
 
-                                        <button type="submit" class="button update_cart" name="update_cart"
-                                            value="Update cart" disabled="">Update cart</button>
+                                      
 
                                     </td>
                                 </tr>

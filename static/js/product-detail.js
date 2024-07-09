@@ -157,7 +157,7 @@ likeBtn.addEventListener("click",()=>{
 
 document.addEventListener('DOMContentLoaded', () => {
     const buttons = document.querySelectorAll('.frame-list li button');
-    const sizes = document.querySelectorAll('.size-list li button');
+    const sizes = document.querySelectorAll('.size-element');
     const mainFrame = document.getElementById("main-frame");
     let mainFrame1=document.getElementById("main-frame1")
     let mainImage1=document.querySelector("#main-frame1 img")
@@ -165,54 +165,75 @@ document.addEventListener('DOMContentLoaded', () => {
     buttons.forEach(button => {
         button.addEventListener('click', () => {
             // Remove the 'selected' class from all buttons
+           
             buttons.forEach(btn => btn.classList.remove('selected'));
 
             // Add the 'selected' class to the clicked button
             button.classList.add('selected');
+            
             const frameUrl = button.getAttribute("data-frame");
 
             // Update the main frame background with the selected frame
             if (frameUrl === "none") {
                 mainFrame.style.backgroundImage = "none";
                 mainFrame.style.background = "none"; 
+                mainFrame.style.padding = "0"; 
                 mainFrame1.style.backgroundImage = "none";
                 mainFrame1.style.background = "none"; // Clear any background set by ::before
             } else {
                 mainFrame.style.background = `url(${frameUrl}) no-repeat center center`;
+                mainFrame.style.padding = `15px`;
                 mainFrame.style.backgroundSize = "cover";
                 mainFrame1.style.background = `url(${frameUrl}) no-repeat center center`;
                 mainFrame1.style.backgroundSize = "cover";
             }
         });
     });
+
+    let basketAddButton = document.getElementById("basketadd")
+    basketAddButton.addEventListener("click",()=>{
+        let result=basketAddButton.classList.toggle("active")
+        if(result){
+            basketAddButton.innerHTML=`<i class="fa fa-shopping-cart"></i> Səbətdən çıxar`
+            basketAddButton.style.backgroundColor="red"
+        }
+        else{
+              basketAddButton.innerHTML=`<i class="fa fa-shopping-cart"></i> Səbətə at`
+            basketAddButton.style.backgroundColor="#10143e"
+        }
+    })
     
-    sizes.forEach(size => {
-        size.addEventListener('click', () => {
-            // Remove the 'selected' class from all buttons
-            sizes.forEach(btn => btn.classList.remove('selected'));
+    // sizes.forEach(size => {
+    //     console.log(size);
+    //     size.addEventListener('click', () => {
+    //         // Remove the 'selected' class from all buttons
+    //         console.log(1);
+    //         sizes.forEach(btn => btn.classList.remove('selected'));
 
-            // Add the 'selected' class to the clicked button
-            size.classList.add('selected');
-            const selectedSize = size.getAttribute("data-size").split("*");
-            const width = selectedSize[0];
-            const height = selectedSize[1];
+    //         // Add the 'selected' class to the clicked button
+    //         size.classList.add('selected');
+    //         const selectedSize = size.getAttribute("data-size").split("*");
+    //         const width = selectedSize[0];
+    //         const height = selectedSize[1];
 
-            // Update the main image size based on the selected option
-            if(window.innerWidth<=767){
-                // mainFrame.style.width = width*0.8 + "px";
-                // mainFrame.style.height = height*0.8 + "px";
-                mainFrame1.style.width = width*0.5 + "px";
-                mainFrame1.style.height = height*0.5 + "px";
-            }
-            else{
-                // mainFrame.style.width = width*0.8 + "px";
-                // mainFrame.style.height = height*0.8 + "px";
-                mainFrame1.style.width = width*0.8 + "px";
-                mainFrame1.style.height = height*0.8 + "px";
-            }
+    //         // Update the main image size based on the selected option
+    //         if(window.innerWidth<=767){
+    //             // mainFrame.style.width = width*0.8 + "px";
+    //             // mainFrame.style.height = height*0.8 + "px";
+    //             mainFrame1.style.width = width*0.5 + "px";
+    //             mainFrame1.style.height = height*0.5 + "px";
+    //         }
+    //         else{
+    //             // mainFrame.style.width = width*0.8 + "px";
+    //             // mainFrame.style.height = height*0.8 + "px";
+    //             mainFrame1.style.width = width*0.8 + "px";
+    //             mainFrame1.style.height = height*0.8 + "px";
+    //         }
           
-            console.log(width,height);
-        });
-    });
+    //         console.log(width,height);
+    //     });
+    // });
    
 });
+
+

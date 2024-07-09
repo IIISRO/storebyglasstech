@@ -13,8 +13,11 @@ function getDetail(){
     .then((data) => {
         if(data.type==="MDF"){
             $("#prod-selected").html(`<img src="/static/images/mdf.png">MDF Tablo Seçildi`);
+            $("#glass-overlay").css('display', 'none');
         }else{
             $("#prod-selected").html(`<img src="/static/images/glassico.png">Glass Tablo Seçildi`);
+            $("#glass-overlay").css('display', 'inline-block');
+
         }
 
         $("#main-frame-img").attr('src',data.image);
@@ -53,7 +56,7 @@ function getDetail(){
         $("#prod-title").html(`${data.title}  <small>| ${data.type}</small>`)
         $("#prod-desc").text(data.description)
         for(let size of data.sizes){
-            $("#size-list").append(`<li><button data-size="200*300">${size.height}x${size.width}</button></li>`)
+            $("#size-list").append(`<li><button class="size-element" data-size="${size.height}*${size.width}">${size.height}x${size.width}</button></li>`)
         }
         if (data.has_discount){
             $("#prod-price").html(
@@ -90,11 +93,38 @@ function getDetail(){
             likeBtn.classList.toggle("active")
             likeIcon.style.filter="grayscale(0)"
         }
+        const sizes = document.querySelectorAll('.size-element');
+        console.log(sizes);
+        const mainFrame1 = document.getElementById("main-frame1");
+
+        sizes.forEach(size => {
+            console.log(size);
+            size.addEventListener('click', () => {
+                console.log(1);
+                sizes.forEach(btn => btn.classList.remove('selected'));
+                size.classList.add('selected');
+                const selectedSize = size.getAttribute("data-size").split("*");
+                const width = selectedSize[0];
+                const height = selectedSize[1];
+                if (window.innerWidth <= 767) {
+                    mainFrame1.style.width = width * 0.5 + "px";
+                    mainFrame1.style.height = height * 0.5 + "px";
+                } else {
+                    mainFrame1.style.width = width * 0.8 + "px";
+                    mainFrame1.style.height = height * 0.8 + "px";
+                }
+                console.log(width, height);
+            });
+        });
 
     })
+  
+    
 }
 
 getDetail()
+
+
 
 function addWish(productid){
 	fetch(addWishAPI,{
