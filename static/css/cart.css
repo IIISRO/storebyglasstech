@@ -29,6 +29,9 @@
     /* background: rgba(0, 0, 0, .3); */
     background: linear-gradient(-180deg, rgba(255, 255, 255, 0.50) 0%, rgba(0, 0, 0, 0.40) 100%);
 }
+.fa-info{
+    margin-right: 10px;display: flex;align-items: center;justify-content: center;border-radius: 50%;border: 1px solid red;padding: 5px;width: 20px;height: 20px;font-size: 12px;
+  }
 .frame-cart img{
     object-fit: contain;
     max-width: 100%;
@@ -230,13 +233,16 @@ background-color: #f5f5f5;
     text-decoration: none;
 }
 @media(max-width:991px){
+    .cart_table img{
+        width: 300px;
+      }
     .cart_table tr {
         display: block;
 }
-.cart_table thead {
-    display: none;
+.frame-cart{
+    height: 300px;
 }
-.cart_table .product-thumbnail {
+.cart_table thead {
     display: none;
 }
 .cart_table td{

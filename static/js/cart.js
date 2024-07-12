@@ -181,17 +181,12 @@ function getBasketItems(){
             const emptyBasket = 
             `
             <div class="emptydiv">
-                <i class="emptybasket fas fa-regular fa-cart-shopping"></i>
-                <h4 class="emptytext">${transNoProd}</h4>
+                
+                <div class="alert alert-danger justify-content-center has-cart d-flex align-items-center"><i class="fa fa-info"></i> Səbətiniz boşdur!</div>
             </div>
             `
             $("#basket_container").html(emptyBasket)
-            const emptyBasketBreadcrump = 
-            `
-            <p>${emptyBasketBreadcrumpP}</p>
-			<h1>${emptyBasketBreadcrumpH1}</h1>
-            `
-            $("#empty_basket_breadcrump").html(emptyBasketBreadcrump)
+            
 
         }
     })

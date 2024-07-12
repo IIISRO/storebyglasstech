@@ -415,7 +415,7 @@ Trending Section
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    height: 550px;
+    /* height: 550px; */
 }
 .best-seller-ads{
     height: 100%;

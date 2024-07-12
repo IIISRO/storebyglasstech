@@ -287,7 +287,7 @@ left: 30%;
   margin-right: 10px;display: flex;align-items: center;justify-content: center;border-radius: 50%;border: 1px solid green;padding: 5px;width: 20px;height: 20px;font-size: 12px;
 }
 .has-cart{
-  width: max-content !important;
+  width: 100% !important;
   position: relative;
 
 
@@ -1155,7 +1155,7 @@ height: 220px;
     top: 0;
     left: 0;
 }
-.price-sec del{
+#prod-price del,.price-sec del{
   color: red;
   margin-right: 10px;
   /* margin-top: 17px; */

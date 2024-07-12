@@ -115,6 +115,7 @@ border-radius: 50%;
 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 .stage {
+width: max-content;
 float: left;
 height: 30px;
 line-height: 40px;
@@ -476,8 +477,13 @@ background-color: #fbfbfb;
 
 }.product-item-price-section{
   position: absolute;
-  bottom: 20px;
+  bottom: 0;
   width: 90%;
+}
+@media(max-width:576px){
+  .product-col-info{
+    height: 120px;
+  }
 }
 .product-item-price span{
   font-size: 22px;

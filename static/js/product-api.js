@@ -10,7 +10,7 @@ function displayResults(results) {
   if(results.products.length>0){
   for (const product of results.products) {
     products.innerHTML += `
-      <div class="col-sm-6 col-lg-3 mb-4">
+      <div class="col-sm-6 col-xl-3 mb-4">
             <div class="product-item">
               <a href="${product.url}">
                 <div class="product-item-img">
@@ -33,15 +33,15 @@ function displayResults(results) {
                         ${(function Items2() {
               let items2 = []
               if (product.discount_type == 'Precent') {
-                items2.push(`  <div class="product-item-price d-flex align-items-center justify-content-between"><div class="stage"><a href="">${product.discount_amount}%</a></div>`)
+                items2.push(`  <div class="product-item-price  d-flex flex-column "><div class="stage"><a href="">${product.discount_amount}%</a></div>`)
               }
               else {
-                items2.push(`  <div class="product-item-price d-flex align-items-center justify-content-between"><div class="stage"><a href="">${product.discount_amount.toFixed(2)} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i></a></div>`)
+                items2.push(`  <div class="product-item-price d-flex flex-column "><div class="stage"><a href="">${product.discount_amount.toFixed(2)} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i></a></div>`)
               }
               return items2.join('')
             })()}
                         
-                     <div class="d-flex align-items-center">
+                     <div class="d-flex align-items-center justify-content-end">
                       <del>${product.price.toFixed(2)} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i></del>
                       <span>${product.actual_price.toFixed(2)} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i></span>
                      </div>

@@ -84,7 +84,7 @@ function getDetail(){
         // qiymet
         if (data.has_discount){
             $("#prod-price").html(
-                `
+                `<div class="d-flex align-items-center">
                 <div class="discount-section py-2 px-4">
                     ${    
                         (function checkDiscountType() {
@@ -97,8 +97,10 @@ function getDetail(){
                         })()
                     }
                 </div>
+                <del id="prod_base_price" class="mx-4" >${data.price.toFixed(2)} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i></del>
+                </div>
                 <div class="price-sec d-flex align-items-center">
-                    <del id="prod_base_price" >${data.price.toFixed(2)} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i></del>
+                    
                     <span id="prod_actual_price">${data.actual_price.toFixed(2)} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i></span>
                 </div>
                 `
