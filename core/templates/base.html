@@ -99,7 +99,7 @@
                                 <span class="title">Wishlist</span>
                             </a>
                             <a href="{% url 'order:cart' %}" class="cart-count">
-                                <i class="fa fa-shopping-bag" aria-hidden="true"><span class="count-badge">0</span></i>
+                                <i class="fa fa-shopping-bag" aria-hidden="true"><span id="basket-count" class="count-badge">0</span></i>
                                 <span class="title">Cart</span>
                             </a>
                             {% if request.user.is_authenticated %}
@@ -352,7 +352,7 @@
             var notfAddedBasketMessage = 'Səbətə Əlavə Olundu';
             var notfError = 'Xəta baş verdi!';
             var notfDatasMiss = 'Məlumatlar tam deyil!';
-
+            
             // wish  counter
             function wishCounter(){
                 fetch('{% url "accountAPI:get_all_wish_item_number" %}',{
@@ -371,6 +371,25 @@
                 })
             }
             wishCounter()
+
+            // basket  items count
+            function basketCounter(){
+                fetch('{% url "orderAPI:basket_item_count" %}',{
+                method:"get",
+                headers: {
+                    "X-CSRFToken": csrf,
+                    "Accept": "application/json",
+                    'Content-Type': 'application/json'
+                }
+                })
+                .then((response)=>{
+                    return response.json()
+                })
+                .then((data)=>{
+                    $("#basket-count").text(data.basket_count)
+                })
+            }
+            basketCounter()
 
         </script>
         {% block js %}{% endblock %}

@@ -16,16 +16,6 @@ class BasketAPIView(APIView):
     http_method_names = ["get"]
     def get(self, request, *args, **kwarg):
         # eger  login deyilse basket modelinii simulasiya edir ve cookideki itemleri  qaytarir
-        if not request.user.is_authenticated:
-            user_basket_items = json.loads(request.COOKIES.get('user_basket_items')) if request.COOKIES.get('user_basket_items') else []
-            basket_coupon = int(request.COOKIES.get('basket_coupon')) if request.COOKIES.get('basket_coupon') else None
-            basket = {
-                'coupon': basket_coupon,
-                'basket_items': user_basket_items
-            }
-            serializer = BasketSerializer(basket, context={'request':request})
-            return Response(serializer.data, status=HTTP_200_OK)
-            
         basket = request.user.basket
         serializer = BasketSerializer(basket, context={'request':request})
         return Response(serializer.data, status=HTTP_200_OK)
@@ -132,32 +122,8 @@ def basket_coupon_api(request):
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def checkout_items_summary(request):    
-    user = request.user
-    basket = user.basket
-    summary = {
-        'coupon':{
-            'status':False,
-            'code':'',
-            'precent': 0
-        },
-        'discount':0.0,
-        'subtotal':0.0,
-    }
-    for item in basket.basket_items.all():
-        summary['subtotal'] += round(item.product.actual_price * item.quantity, 2)
-        if item.product.has_discount:
-            summary['discount'] += round((item.product.price - item.product.actual_price) * item.quantity, 2)
-    if basket.coupon and basket.coupon.is_valid(user)[0]:
-        coupon_save = round(summary['subtotal'] * basket.coupon.discount_precent / 100, 2)
-        summary['discount'] = round(summary['discount'] + coupon_save, 2)
-        summary['subtotal'] = round(summary['subtotal'] - coupon_save, 2)
-        summary['coupon']['status']=True
-        summary['coupon']['code']=basket.coupon.code
-        summary['coupon']['precent']=basket.coupon.discount_precent
-
-
-    return Response(summary, status=HTTP_200_OK)
+def basket_item_count(request):    
+    return Response({'basket_count' : request.user.basket.basket_items.count()}, status=HTTP_200_OK)
 
 class OrderListAPIView(APIView):
     http_method_names = ["get"]

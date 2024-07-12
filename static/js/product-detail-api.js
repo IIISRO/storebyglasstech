@@ -64,7 +64,22 @@ function getDetail(){
 
         // olculer
         for(let size of data.sizes){
-            $("#size-list").append(`<li><button class="size-element" data-id=${size.id} data-size="${size.height}*${size.width}">${size.height}x${size.width}</button></li>`)
+            $("#size-list").append(
+                `
+                <li>
+                    <button class="size-element" 
+                    data-extra_price="${    
+                        (function checkExtra() {
+                        if(size.is_base){
+                            return 0
+                        }else if(data.type == 'GLASS'){
+                            return size.price_glass
+                        }else{return size.price_mdf}
+                        })()
+                    }" 
+                    data-id=${size.id} data-size="${size.height}*${size.width}">${size.height}x${size.width}
+                    </button>
+                </li>`)
         }
         // qiymet
         if (data.has_discount){
@@ -77,14 +92,14 @@ function getDetail(){
                             
                             return `${data.discount_amount}%`
                         }else{
-                            return `-${data.discount_amount} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i>`
+                            return `-${data.discount_amount.toFixed(2)} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i>`
                         }
                         })()
                     }
                 </div>
                 <div class="price-sec d-flex align-items-center">
-                    <del>${data.price} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i></del>
-                    <span>${data.actual_price} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i></span>
+                    <del id="prod_base_price" >${data.price.toFixed(2)} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i></del>
+                    <span id="prod_actual_price">${data.actual_price.toFixed(2)} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i></span>
                 </div>
                 `
             )
@@ -92,7 +107,7 @@ function getDetail(){
             $("#prod-price").html(
                 `
                 <div class="price-sec d-flex align-items-center">
-                    <span>${data.actual_price} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i></span>
+                    <span id="prod_actual_price">${data.actual_price.toFixed(2)} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i></span>
                 </div>`
             )
         }
@@ -114,6 +129,7 @@ function getDetail(){
                 const selectedSize = size.getAttribute("data-size").split("*");
                 const width = selectedSize[0];
                 const height = selectedSize[1];
+
                 if (window.innerWidth <= 767) {
                     mainFrame1.style.width = width * 0.5 + "px";
                     mainFrame1.style.height = height * 0.5 + "px";
@@ -121,6 +137,17 @@ function getDetail(){
                     mainFrame1.style.width = width * 0.8 + "px";
                     mainFrame1.style.height = height * 0.8 + "px";
                 }
+                // size gore extra  qiymet
+
+                $("#prod_base_price").html(`${(data.price + parseFloat(size.dataset.extra_price)).toFixed(2)} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i>`)
+               
+                if(data.has_discount){
+                    var extra_price = parseFloat(size.dataset.extra_price) - ((parseFloat(size.dataset.extra_price) * data.discount_amount) / 100)
+                }else{
+                    var extra_price = parseFloat(size.dataset.extra_price)
+                }
+                $("#prod_actual_price").html(`${(data.actual_price + extra_price).toFixed(2)} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i>`)
+           
             });
         });
 
@@ -174,8 +201,8 @@ function removeWish(productid){
 	
 }
 let cartMessage=document.getElementById("cartMessage");
-cartMessage.classList.remove('d-flex')
-cartMessage.classList.add('d-none')
+// cartMessage.classList.remove('d-flex')
+// cartMessage.classList.add('d-none')
 
 let basketAddButton = document.getElementById("basketadd")
     basketAddButton.addEventListener("click",()=>{
@@ -227,6 +254,7 @@ function addBasket(productid, selectedSize, selectedFrame){
 	})
 	.finally(()=>{
 		loader.hide();
-		// updateBasketCount()
+        basketCounter();
+
 	})
 }

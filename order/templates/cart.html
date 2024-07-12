@@ -23,94 +23,26 @@
                                     <th class="product-subtotal" data-title="Subtotal">Subtotal</th>
                                 </tr>
                             </thead>
+                            <tbody id="productsStartLine">
+
+
+                            </tbody>
                             <tbody>
-
-                                <tr class="cart_item">
-
-
-
-                                    <td class="product-thumbnail">
-                                        <a href="">
-                                            <div class="frame-cart">
-                                            <img fetchpriority="high"
-                                                src="{% static 'images/prod-img.avif'%}"
-                                                class="cart-thumbnail" alt=""></div></a>
-                                    </td>
-
-                                    <td class="product-name" data-title="Product">
-                                        <a
-                                            href="" class="mb-3 d-block">3d
-                                            Grassy Blue Hills Poster</a>
-                                        <dl class="variation">
-                                            <dt class="variation-PosterSize">Poster Size:</dt>
-                                            <dd class="variation-PosterSize">
-                                                <p>S</p>
-                                            </dd>
-                                            <dt class="variation-PosterFinish">Poster Finish:</dt>
-                                            <dd class="variation-PosterFinish">
-                                                <p>Matte</p>
-                                            </dd>
-                                            <dt class="variation-PosterFrame">Poster Frame:</dt>
-                                            <dd class="variation-PosterFrame">
-                                                <p>Golden Wood Pattern</p>
-                                            </dd>
-                                            <dt class="variation-Vendor">Vendor:</dt>
-                                            <dd class="variation-Vendor">
-                                                <p>Next Ltd.</p>
-                                            </dd>
-                                        </dl>
-                                    </td>
-
-                                    <td class="product-price" data-title="Price">
-                                        <span class="price_code"><span class="price-amount amount"><bdi><span
-                                                        class="currencySymbol">$</span>15.00</bdi></span></span>
-                                    </td>
-
-                                    <td class="product-quantity" data-title="Quantity">
-                                        <div class="quantity">
-                                            <label class="posterlaab-label" for="quantity_662f3c794bc3a">
-                                                <span class="sr-only">3d Grassy Blue Hills Poster quantity</span>
-                                                <span aria-hidden="true">Qty</span>
-                                            </label>
-                                            <label class="screen-reader-text" for="quantity_662f3c794bc3a">3d Grassy
-                                                Blue Hills Poster quantity</label>
-
-
-                                            <input type="text" id="quantity_662f3c794bc3a" class="input-text qty text"
-                                                name="" value="1" title="Qty" autocomplete="off"><span
-                                                class="plus">+</span><span class="minus">-</span>
-                                        </div>
-                                    </td>
-
-                                    <td class="product-subtotal" data-title="Subtotal">
-                                        <span class="price_code"><span class="price-amount amount"><bdi><span
-                                                        class="currencySymbol">$</span>15.00</bdi></span></span>
-                                    </td>
-
-                                    <td class="product-remove">
-                                        <a href="" class="remove"><i class="fa fa-trash"></i></a>
-                                    </td>
-
-                                </tr>
-
-
                                 <tr>
                                     <td colspan="6" class="actions coupon-sec">
-
                                         <div class="coupon">
-                                            <label for="coupon_code">Coupon:</label>    <input type="text"
-                                                name="coupon_code" class="input-text" id="coupon_code" value=""
-                                                placeholder="Coupon code"> <button type="submit" class="button"
-                                                name="apply_coupon" value="Apply coupon">Apply coupon</button>
+                                            <label for="coupon_code">Coupon:</label>  
+                                            <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" 
+                                            placeholder="Coupon code"> 
+                                            <button type="button" id="apply_coupon_btn" onclick="applyCoupon()" class="button" name="apply_coupon" value="Apply coupon">Apply coupon</button>
                                         </div>
-
-                                      
-
                                     </td>
                                 </tr>
 
                             </tbody>
                         </table>
+                        <!-- empty cart -->
+                         
                     </form>
                 </div>
                 <div class="col-md-3">
@@ -126,20 +58,29 @@
                                         </th>
                                     </tr>
 
-                                    <tr class="cart-subtotal">
+                                    <tr id="cart-subtotal" class="cart-subtotal">
                                         <th>Subtotal</th>
-                                        <td data-title="Subtotal"><span class="price_code"><span
-                                                    class="price-amount amount"><bdi><span
-                                                            class="currencySymbol">$</span>15.00</bdi></span></span>
+                                        <td data-title="Subtotal">
+                                            <span class="price_code">
+                                                <span class="price-amount amount">
+                                                    <bdi id="basketActualPrice"></bdi>
+                                                </span>
+                                            </span>
                                         </td>
                                     </tr>
 
-
                                     <tr class="order-total">
                                         <th>Total</th>
-                                        <td data-title="Total"><strong><span class="price_code"><span
-                                                        class="price-amount amount"><bdi><span
-                                                                class="currencySymbol">$</span>15.00</bdi></span></span></strong>
+                                        <td data-title="Total">
+                                            <del id="basketPrice"></del>
+                                            <br>
+                                            <strong>
+                                                <span class="price_code">
+                                                    <span class="price-amount amount">
+                                                        <bdi id="basketTotal"></bdi>
+                                                    </span>
+                                                </span>
+                                            </strong>
                                         </td>
                                     </tr>
 
@@ -164,7 +105,16 @@
 
     {% endblock %}
 
-        {% block js %}<script src="{% static 'js/cart.js' %}"></script>{% endblock %}
+        {% block js %}
+        <script>
+            var basketAPI = "{% url 'orderAPI:basket' %}"
+            var couponAPI = "{% url 'orderAPI:basketcoupon' %}"
+
+        </script>
+        <script src="{% static 'js/cart.js' %}"></script>
+        <script src="{% static 'js/basket-api.js' %}"></script>
+
+        {% endblock %}
 
 
 

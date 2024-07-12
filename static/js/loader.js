@@ -42,15 +42,13 @@ const loader = {
         $('body').css({'overflow':'hidden'});
     },
     hide: function(){
-        
         if(this.__loader!=null)
         {
             this.__loader.style.display="none";
             $('body').css({'overflow':'visible'});
+            this.__loader.classList.remove('d-flex')
             
         }
     }
 }
-
-// loader.show()
 

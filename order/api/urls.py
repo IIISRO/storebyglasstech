@@ -7,7 +7,7 @@ from .views import (AddBasketAPIView,
                     OrderListAPIView, 
                     UpdateOrderAPIView, 
                     basket_coupon_api, 
-                    checkout_items_summary
+                    basket_item_count
                     )
 
 app_name = 'orderAPI'
@@ -19,7 +19,7 @@ urlpatterns = [
     path('basket/remove/<int:pk>/', RemoveBasketAPIView.as_view(), name='removebasket'),
     path('basket/update/<int:pk>/', UpdateBasketAPIView.as_view(), name='updatebasket'),
     path('basket/coupon/', basket_coupon_api, name='basketcoupon'),
-    path('checkout_items_summary/', checkout_items_summary, name='checkout_items_summary'),
+    path('basket_item_count/', basket_item_count, name='basket_item_count'),
     path('orders/list/', OrderListAPIView.as_view(), name='orderslist'),
     path('order/update/<int:pk>/', UpdateOrderAPIView.as_view(), name='updateorder'),
 

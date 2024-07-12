@@ -36,6 +36,30 @@ class BasketItem(AbstractModel):
             return f"{self.basket.user.first_name}'s {self.product.title} in basket"
         return f"{self.basket.user.number}'s {self.product.title} in basket"
     
+    @property
+    def item_price(self):
+        price = self.product.price
+        if not self.size.is_base(self.product):
+            if self.product.type == 'GLASS':
+                price += self.size.price_glass
+            else:
+                price += self.size.price_mdf
+        return round(price, 2)
+    
+    @property
+    def item_actual_price(self):
+        actual_price = self.product.actual_price
+        extra_price = 0.0
+        if not self.size.is_base(self.product):
+            if self.product.type == 'GLASS':
+                extra_price = self.size.price_glass
+            else:
+                extra_price = self.size.price_mdf
+            if self.product.has_discount:
+                extra_price -= (extra_price * self.product.discount_amount) / 100
+            
+        return round(actual_price+extra_price, 2)
+
 class Order(AbstractModel):
     STATUS = (              
         ('Preparing', 'Preparing'),

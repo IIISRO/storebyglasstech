@@ -203,11 +203,14 @@ background-color: #f5f5f5;
     font-weight: 600;
     font-size: 20px;
 }
-.cart_header,.cart-subtotal{
+.cart_header{
     border-bottom: 1px solid #e1e2ef !important;
     width: 100%;
 }
-
+.order-total{
+    border-top: 1px solid #e1e2ef !important;
+    width: 100%;
+}
 .cart_table2 tr{
     display: flex;
     align-items: center;

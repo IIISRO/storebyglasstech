@@ -21,14 +21,22 @@ class CouponSerializer(serializers.ModelSerializer):
         return valid
     
 class ProductSizeSerializer(serializers.ModelSerializer):
+    is_base = serializers.SerializerMethodField()
+    
     class Meta:
         model = Size
         fields = (
             'id',
             'height',
             'width',
+            'price_mdf',
+            'price_glass',
+            'is_base'
         )
 
+    def get_is_base(self, obj):
+        product = self.context['product']
+        return  obj.is_base(product)
 
 class ProductFrameSerializer(serializers.ModelSerializer):
     class Meta:
@@ -105,7 +113,8 @@ class ProductSerializer(serializers.ModelSerializer):
         return obj.category.title
     
     def get_sizes(self, obj):
-        return ProductSizeSerializer(obj.sizes, many = True).data
+        self.context['product'] = obj
+        return ProductSizeSerializer(obj.sizes.order_by(f'price_{obj.type.lower()}'), many = True, context = self.context).data
     
     def get_frames(self, obj):
         return ProductFrameSerializer(obj.frames, many = True).data
@@ -113,6 +122,7 @@ class ProductSerializer(serializers.ModelSerializer):
     def get_same_products(self, obj):
         return [{'type': product.type, 'url':reverse_lazy('product:product-detail', kwargs = {'category_slug':product.category.slug, 'product_slug':product.slug})} 
                 for product in obj.same_products]
+    
     def get_in_wish(self, obj):
         request = self.context.get('request', None)
         if request is not None and request.user.is_authenticated:

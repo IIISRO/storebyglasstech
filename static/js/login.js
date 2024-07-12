@@ -121,7 +121,6 @@ function login(){
         notfWrong(notfEnterPass)
         return false;
     }
-    loader.show();
     fetch(loginURL,{
     method:"POST",
             headers: {
@@ -153,7 +152,6 @@ function login(){
         return response.json()
     })
     .finally(() => {
-        return loader.hide();
     });
 
     

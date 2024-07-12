@@ -99,7 +99,7 @@ class Frame(AbstractModel):
     title=models.CharField(max_length=50)
     cover = models.ImageField(upload_to='FrameCoverIMGs/', null=False, blank=False) 
     frame = models.ImageField(upload_to='FrameIMGs/', null=False, blank=False) 
-
+    price = models.FloatField(null=False, blank=False)
   
     def __str__(self):
         return self.title
@@ -108,6 +108,9 @@ class Frame(AbstractModel):
 class Size(AbstractModel):
     height=models.PositiveIntegerField(null=False)
     width=models.PositiveIntegerField(null=False)
+    price_mdf = models.FloatField(null=False, blank=False)
+    price_glass = models.FloatField(null=False, blank=False)
+
 
     class Meta:
         ordering = ('-created_at',)
@@ -115,6 +118,11 @@ class Size(AbstractModel):
     def __str__(self):
         return f'{self.height} x {self.width} cm'
     
+    def is_base(self, prod):
+        if self == prod.sizes.order_by(f'price_{prod.type.lower()}').first():
+            return True
+        return False
+
 
 class Category(AbstractModel):
     title = models.CharField(max_length=150)
@@ -221,9 +229,6 @@ class Coupon(AbstractModel):
                 if self.used.all().exists():
                     return False, 'Used'
             else:
-                if not user.is_authenticated:
-                    return False, 'Authentication required!'
-
                 if self.used.filter(user=user).exists():
                     return False, 'Used'
              
