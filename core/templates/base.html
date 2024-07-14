@@ -6,7 +6,9 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        {% block desc %}{% endblock %}
+        
+        {% block title %}{% endblock %}
 
         <!--CSS files-->
 
@@ -342,10 +344,13 @@
             var signinURL = "{% url 'account:signin' %}";
             var profileURL = "{% url 'account:profile' %}";
             var addAddressAPI = "{% url 'accountAPI:create_address' %}";
+            var basketAPI = "{% url 'orderAPI:basket' %}"
+            var couponAPI = "{% url 'orderAPI:basketcoupon' %}"
             '{% if request.user.is_authenticated %}'
             var userBasketID = "{{request.user.basket.id}}"
             var updateUserAPI = "{% url 'accountAPI:update_user' pk=request.user.id %}";
             var changeUserPassAPI = "{% url 'accountAPI:change_password' pk=request.user.id %}";
+            basketCounter()
             '{% endif %}'
 
             // notf
@@ -353,6 +358,8 @@
             var notfError = 'Xəta baş verdi!';
             var notfDatasMiss = 'Məlumatlar tam deyil!';
             
+            // trans elm
+        
             // wish  counter
             function wishCounter(){
                 fetch('{% url "accountAPI:get_all_wish_item_number" %}',{
@@ -389,7 +396,6 @@
                     $("#basket-count").text(data.basket_count)
                 })
             }
-            basketCounter()
 
         </script>
         {% block js %}{% endblock %}

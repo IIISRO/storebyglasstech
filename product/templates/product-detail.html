@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
+
+  {% block title %}<title id="head-prod-title"></title>{% endblock %}
+
   {% block style %}
    
   <link rel="stylesheet" href="{% static 'css/product-detail.css' %}">
@@ -107,8 +110,6 @@
                     
                 </ul>
                 <div class="has-cart-message mt-3 d-flex align-items-center justify-content-end" id="cartMessage">
-                    <div class="alert alert-success has-cart d-flex align-items-center"><i class="fa fa-info"></i> Səbətinizdə bu məhsuldan var!</div>
-
                 </div>
                 <div id="prod-price" class="d-flex  align-items-center justify-content-between  mt-2 mb-4 mb-md-0" style="gap: 20px;">
                        
@@ -337,6 +338,7 @@
 
 </script>
 <script src="https://bgrins.github.io/spectrum/spectrum.js"></script>
+<script src="{% static 'js/basket-api.js' %}"></script>
 <script src="{% static 'js/product-detail-api.js' %}"></script>
 <script src="{% static 'js/product-detail.js' %}"></script>
 

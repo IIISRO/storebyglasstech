@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}    
-    
+    {% block desc %}<meta name="description" content="Sadecə telefon nömrəsi ilə daxil olun və alış-verişinizə davam edin.">{% endblock %}
+    {% block title %}<title>Daxil ol | STOREGLASSTECH</title>{% endblock %}
+        
     {% block style %}
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
     {% endblock %}
@@ -13,7 +15,7 @@
 
     
 	<!-- breadcrumb-section -->
-	<div class="breadcrumb-section breadcrumb-bg">
+	<div class="mt-5  breadcrumb-section breadcrumb-bg">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">

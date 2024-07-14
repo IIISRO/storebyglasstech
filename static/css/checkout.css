@@ -156,6 +156,40 @@ ul{
 .privacy-policy-text a{
     text-decoration: none;
 }
+#addressListModal{
+    max-height: 450px;
+}
+.address_cart_small{
+    transition: all ease 1s;
+}
+.address_cart_small:hover{
+    cursor: pointer;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 2px 0px inset;
+}
+.button{
+    outline: none;
+    background-color: #1d2cca;
+    color: white;
+    border: none;
+    padding: 10px;
+    transition: all ease 0.5s;
+}
+.button:active{
+    background-color: #10143e;
+}
+.order-total{
+    border-top: 5px solid #007cba;
+}
+.showcoupon{
+    color: rgb(71, 71, 231);
+    transition: all ease 400ms;
+}
+.showcoupon:hover{
+    cursor: pointer;
+    color: #007cba;
+
+}
+
 #payment #place_order{
     background: #1d2cca;
     height: 48px;

@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 
+    {% block desc %}<meta name="description" content="STOREGLASSTECH haqqında oxuyun.">{% endblock %}
+
+    {% block title %}<title>Haqqımızda | STOREGLASSTECH</title>{% endblock %}
 
     {% block style %}<link rel="stylesheet" href="{% static 'css/about.css' %}">{% endblock %}
 
@@ -19,7 +22,7 @@
                 </div>
                 <div class="col-md-6 d-flex justify-content-end">
                     <img class=""
-                        src="{% static 'images/about-us.png'%}"
+                        src="{% static 'images/about-us.png' %}"
                         alt="">
                 </div>
             </div>
@@ -33,7 +36,7 @@
             <h3>We print collectible metal posters that make this really sweet.</h3>
             <div class="row mt-4 ">
                 <div class="col-md-6">
-                    <img class="w-100" src="{% static 'images/about-us1.jpeg%}"
+                    <img class="w-100" src="{% static 'images/about-us1.jpeg' %}"
                         alt="">
                 </div>
                 <div class="col-md-6">

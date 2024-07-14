@@ -73,9 +73,8 @@ class Order(AbstractModel):
     number = models.PositiveBigIntegerField(null=True, blank=True, unique=True)
     user = models.ForeignKey(User, on_delete=models.PROTECT, related_name = 'user_orders')
     products = models.ManyToManyField(Product, through='OrderItem')
-    discount = models.FloatField(null=True, blank=True)
-    coupon = models.CharField(max_length = 10, null = True, blank = True)
-    delv_fee = models.FloatField(null=True, blank=True)
+    used_coupon = models.CharField(max_length = 10, null = True, blank = True)
+    delv_fee = models.FloatField(default=0.0)
     payed_amount = models.FloatField(null=True, blank=True)
     pay_method = models.CharField(max_length=10,default='card', choices=PAY_METHODS)
     first_name = models.CharField(max_length=50,null=False,blank=False)
@@ -106,7 +105,9 @@ class OrderItem(AbstractModel):
     product = models.ForeignKey(Product, null=False, blank=False, on_delete = models.CASCADE)
     frame = models.ForeignKey(Frame, null=False, blank=False, on_delete = models.CASCADE)
     size = models.ForeignKey(Size, null=False, blank=False, on_delete = models.CASCADE)
-    image = models.TextField(null=True, blank=True)
+    image = models.ImageField(null=True, blank=True, upload_to='OrderIMGs/')
+    item_price = models.FloatField(null=False, blank=False)
+    item_actual_price = models.FloatField(null=False, blank=False)
     quantity =  models.PositiveIntegerField(default = 1)
 
     def __str__(self):

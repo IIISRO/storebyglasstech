@@ -1,4 +1,5 @@
 function getBasketItems(){
+    loader.show()
     var api_url = basketAPI
 
     async function Products(api_url=api_url) {
@@ -13,8 +14,6 @@ function getBasketItems(){
     Products(api_url)
     .then((data) => {
         if (data.items.length > 0){
-            
-
             const itemsArea = $("#productsStartLine")
             itemsArea.html('');
             let items = data.items
@@ -189,6 +188,9 @@ function getBasketItems(){
             
 
         }
+    })
+    .finally(() => {
+        loader.hide()
     })
 }
 

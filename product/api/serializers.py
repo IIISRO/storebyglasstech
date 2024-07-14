@@ -3,6 +3,7 @@ from rest_framework import serializers
 from product.models import Product, Coupon, Category, Size, Frame
 from django.urls import reverse_lazy
 from account.models import UserWishlistItem
+from order.models import BasketItem
 import json
 
 class CouponSerializer(serializers.ModelSerializer):
@@ -79,6 +80,8 @@ class ProductSerializer(serializers.ModelSerializer):
     frames =  serializers.SerializerMethodField()
     same_products = serializers.SerializerMethodField()
     in_wish = serializers.SerializerMethodField()
+    in_cart = serializers.SerializerMethodField()
+
 
 
     class Meta:
@@ -103,6 +106,7 @@ class ProductSerializer(serializers.ModelSerializer):
             'discount_type',
             'discount_amount',
             'in_wish',
+            'in_cart',
             'url'
             )
     def get_url(self, obj):
@@ -132,5 +136,12 @@ class ProductSerializer(serializers.ModelSerializer):
             for item in user_wishlist_items: 
                 if item['product'] == obj.id:
                     return True
+
+        return False
+    
+    def get_in_cart(self, obj):
+        request = self.context.get('request', None)
+        if request is not None and request.user.is_authenticated:
+            return BasketItem.objects.filter(basket__user=request.user, product=obj).exists()
 
         return False

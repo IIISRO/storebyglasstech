@@ -58,6 +58,7 @@ function getDetail(){
             }
         }
         // title, desc, detail
+        $("#head-prod-title").text(`${data.title} | STOREGLASSTECH`)
         $("#prod-title").html(`${data.title}  <small>| ${data.type}</small>`)
         $("#prod-desc").text(data.description)
         $("#prod-detail").html(data.detail)
@@ -119,6 +120,12 @@ function getDetail(){
             likeBtn.classList.toggle("active")
             likeIcon.style.filter="grayscale(0)"
         }
+
+        // in bassket message
+        if(data.in_cart){
+            $("#cartMessage").html(`<div class="d-flex alert alert-success has-cart align-items-center"><i class="fa fa-info"></i> Səbətinizdə bu məhsuldan var!</div>`);
+        }
+       
 
         // olcu selectoru
         const sizes = document.querySelectorAll('.size-element');
@@ -202,9 +209,7 @@ function removeWish(productid){
     })
 	
 }
-let cartMessage=document.getElementById("cartMessage");
-// cartMessage.classList.remove('d-flex')
-// cartMessage.classList.add('d-none')
+
 
 let basketAddButton = document.getElementById("basketadd")
     basketAddButton.addEventListener("click",()=>{
@@ -222,41 +227,9 @@ let basketAddButton = document.getElementById("basketadd")
             basketAddButton.innerHTML=`<i class="fa-regular fa-circle-check"></i> Səbətə əlavə olundu`
             basketAddButton.style.backgroundColor="green"
             basketAddButton.classList.add("clicked")
-            cartMessage.classList.remove("d-none")
-            cartMessage.classList.add("d-flex")
+            
 
         }
         
     })
 
-function addBasket(productid, selectedSize, selectedFrame){
-	loader.show();
-	fetch(addBasketAPI,{
-		method:"POST",
-		headers: {
-			"X-CSRFToken": csrf,
-			"Accept": "application/json",
-			'Content-Type': 'application/json'
-		  },
-		body:JSON.stringify({
-			'product':  parseInt(productid),
-			'size':  parseInt(selectedSize),
-			'frame':  selectedFrame,
-			'quantity':  1,
-
-		})
-	})
-	.then((response)=>{
-		if (response.status === 201){
-			notfSuccessAddBasket()
-		}else if(response.status === 403){
-            location.href = `${signinURL}?next=${location.href}`
-        }else{ notfWrong(); }
-		return response.json()
-	})
-	.finally(()=>{
-		loader.hide();
-        basketCounter();
-
-	})
-}

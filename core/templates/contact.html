@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 
+    {% block desc %}<meta name="description" content="Bizimlə istədiyiniz zaman əlaqəyə keçin və təkliflərinizi vəya rəylərinizi bildirin.">{% endblock %}
+
+    {% block title %}<title>Əlaqə | STOREGLASSTECH</title>{% endblock %}
 
     {% block style %}<link rel="stylesheet" href="{% static 'css/contact.css' %}">{% endblock %}
 
@@ -139,7 +142,7 @@
                                             title="Required">*</abbr></label><br>
                                     <input required size="40"
                                             class="form-control"
-                                            id="phone" type="tel"  placeholder="Əlaqə nömrəssi">
+                                            id="phone" type="tel"  placeholder="Əlaqə nömrəsi">
                                 </p>
                             </div>
                             <div class="col-12 mb-4">

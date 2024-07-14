@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
     
+    {% block title %}<title>Səbətim | STOREGLASSTECH</title>{% endblock %}
     
     {% block style %}<link rel="stylesheet" href="{% static 'css/cart.css' %}">{% endblock %}
 
@@ -90,8 +91,8 @@
 
                             <div class="checkout-sec">
 
-                                <a href="" class="checkout-button button py-2 d-block alt wc-forward">
-                                    Proceed to checkout</a>
+                                <a href="{% url 'order:checkout' %}" class="checkout-button button py-2 d-block alt wc-forward">
+                                    Sifariş</a>
                             </div>
 
 
@@ -107,8 +108,7 @@
 
         {% block js %}
         <script>
-            var basketAPI = "{% url 'orderAPI:basket' %}"
-            var couponAPI = "{% url 'orderAPI:basketcoupon' %}"
+          
 
         </script>
         <script src="{% static 'js/cart.js' %}"></script>

@@ -328,7 +328,6 @@ async function fetchAndDisplayResults(category, filters, pageNumber) {
   }
 
   let responseData = await response.json();
-
   displayResults(responseData);
   createPagination(responseData.pagination.all_pages_num, pageNumber);
 }
