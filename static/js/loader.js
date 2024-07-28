@@ -11,7 +11,7 @@ const loader = {
             divContainer.style.height = '100%';
             divContainer.style.zIndex = '9998';
             divContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.90)';
-            divContainer.classList.add('d-flex');
+            divContainer.style.display = 'flex';
             divContainer.style.alignItems = 'center';
             divContainer.style.justifyContent = 'center';
 
@@ -38,15 +38,15 @@ const loader = {
             this.__loader = divContainer
             document.body.appendChild(this.__loader);
         }
-        this.__loader.style.display="";
+        this.__loader.style.display="flex";
         $('body').css({'overflow':'hidden'});
     },
     hide: function(){
         if(this.__loader!=null)
         {
-            this.__loader.style.display="none";
+            this.__loader.style.visibility="hidden";
             $('body').css({'overflow':'visible'});
-            this.__loader.classList.remove('d-flex')
+            this.__loader.style.display="flex"
             
         }
     }
