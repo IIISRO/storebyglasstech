@@ -11,7 +11,8 @@ function displayResults(results) {
       <div class="col-sm-6 col-xl-3 mb-4">
             <div class="product-item">
               <a href="${product.url}">
-                <div class="product-item-img">
+                <div class="product-item-img" style="position:relative;">
+
                   <img
                   src="${product.image}"
                   alt="">

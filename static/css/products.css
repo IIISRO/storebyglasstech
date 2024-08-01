@@ -166,6 +166,23 @@ row-gap: 40px;
 border: 1px solid #ccc;
 border-radius: 6px;
 }
+.glass-overlay{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 10000000;
+}
+.glass-overlay img,.mdf-overlay img{
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+.mdf-overlay{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 10000000;
+}
 #mdf,#glass{
 box-sizing: border-box;
 display: flex;
@@ -471,7 +488,9 @@ background-color: #fbfbfb;
 .product-item-img{
   position: relative;
 }
-
+.product-item-img img{
+  z-index: 1;
+}
 /* .product-item-img img{
   position: absolute;
   z-index: 0;
