@@ -13,10 +13,25 @@ function displayResults(results) {
               <a href="${product.url}">
                 <div class="product-item-img" style="position:relative;">
 
-                  <img
-                  src="${product.image}"
-                  alt="">
-                  
+                    ${(function Items2() {
+                      let items2 = [];
+                      if (product.same_products[0].type == "MDF") {
+                        
+                        items2.push(
+                          ` <img src="${product.image}" alt="">`
+                        );
+                      } else {
+                        
+                        
+                        items2.push(
+                          ` <img style="filter: brightness(1.2) contrast(1.1) blur(0.05px);" src="${product.image}" alt=""> `
+                        );
+                      }
+                      return items2.join("");
+                    })()}
+                    
+                
+                 
                 </div>
                 </a>
                 <div class="product-col-info p-2">

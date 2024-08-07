@@ -313,12 +313,10 @@ Trending Section
 
 /*Filter Section*/
 
-
 .tab-buttons {
     display: flex;
     margin: auto;
     gap: 8px;
-    width: 50%;
     align-items: center;
     justify-content: center;
 }
@@ -332,6 +330,15 @@ Trending Section
     border-radius: 30px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    flex: 1; /* Allows the button to grow based on its content */
+    white-space: nowrap; /* Prevents text wrapping */
+    text-align: center; /* Centers the text inside the button */
+}
+
+@media(max-width:767px){
+    .tab-btn{
+        font-size: 13px !important;
+    }
 }
 
 .tab-btn:hover {
@@ -342,6 +349,17 @@ Trending Section
 .tab-btn.active {
     background-color: #1d2cca;
     color: #fff;
+}
+@media(max-width:991px){
+    .bootstrap-select>.dropdown-toggle::after{
+        color: #10143e !important;
+        -webkit-text-stroke: #fff !important;
+    }
+}
+@media(min-width:992px){
+    .mobile-lang{
+        display: none !important;
+    }
 }
 
 .content {

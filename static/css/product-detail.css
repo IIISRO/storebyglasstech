@@ -347,6 +347,15 @@ margin: 0;
   height: 100%;
   z-index: 100;
 }
+img.lazy {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+img.lazy[src] {
+  opacity: 1;
+}
+
 .mdf-overlay{
   position: absolute;
   width: 100%;

@@ -6,13 +6,10 @@ function getDetail(){
             method: 'GET', // *GET, POST, PUT, DELETE, etc.
         });
         
-        return response.json(); // parses JSON response into native JavaScript objects
+        return response.json(); 
     }
-    
-    
     Products(api_url)
     .then((data) => {
-        // secilen mehsul isaresi
         if(data.type==="MDF"){
             $("#prod-selected").html(`<img src="/static/images/mdf.png">MDF Tablo Seçildi`);
             $("#mdf-overlay").css('display', 'inline-block');
@@ -24,7 +21,7 @@ function getDetail(){
 
         }
         // sekil
-        $("#main-frame-img").attr('src',data.image);
+        $("#main-frame-img").attr('data-src',data.image);
 
         // benzer mehsul
         for(let type of data.same_products){

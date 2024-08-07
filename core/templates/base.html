@@ -76,7 +76,9 @@
                             data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
                             <img src="{% static 'images/menu.png'%}" width="24" height="20" alt="">
                         </button>
-                        <a href="{% url 'core:home' %}"><img class="logo" src="{% static 'images/logo.png'%}" alt=""></a>
+                        <a href="{% url 'core:home' %}" class="d-none d-md-block"><img class="logo" src="{% static 'images/logo.png'%}" alt=""></a>
+                            <a href="{% url 'core:home' %}"  class=" d-md-none"><img width="40" height="30" class="" src="{% static 'images/G-logo.png'%}"
+                                alt=""></a>
                     </div>
                     <div class="header-search">
                         <form id="searchForm" role="search" method="get" class="product-search">
@@ -116,6 +118,25 @@
                                 <span class="title">{% trans "Daxil ol" %}</span>
                             </a>
                             {% endif %}
+                            <div class="d-flex">
+                                <select class="selectpicker mobile-lang" data-width="fit" onchange="changeLang(this.value)">
+                                    {% get_current_language as LANGUAGE_CODE %}
+                                    {% if LANGUAGE_CODE == 'en' %}
+                                        <option selected value="en" data-content='<span class="flag-icon flag-icon-us"></span>'>İngilis</option>
+                                        <option value="az" data-href="{{request.path|slice:'3:'}}" data-content='<span class="flag-icon flag-icon-az"></span>'>Azərbaycan</option>
+                                        <option value="ru" data-href="/ru{{request.path|slice:'3:'}}" data-content='<span class="flag-icon flag-icon-ru"></span>'>Rus</option>
+                                    {% elif LANGUAGE_CODE == 'ru' %}
+                                        <option value="en" data-href="/en{{request.path|slice:'3:'}}" data-content='<span class="flag-icon flag-icon-us"></span>'>İngilis</option>
+                                        <option value="az" data-href="{{request.path|slice:'3:'}}" data-content='<span class="flag-icon flag-icon-az"></span>'>Azərbaycan</option>
+                                        <option selected value="ru" data-content='<span class="flag-icon flag-icon-ru"></span> Rus'>Rus</option>
+                                    {% else %}
+                                        <option value="en" data-href="/en{{request.path}}" data-content='<span class="flag-icon flag-icon-us"></span>'>İngilis</option>
+                                        <option selected value="az" data-content='<span class="flag-icon flag-icon-az"></span>'>Azərbaycan</option>
+                                        <option value="ru" data-href="/ru{{request.path}}" data-content='<span class="flag-icon flag-icon-ru"></span>'>Rus</option>
+                                    {% endif %}
+                                </select>
+                                
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -166,22 +187,23 @@
                 
                         </ul>
                         <div class="d-flex">
-                            <select class="selectpicker" data-width="fit">
+                            <select class="selectpicker" data-width="fit" onchange="changeLang(this.value)">
                                 {% get_current_language as LANGUAGE_CODE %}
                                 {% if LANGUAGE_CODE == 'en' %}
-                                <option selected data-content='<span class="flag-icon flag-icon-us"></span> İngilis'>İngilis</option>
-                                <option data-content='<span class="flag-icon flag-icon-az"></span> Azərbaycan'><button type="button" onclick="changeLang('az')" class="langlink" data-href="{{request.path|slice:'3:'}}">Azərbaycan</button></option>
-                                <option data-content='<span class="flag-icon flag-icon-ru"></span> Rus'><button type="button"onclick="changeLang('ru')" class="langlink" data-href="/ru{{request.path|slice:'3:'}}">Rus</button></option>
+                                    <option selected value="en" data-content='<span class="flag-icon flag-icon-us"></span> İngilis'>İngilis</option>
+                                    <option value="az" data-href="{{request.path|slice:'3:'}}" data-content='<span class="flag-icon flag-icon-az"></span> Azərbaycan'>Azərbaycan</option>
+                                    <option value="ru" data-href="/ru{{request.path|slice:'3:'}}" data-content='<span class="flag-icon flag-icon-ru"></span> Rus'>Rus</option>
                                 {% elif LANGUAGE_CODE == 'ru' %}
-                                <option selected data-content='<span class="flag-icon flag-icon-ru"></span> Rus'>Rus</option>
-                                <option onclick="changeLang('az')" class="langlink" data-href="{{request.path|slice:'3:'}}" data-content='<span class="flag-icon flag-icon-ru"></span> Rus'>Azərbaycan</option>
-                                <option onclick="changeLang('en')" class="langlink" data-href="/en{{request.path|slice:'3:'}}" data-content='<span class="flag-icon flag-icon-us"></span> İngilis'>İngilis</option>
+                                    <option value="en" data-href="/en{{request.path|slice:'3:'}}" data-content='<span class="flag-icon flag-icon-us"></span> İngilis'>İngilis</option>
+                                    <option value="az" data-href="{{request.path|slice:'3:'}}" data-content='<span class="flag-icon flag-icon-az"></span> Azərbaycan'>Azərbaycan</option>
+                                    <option selected value="ru" data-content='<span class="flag-icon flag-icon-ru"></span> Rus'>Rus</option>
                                 {% else %}
-                                <option selected data-content='<span class="flag-icon flag-icon-az"></span> Azərbaycan'>Azərbaycan</option>
-                                <option onclick="changeLang('ru')" class="langlink" data-href="/ru{{request.path}}" data-content='<span class="flag-icon flag-icon-ru"></span> Rus'>Rus</option>
-                                <option onclick="changeLang('en')" class="langlink" data-href="/en{{request.path}}" data-content='<span class="flag-icon flag-icon-us"></span> İngilis'>İngilis</option>
+                                    <option value="en" data-href="/en{{request.path}}" data-content='<span class="flag-icon flag-icon-us"></span> İngilis'>İngilis</option>
+                                    <option selected value="az" data-content='<span class="flag-icon flag-icon-az"></span> Azərbaycan'>Azərbaycan</option>
+                                    <option value="ru" data-href="/ru{{request.path}}" data-content='<span class="flag-icon flag-icon-ru"></span> Rus'>Rus</option>
                                 {% endif %}
                             </select>
+                            
                         </div>
                     </div>
                 </div>
@@ -323,6 +345,7 @@
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
         <!--Bootstrap JS-->
+        
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
         integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
         crossorigin="anonymous"></script>
@@ -412,42 +435,48 @@
         </script>
         <!-- lang select -->
         <script>
+function changeLang(changeLangCode) {
+    loader.show();
+    var date = new Date();
+    date.setTime(date.getTime() + (350 * 24 * 60 * 60 * 1000));
+    document.cookie = `lang=${changeLangCode}; expires=${date.toUTCString()}; path=/;`;
 
-            function changeLang(changeLangCode){
-                loader.show();
-                var date = new Date();
-                date.setTime(date.getTime() + (350 * 24 * 60 * 60 * 1000));
-                document.cookie = `lang=${changeLangCode}; expires=${date.toUTCString()}}; path=/;`;
-                window.location.href = event.target.dataset.href
-            }
-            
-            const langCode = '{{ LANGUAGE_CODE }}'
-            let cookieLangCode;
-            var cookies = document.cookie.split(';');
-            for (var i = 0; i < cookies.length; i++) {
-                var cookie = cookies[i];
-                while (cookie.charAt(0) === ' ') {
-                    cookie = cookie.substring(1, cookie.length);
-                }
-                if (cookie.indexOf('lang=') === 0) {
-                    cookieLangCode =  cookie.substring('lang='.length, cookie.length);
-                }
-            }
-            if(!cookieLangCode){
-                cookieLangCode = langCode
-            }
-            if (langCode != cookieLangCode){
-                if(cookieLangCode === 'az'){
-                    window.location.href = "{{request.path|slice:'3:'}}"
-                }else{
-                    if(langCode==='az'){
-                        window.location.href = `/${cookieLangCode}{{request.path}}`
-                    }else{
-                        window.location.href = `/${cookieLangCode}{{request.path|slice:'3:'}}`
-                    }
-                }
-                
-            }
+    // Find the selected option and get the data-href attribute
+    const selectedOption = document.querySelector(`option[value="${changeLangCode}"]`);
+    const redirectUrl = selectedOption.dataset.href;
+
+    // Redirect to the appropriate URL
+    window.location.href = redirectUrl ? redirectUrl : window.location.href;
+}
+
+// Existing cookie management code
+const langCode = '{{ LANGUAGE_CODE }}';
+let cookieLangCode;
+var cookies = document.cookie.split(';');
+for (var i = 0; i < cookies.length; i++) {
+    var cookie = cookies[i];
+    while (cookie.charAt(0) === ' ') {
+        cookie = cookie.substring(1, cookie.length);
+    }
+    if (cookie.indexOf('lang=') === 0) {
+        cookieLangCode =  cookie.substring('lang='.length, cookie.length);
+    }
+}
+if (!cookieLangCode) {
+    cookieLangCode = langCode;
+}
+if (langCode != cookieLangCode) {
+    if (cookieLangCode === 'az') {
+        window.location.href = "{{request.path|slice:'3:'}}";
+    } else {
+        if (langCode === 'az') {
+            window.location.href = `/${cookieLangCode}{{request.path}}`;
+        } else {
+            window.location.href = `/${cookieLangCode}{{request.path|slice:'3:'}}`;
+        }
+    }
+}
+
         </script>
         {% block js %}{% endblock %}
 

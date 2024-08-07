@@ -52,6 +52,7 @@ class ProductFrameSerializer(serializers.ModelSerializer):
 class ProductListSerializer(serializers.ModelSerializer):
 
     url =  serializers.SerializerMethodField()
+    same_products = serializers.SerializerMethodField()
 
     class Meta:
         model = Product
@@ -61,12 +62,17 @@ class ProductListSerializer(serializers.ModelSerializer):
             'price',
             'actual_price',
             'image',
+            'same_products',
             'has_discount',
             'discount_type',
             'discount_amount',
             'url'
             )
         
+    def get_same_products(self, obj):
+        return [{'type': product.type, 'url':reverse_lazy('product:product-detail', kwargs = {'category_slug':product.category.slug, 'product_slug':product.slug})} 
+                for product in obj.same_products]
+    
     def get_url(self, obj):
         return reverse_lazy('product:product-detail', kwargs = {'category_slug':obj.category.slug, 'product_slug':obj.slug})
  

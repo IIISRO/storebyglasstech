@@ -162,6 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let mainFrame1=document.getElementById("main-frame1")
     let mainImage1=document.querySelector("#main-frame1 img")
     let mainImage=document.querySelector("#main-frame img")
+    
     buttons.forEach(button => {
         button.addEventListener('click', () => {
             // Remove the 'selected' class from all buttons
@@ -224,5 +225,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // });
    
 });
+
 
 

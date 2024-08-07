@@ -176,7 +176,11 @@
                         {% for item in order.order_items.all %}
                         <a href="/product/{{item.product.get_absolute_url}}" class="p-0 d-flex row w-100 m-0 mt-3">
                           <div class="col-md-8  w-100 d-flex" style="padding-left: 0;">
-                            <img width="60" height="60" src="{{item.product.image.url}}" alt="">
+                            <div class="order-item-img" style="width: 60px; height: 60px;position: relative;">
+                               <div class="glass-overlay" id="glass-overlay"><img src="{% static 'images/shadow11.png'%}" alt=""></div>
+                               <img width="60" height="60" src="{{item.product.image.url}}" alt="">
+                            </div>
+                           
                             <div class="order-name"><h4>{{item.product.title}}</h4><span>rate the product</span></div>
                           </div>
                           <div class="col-md-4 order-price-info" style="padding-right: 0;">
