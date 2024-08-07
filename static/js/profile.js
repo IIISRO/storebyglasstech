@@ -426,3 +426,20 @@ if(data){
     return 0
     });
 }
+
+
+// projects filters isotop
+$(".product-filters li").on('click', function () {
+    if(!$(this).hasClass('linkli')){
+
+        $(".product-filters li").removeClass("active");
+        $(this).addClass("active");
+    }
+
+    var selector = $(this).attr('data-filter');
+
+    $(".product-lists").isotope({
+        filter: selector,
+    });
+
+});

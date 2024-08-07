@@ -66,17 +66,13 @@ class Order(AbstractModel):
         ('Delivery', 'Delivery'),
         ('Finished', 'Finished')
     )
-    PAY_METHODS = (              
-        ('card', 'card'),
-        ('cash', 'cash')
-    )
     number = models.PositiveBigIntegerField(null=True, blank=True, unique=True)
     user = models.ForeignKey(User, on_delete=models.PROTECT, related_name = 'user_orders')
     products = models.ManyToManyField(Product, through='OrderItem')
     used_coupon = models.CharField(max_length = 10, null = True, blank = True)
     delv_fee = models.FloatField(default=0.0)
-    payed_amount = models.FloatField(null=True, blank=True)
-    pay_method = models.CharField(max_length=10,default='card', choices=PAY_METHODS)
+    order_price = models.FloatField(null=False, blank=False)
+    order_actual_price = models.FloatField(null=False, blank=False)
     first_name = models.CharField(max_length=50,null=False,blank=False)
     last_name = models.CharField(max_length=50,null=False,blank=False)
     address_line = models.CharField(max_length=100,null=False,blank=False)
@@ -102,9 +98,9 @@ class Order(AbstractModel):
 
 class OrderItem(AbstractModel):
     order  = models.ForeignKey(Order, on_delete=models.CASCADE, null=False, blank=False, related_name = 'order_items')
-    product = models.ForeignKey(Product, null=False, blank=False, on_delete = models.CASCADE)
-    frame = models.ForeignKey(Frame, null=False, blank=False, on_delete = models.CASCADE)
-    size = models.ForeignKey(Size, null=False, blank=False, on_delete = models.CASCADE)
+    product = models.ForeignKey(Product, null=False, blank=False, on_delete = models.PROTECT)
+    size = models.ForeignKey(Size, null=False, blank=False, on_delete = models.PROTECT)
+    frame = models.ForeignKey(Frame, null=True, blank=True, on_delete = models.PROTECT)
     image = models.ImageField(null=True, blank=True, upload_to='OrderIMGs/')
     item_price = models.FloatField(null=False, blank=False)
     item_actual_price = models.FloatField(null=False, blank=False)
@@ -114,5 +110,5 @@ class OrderItem(AbstractModel):
         return f"{self.quantity} x {self.product.title} in Order #{self.order.number}"
     
     @property
-    def total(self):
-        return round(self.price * self.quantity,2)
+    def actual_total(self):
+        return round(self.item_actual_price * self.quantity,2)

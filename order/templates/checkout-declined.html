@@ -1,0 +1,166 @@
+
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}<title>{% trans "Xəta" %} | https://www.otodom.pl/pl/oferta/mokotow-4-pok-garaz-2-balkony-po-odswiezeniu-ID4qmWZSTOREGLASSTECH</title>{% endblock %}
+{% block style %}
+<style>
+.marksvg {
+  width: 100px;
+  display: block;
+  margin: 40px auto 0;
+}
+
+.markpath {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 0;
+  &.circle {
+    -webkit-animation: dash .9s ease-in-out;
+    animation: dash .9s ease-in-out;
+  }
+  &.line {
+    stroke-dashoffset: 1000;
+    -webkit-animation: dash .9s .35s ease-in-out forwards;
+    animation: dash .9s .35s ease-in-out forwards;
+  }
+  &.check {
+    stroke-dashoffset: -100;
+    -webkit-animation: dash-check .9s .35s ease-in-out forwards;
+    animation: dash-check .9s .35s ease-in-out forwards;
+  }
+}
+
+p {
+  text-align: center;
+  margin: 20px 0 60px;
+  font-size: 1.25em;
+  &.error {
+    color: #960101;
+  }
+}
+
+
+@-webkit-keyframes dash {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@-webkit-keyframes dash-check {
+  0% {
+    stroke-dashoffset: -100;
+  }
+  100% {
+    stroke-dashoffset: 900;
+  }
+}
+
+@keyframes dash-check {
+  0% {
+    stroke-dashoffset: -100;
+  }
+  100% {
+    stroke-dashoffset: 900;
+  }
+}
+
+</style>
+{% endblock %}
+{% block content %}
+    <!-- breadcrumb-section -->
+    <div class="breadcrumb-section breadcrumb-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 text-center">
+                    <div class="breadcrumb-text">
+                        <p class="mt-5">{% trans "Xəta" %}</p>
+                        <h1>{% trans "Ödəniş qəbul olunmadı" %}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end breadcrumb section -->
+    <!-- error section -->
+    <div class="mb-5  error-section">
+        <div class="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2 text-center">
+                        <div class="error-text">
+                            <svg class="marksvg" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+                                <circle class="path markpath circle" fill="none" stroke="#960101" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
+                                <line class="path markpath line" fill="none" stroke="#960101" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="34.4" y1="37.9" x2="95.8" y2="92.3"/>
+                                <line class="path markpath line" fill="none" stroke="#960101" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" x1="95.8" y1="38" x2="34.4" y2="92.2"/>
+                            </svg>
+                            <h1 style="color: rgb(215, 15, 15);" >{% trans "Ödəniş zamanı xəta başverdi!" %}</h1>
+                            <p style="color: rgb(231, 37, 37);">{% trans "Yenidən sifarişə yönləndirilirsiniz." %}</p>
+                            <p><div><b>00</b><b>:</b><b id="seconds">05</b> {% trans "sonra" %}</div></p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end error section -->
+    
+
+{% endblock %}
+
+{% block js %}
+<script>
+    console.log(2)
+    let urlParams = new URLSearchParams(window.location.search);
+
+    urlParams.delete('valid');
+    var url = new URL(window.location.href);
+    url.search = urlParams.toString();
+    window.history.replaceState({ id: "100" },"", url.toString());
+
+
+
+    const secondsLabel = $("#seconds");
+
+    // Set the duration of the countdown in milliseconds (3 minutes)
+    const countdownDuration = 5000;
+
+    // Calculate the target time by adding the duration to the current time
+    const targetTime = Date.now() + countdownDuration;
+
+    // Update the countdown every second
+    const countdownTimer = setInterval(() => {
+    // Get the current time
+    const currentTime = Date.now();
+
+    // Calculate the remaining time
+    const remainingTime = targetTime - currentTime;
+
+    // Calculate minutes and seconds
+    const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+
+    // Display the countdown
+    secondsLabel.html(seconds.toString().padStart(2, '0'))
+
+
+    // If the countdown is finished, display a message and clear the interval
+    if (remainingTime <= 1000) {
+        clearInterval(countdownTimer);
+        jQuery(".loader").fadeIn(1000);
+        window.location.href = '{% url "order:checkout" %}'
+    }
+    }, 1000); // Update every se
+</script>
+
+{% endblock %}

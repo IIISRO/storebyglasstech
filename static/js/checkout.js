@@ -157,6 +157,7 @@ function applyCoupon(){
 let checkoutTotal = 0.00;
 let checkoutActualTotal = 0.00;
 let delvFee = 0.00;
+let payMethod = 'cart';
 
 function getItems(){
     loader.show()
@@ -343,7 +344,7 @@ function checkAddress(){
         })
         .then((response)=>{
             if(response.status == 201){
-                getAmount();
+                createOrder();
                 return response.json()
             }else{
                 return checkoutErrorDetect()
@@ -351,18 +352,19 @@ function checkAddress(){
         })
 
     }else{
-        getAmount();
+        createOrder();
     }
 }
 
 
 // createOrder
-function createOrder(payAmount, payDiscount, payDelv){
-    if(payAmount){
+function createOrder(){
+    loader.show()
+    if(checkoutActualTotal){
         if(langCode==='az'){
-            var approveURL = `${window.location.origin}/order/checkout/approved/${userBasketID}/${payAmount}/${payDelv}/${payDiscount}/${payMethod}/`
+            var approveURL = `${window.location.origin}/checkout/approved/${userBasketID}/${checkoutTotal}/${checkoutActualTotal}/${delvFee}/`
         }else{
-            var approveURL = `${window.location.origin}/${langCode}/order/checkout/approved/${userBasketID}/${payAmount}/${payDelv}/${payDiscount}/${payMethod}/`
+            var approveURL = `${window.location.origin}/${langCode}/checkout/approved/${userBasketID}/${checkoutTotal}/${checkoutActualTotal}/${delvFee}/`
         }
         if(payMethod === 'cash'){
             fetch(approveURL,{
@@ -383,37 +385,38 @@ function createOrder(payAmount, payDiscount, payDelv){
             })
             
         }else{
-            fetch('https://api.payriff.com/api/v2/createOrder',{
-                method:"POST",
-                headers: {
-                    "Authorization": "BD5FDA7C86A14CE4A987FE5F97C260BF",
-                    "Accept": "application/json",
-                    'Content-Type': 'application/json'
-                },
-                body:JSON.stringify({
-                    "body": {
-                    "amount": payAmount,
-                    "approveURL": approveURL,
-                    "cancelURL": window.location.href,
-                    "currencyType": "AZN",
-                    "declineURL": window.location.origin+payDeclineURL,
-                    "description": "Satish",
-                    "directPay": true,
-                    "language": "AZ",
-                    },
-                    "merchant": "ES1092714"
-                }),
+            console.log(approveURL)
+            // fetch('https://api.payriff.com/api/v2/createOrder',{
+            //     method:"POST",
+            //     headers: {
+            //         "Authorization": "57F3BC6184394CE19BEB715408F74D39",
+            //         "Accept": "application/json",
+            //         'Content-Type': 'application/json'
+            //     },
+            //     body:JSON.stringify({
+            //         "body": {
+            //         "amount": checkoutActualTotal,
+            //         "approveURL": approveURL,
+            //         "cancelURL": window.location.href,
+            //         "currencyType": "AZN",
+            //         "declineURL": window.location.origin+payDeclineURL,
+            //         "description": "Satish",
+            //         "directPay": true,
+            //         "language": "AZ",
+            //         },
+            //         "merchant": "ES1093507"
+            //     }),
             
-            })
+            // })
       
-            .then((response) => {
-                return response.json()
+            // .then((response) => {
+            //     return response.json()
     
-            })
-            .then((data) => {
-                window.location.href = data.payload.paymentUrl
+            // })
+            // .then((data) => {
+            //     window.location.href = data.payload.paymentUrl
             
-            });
+            // });
         }
      
 

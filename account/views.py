@@ -33,6 +33,7 @@ class Profile(LoginRequiredMixin, View):
         context = {
             'all_addresses':request.user.user_addresses.filter(is_default = False).order_by('-created_at'),
             'default_address':request.user.user_addresses.filter(is_default = True).first(),
+            'user_orders': request.user.user_orders.all().order_by('-created_at')
         }
         
         return render(request, 'profile.html', context)

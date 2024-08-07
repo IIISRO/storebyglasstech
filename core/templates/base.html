@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -87,7 +88,7 @@
                         <a href="tel:0(500)123-456" class="header-contact d-none d-md-flex align-items-center">
                             <i class="fa fa-phone" aria-hidden="true"></i>
                             <div>
-                                <span>Call Us: </span>
+                                <span>{% trans "Zəng:" %} </span>
                                 <div class="phone">0(500)123-456</div>
                             </div>
                         </a>
@@ -98,21 +99,21 @@
                                 <i class="fa fa-heart" aria-hidden="true">
                                     <span id="wish-count" class="count-badge">0</span>
                                 </i>
-                                <span class="title">Wishlist</span>
+                                <span class="title">{% trans "Sevimlilər" %}</span>
                             </a>
                             <a href="{% url 'order:cart' %}" class="cart-count">
                                 <i class="fa fa-shopping-bag" aria-hidden="true"><span id="basket-count" class="count-badge">0</span></i>
-                                <span class="title">Cart</span>
+                                <span class="title">{% trans "Səbət" %}</span>
                             </a>
                             {% if request.user.is_authenticated %}
                             <a href="{% url 'account:profile' %}" class="user user-icon">
                                 <i class="fa fa-user" aria-hidden="true"></i>
-                                <span class="title">Profil</span>
+                                <span class="title">{% trans "Profil" %}</span>
                             </a>
                             {% else %}
                             <a href="{% url 'account:signin' %}" class="user user-icon">
                                 <i class="fa fa-user" aria-hidden="true"></i>
-                                <span class="title">Daxil ol</span>
+                                <span class="title">{% trans "Daxil ol" %}</span>
                             </a>
                             {% endif %}
                         </div>
@@ -140,7 +141,7 @@
                                 <a class="nav-link active" aria-current="page" href="{% url 'core:home' %}">Ana səhifə</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'core:about' %}">Haqqımızda</a>
+                                <a class="nav-link" href="{% url 'core:about' %}">{% trans "Haqqımızda" %}</a>
                             </li>
                            
                            
@@ -151,14 +152,14 @@
                                   <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="{% url 'product:products' category_slug='all' %}?type=glass">Şüşə tablolar</a></li>
                                     <li><a class="dropdown-item" href="{% url 'product:products' category_slug='all' %}?type=mdf">MDF tablolar</a></li>
-                                    <li><a class="dropdown-item" href="#">Saatlar</a></li>
-                                    <li><a class="dropdown-item" href="#">Özün yarat</a></li>
+                                    <li><a class="dropdown-item" href="#">{% trans "Saatlar" %}</a></li>
+                                    <li><a class="dropdown-item" href="#">{% trans "Özün yarat" %}</a></li>
                                    
                                   </ul>
                             </li>
                           
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'core:contact' %}">Əlaqə</a>
+                                <a class="nav-link" href="{% url 'core:contact' %}">{% trans "Əlaqə" %}</a>
                             </li>
                         
 
@@ -166,9 +167,20 @@
                         </ul>
                         <div class="d-flex">
                             <select class="selectpicker" data-width="fit">
-                                <option data-content='<span class="flag-icon flag-icon-az"></span> Azərbaycan'>Azərbaycan</option>
-                                <option data-content='<span class="flag-icon flag-icon-ru"></span> Rus'>Rus</option>
-                                <option data-content='<span class="flag-icon flag-icon-us"></span> İngilis'>İngilis</option>
+                                {% get_current_language as LANGUAGE_CODE %}
+                                {% if LANGUAGE_CODE == 'en' %}
+                                <option selected data-content='<span class="flag-icon flag-icon-us"></span> İngilis'>İngilis</option>
+                                <option data-content='<span class="flag-icon flag-icon-az"></span> Azərbaycan'><button type="button" onclick="changeLang('az')" class="langlink" data-href="{{request.path|slice:'3:'}}">Azərbaycan</button></option>
+                                <option data-content='<span class="flag-icon flag-icon-ru"></span> Rus'><button type="button"onclick="changeLang('ru')" class="langlink" data-href="/ru{{request.path|slice:'3:'}}">Rus</button></option>
+                                {% elif LANGUAGE_CODE == 'ru' %}
+                                <option selected data-content='<span class="flag-icon flag-icon-ru"></span> Rus'>Rus</option>
+                                <option onclick="changeLang('az')" class="langlink" data-href="{{request.path|slice:'3:'}}" data-content='<span class="flag-icon flag-icon-ru"></span> Rus'>Azərbaycan</option>
+                                <option onclick="changeLang('en')" class="langlink" data-href="/en{{request.path|slice:'3:'}}" data-content='<span class="flag-icon flag-icon-us"></span> İngilis'>İngilis</option>
+                                {% else %}
+                                <option selected data-content='<span class="flag-icon flag-icon-az"></span> Azərbaycan'>Azərbaycan</option>
+                                <option onclick="changeLang('ru')" class="langlink" data-href="/ru{{request.path}}" data-content='<span class="flag-icon flag-icon-ru"></span> Rus'>Rus</option>
+                                <option onclick="changeLang('en')" class="langlink" data-href="/en{{request.path}}" data-content='<span class="flag-icon flag-icon-us"></span> İngilis'>İngilis</option>
+                                {% endif %}
                             </select>
                         </div>
                     </div>
@@ -397,6 +409,45 @@
                 })
             }
 
+        </script>
+        <!-- lang select -->
+        <script>
+
+            function changeLang(changeLangCode){
+                loader.show();
+                var date = new Date();
+                date.setTime(date.getTime() + (350 * 24 * 60 * 60 * 1000));
+                document.cookie = `lang=${changeLangCode}; expires=${date.toUTCString()}}; path=/;`;
+                window.location.href = event.target.dataset.href
+            }
+            
+            const langCode = '{{ LANGUAGE_CODE }}'
+            let cookieLangCode;
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i];
+                while (cookie.charAt(0) === ' ') {
+                    cookie = cookie.substring(1, cookie.length);
+                }
+                if (cookie.indexOf('lang=') === 0) {
+                    cookieLangCode =  cookie.substring('lang='.length, cookie.length);
+                }
+            }
+            if(!cookieLangCode){
+                cookieLangCode = langCode
+            }
+            if (langCode != cookieLangCode){
+                if(cookieLangCode === 'az'){
+                    window.location.href = "{{request.path|slice:'3:'}}"
+                }else{
+                    if(langCode==='az'){
+                        window.location.href = `/${cookieLangCode}{{request.path}}`
+                    }else{
+                        window.location.href = `/${cookieLangCode}{{request.path|slice:'3:'}}`
+                    }
+                }
+                
+            }
         </script>
         {% block js %}{% endblock %}
 

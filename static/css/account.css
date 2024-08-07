@@ -380,3 +380,43 @@ button.bordered-btn {
   .order-tabs .nav-link.active{
     background-color: #10143e !important;
   }
+
+
+
+.product-filters {
+    margin-bottom: 80px;
+}
+
+.product-lists{
+    overflow:auto;
+    max-height: 500px;
+}
+  
+.product-filters ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+}
+  
+.product-filters ul li {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 18px;
+    margin: 15px;
+    border: 2px solid #5d721a;
+    color: #323232;
+    cursor: pointer;
+    padding: 8px 20px;
+    border-radius: 25px;
+}
+  
+.product-filters ul li.active {
+    border: 2px solid #b3cc23;
+    background-color: #b3cc23;
+    color: #fff;
+}
+.order-card-main{
+    border: 1px solid rgb(198, 198, 198);
+    border-radius: 5px;
+}

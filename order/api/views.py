@@ -6,7 +6,6 @@ from order.models import Basket, BasketItem, Order
 from .serializers import BasketItemSerializer, BasketSerializer, GetOrderSerializer, OrderSerializer
 from product.models import Product, Coupon, Frame, Size
 from rest_framework.views import APIView
-import json
 from django.shortcuts import get_object_or_404
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated

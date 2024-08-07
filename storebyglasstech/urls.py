@@ -19,9 +19,15 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from .storeglasstech_admin  import storeglasstech_admin_site
+from django.conf.urls.i18n import i18n_patterns
+
 
 urlpatterns = [
     path('admin/', storeglasstech_admin_site.urls),
+    path("ckeditor5/", include('django_ckeditor_5.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
+
+urlpatterns += i18n_patterns(
     path('', include('core.urls', namespace='core')),
     path('', include('product.urls', namespace='product')),
     path('', include('account.urls', namespace='account')),
@@ -29,9 +35,11 @@ urlpatterns = [
     path('api/v1/', include('product.api.urls', namespace='productAPI')),
     path('api/v1/account/', include('account.api.urls', namespace='accountAPI')),
     path('api/v1/order/', include('order.api.urls', namespace='orderAPI')),
-    path("ckeditor5/", include('django_ckeditor_5.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
+    prefix_default_language=False
+)
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# handler404 = 'core.views.error_404_view'
