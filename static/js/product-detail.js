@@ -228,3 +228,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
+document.getElementById('main-frame-img').onload = function() {
+    document.getElementById('loading-spinner').style.display = 'none';
+    this.style.display = 'block';
+};

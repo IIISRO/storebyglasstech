@@ -150,7 +150,7 @@
 }
 .product-filters ul li {
     padding: 5px 10px!important;
-    font-size: 12px!important;
+    /* font-size: 12px!important; */
     font-weight: 500!important;
     margin: 5px!important;
 }

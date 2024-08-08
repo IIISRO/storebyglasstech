@@ -486,6 +486,7 @@ body{
   }
   .row{
     margin-left: 0 !important;
+    width: 100% !important;
   }
 
   .lazyload {
@@ -496,7 +497,9 @@ body{
 .lazyloaded {
     opacity: 1;
 }
-
+.mobile-lang,.bootstrap-select .dropdown-menu{
+    z-index: 1000000000000 !important;
+}
 
 #loader {
 width: 60px;

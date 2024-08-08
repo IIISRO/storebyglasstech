@@ -21,7 +21,7 @@ function getDetail(){
 
         }
         // sekil
-        $("#main-frame-img").attr('data-src',data.image);
+        $("#main-frame-img").attr('src',data.image);
 
         // benzer mehsul
         for(let type of data.same_products){

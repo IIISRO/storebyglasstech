@@ -40,9 +40,34 @@ async function fetchAndDisplayResults() {
                         <td class="product-thumbnail">
                             <a href="${item.product.url}">
                                 <div class="frame-wishlist">
-                                <img fetchpriority="high" decoding="async" 
+                               
+                                    
+                                    ${    
+                                        (function checkType() {
+                                        if(item.product.type==='MDF'){
+                                            let framInfo = 
+                                            `
+                                             <img fetchpriority="high" decoding="async" 
                                     src="${item.product.image}"
-                                    class="product-thumb" alt=""></div> </a>
+                                    class="product-thumb" alt="">
+                                            `
+                                            return framInfo
+        
+                                        }
+                                        else{
+                                            let framInfo = 
+                                            `
+                                         <img fetchpriority="high" decoding="async"  style="filter: brightness(1.2) contrast(1.1) blur(0.05px);"
+                                    src="${item.product.image}"
+                                    class="product-thumb" alt="">
+                                            `
+                                            return framInfo
+        
+                                        }
+                                        return ''
+                                        })()
+                                    }
+                                    </div> </a>
                         </td>
                         <td class="product-name text-center">
                             <a class="" href="${item.product.url}">

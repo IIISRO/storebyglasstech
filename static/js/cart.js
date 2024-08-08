@@ -23,9 +23,32 @@ function getBasketItems(){
                     <td class="product-thumbnail">
                         <a href="${item.product.url}">
                             <div class="frame-cart">
-                            <img fetchpriority="high"
+                            ${    
+                                (function checkType() {
+                                if(item.product.type==='MDF'){
+                                    let framInfo = 
+                                    `
+                                     <img fetchpriority="high" 
                                 src="${item.product.image}"
-                                class="cart-thumbnail" alt=""></div></a>
+                                class="cart-thumbnail" alt="">
+                                    `
+                                    return framInfo
+
+                                }
+                                else{
+                                    let framInfo = 
+                                    `
+                                     <img fetchpriority="high" style="filter: brightness(1.2) contrast(1.1) blur(0.05px);"
+                                src="${item.product.image}"
+                                class="cart-thumbnail" alt="">
+                                    `
+                                    return framInfo
+
+                                }
+                                return ''
+                                })()
+                            }
+                          </div></a>
                     </td>
 
                     <td class="product-name" data-title="Product">
