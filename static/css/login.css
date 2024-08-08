@@ -1,15 +1,13 @@
-
-
 .center {
-    margin: 50px 0px 50px 0px;
-    max-width: 500px;
-    background: white;
-    border-radius: 10px;
-    -webkit-box-shadow: 0px 0px 41px 5px #10143e78;
-    -moz-box-shadow: 0px 0px 41px 5px #10143e78;
-    box-shadow: 0px 0px 41px 5px #10143e78;
-  
-  }
+  margin: 50px 0px 50px 0px;
+  max-width: 500px;
+  background: white;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 30px 5px #10143e42;
+  -moz-box-shadow: 0px 0px 30px 5px #10143e42;
+  box-shadow: 0px 0px 30px 5px #10143e42;
+
+}
   .center h2 {
     font-size: 2.5rem;
     line-height: 2.75rem;

@@ -27,3 +27,6 @@ def send_contact_email(request):
         except: 
             return HttpResponse(status=400)
     return HttpResponse(status=400)
+
+def error_404_view(request, exception):
+    return render(request, '404.html')
