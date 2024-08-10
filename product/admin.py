@@ -1,7 +1,7 @@
 from django.contrib import admin
 from storebyglasstech.storeglasstech_admin import  storeglasstech_admin_site
 import admin_thumbnails
-from .models import Product, Frame, Size, Category, Artist, ProductDiscount, Coupon, UsedCoupon
+from .models import Product, Frame, Size, Category, Artist, ProductDiscount, Coupon, UsedCoupon, Comments
 
 # Register your models here.
 
@@ -15,6 +15,7 @@ class ProductAdmin(admin.ModelAdmin):
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['title']
     prepopulated_fields = {'slug': ('title',)}
+
 class ProductDiscountAdmin(admin.ModelAdmin):
     filter_horizontal = ('products',)
 
@@ -28,3 +29,5 @@ storeglasstech_admin_site.register(Frame)
 storeglasstech_admin_site.register(Size)
 storeglasstech_admin_site.register(Category, CategoryAdmin)
 storeglasstech_admin_site.register(Artist)
+storeglasstech_admin_site.register(Comments)
+

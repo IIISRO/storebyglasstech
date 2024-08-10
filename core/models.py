@@ -10,8 +10,8 @@ class AbstractModel(models.Model):
 
 class SliderIMG(AbstractModel):
     image = models.ImageField(upload_to='SliderIMGs/')
-    header = models.CharField(max_length=100, null=False)
-    text = models.CharField(max_length=100, null=False)
+    header = models.CharField(max_length=20, null=False)
+    text = models.CharField(max_length=30, null=False)
     btn_text = models.CharField(max_length=100, null=False)
     btn_href = models.TextField(null=False)
 

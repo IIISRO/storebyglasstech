@@ -56,8 +56,8 @@
     }
     
     .stage  a {
-    background:red;
-    color: #fff;
+    background:#ff0000;
+    color: #fff!important;
     font-size: 14px;
     text-decoration: none;
     -webkit-border-top-left-radius: 6px;

@@ -1,6 +1,6 @@
 # serializers.py
 from rest_framework import serializers
-from product.models import Product, Coupon, Category, Size, Frame
+from product.models import Product, Coupon, Comments, Size, Frame
 from django.urls import reverse_lazy
 from account.models import UserWishlistItem
 from order.models import BasketItem
@@ -64,7 +64,6 @@ class ProductListSerializer(serializers.ModelSerializer):
             'image',
             'same_products',
             'has_discount',
-            'discount_type',
             'discount_amount',
             'url'
             )
@@ -109,7 +108,6 @@ class ProductSerializer(serializers.ModelSerializer):
             'description',
             'detail',
             'has_discount',
-            'discount_type',
             'discount_amount',
             'in_wish',
             'in_cart',
@@ -151,3 +149,15 @@ class ProductSerializer(serializers.ModelSerializer):
             return BasketItem.objects.filter(basket__user=request.user, product=obj).exists()
 
         return False
+    
+
+class ProductCommentsSerializer(serializers.ModelSerializer):
+    user = serializers.PrimaryKeyRelatedField(read_only = True)
+    class Meta:
+            model = Comments
+            fields = '__all__'
+
+    def validate(self, attrs):
+        request = self.context['request']
+        attrs['user'] = request.user
+        return super().validate(attrs)

@@ -86,16 +86,7 @@ function getDetail(){
             $("#prod-price").html(
                 `<div class="d-flex align-items-center">
                 <div class="discount-section py-2 px-4">
-                    ${    
-                        (function checkDiscountType() {
-                        if(data.discount_type === 'Precent'){
-                            
-                            return `${data.discount_amount}%`
-                        }else{
-                            return `-${data.discount_amount.toFixed(2)} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i>`
-                        }
-                        })()
-                    }
+                    ${data.discount_amount}%
                 </div>
                 <del id="prod_base_price" class="mx-4" >${data.price.toFixed(2)} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i></del>
                 </div>
@@ -146,14 +137,12 @@ function getDetail(){
                     mainFrame1.style.height = height * 0.8 + "px";
                 }
                 // size gore extra  qiymet
-
-                $("#prod_base_price").html(`${(data.price + parseFloat(size.dataset.extra_price)).toFixed(2)} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i>`)
-               
+                var extra_price = parseFloat(size.dataset.extra_price)
                 if(data.has_discount){
-                    var extra_price = parseFloat(size.dataset.extra_price) - ((parseFloat(size.dataset.extra_price) * data.discount_amount) / 100)
-                }else{
-                    var extra_price = parseFloat(size.dataset.extra_price)
+                    $("#prod_base_price").html(`${(data.price + parseFloat(size.dataset.extra_price)).toFixed(2)} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i>`)
+                    extra_price = extra_price - ((extra_price * data.discount_amount) / 100)
                 }
+
                 $("#prod_actual_price").html(`${(data.actual_price + extra_price).toFixed(2)} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i>`)
            
             });

@@ -21,7 +21,7 @@ async function fetchAndDisplayResults() {
                     <tr>
                         <th class="product-name" colspan="3">
                             <span class="nobr">
-                                Product Name </span>
+                                Məhsul </span>
                         </th>
                        
                         <th class="product-add-to-cart">

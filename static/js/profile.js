@@ -443,3 +443,36 @@ $(".product-filters li").on('click', function () {
     });
 
 });
+
+function addComment(prodID){
+    loader.show();
+    const rating = document.querySelector('input[name="rating"]:checked');
+    const result = rating ? rating.value : 'No rating selected';
+    if(!result || !$("#comment").val()){
+        notfWrong(notfDatasMiss);
+        loader.hide();
+    }else{
+        fetch(addCommentAPI,{
+            method:"POST",
+            headers: {
+                "X-CSRFToken": csrf,
+                "Accept": "application/json",
+                'Content-Type': 'application/json'
+                },
+            body:JSON.stringify({
+                'product':  parseInt(prodID),
+                'rate':  parseInt(result),
+                'comment':  $("#comment").val(),
+    
+            })
+        })
+        .then((response)=>{
+            if (response.status === 201){
+                notfSuccess('Əlavə olundu!')
+            }else{ notfWrong(notfError); }
+        })
+        .finally(()=>{
+            loader.hide();
+        })
+    }
+}

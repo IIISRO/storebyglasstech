@@ -235,3 +235,5 @@ def get_all_wish_item_number(request):
    
     user_wishlist_items = json.loads(request.COOKIES.get('user_wishlist_items')) if request.COOKIES.get('user_wishlist_items') else []
     return Response({'wish_count':len(user_wishlist_items)}, status=HTTP_200_OK)
+
+

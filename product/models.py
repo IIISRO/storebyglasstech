@@ -49,11 +49,7 @@ class Product(AbstractModel):
     @property
     def actual_price(self):
         if self.has_discount:
-            if self.discount_type == 'Precent':
-                return round(self.price - (self.price * self.discount_amount / 100), 2)
-            else:
-                if self.discount_amount < self.price:
-                    return round(self.price - self.discount_amount, 2)
+            return round(self.price - (self.price * self.discount_amount / 100), 2)
                 
         return round(self.price, 2)
     
@@ -75,9 +71,6 @@ class Product(AbstractModel):
     @property
     def discount_amount(self):
         return round(self.productdiscount_set.first().value, 2)
-    @property
-    def discount_type(self):
-        return self.productdiscount_set.first().type
     
     
     @property
@@ -154,21 +147,13 @@ class Artist(AbstractModel):
 
 
 class ProductDiscount(AbstractModel):
-    DISCOUNT_TYPES = (
-        ('Precent', 'Precent'),
-        ('Amount', 'Amount')
-    )
     products  = models.ManyToManyField("Product")
-    type =  models.CharField(max_length=8,null=False,blank=False, choices=DISCOUNT_TYPES)
     value = models.PositiveIntegerField(null=False, blank=False)
     valid_from = models.DateTimeField(null=True, blank=True)
     valid_to = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
-        if self.type == 'Precent':
-            return f'{self.value}%'
-        else:
-            return f'{self.value}AZN'
+        return f'{self.value}%'
     
     
     @property
@@ -245,3 +230,10 @@ class UsedCoupon(AbstractModel):
 
     def __str__(self):
         return f'Coupon: {self.coupon.code} | User: {self.user.get_full_name() if self.user else "Anonymous User"}'
+    
+
+class Comments(AbstractModel):
+    user = models.ForeignKey(User, null=False, blank=False, on_delete=models.CASCADE, related_name='user_comments')
+    product = models.ForeignKey("Product", null=False, blank=False, on_delete=models.CASCADE, related_name='product_comments')
+    rate = models.PositiveSmallIntegerField(null=False, blank=False)
+    comment = models.CharField(max_length=150, null=False, blank=False)

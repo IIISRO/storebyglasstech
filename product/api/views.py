@@ -1,12 +1,13 @@
 # views.py
 from rest_framework.response import Response
-from product.models import Product, Category, Artist
+from product.models import Product, Category, Comments
 from rest_framework.views import APIView
-from .serializers import ProductListSerializer, ProductSerializer
+from .serializers import ProductListSerializer, ProductSerializer, ProductCommentsSerializer
 from rest_framework.status import HTTP_200_OK, HTTP_404_NOT_FOUND
 from django.db.models import Q
 from django.shortcuts import get_object_or_404
 from django.core.paginator import EmptyPage, Paginator
+from rest_framework.generics import CreateAPIView
 
 
 
@@ -89,3 +90,9 @@ class ProductDetailAPI(APIView):
         product = Product.objects.get(slug=product_slug)
         context = self.get_serializer_context()
         return Response(ProductSerializer(product, context=context).data, status=HTTP_200_OK)
+    
+class NewCommentAPIView(CreateAPIView):
+    queryset = Comments
+    serializer_class = ProductCommentsSerializer
+
+   

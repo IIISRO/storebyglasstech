@@ -87,7 +87,7 @@
   outline: none!important;
 }
 .profile-save-btn:active{
-  background-color: #10143e!important;
+  background-color: #151d72!important;
   color: #fff!important;
   border-color: #10143e!important;
 }
@@ -327,6 +327,11 @@ button.bordered-btn {
     text-transform: uppercase;
     letter-spacing: 0.01rem;
     font-size: 14px;
+    color: #007bff;
+  }
+
+  .order-name span:hover{
+    color: #0451a3;
   }
   .order-price-info{
     color: #4a5568;
@@ -424,4 +429,88 @@ button.bordered-btn {
 .order-card-main{
     border: 1px solid rgb(198, 198, 198);
     border-radius: 5px;
+}
+
+
+
+
+
+.cross {
+    padding: 10px;
+color: #d6312d;
+cursor: pointer;
+font-size: 23px;
+}
+
+.cross i{
+
+margin-top: -5px;
+cursor: pointer;
+}
+
+
+.comment-box {
+padding: 5px
+}
+
+.comment-area textarea {
+resize: none;
+border: 1px solid #0451a3
+}
+
+.form-control:focus {
+color: #495057;
+background-color: #fff;
+border-color: #ffffff;
+outline: 0;
+box-shadow: 007bff !important
+}
+
+
+.rating {
+display: inline-flex;
+margin-top: -10px;
+flex-direction: row-reverse;
+transition: all ease 0.5s;
+
+
+
+}
+
+.rating>input {
+display: none;
+transition: all ease 0.5s;
+
+}
+
+.rating>label {
+position: relative;
+width: 28px;
+font-size: 25px;
+color:#151d72;
+cursor: pointer;
+transition: all ease 0.5s;
+
+}
+
+.rating>label::before {
+content: "\2605";
+position: absolute;
+opacity: 0;
+transition: all ease 0.5s;
+
+
+}
+
+.rating>label:hover:before,
+.rating>label:hover~label:before {
+opacity: 1 !important
+}
+
+.rating>input:checked~label:before {
+opacity: 1
+}
+
+.rating:hover>input:checked~label:before {
+opacity: 0.4
 }

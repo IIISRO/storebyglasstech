@@ -148,14 +148,14 @@
                     </div>
                     <div class="col-lg-3 mt-3 mt-md-0">
                         <div class="order-checkout">
-                            <h5 id="order_review_heading">Your Order</h5>
+                            <h5 id="order_review_heading">Sifarişiniz</h5>
                         </div>
                         <div id="order_review" class="checkout-review-order">
                             <table class="shop_table checkout-review-order-table">
                                 <thead>
                                     <tr>
-                                        <th class="product-name">Product</th>
-                                        <th class="product-total">Subtotal</th>
+                                        <th class="product-name">Məhsul</th>
+                                        <th class="product-total">Ümumi</th>
                                     </tr>
                                 </thead>
                                 <tbody id="productsStartLine">
@@ -166,7 +166,7 @@
                               
 
                                     <tr class="order-total">
-                                        <th>Total</th>
+                                        <th>Cəmi</th>
                                         <td>
                                             <del id="checkout-total"></del>
                                             <br>
@@ -185,7 +185,7 @@
                             </table>
 
                             <div id="payment" class="checkout-payment">
-                                <ul class="payment_methods methods">
+                                <!-- <ul class="payment_methods methods">
                                     <li>
                                         <div class="notice-banner is-info" role="alert">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
@@ -201,32 +201,30 @@
                                             </div>
                                         </div>
                                     </li>
-                                </ul>
+                                </ul> -->
                                 <div class="form-row place-order">
-                                    <noscript>
+                                    <!-- <noscript>
                                         Since your browser does not support JavaScript, or it is disabled, please ensure
                                         you
                                         click the <em>Update Totals</em> button before placing your order. You may be
                                         charged more than the amount stated above if you fail to do so. <br /><button
                                             type="submit" class="button alt" name="checkout_update_totals"
                                             value="Update totals">Update totals</button>
-                                    </noscript>
+                                    </noscript> -->
 
                                     <div class="terms-and-conditions-wrapper">
                                         <div class="privacy-policy-text">
-                                            <p>Your personal data will be used to process your order, support your
-                                                experience throughout this website, and for other purposes described in
-                                                our
-                                                <a href="" class="privacy-policy-link" target="_blank">privacy
-                                                    policy</a>.
+                                            <p>Sifarişinizi təsdiqləmədən öncə 
+                                                <a href="{% url 'core:about' %}" class="privacy-policy-link" target="_blank">haqqımızda</a> mətnin oxuyub, şərtlər və iş saatları
+                                                haqqında tanış olmağınız lazımdır.
+                                                
                                             </p>
                                         </div>
                                     </div>
 
 
                                     <button onclick="placeOrder()" type="button" class="button alt" name="woocommerce_checkout_place_order"
-                                        id="place_order" value="Place order" data-value="Place order">Place
-                                        order</button>
+                                        id="place_order" value="Place order" data-value="Place order">Sifariş ver</button>
 
                                     <input type="hidden" id="process-checkout-nonce" name="process-checkout-nonce"
                                         value="47ccd5781e"><input type="hidden" name="_wp_http_referer"

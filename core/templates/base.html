@@ -82,7 +82,7 @@
                     </div>
                     <div class="header-search">
                         <form id="searchForm" role="search" method="get" class="product-search">
-                            <input type="search" class="search-field" id="searchInput" placeholder="Search for Posters..." value="" name="s" required="required">
+                            <input type="search" class="search-field" id="searchInput" placeholder="Meshsul axtar..." value="" name="s" required="required">
                             <button type="submit" value="Search" class=""><i class="fa fa-search" aria-hidden="true"></i></button>
                         </form>
                     </div>
@@ -190,17 +190,17 @@
                             <select class="selectpicker" data-width="fit" onchange="changeLang(this.value)">
                                 {% get_current_language as LANGUAGE_CODE %}
                                 {% if LANGUAGE_CODE == 'en' %}
-                                    <option selected value="en" data-content='<span class="flag-icon flag-icon-us"></span> İngilis'>İngilis</option>
                                     <option value="az" data-href="{{request.path|slice:'3:'}}" data-content='<span class="flag-icon flag-icon-az"></span> Azərbaycan'>Azərbaycan</option>
                                     <option value="ru" data-href="/ru{{request.path|slice:'3:'}}" data-content='<span class="flag-icon flag-icon-ru"></span> Rus'>Rus</option>
+                                    <option disabled selected value="en" data-content='<span class="flag-icon flag-icon-us"></span> İngilis'>İngilis</option>
                                 {% elif LANGUAGE_CODE == 'ru' %}
-                                    <option value="en" data-href="/en{{request.path|slice:'3:'}}" data-content='<span class="flag-icon flag-icon-us"></span> İngilis'>İngilis</option>
                                     <option value="az" data-href="{{request.path|slice:'3:'}}" data-content='<span class="flag-icon flag-icon-az"></span> Azərbaycan'>Azərbaycan</option>
-                                    <option selected value="ru" data-content='<span class="flag-icon flag-icon-ru"></span> Rus'>Rus</option>
+                                    <option disabled selected value="ru" data-content='<span class="flag-icon flag-icon-ru"></span> Rus'>Rus</option>
+                                    <option value="en" data-href="/en{{request.path|slice:'3:'}}" data-content='<span class="flag-icon flag-icon-us"></span> İngilis'>İngilis</option>
                                 {% else %}
-                                    <option value="en" data-href="/en{{request.path}}" data-content='<span class="flag-icon flag-icon-us"></span> İngilis'>İngilis</option>
-                                    <option selected value="az" data-content='<span class="flag-icon flag-icon-az"></span> Azərbaycan'>Azərbaycan</option>
+                                    <option disabled selected value="az" data-content='<span class="flag-icon flag-icon-az"></span> Azərbaycan'>Azərbaycan</option>
                                     <option value="ru" data-href="/ru{{request.path}}" data-content='<span class="flag-icon flag-icon-ru"></span> Rus'>Rus</option>
+                                    <option value="en" data-href="/en{{request.path}}" data-content='<span class="flag-icon flag-icon-us"></span> İngilis'>İngilis</option>
                                 {% endif %}
                             </select>
                             
@@ -224,11 +224,10 @@
             <div class="col-md-3 footer-item1">
                 <a href=""><img class="logo" src="{% static 'images/logo.png'%}"
                     alt=""></a>
-                <p class="mt-3">Fern grows sad when Wilbur grows up and has to be sent away to a farm owned by her uncle. She
-                has a strong relationship.</p>
+                <p class="mt-3">Storeglasstech, <a href="https://glasstech.az">glasstech</a> şirkətimizin yüksək keyfiyyətli şüşəlirindən hazırlanmış yüksək çap keyfiyyətinə sahib tablolar təqdim edir.</p>
                 <ul class="social-icons mt-4 mb-4">
                 <li class="social_wrap"><span class="index" data-index="0" aria-hidden="true"></span><a href=""
-                    class="social_link"><i class="fa fa-facebook"></i></a></li>
+                    class="social_link"><i class="fas fa fa-facebook"></i></a></li>
                 <li class="social_wrap"><span class="index" data-index="1" aria-hidden="true"></span><a href=""
                     class="social_link"><i class="fa fa-twitter"></i></a></li>
                 <li class="social_wrap"><span class="index" data-index="2" aria-hidden="true"></span><a href=""
@@ -236,65 +235,50 @@
                 </ul>
 
                 <a href="tel:0(500)123-456" class="info-phone"><i class="fa fa-phone"></i>
-                <div class="phone-content"><span>Call Us:</span>
+                <div class="phone-content"><span>Zəng:</span>
                     <div class="info_phone">0(500)123-456 </div>
                 </div>
                 </a>
             </div>
             <div class="col-md-2 footer-item2">
-                <h2 class="footer-list-title">Main Menu</h2>
+                <h2 class="footer-list-title">Faydalı linklər</h2>
                 <ul class="mt-3">
-                <li><a href="">Home</a></li>
-                <li><a href="">Shop</a></li>
-                <li><a href="">Coming Soon</a></li>
-                <li><a href="">FAQ</a></li>
-                <li><a href="">Privacy Policy</a></li>
-                <li><a href="">About us</a></li>
+                    <li><a href="{% url 'product:products' category_slug='all' %}?type=glass">Şüşə tablolar</a></li>
+                    <li><a href="{% url 'product:products' category_slug='all' %}?type=mdf">MDF tablolar</a></li>
+                    <li><a href="{% url 'core:contact' %}">Əlaqə</a></li>
+                    <li><a href="{% url 'account:profile' %}?p=orders">Sifarişləriniz</a></li>
                 </ul>
             </div>
             <div class="col-md-2 footer-item2">
-                <h2 class="footer-list-title">Main Menu</h2>
+                <h2 class="footer-list-title">Teqlər</h2>
                 <ul class="mt-3">
-                <li><a href="">Home</a></li>
-                <li><a href="">Shop</a></li>
-                <li><a href="">Coming Soon</a></li>
-                <li><a href="">FAQ</a></li>
-                <li><a href="">Privacy Policy</a></li>
-                <li><a href="">About us</a></li>
+                    <li>#Tablolar</li>
+                    <li>#Şüşə tablolar</li>
+                    <li>#MDF tablolar</li>
+                    <li>#Hədiyəlik</li>
+                    <li>#Divar saatları</li>
+                    <li>#Tablo</li>
                 </ul>
             </div>
-            <div class="col-md-2 footer-item2">
-                <h2 class="footer-list-title">Main Menu</h2>
+            <div class="col-md-3 footer-item2">
+                <h2 class="footer-list-title">Əlaqə</h2>
+                <p>Hər hansı bir sualınız vəya bizimlə bağlı problem yaşadığınız zaman əlaqəyə keçin tez bir zamanda sizə geri dönüş edəcəyik</p>
+                <hr>
                 <ul class="mt-3">
-                <li><a href="">Home</a></li>
-                <li><a href="">Shop</a></li>
-                <li><a href="">Coming Soon</a></li>
-                <li><a href="">FAQ</a></li>
-                <li><a href="">Privacy Policy</a></li>
-                <li><a href="">About us</a></li>
+                    <li>Bazar ertəsi - Cümə|9:00-18:00</li>
+                    <li><a href="https://maps.app.goo.gl/iLHFWRGgqZBzaYKD6?g_st=iw">28may kuc3 baku azerbaijan</a></li>
+                    <li><a href="mailto:contact@glasstech.com">contact@storeglasstech.az</a></li>
+                    <li><a href="https://wa.me/55555555">+994 50 555 55 55</a></li>
                 </ul>
-            </div>
-            <div class="col-md-3 footer-item1">
-                <h2 class="footer-list-title">Main Menu</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, officia.</p>
-                <div class="w-100 download-sec">
-                <a href="" class="d-block w-100">
-                    <img class="w-100" src="{% static 'images/google-play.jpg'%}"
-                    alt="">
-                </a>
-                <a href="" class="d-block w-100">
-                    <img class="w-100" src="{% static 'images/google-play.jpg'%}"
-                    alt="">
-                </a>
-                </div>
             </div>
 
 
             </div>
         </div>
         <div class="divider"></div>
-        <div class="container-fluid powered pt-3 d-flex align-items-center justify-content-center">
-            <p>Powered by <a href=""> Ilgar Sukurov</a></p>
+        <div class="container-fluid powered pt-3 d-flex flex-column align-items-center justify-content-center">
+            <p>Copyrights © 2025 - STOREGLASSTECH, All Rights Reserved.</p>
+            <p>Powered By - <a href="https://ungravity.com">Ungravity©</a></p>
 
         </div>
         </footer>

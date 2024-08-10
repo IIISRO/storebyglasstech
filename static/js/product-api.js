@@ -48,17 +48,9 @@ function displayResults(results) {
                         items.push(`
                         ${(function Items2() {
                           let items2 = [];
-                          if (product.discount_type == "Precent") {
                             items2.push(
                               `  <div class="product-item-price  d-flex flex-column "><div class="stage"><a href="">${product.discount_amount}%</a></div>`
                             );
-                          } else {
-                            items2.push(
-                              `  <div class="product-item-price d-flex flex-column "><div class="stage"><a href="">${product.discount_amount.toFixed(
-                                2
-                              )} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i></a></div>`
-                            );
-                          }
                           return items2.join("");
                         })()}
                         
@@ -74,7 +66,7 @@ function displayResults(results) {
                         `);
                       } else {
                         items.push(
-                          `<div class="product-item-price d-flex align-items-center justify-content-end"> <span class="text-dark">${product.price.toFixed(
+                          `<div class="product-item-price d-flex align-items-center justify-content-end"> <span class="text-dark">${product.actual_price.toFixed(
                             2
                           )} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i></span>`
                         );
