@@ -1,5 +1,7 @@
 .navbar-brand img {
     width: 250px;
+}.nav-tabs .nav-item{
+    width: 20%;
 }
 
 .header-search form {
@@ -12,7 +14,12 @@ a:hover{
 .offcanvas{
     background-color: #10143e !important;
     color: #fff;
+    z-index: 100000000000 !important;
 }
+.offcanvas-start{
+    z-index: 10000000000 !important;
+}
+
 
 .mobile-nav{
     margin: 0;

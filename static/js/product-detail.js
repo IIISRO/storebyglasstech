@@ -233,3 +233,30 @@ document.getElementById('main-frame-img').onload = function() {
     document.getElementById('loading-spinner').style.display = 'none';
     this.style.display = 'block';
 };
+
+window.addEventListener('load', () => {
+    const img = document.getElementById('main-frame-img');
+    const overlay = document.getElementById('glass-overlay');
+    
+    // Function to update overlay height
+    function updateOverlayHeight() {
+      if (img.complete) {
+        overlay.style.height = img.clientHeight + 'px';
+      } else {
+        img.onload = () => {
+          overlay.style.height = img.clientHeight + 'px';
+        };
+      }
+    }
+
+    // Delay execution by 3 seconds
+    setTimeout(updateOverlayHeight, 3000);
+    
+    // Recheck the image size every second to handle dynamic changes
+    const interval = setInterval(() => {
+      if (img.complete) {
+        updateOverlayHeight();
+        clearInterval(interval); // Stop checking once done
+      }
+    }, 500); // Check every 1 second
+  });
