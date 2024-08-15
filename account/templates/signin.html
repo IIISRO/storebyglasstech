@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}    
+{% load i18n %}
+
     {% block desc %}<meta name="description" content="Sadecə telefon nömrəsi ilə daxil olun və alış-verişinizə davam edin.">{% endblock %}
-    {% block title %}<title>Daxil ol | STOREGLASSTECH</title>{% endblock %}
+    {% block title %}<title>{% trans 'Daxil ol' %} | STOREGLASSTECH</title>{% endblock %}
         
     {% block style %}
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
@@ -20,8 +22,8 @@
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
-						<p>Daxİl ol</p>
-						<h1>Hesabınıza giriş edin</h1>
+						<p>{% trans 'Daxİl ol' %}</p>
+						<h1>{% trans 'Hesabınıza giriş edin' %}</h1>
 					</div>
 				</div>
 			</div>
@@ -40,18 +42,18 @@
                     <div class="txt_field">
                         <input id="phone" type="text" required/>
                         <span></span>
-                        <label>Mobil nömrə</label>
+                        <label>{% trans 'Mobil nömrə' %}</label>
                     </div>
                     <div id="pass_div" class="d-none  txt_field">
                         <input id="password" type="password" required/>
                         <span></span>
-                        <label>Şifrə</label>
+                        <label>{% trans 'Şifrə' %}</label>
                     </div>
-                    <button type="button" onclick="checkNumber()" id="next-btn" class="bordered-btn">Davam et</button>
-                    <button type="button" onclick="login()" id="signin_btn" class="d-none cart-btn ">Daxil ol</button>
-                    <div id="reset_pass" class="d-none signup_link">Şifrəni unutmusan? <b  onclick="newPassword()">Yeni Şifrə</b></div>
-                    <div id="resend_pass" class="d-none signup_link">Şifrə göndərilmədi? <b onclick="newPassword()">Yenidən göndər</b></div>
-                    <div id="resend_timer" class="d-none">Yeni şifrə <b id="minutes">3</b><b>:</b><b id="seconds">00</b> sonra</div>
+                    <button type="button" onclick="checkNumber()" id="next-btn" class="bordered-btn">{% trans 'Davam et' %}</button>
+                    <button type="button" onclick="login()" id="signin_btn" class="d-none cart-btn ">{% trans 'Daxil ol' %}</button>
+                    <div id="reset_pass" class="d-none signup_link">{% trans 'Şifrəni unutmusan?' %} <b  onclick="newPassword()">{% trans 'Yeni Şifrə' %}</b></div>
+                    <div id="resend_pass" class="d-none signup_link">{% trans 'Şifrə göndərilmədi?' %} <b onclick="newPassword()">{% trans 'Yenidən göndər' %}</b></div>
+                    <div id="resend_timer" class="d-none">{% trans 'Yeni şifrə' %} <b id="minutes">3</b><b>:</b><b id="seconds">00</b> {% trans 'sonra' %}</div>
                     </form>
                 </div>
             </div>
@@ -62,13 +64,13 @@
 
     {% block js%}
     <script>
-        var notfPassSMSSended = 'Şifrə SMS göndərildi';
-        var notfTryAgain = 'Yenidən cəhd edin';
-        var notfWrongNumber = 'Nömrə yanlış daxil edilib';
-        var notfNewPassSMSSended = 'Yeni şifrə SMS göndərildi';
-        var notfPassAgainSended = 'Şifrə yenidən göndərildi';
-        var notfEnterPass = 'Şifrənizi daxil edin';
-        var notfWrongPass = 'Şifrə yanlışdır!';
+        var notfPassSMSSended = '{% trans "Şifrə SMS göndərildi" %}';
+        var notfTryAgain = '{% trans "Yenidən cəhd edin" %}';
+        var notfWrongNumber = '{% trans "Nömrə yanlış daxil edilib" %}';
+        var notfNewPassSMSSended = '{% trans "Yeni şifrə SMS göndərildi" %}';
+        var notfPassAgainSended = '{% trans "Şifrə yenidən göndərildi" %}';
+        var notfEnterPass = '{% trans "Şifrənizi daxil edin" %}';
+        var notfWrongPass = '{% trans "Şifrə yanlışdır!" %}';
     </script>
     <script src="{% static 'js/login.js'%}"></script>
     {% endblock%}

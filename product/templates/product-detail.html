@@ -136,117 +136,45 @@
 <div class="product-type-in w-100 py-5">
     <div class="container-fluid">
         <div class="pt-in-header">
-            <div title="farklı ürün çeşitleri" class="title-h3">FARKLI ÜRÜN ÇEŞİTLERİ</div>
-            <p class="pt-in-des">Atatürk - Egemenlik Kayıtsız Şartsız Milletindir görselini 6 farklı ürüne göre
-                seçip,
-                sipariş oluşturabilirsiniz</p>
+            <div title="farklı ürün çeşitleri" class="title-h3">OXŞAR MƏHSULLAR</div>
         </div>
         <div class="row">
-            <div class="col-sm-6 col-lg-3 mb-4 mb-4">
-                <div class="product-item">
-                  <a href="">
-                    <div class="product-item-img">
-                      <img style="filter: brightness(1.2) contrast(1.1) blur(0.05px);"
-                      src="{%static 'images/prod-img.avif'%}"
-                      alt="">
-                    </div>
-                    </a>
-                    <div class="product-col-info p-2">
-                      
-                      <h3 class="product-item-title mt-2"><a href="">Funny Angry Monster Poster</a></h3>
-                      <div class="product-item-price-section">
-                        <div class="product-item-price d-flex align-items-center justify-content-between">
-                         <div class="stage"><a href="">15%</a></div>
-                         <div class="d-flex align-items-center">
-                          <del>300$</del>
-                          <span>200$</span>
-                         </div>
+            {% for product in releated_products %}
+            <div class="col-sm-6 col-lg-3 mb-4">
+              <div class="product-item">
+                <a href="/product/{{product.get_absolute_url}}">
+                  <div class="product-item-img">
+                    <img  style="filter: brightness(1.2) contrast(1.1) blur(0.05px);"
+                    src="{{product.image.url}}"
+                    alt="">
+                  </div>
+                  </a>
+                  <div class="product-col-info p-2">
+                    
+                    <h3 class="product-item-title mt-2"><a href="/product/{{product.get_absolute_url}}">{{product.title}}</a></h3>
+                    <div class="product-item-price-section">
+                      <div class="product-item-price d-flex align-items-center justify-content-between">
+                        {% if product.has_discount %}
+                        <div class="stage">
+                          <a href="/product/{{product.get_absolute_url}}">
+                            {{product.discount_amount}}%
+                          </a>
                         </div>
-                      </div>
-                    </div>
-                 
-                </div>
-              </div>
-
-              <div class="col-sm-6 col-lg-3 mb-4 mb-4">
-                <div class="product-item">
-                  <a href="">
-                    <div class="product-item-img">
-                      <img
-                      src="{%static 'images/prod-img.avif'%}"
-                      alt="">
-                    </div>
-                    </a>
-                    <div class="product-col-info p-2">
-                      
-                      <h3 class="product-item-title mt-2"><a href="">Funny Angry Monster Poster</a></h3>
-                      <div class="product-item-price-section">
-                        <div class="product-item-price d-flex align-items-center justify-content-between">
-                         <div class="stage"><a href="">15%</a></div>
-                         <div class="d-flex align-items-center">
-                          <del>300$</del>
-                          <span>200$</span>
-                         </div>
+                        <div class="d-flex align-items-center">
+                          <del>{{ product.price }} <i style="text-decoration: line-through;" class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i></del>
+                          <span>{{product.actual_price}} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i></span>
                         </div>
-                      </div>
-                    </div>
-                 
-                </div>
-              </div>
-
-              <div class="col-sm-6 col-lg-3 mb-4 mb-4">
-                <div class="product-item">
-                  <a href="">
-                    <div class="product-item-img">
-                      <img
-                      src="{%static 'images/prod-img.avif'%}"
-                      alt="">
-                    </div>
-                    </a>
-                    <div class="product-col-info p-2">
-                      
-                      <h3 class="product-item-title mt-2"><a href="">Funny Angry Monster Poster</a></h3>
-                      <div class="product-item-price-section">
-                        <div class="product-item-price d-flex align-items-center justify-content-between">
-                         <div class="stage"><a href="">15%</a></div>
-                         <div class="d-flex align-items-center">
-                          <del>300$</del>
-                          <span>200$</span>
-                         </div>
+                        {% else %}
+                        <div class="product-item-price d-flex align-items-center justify-content-end"> 
+                          <span class="text-dark">{{product.actual_price}} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i></span>
                         </div>
-                      </div>
+                        {% endif %}
+                       </div>
                     </div>
-                 
-                </div>
+                  </div>
               </div>
-
-              <div class="col-sm-6 col-lg-3 mb-4 mb-4">
-                <div class="product-item">
-                  <a href="">
-                    <div class="product-item-img">
-                      <img
-                      src="{%static 'images/prod-img.avif'%}"
-                      alt="">
-                    </div>
-                    </a>
-                    <div class="product-col-info p-2">
-                      
-                      <h3 class="product-item-title mt-2"><a href="">Funny Angry Monster Poster</a></h3>
-                      <div class="product-item-price-section">
-                        <div class="product-item-price d-flex align-items-center justify-content-between">
-                         <div class="stage"><a href="">15%</a></div>
-                         <div class="d-flex align-items-center">
-                          <del>300$</del>
-                          <span>200$</span>
-                         </div>
-                        </div>
-                      </div>
-                    </div>
-                 
-                </div>
-              </div>
-
-              
+            </div>
+            {% endfor %}
         </div>
     </div>
 </div>
@@ -257,9 +185,9 @@
     <nav class="mt-3">
         <div class="nav nav-tabs mb-2 " id="nav-tab" role="tablist">
             <button class="nav-link active" id="nav-first-tab" data-bs-toggle="tab" data-bs-target="#nav-first"
-                type="button" role="tab" aria-controls="nav-first" aria-selected="true">Ürün kalitesi</button>
+                type="button" role="tab" aria-controls="nav-first" aria-selected="true">Məhsul haqqında</button>
             <button class="nav-link" id="nav-second-tab" data-bs-toggle="tab" data-bs-target="#nav-second"
-                type="button" role="tab" aria-controls="nav-second" aria-selected="false">Yorum yap</button>
+                type="button" role="tab" aria-controls="nav-second" aria-selected="false">Rəylər</button>
          
         </div>
     </nav>
@@ -269,81 +197,46 @@
             <div class="prod-cat  mt-5">
            
                 <div class="w-100 mt-5 tab-content " id="pills-tabContent">
-                  <div class="tab-pane fade show active" id="pills-home1" role="tabpanel" aria-labelledby="pills-home-tab1">
+                    <div class="tab-pane fade show active" id="pills-home1" role="tabpanel" aria-labelledby="pills-home-tab1">
                    
-                    <div id="prod-detail" class="cq-item cq-item1">
-                        <ul style="float: right;">
-                            <li>
-                                <p class="cq-p-title">3cm kenar kalınlığı</p>
-                                <p>Kanvas tablolar 3cm kenar kalınlığına sahiptir.</p>
-                            </li>
-                            <li>
-                                <p class="cq-p-title">%100 pamuk kanvas (tuval)</p>
-                                <p>Yerli olarak üretilen 1.sınıf santsal kanvas üzerine baskı yapmaktayız. Renklerinde
-                                    bozulma veya kanvasında bollaşma yapmaz.</p>
-                            </li>
-                            <li>
-                                <p class="cq-p-title">Ahşap Şase</p>
-                                <p>Fırınlanmış masif ahşaplardan üretilmektedir. Zaman içerisinde eğilmez ve şekli
-                                    bozulmaz.</p>
-                            </li>
-                            <li>
-                                <p class="cq-p-title">Epson Baskı</p>
-                                <p>EPSON teknolojisi ile bilgisayar ekranında göründüğü gibi basılabilme. Sağlığa
-                                    zararlı olmayan Epson marka su bazlı mürekkep kullanılmakta.</p>
-                            </li>
-                            <li>
-                                <p class="cq-p-title">Kenar baskısı</p>
-                                <p>Orijinal resmin bütünlüğü bozulmadan dokusu devam etirilerek kenar payları verilir.
-                                </p>
-                            </li>
-                            <li>
-                                <p class="cq-p-title">Askı ve Çivi</p>
-                                <p>Askısı ve çivisi tablonun üsütüne monte edilerek üretimi tamamlanır. Asmaya hazır
-                                    şekilde sevkiyatı yapılır.</p>
-                            </li>
-                        </ul>
-                    </div> </div>
+                        <div id="prod-detail" class="cq-item cq-item1">
+                        
+                        </div> 
+                    </div>
                   
                 </div>
-              </div>
+            </div>
         </div>
         <div class="tab-pane fade" id="nav-second" role="tabpanel" aria-labelledby="nav-second-tab">
             <div class="d-flex w-full align-items-center justify-content-between">
-            <div title="farklı ürün çeşitleri" class="title-h2 mt-3 mb-3">YORUMLAR</div>
-
-                <div class="comment-filter d-flex align-items-center">
-                    <select class="filter1 py-2 px-5" name="" id="filterSelect">
-                      <option class="selected" hidden selected value="" data-value="">Reytinqə görə</option>
-                      <option value="" data-value="lth">Azdan çoxa</option>
-                      <option value="" data-value="htl">Çoxdan aza</option>
-                    </select>
-                  </div>
+                <div title="farklı ürün çeşitleri" class="title-h2 mt-3 mb-3">RƏYLƏR</div>
             </div>
+            {% if comments %}
+            {% for comment in comments %}
             <div class="comment-card">
                 <div class="card-top">
                     <div class="card-meta">
                         <div class="meta-item post-author">
-                            <div class="author-avatar bg-cover" style="
-                                    background-image: url('https://html.themesdeveloper.net/newlog/assets/img/recent-post/post-author1.png');
-                                "></div>
-                            <a href="#" class="author-name">Terence Whittle</a>
+                            <div class="author-avatar bg-cover" style="background-image: url('/static/images/customer.png'); background-size: 65px;"></div>
+                            <a href="#" class="author-name">{% if comment.user.get_full_name %} {{ comment.user.get_full_name }} {% else %} İstifadəçi {% endif %}</a>
                         </div>
-                        <span class="meta-item"> Feb 06, 2022 </span>
+                        <span class="meta-item"> {{ comment.date }} </span>
                     </div>
                    
                 </div>
                 <div class="d-flex align-items-center mb-3 mt-1" style="gap: 10px;">
+                    {% for star in ""|ljust:comment.rate %}
                     <i class="fa fa-star star-icon"></i>
-                    <i class="fa fa-star star-icon"></i>
-                    <i class="fa fa-star star-icon"></i>
+                    {% endfor %}
                </div>
                 <p class="body-text">
-                    My hands really liked it, it was absorbed easily and quickly, creating a feeling
-                    of hydration. And my hands really liked it, it was absorbed easily and quickly,
-                    creating a feeling of hydration.
+                    {{ comment.comment }}
                 </p>
             </div>
+            {% endfor %}
+            {% else %}
+            <div class="border border-gray-500 bg-gray-200 p-3 text-center font-size-sm">Heç bir rəy yoxdur.</div>
+            {% endif %}
         </div>
        
 

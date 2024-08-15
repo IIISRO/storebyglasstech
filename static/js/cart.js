@@ -56,7 +56,7 @@ function getBasketItems(){
                             href="${item.product.url}" class="mb-3 d-block">
                             ${item.product.title} | ${item.product.type}</a>
                         <dl class="variation">
-                            <dt class="variation-PosterSize">Poster Size:</dt>
+                            <dt class="variation-PosterSize">${transSize}:</dt>
                             <dd class="variation-PosterSize">
                                 <p>${item.size.height}x${item.size.width}</p>
                             </dd>
@@ -65,7 +65,7 @@ function getBasketItems(){
                                 if(item.frame.id){
                                     let framInfo = 
                                     `
-                                    <dt class="variation-PosterFrame">Çərçivə:</dt>
+                                    <dt class="variation-PosterFrame">${transFrame}:</dt>
                                     <dd class="variation-PosterFrame">
                                         <p>${item.frame.title}</p>
                                     </dd>
@@ -76,7 +76,7 @@ function getBasketItems(){
                                 return ''
                                 })()
                             }
-                            <dt class="variation-PosterFinish">Material:</dt>
+                            <dt class="variation-PosterFinish">${transMaterial}:</dt>
                             <dd class="variation-PosterFinish">
                             <p>${item.product.type}</p>
                             </dd>
@@ -203,8 +203,7 @@ function getBasketItems(){
             const emptyBasket = 
             `
             <div class="emptydiv">
-                
-                <div class="alert alert-danger justify-content-center has-cart d-flex align-items-center"><i class="fa fa-info"></i> Səbətiniz boşdur!</div>
+                <div class="alert alert-danger justify-content-center has-cart d-flex align-items-center"><i class="fa fa-info"></i> ${transEmptyBasket}</div>
             </div>
             `
             $("#basket_container").html(emptyBasket)
@@ -263,11 +262,11 @@ function applyCoupon(){
     })
     .then((data)=>{
        if (data === 'You are have applied coupon'){
-            notfWrong('Artıq kupon var!');
+            notfWrong(transCouponHas);
        }else if(data == 'Coupon applied!'){
-            notfSuccess('Kupon əlavə edildi!');
+            notfSuccess(transCouponApplied);
         }else{
-            notfWrong('Kupon tapılmadı!');
+            notfWrong(transCouponNotFind);
         }
   
     })
@@ -297,7 +296,7 @@ function removeCoupon(){
     .finally(() => {
         $("#coupon_code").attr("disabled",false);
         $("#coupon_code").val('');
-        $(`<button type="button" id="apply_coupon_btn" onclick="applyCoupon()" class="button" name="apply_coupon" value="Apply coupon">Elave et</button>`).insertAfter("#remove_coupon_btn")
+        $(`<button type="button" id="apply_coupon_btn" onclick="applyCoupon()" class="button" name="apply_coupon" value="Apply coupon">${transAdd}</button>`).insertAfter("#remove_coupon_btn")
         $("#remove_coupon_btn").remove();
         $("#cart-coupon").remove();
 

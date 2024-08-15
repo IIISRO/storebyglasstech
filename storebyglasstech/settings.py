@@ -33,6 +33,8 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'modeltranslation',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,7 +47,7 @@ INSTALLED_APPS = [
     'order.apps.OrderConfig',
     'account.apps.AccountConfig',
 
-
+    'corsheaders',
     'django_ckeditor_5',
     'rest_framework',
 
@@ -56,6 +58,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.locale.LocaleMiddleware',    
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -64,7 +67,38 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost",
+#     "http://localhost:8001",
+#     'http://178.128.207.194'
+# ]
+# CORS_ALLOW_METHODS = [
+#     "DELETE",
+#     "GET",
+#     "OPTIONS",
+#     "PATCH",
+#     "POST",
+#     "PUT",
+# ]
+# CORS_ALLOW_HEADERS = [
+#     "accept",
+#     "accept-encoding",
+#     "authorization",
+#     "content-type",
+#     "dnt",
+#     "origin",
+#     "user-agent",
+#     "x-csrftoken",
+#     "x-requested-with",
+# ]
+# CSRF_TRUSTED_ORIGINS = [
+#     "http://localhost",
+#     "http://localhost:8001/",
+#     'http://178.128.207.194'
+    
 
+# ]
 
 ROOT_URLCONF = 'storebyglasstech.urls'
 
@@ -92,8 +126,12 @@ WSGI_APPLICATION = 'storebyglasstech.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('POSTGRES_DB','storeglasstechDB'),
+        'USER': os.environ.get('POSTGRES_USER','storeglasstech'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD','de$?dwd33!wewedw23@o8'),
+        'HOST': os.environ.get('POSTGRES_HOST','localhost'),
+        'PORT': os.environ.get('POSTGRES_PORT','5432'),
     }
 }
 

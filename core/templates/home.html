@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 
   {% block desc %}<meta name="description" content="Keyfiyyətli və hər zövqə uyğun tabloların adresi">{% endblock %}
-  {% block title %}<title>Ana Səhifə | STOREGLASSTECH</title>{% endblock %}
+  {% block title %}<title>{% trans 'Ana Səhifə' %} | STOREGLASSTECH</title>{% endblock %}
 
 
   {% block style %}<link rel="stylesheet" href="{% static 'css/home.css'%}">{% endblock%}
@@ -41,15 +42,15 @@
         <div class="col-md-4 ads">
           <div class="w-100 ads-sec2">
             <div class="overlay"></div>
-            <span>ŞÜŞƏ tablolar</span>
-            <h3>Şüşə dən hazılanmış tablolar</h3>
-            <p class="slider-button"><a href="{% url 'product:products' category_slug='all' %}?type=glass" class="text-white">İndi al </a></p>
+            <span>{% trans 'ŞÜŞƏ tablolar' %}</span>
+            <h3>{% trans 'Şüşə dən hazılanmış tablolar' %}</h3>
+            <p class="slider-button"><a href="{% url 'product:products' category_slug='all' %}?type=glass" class="text-white">{% trans 'İndi al' %} </a></p>
           </div>
           <div class="w-100 ads-sec1">
             <div class="overlay"></div>
-            <span>MDF Tablolar</span>
-            <h3>MDF dən hazılanmış tablolar</h3>
-            <p class="slider-button"><a href="{% url 'product:products' category_slug='all' %}?type=mdf" class="text-white">İndi al </a></p>
+            <span>{% trans 'MDF Tablolar' %}</span>
+            <h3>{% trans 'MDF dən hazılanmış tablolar' %}</h3>
+            <p class="slider-button"><a href="{% url 'product:products' category_slug='all' %}?type=mdf" class="text-white">{% trans 'İndi al' %} </a></p>
           </div>
           
         </div>
@@ -64,8 +65,8 @@
   <div class="trending-section w-100 py-5">
     <div class="container-fluid">
       <div class="trending-header d-flex flex-column align-items-center">
-        <h4>Ən çox satılan</h4>
-        <p style="text-align: center;">Bütün müştərilərimiz tərifindən bəyənilən ən seçilən tablolarımız</p>
+        <h4>{% trans 'Ən çox satılan' %}</h4>
+        <p style="text-align: center;">{% trans 'Bütün müştərilərimiz tərifindən bəyənilən ən seçilən tablolarımız' %}</p>
       </div>
 
       <div class="trending-products mt-5 row">
@@ -118,16 +119,16 @@
     <div class="container-fluid">
       <div class="trend-ads">
         <div class="ads1">
-          <h6 class="ads-small-header">Ən çox çeşİdlİ kateqorİya bİrİncİ sırada</h6>
-          <h4 class="ad-header">{{top_categories | first | upper}} Kateqoriyası</h4>
-          <p class="mb-3">Kateqoriyanın bol çeşidə sahib olan tablolarına göz atın.</p>
-          <a href="products/{{top_categories.0.get_absolute_url}}" class="content-read-btn">Kateqoriyaya bax <i class="fa fa-arrow-right"></i></a>
+          <h6 class="ads-small-header">{% trans 'Ən çox çeşİdlİ kateqorİya bİrİncİ sırada' %}</h6>
+          <h4 class="ad-header">{{top_categories | first | upper}} {% trans 'Kateqoriyası' %}</h4>
+          <p class="mb-3">{% trans 'Kateqoriyanın bol çeşidə sahib olan tablolarına göz atın.' %}</p>
+          <a href="products/{{top_categories.0.get_absolute_url}}" class="content-read-btn">{% trans 'Kateqoriyaya bax' %} <i class="fa fa-arrow-right"></i></a>
         </div>
         <div class="ads2">
-          <h6 class="ads-small-header">Ən çox çeşİdlİ kateqorİya İkİncİ sırada</h6>
-          <h4 class="ad-header">{{ top_categories.1 | upper }} Kateqoriyası</h4>
-          <p class="mb-3">Kateqoriyanın bol çeşidə sahib olan tablolarına göz atın.</p>
-          <a href="products/{{top_categories.1.get_absolute_url}}" class="content-read-btn">Kateqoriyaya bax <i class="fa fa-arrow-right"></i></a>
+          <h6 class="ads-small-header">{% trans 'Ən çox çeşİdlİ kateqorİya İkİncİ sırada' %}</h6>
+          <h4 class="ad-header">{{ top_categories.1 | upper }} {% trans 'Kateqoriyası' %}</h4>
+          <p class="mb-3">{% trans 'Kateqoriyanın bol çeşidə sahib olan tablolarına göz atın.' %}</p>
+          <a href="products/{{top_categories.1.get_absolute_url}}" class="content-read-btn">{% trans 'Kateqoriyaya bax' %} <i class="fa fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
@@ -140,8 +141,8 @@
     <div class="container-fluid">
       <div class="hot-deals-container w-100">
         <div class="header-sec w-100 d-flex align-items-center justify-content-between">
-          <h4 class="hot-deals-header">Ən yeni</h4>
-          <p>Şüşə tablolarımız</p>
+          <h4 class="hot-deals-header">{% trans 'Ən yeni' %}</h4>
+          <p>{% trans 'Şüşə tablolarımız' %}</p>
         </div>
         <div class="trending-products mt-5 row">
           {% for product in least_glass %}
@@ -193,19 +194,19 @@
 
         <div class="tab-buttons">
           <button class="tab-btn active" content-id="glass">
-            Şüşə tablolar
+            {% trans 'Şüşə tablolar' %}
           </button>
           
           <button class="tab-btn" content-id="mdf">
-            MDF tablolar
+            {% trans 'MDF tablolar' %}
           </button>
 
           <button class="tab-btn" content-id="watch">
-            Saatlar
+            {% trans 'Saatlar' %}
           </button>
 
           <button class="tab-btn" content-id="self">
-            Özün hazırla
+            {% trans 'Özün hazırla' %}
           </button>
 
       
@@ -216,9 +217,9 @@
             <img class="content-img"
               src="{% static 'images/prod-glass.png'%}" alt="">
             <div class="content-half">
-              <h4 class="content-header">Şüşə tablolar</h4>
-              <p class="content-text mb-4"><a href="https://glasstech.az">Glasstech</a> tərəfindən istehsal olunan yüksək keyfiyyətli şüşələrimizdən hazırlanan göz oxşayan tablolarımız.</p>
-              <a href="{% url 'product:products' category_slug='all' %}?type=glass" class="content-read-btn">Tablolara bax <i class="fa fa-arrow-right"></i></a>
+              <h4 class="content-header">{% trans 'Şüşə tablolar' %}</h4>
+              <p class="content-text mb-4">{% trans '<a href="https://glasstech.az">Glasstech</a> tərəfindən istehsal olunan yüksək keyfiyyətli şüşələrimizdən hazırlanan göz oxşayan tablolarımız.' %}</p>
+              <a href="{% url 'product:products' category_slug='all' %}?type=glass" class="content-read-btn">{% trans 'Tablolara bax' %} <i class="fa fa-arrow-right"></i></a>
             </div>
           </div>
 
@@ -226,9 +227,9 @@
             <img class="content-img"
               src="{% static 'images/prod-mdf.png'%}" alt="">
             <div class="content-half">
-              <h4 class="content-header">MDF tablolar</h4>
-              <p class="content-text mb-4">Yüksək MDF, qüsursuz kəsim və göz oxşayan tablolarımız.</p>
-              <a href="{% url 'product:products' category_slug='all' %}?type=glass" class="content-read-btn">Tablolara bax <i class="fa fa-arrow-right"></i></a>
+              <h4 class="content-header">{% trans 'MDF tablolar' %}</h4>
+              <p class="content-text mb-4">{% trans 'Yüksək MDF, qüsursuz kəsim və göz oxşayan tablolarımız.' %}</p>
+              <a href="{% url 'product:products' category_slug='all' %}?type=glass" class="content-read-btn">{% trans 'Tablolara bax' %} <i class="fa fa-arrow-right"></i></a>
             </div>
           </div>
 
@@ -236,9 +237,9 @@
             <img class="content-img"
               src="{% static 'images/prod-clock.png'%}" alt="">
             <div class="content-half">
-              <h4 class="content-header">Divar saatları</h4>
-              <p class="content-text mb-4">Dözümlu və estetik divar saatınızı hazırlayıb bir kliklə sifariş edə bilərsiniz.</p>
-              <a href="" class="content-read-btn">Hazırla <i class="fa fa-arrow-right"></i></a>
+              <h4 class="content-header">{% trans 'Divar saatları' %}</h4>
+              <p class="content-text mb-4">{% trans 'Dözümlu və estetik divar saatınızı hazırlayıb bir kliklə sifariş edə bilərsiniz.' %}</p>
+              <a href="" class="content-read-btn">{% trans 'Hazırla' %} <i class="fa fa-arrow-right"></i></a>
             </div>
           </div>
 
@@ -246,9 +247,9 @@
             <img class="content-img"
               src="{% static 'images/prod-custom.png'%}" alt="">
             <div class="content-half">
-              <h4 class="content-header">Özün hazırla</h4>
-              <p class="content-text mb-4">İstədiyiniz ölçü və materialda tablo hazırlayıb bir kliklə sifariş edə bilərsiniz</p>
-              <a href="" class="content-read-btn">Hazırla <i class="fa fa-arrow-right"></i></a>
+              <h4 class="content-header">{% trans 'Özün hazırla' %}</h4>
+              <p class="content-text mb-4">{% trans 'İstədiyiniz ölçü və materialda tablo hazırlayıb bir kliklə sifariş edə bilərsiniz' %}</p>
+              <a href="" class="content-read-btn">{% trans 'Hazırla' %} <i class="fa fa-arrow-right"></i></a>
             </div>
           </div>
 
@@ -267,8 +268,8 @@
     <div class="container-fluid">
       <div class="hot-deals-container w-100">
         <div class="header-sec w-100 d-flex align-items-center justify-content-between">
-          <h4 class="hot-deals-header">Ən yeni</h4>
-          <p>MDF tablolarımız</p>
+          <h4 class="hot-deals-header">{% trans 'Ən yeni' %}</h4>
+          <p>{% trans 'MDF tablolarımız' %}</p>
         </div>
         <div class="trending-products mt-5 row">
           {% for product in least_mdf %}
@@ -320,12 +321,12 @@
     <div class="container-fluid">
       <div class="w-100 best-seller-container">
         <div class="best-seller-ads">
-          <p class="ads-small-text">Endirimli Məhsullar</p>
-          <h4 class="ads-header">{{max_discount}}% dək endİrİmlər</h4>
+          <p class="ads-small-text">{% trans 'Endirimli Məhsullar' %}</p>
+          <h4 class="ads-header">{{max_discount}}% {% trans 'dək endİrİmlər' %}</h4>
           <p class="ads-text">
-            Seçiminizi indi edin, endirmləri qaçırmayın!
+            {% trans 'Seçiminizi indi edin, endirmləri qaçırmayın!' %}
           </p>
-          <a href="{% url 'product:products' category_slug='all' %}?type=glass" class="ads-button">Bütün məhsullar</a>
+          <a href="{% url 'product:products' category_slug='all' %}?type=glass" class="ads-button">{% trans 'Bütün məhsullar' %}</a>
         </div>
         <div class="best-seller-items row">
           {% for product in discounted_products %}

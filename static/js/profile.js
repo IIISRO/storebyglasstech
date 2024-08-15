@@ -287,7 +287,6 @@ if(data){
 
 })
 .finally(() => {
-    console.log(1)
 
 $('#addAddressModal').modal('hide');
 

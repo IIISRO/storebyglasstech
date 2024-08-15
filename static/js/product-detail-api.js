@@ -59,7 +59,7 @@ function getDetail(){
         // title, desc, detail
         $("#head-prod-title").text(`${data.title} | STOREGLASSTECH`)
         $("#prod-title").html(`${data.title}  <small>| ${data.type}</small>`)
-        $("#prod-desc").text(data.description)
+        $("#prod-desc").html(data.description)
         $("#prod-detail").html(data.detail)
 
         // olculer

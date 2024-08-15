@@ -15,7 +15,7 @@ function displayResults(results) {
 
                     ${(function Items2() {
                       let items2 = [];
-                      if (product.same_products[0].type == "MDF") {
+                      if (product.type == "MDF") {
                         
                         items2.push(
                           ` <img src="${product.image}" alt="">`
@@ -83,7 +83,7 @@ function displayResults(results) {
     }
     createPagination(results.pagination.all_pages_num, currentPage);
   } else {
-    products.innerHTML += `<div class="alert alert-danger">Təəssüf ki,seçdiyiniz filterlərə uyğun məhsul tapılmadı!</div>`;
+    products.innerHTML += `<div class="alert alert-danger">${transNoProduct}</div>`;
   }
   loader.hide();
 }

@@ -18,10 +18,17 @@ class Products(View):
     
 class ProductDetail(View):
     def get(self, request, category_slug, product_slug):
-        get_object_or_404(Product, slug = product_slug, category__slug = category_slug)
+        product = get_object_or_404(Product, slug = product_slug, category__slug = category_slug)
+
+        releated_products = Product.objects.filter(category = product.category).exclude(id=product.id).order_by('?')[:4]
+        comments = product.product_comments.all()
+
         context={
             'category_slug':category_slug,
-            'product_slug':product_slug
+            'product_slug':product_slug,
+            'comments':comments,
+            'releated_products':releated_products
+
         }
         return render(request, 'product-detail.html', context)
 

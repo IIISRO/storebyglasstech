@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
+
 
     {% block desc %}<meta name="description" content="Bizimlə istədiyiniz zaman əlaqəyə keçin və təkliflərinizi vəya rəylərinizi bildirin.">{% endblock %}
 
-    {% block title %}<title>Əlaqə | STOREGLASSTECH</title>{% endblock %}
+    {% block title %}<title>{% trans 'Əlaqə' %} | STOREGLASSTECH</title>{% endblock %}
 
     {% block style %}<link rel="stylesheet" href="{% static 'css/contact.css' %}">{% endblock %}
 
@@ -17,14 +19,14 @@
 
         <div class="contact-page-header">
             <div class="contact-overlay"></div>
-            <h1>Əlaqəyə Keçin</h1>
-            <p class="mt-3">Suallarınızı, təkliflərinizi bizə bildirin, ən qısa zamanda cavablandıracayıq.</p>
+            <h1>{% trans 'Əlaqəyə Keçin' %}</h1>
+            <p class="mt-3">{% trans 'Suallarınızı, təkliflərinizi bizə bildirin, ən qısa zamanda cavablandıracayıq.' %}</p>
         </div>
         <div class="container-fluid py-5">
             <div class="row">
                 <div class="col-lg-3  contact-sidebar">
                     <h4 class="contact-sidebar-title">
-                        Əlaqə Məlumatları
+                        {% trans 'Əlaqə Məlumatları' %}
                     </h4>
                     <div class="contact-info-list mt-5">
                         <div class="icon-box-wrapper d-flex align-items-center align-items-md-start">
@@ -40,7 +42,7 @@
                             <div class="icon-box-content">
                                 <h6 class="icon-box-title">
                                     <span>
-                                        Telefon </span>
+                                        {% trans 'Telefon' %} </span>
                                 </h6>
                                 <p class="icon-box-description">
                                     <a class="breadcrumb-color" href="tel:+ (588) 1234-567-8922">+ (588)
@@ -64,7 +66,7 @@
                             <div class="icon-box-content">
                                 <h6 class="icon-box-title">
                                     <span>
-                                        Email </span>
+                                        {% trans 'Email' %} </span>
                                 </h6>
                                 <p class="icon-box-description">
                                     <a class="breadcrumb-color"
@@ -88,74 +90,74 @@
                             <div class="icon-box-content">
                                 <h6 class="icon-box-title">
                                     <span>
-                                        Ünvan </span>
+                                        {% trans 'Ünvan' %} </span>
                                 </h6>
                                 <p class="icon-box-description">
-                                    County Hall, Bishop’s, SE1 7PB, United Kingdom </p>
+                                    {% trans 'County Hall, Bishop’s, SE1 7PB, United Kingdom' %} </p>
                             </div>
                         </div>
 
                     </div>
                     <div class="sidebar-ad-sec d-flex flex-column align-items-center mt-5">
-                        <span class="ad-title text-white">Göz oxşayan tablolar</span>
-                        <h5 class="heading-title size-default text-white">Endirimləri qaçırmayın</h5>
-                        <span class="heading-title2 size-default text-white">Yüksək keyfiyyətli tabloları </span>
+                        <span class="ad-title text-white">{% trans 'Göz oxşayan tablolar' %}</span>
+                        <h5 class="heading-title size-default text-white">{% trans 'Endirimləri qaçırmayın' %}</h5>
+                        <span class="heading-title2 size-default text-white">{% trans 'Yüksək keyfiyyətli tabloları' %}</span>
                         <a class="button button-link size-sm" href="{% url 'product:products' category_slug='all' %}">
                             <span class="button-content-wrapper">
-                                <span class="button-text">İndi alın</span>
+                                <span class="button-text">{% trans 'İndi alın' %}</span>
                             </span>
                         </a>
                     </div>
                 </div>
                 <div class="col-lg-9 contact-form mt-5 mt-lg-0">
-                    <h4>İstənilən mövzu ilə əlaqədər əlaqəyə keçin</h4>
+                    <h4>{% trans 'İstənilən mövzu ilə əlaqədər əlaqəyə keçin' %}</h4>
                     <form id="contactform" class="mt-3" method="post">
                        
                         <div class="row">
                             <div class="col-12 col-md-6 mb-4">
-                                <p><label for="visitor-first-name" class="form-label">Ad <abbr class="required"
+                                <p><label for="visitor-first-name" class="form-label">{% trans 'Ad' %} <abbr class="required"
                                             title="Required">*</abbr></label><br>
                                     <input required id="name"
                                             size="40"
                                             class="form-control"
-                                            type="text" placeholder="Adınız">
+                                            type="text" placeholder="{% trans 'Adınız' %}">
                                 </p>
                             </div>
                             <div class="col-12 col-md-6 mb-4">
-                                <p><label for="visitor-last-name" class="form-label">Soyad <abbr class="required"
+                                <p><label for="visitor-last-name" class="form-label">{% trans 'Soyad' %} <abbr class="required"
                                             title="Required">*</abbr></label><br>
                                     <input required size="40"
                                             class="form-control"
-                                            id="surname" type="text" placeholder="Soyadınız">
+                                            id="surname" type="text" placeholder="{% trans 'Soyadınız' %}">
                                 </p>
                             </div>
                             <div class="col-12 col-md-6 mb-4">
-                                <p><label for="visitor-email" class="form-label">Email <abbr class="required"
+                                <p><label for="visitor-email" class="form-label">{% trans 'Email' %} <abbr class="required"
                                             title="Required">*</abbr></label><br>
                                     <input required size="40"
                                             class="form-control"
-                                            id="email"  value="" type="email"  placeholder="Email ünvanı">
+                                            id="email"  value="" type="email"  placeholder="{% trans 'Email ünvanı' %}">
                                 </p>
                             </div>
                             <div class="col-12 col-md-6 mb-4">
-                                <p><label for="visitor-phone" class="form-label">Telefon <abbr class="required"
+                                <p><label for="visitor-phone" class="form-label">{% trans 'Telefon' %} <abbr class="required"
                                             title="Required">*</abbr></label><br>
                                     <input required size="40"
                                             class="form-control"
-                                            id="phone" type="tel"  placeholder="Əlaqə nömrəsi">
+                                            id="phone" type="tel"  placeholder="{% trans 'Əlaqə nömrəsi' %}">
                                 </p>
                             </div>
                             <div class="col-12 mb-4">
-                                <p><label for="visitor-message" class="form-label">Mesaj <abbr class="required"
+                                <p><label for="visitor-message" class="form-label">{% trans 'Mesaj' %} <abbr class="required"
                                     title="Required">*</abbr></label><br>
                                    <textarea required
                                             cols="40" rows="10" class="form-control"
-                                            id="message"  placeholder="Mesajınız"></textarea></span>
+                                            id="message"  placeholder="{% trans 'Mesajınız' %}"></textarea></span>
                                 </p>
                             </div>
                             <div class="col-12">
                                 <p><span class="wpcf7-form-control-wrap wpcf7-submit-wrap"><button type="submit"
-                                            class="wpcf7-form-btn-control wpcf7-submit"><span class="has-spinner">Göndər</span></button></span>
+                                            class="wpcf7-form-btn-control wpcf7-submit"><span class="has-spinner">{% trans 'Göndər' %}</span></button></span>
                                 </p>
                             </div>
                         </div>
@@ -218,9 +220,9 @@
                                     <circle class="path pathsvg circle" fill="none" stroke="#b3cc23" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
                                     <polyline class="path pathsvg check" fill="none" stroke="#b3cc23" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
                                 </svg>	
-                                <h1>Mesajınız göndərildi!</h1>
-                                <p>Bizimlə əlqayə keçdiyinizə görə təşəkkürlər.</p>
-                                <a href="{% url 'core:home' %}" class="boxed-btn">Ana səhifə</a>
+                                <h1>{% trans 'Mesajınız göndərildi!' %}</h1>
+                                <p>{% trans 'Bizimlə əlqayə keçdiyinizə görə təşəkkürlər.' %}</p>
+                                <a href="{% url 'core:home' %}" class="boxed-btn">{% trans 'Ana səhifə</a>
                             </div>
                         </div>
                     </div>
@@ -241,9 +243,9 @@
                                     <line id="path3" fill="none" stroke="#000000" stroke-width="3" stroke-miterlimit="10" x1="41.5" y1="41.5" x2="8.5" y2="8.5"/>
                                 </g>
                                 </svg>
-                                <h1>Xəta!</h1>
-                                <p>Mesajınız göndərilmədi!</p>
-                                <a href="{% url 'core:contact' %}" class="boxed-btn">Yenidən yoxla</a>
+                                <h1>{% trans 'Xəta!' %}</h1>
+                                <p>{% trans 'Mesajınız göndərilmədi!' %}</p>
+                                <a href="{% url 'core:contact' %}" class="boxed-btn">{% trans 'Yenidən yoxla' %}</a>
                             </div>
                         </div>
                     </div>

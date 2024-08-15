@@ -31,7 +31,7 @@ class Product(AbstractModel):
     type = models.CharField(max_length=50, null=False, blank=False, choices=TYPE)
     artist = models.ForeignKey('Artist', on_delete=models.CASCADE, related_name='artist_products')
     description = models.TextField(null=False, blank=False)
-    detail = CKEditor5Field(null=False, blank=False, config_name='extends')
+    detail = models.TextField(null=False, blank=False)
     image = models.ImageField(upload_to='PosterIMGs/', null=False, blank=False)
     price = models.FloatField(null=False, blank=False)
     slug = models.SlugField(null=False, unique=True)
@@ -237,3 +237,10 @@ class Comments(AbstractModel):
     product = models.ForeignKey("Product", null=False, blank=False, on_delete=models.CASCADE, related_name='product_comments')
     rate = models.PositiveSmallIntegerField(null=False, blank=False)
     comment = models.CharField(max_length=150, null=False, blank=False)
+
+    class Meta:
+        verbose_name_plural = 'Comments'
+
+    @property
+    def date(self):
+        return self.created_at.strftime('%Y.%m.%d %H:%M')

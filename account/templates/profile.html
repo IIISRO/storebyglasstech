@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
-  {% block title %}<title>Profilim | STOREGLASSTECH</title>{% endblock %}
+  {% block title %}<title>{% trans 'Profilim' %} | STOREGLASSTECH</title>{% endblock %}
       
   {% block style %}
    
@@ -23,7 +23,7 @@
                 role="tab"
                 aria-controls="profile-tab"
                 aria-selected="false"  data-bs-toggle="tab"  class="nav-item nav-link has-icon nav-link-faded active">
-                    <i class="fa fa-user"></i> Şəxsi məlumatlarım
+                    <i class="fa fa-user"></i> {% trans 'Şəxsi məlumatlarım' %}
                 </a>
                 <a href="#orders-tab"
                 data-mdb-tab-init
@@ -31,7 +31,7 @@
                 role="tab"
                 aria-controls="orders-tab"
                 aria-selected="false" data-bs-toggle="tab" class="nav-item nav-link has-icon nav-link-faded">
-                  <i class="fas fa-solid fa-box"></i> Sifarişlərim
+                  <i class="fas fa-solid fa-box"></i> {% trans 'Sifarişlərim' %}
                 </a>
                 <a href="#address-tab"
                 data-mdb-tab-init
@@ -39,7 +39,7 @@
                 role="tab"
                 aria-controls="address-tab"
                 aria-selected="false" data-bs-toggle="tab" class="nav-item nav-link has-icon nav-link-faded">
-                    <i class="fa fa-map-marker"></i> Ünvan tənzimləmələri
+                    <i class="fa fa-map-marker"></i> {% trans 'Ünvan tənzimləmələri' %}
                 </a>
              
                 <a href="#security-tab" 
@@ -48,10 +48,10 @@
                 role="tab"
                 aria-controls="security-tab"
                 aria-selected="false"data-bs-toggle="tab" class="nav-item nav-link has-icon nav-link-faded">
-                    <i class="fa fa-lock"></i> Şifrə tənzimləməsi
+                    <i class="fa fa-lock"></i> {% trans 'Şifrə tənzimləməsi' %}
                 </a>
                 <a  href="{% url 'account:logout' %}" data-mdb-tab-init class="nav-logout nav-item nav-link has-icon nav-link-faded">
-                    <i style="width: 25px; height: 20px;" class="m-0 p-0 fas fa-duotone fa-right-from-bracket"></i> <p class="m-0 p-0">Çıxış</p> 
+                    <i style="width: 25px; height: 20px;" class="m-0 p-0 fas fa-duotone fa-right-from-bracket"></i> <p class="m-0 p-0">{% trans 'Çıxış' %}</p>
                 </a>
             </nav>
           </div>
@@ -102,20 +102,20 @@
             id="profile-tab"
             role="tabpanel"
             aria-labelledby="profile">
-              <h6>ŞƏXSİ MƏLUMATLARIM</h6>
+              <h6>{% trans 'ŞƏXSİ MƏLUMATLARIM' %}</h6>
               <hr>
               <form id="updateuserdataform">
                 <div class="form-group">
                     <div class="row mb-4">
                         <div class="col-md-6 col-sm-12 ">
 
-                            <label for="fullName" class="mb-2">Ad</label>
-                            <input type="text" class="form-control" disabled="" id="userfirstname" value="{{request.user.first_name}}" placeholder="Ad">
+                            <label for="fullName" class="mb-2">{% trans 'Ad' %}</label>
+                            <input type="text" class="form-control" disabled="" id="userfirstname" value="{{request.user.first_name}}" placeholder="{% trans 'Ad' %}">
                         </div>
                         <div class="col-md-6 col-sm-12">
 
-                            <label for="fullName" class="mb-2">Soyad</label>
-                            <input type="text" class="form-control" disabled="" id="userlastname" value="{{ request.user.last_name }}" placeholder="Soyad">
+                            <label for="fullName" class="mb-2">{% trans 'Soyad' %}</label>
+                            <input type="text" class="form-control" disabled="" id="userlastname" value="{{ request.user.last_name }}" placeholder="{% trans 'Soyad' %}">
                         </div>
                     </div>
                 
@@ -124,30 +124,30 @@
                     <div class="row mb-4">
                         <div class="col-md-6 col-sm-12 ">
 
-                            <label for="fullName" class="mb-2">E-mail</label>
-                            <input type="text" class="form-control" disabled="" id="useremail" value="{{ request.user.email }}" placeholder="Email">
+                            <label for="fullName" class="mb-2">{% trans 'E-mail' %}</label>
+                            <input type="text" class="form-control" disabled="" id="useremail" value="{{ request.user.email }}" placeholder="{% trans 'Email' %}">
                         </div>
                         <div class="col-md-6 col-sm-12">
 
-                            <label for="fullName" class="mb-2">Mobil nömrə</label>
-                            <input type="text" disabled="" class="form-control" value="{{ request.user.number }}" placeholder="Nömrə">
+                            <label for="fullName" class="mb-2">{% trans 'Mobil nömrə' %}</label>
+                            <input type="text" disabled="" class="form-control" value="{{ request.user.number }}" placeholder="{% trans 'Nömrə' %}">
                         </div>
                     </div>
                 
                 </div>
                 
                 <div class="form-group small text-muted mb-4">
-                    Burdakı xanaları doldurmağınız sizə daha rahat xidmət göstərməyimizə kömək edəcək. Məcburi deyil və istənilən zaman <b>mobil nömrə</b> xaric bütün xanalarda dəyişiklik edə bilərsiz.
+                    {% trans 'Burdakı xanaları doldurmağınız sizə daha rahat xidmət göstərməyimizə kömək edəcək. Məcburi deyil və istənilən zaman <b>mobil nömrə</b> xaric bütün xanalarda dəyişiklik edə bilərsiz.' %}
                 </div>
 
-                <button type="button" onclick="editModeUserData(this, true)" class="profile-bordered-btn bordered-btn">Düzəliş et</button>
+                <button type="button" onclick="editModeUserData(this, true)" class="profile-bordered-btn bordered-btn">{% trans 'Düzəliş et' %}</button>
 
               </form>
             </div>
             <div class="tab-pane" id="orders-tab"  
             role="tabpanel"
             aria-labelledby="orders">
-                <h6>SİFARİŞLƏRİM</h6>
+                <h6>{% trans 'SİFARİŞLƏRİM' %}</h6>
                 <hr>
                 <div class="form-group mb-0">
                   <label class="d-block">{% trans "Sifariş Tarixçəm" %}</label>
@@ -184,17 +184,17 @@
                                {% endif %}
                             </div>
                            
-                            <div class="order-name"><a href="/product/{{item.product.get_absolute_url}}"><h4>{{item.product.title}}</h4></a><span type="button" data-toggle="modal" data-target="#{{item.product.slug}}">rate the product</span></div>
+                            <div class="order-name"><a href="/product/{{item.product.get_absolute_url}}"><h4>{{item.product.title}}</h4></a><span type="button" data-toggle="modal" data-target="#{{item.product.slug}}">{% trans 'məhsula rəy ver' %}</span></div>
 
                             <div class="modal fade" id="{{item.product.slug}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                               <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                   <div class="card-body text-center"> <img src="{% static '/images/users-comments.svg' %}" height="100" width="100">
                                     <div class="comment-box text-center">
-                                      <h4>Add a comment</h4>
+                                      <h4>{% trans 'Rəy ver' %}</h4>
                                       <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label> </div>
                                       <div class="comment-area"> <textarea id="comment" maxlength="149" class="form-control" placeholder="məhsul haqqında fikirləriniz?" rows="4"></textarea> </div>
-                                      <div class="text-center mt-4"> <button  data-dismiss="modal" onclick="addComment('{{item.product.id}}')" class="profile-save-btn bordered-btn">Rəy göndər <i class="fa fa-long-arrow-right ml-1"></i></button></div>
+                                      <div class="text-center mt-4"> <button  data-dismiss="modal" onclick="addComment('{{item.product.id}}')" class="profile-save-btn bordered-btn">{% trans 'Rəy göndər' %} <i class="fa fa-long-arrow-right ml-1"></i></button></div>
                                     </div>
                                   </div>
                                 </div>
@@ -218,7 +218,7 @@
                         {% endfor %}
                         <div class="col-md-12  p-0 mt-3 delivery d-flex align-items-center justify-content-between">
                           
-                          <span class="text-dark">Çatdırlma ilə</span>
+                          <span class="text-dark">{% trans 'Çatdırlma ilə' %}</span>
                         
 
                           <span class="total-price">
@@ -233,7 +233,7 @@
                     {% endfor %}
                   </div>
                   {% else %}
-                  <div class="border border-gray-500 bg-gray-200 p-3 text-center font-size-sm">Heç bir sifarişiniz yoxdur.</div>
+                  <div class="border border-gray-500 bg-gray-200 p-3 text-center font-size-sm">{% trans 'Heç bir sifarişiniz yoxdur.' %}</div>
                   {% endif %}
 
                 </div>
@@ -246,10 +246,10 @@
             <div class="tab-pane"  id="address-tab"
             role="tabpanel"
             aria-labelledby="address">
-              <h6>ÜNVAN TƏNZİMLƏMƏLƏRİ</h6>
+              <h6>{% trans 'ÜNVAN TƏNZİMLƏMƏLƏRİ' %}</h6>
               <hr>
               <div class="d-flex justify-content-between">
-                  <label class="d-block">Ünvanlarım</label>
+                  <label class="d-block">{% trans 'Ünvanlarım' %}</label>
                   <button type="button" data-bs-toggle="modal" data-bs-target="#addAddressModal" id="add-address-btn"><i class="fa  fa-plus"></i></button>
               </div>
               <ul id="addresseslist" class="list-group address-list list-group-sm">
@@ -280,43 +280,43 @@
                   <form id="addnewaddress">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="addAddressModalLabel">Yeni ünvan</h5>
+                        <h5 class="modal-title" id="addAddressModalLabel">{% trans 'Yeni ünvan' %}</h5>
                       </div>
                       <div class="modal-body">
                         <div class="row">
                           <div class="col-6 mb-3">
-                            <label for="" class="mb-2">Ad:</label>
-                            <input class="form-control" id="addressfirstname" placeholder="Adınız" value="" type="text">
+                            <label for="" class="mb-2">{% trans 'Ad:' %}</label>
+                            <input class="form-control" id="addressfirstname" placeholder="{% trans 'Adınız' %}" value="" type="text">
                           </div>
                           <div class="col-6 mb-3">
-                            <label for="" class="mb-2">Soyad:</label>
-                            <input class="form-control" id="addresslastname" placeholder="Soyadınız" value="" type="text">
+                            <label for="" class="mb-2">{% trans 'Soyad:' %}</label>
+                            <input class="form-control" id="addresslastname" placeholder="{% trans 'Soyadınız' %}" value="" type="text">
                           </div>
                           <div class="col-12 mb-3">
-                            <label for="" class="mb-2">Ünvan Başlığı:</label>
-                            <input class="form-control" id="addressline" placeholder="ünvan başlığı yaxınlığında ne var..." type="text">
+                            <label for="" class="mb-2">{% trans 'Ünvan Başlığı:' %}</label>
+                            <input class="form-control" id="addressline" placeholder="{% trans 'ünvan başlığı yaxınlığında ne var...' %}" type="text">
                           </div>
                           <div class="col-12 mb-3">
-                            <label for="" class="mb-2">Rayon:</label>
-                            <input class="form-control" id="addressregion" placeholder="rayon" type="text">
+                            <label for="" class="mb-2">{% trans 'Rayon:' %}</label>
+                            <input class="form-control" id="addressregion" placeholder="{% trans 'rayon' %}" type="text">
                           </div>
                           <div class="col-12 mb-3">
-                            <label for="" class="mb-2">Küçə/Məhəllə:</label>
-                            <input class="form-control" id="addressstreet" placeholder="küçə" type="text">
+                            <label for="" class="mb-2">{% trans 'Küçə/Məhəllə:' %}</label>
+                            <input class="form-control" id="addressstreet" placeholder="{% trans 'küçə' %}" type="text">
                           </div>
                           <div class="col-6 mb-3">
-                            <label for="" class="mb-2">Bina/Ev:</label>
-                            <input class="form-control" id="addressbuilding" placeholder="bina nömrəsi" type="text">
+                            <label for="" class="mb-2">{% trans 'Bina/Ev:' %}</label>
+                            <input class="form-control" id="addressbuilding" placeholder="{% trans 'bina nömrəsi' %}" type="text">
                           </div>
                           <div class="col-6 mb-3">
-                            <label for="" class="mb-2">Mənzil:</label>
-                            <input class="form-control" id="addressflat" placeholder="qapı nömrəsi" type="text">
+                            <label for="" class="mb-2">{% trans 'Mənzil:' %}</label>
+                            <input class="form-control" id="addressflat" placeholder="{% trans 'qapı nömrəsi' %}" type="text">
                           </div>
                         </div>
                       </div>
                       <div class="modal-footer">
-                        <button type="submit" class="profile-save-btn bordered-btn">Əlavə et</button>
-                        <button type="button" class="profile-bordered-btn bordered-btn" data-bs-dismiss="modal">Ləğv et</button>
+                        <button type="submit" class="profile-save-btn bordered-btn">{% trans 'Əlavə et' %}</button>
+                        <button type="button" class="profile-bordered-btn bordered-btn" data-bs-dismiss="modal">{% trans 'Ləğv et' %}</button>
                       </div>
                     </div>
                   </form>
@@ -327,18 +327,18 @@
 
             <div class="tab-pane" id="security-tab"  role="tabpanel"
             aria-labelledby="security">
-                <h6>ŞİFRƏ TƏNZİMLƏMƏSİ</h6>
+                <h6>{% trans 'ŞİFRƏ TƏNZİMLƏMƏSİ' %}</h6>
                 <hr>
                 <form id="updatepasswordform">
                   <div class="form-group">
-                    <label class="d-block mb-3">Şifrəmi Dəyiş</label>
-                    <input type="password" oninput="checkChangePassSaveBtn()" id="oldpass" class="pass form-control mb-3" placeholder="Köhnə şifrə">
-                    <input type="password" oninput="checkChangePassSaveBtn()" id="newpass" class="pass form-control mt-1 mb-3" placeholder="Yeni şifrə">
-                    <input type="password" oninput="checkChangePassSaveBtn()" id="renewpass" class="pass form-control mt-1 mb-3" placeholder="Yeni şifrəni təsdiq edin">
-                    <small id="fullNameHelp" class="form-text text-muted ">*Şifrə minimum 6 xanalı olmalıdır!</small>
+                    <label class="d-block mb-3">{% trans 'Şifrəmi Dəyiş' %}</label>
+                    <input type="password" oninput="checkChangePassSaveBtn()" id="oldpass" class="pass form-control mb-3" placeholder="{% trans 'Köhnə şifrə' %}">
+                    <input type="password" oninput="checkChangePassSaveBtn()" id="newpass" class="pass form-control mt-1 mb-3" placeholder="{% trans 'Yeni şifrə' %}">
+                    <input type="password" oninput="checkChangePassSaveBtn()" id="renewpass" class="pass form-control mt-1 mb-3" placeholder="{% trans 'Yeni şifrəni təsdiq edin' %}">
+                    <small id="fullNameHelp" class="form-text text-muted ">{% trans '*Şifrə minimum 6 xanalı olmalıdır!' %}</small>
                     
                   </div>
-                  <button type="button" id="changepassbtn" class="mt-2 disabled-chng-pass profile-bordered-btn bordered-btn">Dəyiş</button>
+                  <button type="button" id="changepassbtn" class="mt-2 disabled-chng-pass profile-bordered-btn bordered-btn">{% trans 'Dəyiş' %}</button>
 
                 </form>
              
@@ -362,25 +362,25 @@
   var addCommentAPI = '{% url "productAPI:new-comment" %}'
 
 
-  var notfWrongEmailMessage = "Email yanlışdır!"
-  var notfDatasUpdated = "Məlumatlar yeniləndi!"
-  var notfRepPassWrong = "Şifrə təkrarı doğru deyil!"
-  var notfOldPassWrong = "Köhnə şifrə yanlışdır!"
-  var notfPassUpdated = "Şifrəniz yeniləndi!"
-  var notfNewAddressAdded = "Yeni ünvan əlavə edildi!"
-  var notfAddressDeleted = "Ünvan silindi!"
-  var notfDefAddressChnged = "Daimi ünvan dəyişildi!"
-  var notfPassUpdated = "Şifrəniz yeniləndi!"
-  var notfPassUpdated = "Şifrəniz yeniləndi!"
-  var notfOrderConf = "Sifarişiniz təsdiqləndi!"
-  var notfPassUpdated = "Şifrəniz yeniləndi!"
-  var notfPassUpdated = "Şifrəniz yeniləndi!"
+  var notfWrongEmailMessage = "{% trans 'Email yanlışdır!' %}"
+  var notfDatasUpdated = "{% trans 'Məlumatlar yeniləndi!' %}"
+  var notfRepPassWrong = "{% trans 'Şifrə təkrarı doğru deyil!' %}"
+  var notfOldPassWrong = "{% trans 'Köhnə şifrə yanlışdır!' %}"
+  var notfPassUpdated = "{% trans 'Şifrəniz yeniləndi!' %}"
+  var notfNewAddressAdded = "{% trans 'Yeni ünvan əlavə edildi!' %}"
+  var notfAddressDeleted = "{% trans 'Ünvan silindi!' %}"
+  var notfDefAddressChnged = "{% trans 'Daimi ünvan dəyişildi!' %}"
+  var notfPassUpdated = "{% trans 'Şifrəniz yeniləndi!' %}"
+  var notfPassUpdated = "{% trans 'Şifrəniz yeniləndi!' %}"
+  var notfOrderConf = "{% trans 'Sifarişiniz təsdiqləndi!' %}"
+  var notfPassUpdated = "{% trans 'Şifrəniz yeniləndi!' %}"
+  var notfPassUpdated = "{% trans 'Şifrəniz yeniləndi!' %}"
 
 
-  var transNoAddress = "Qeyd olunmuş ünvanınız yoxdur"
-  var transSave = "Yadda saxla"
-  var transCancel = "Ləğv et"
-  var transEdit = "Düzəliş et"
+  var transNoAddress = "{% trans 'Qeyd olunmuş ünvanınız yoxdur' %}"
+  var transSave = "{% trans 'Yadda saxla' %}"
+  var transCancel = "{% trans 'Ləğv et' %}"
+  var transEdit = "{% trans 'Düzəliş et' %}"
 
   var confSoundPTH = '{% static "order_conf.mp3" %}';
 

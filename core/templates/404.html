@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load i18n %}
 
 {% block title %}<title>404 | STOREGLASSTECH</title>{% endblock %}
 
@@ -116,9 +116,9 @@
             <div class="notfound">
                 <div class="notfound-404"></div>
                 <h1>404</h1>
-                <h2>Oops! Axtardığınız səhifə tapılmadı</h2>
-                <p>Təəssüfki, axtardığınız səhİfə mövcut deyil vəya qısa bir müddət bağlıdır.</p>
-                <a href="#">Ana səhifə.</a>
+                <h2>{% trans 'Oops! Axtardığınız səhifə tapılmadı' %}</h2>
+                <p>{% trans 'Təəssüfki, axtardığınız səhİfə mövcut deyil vəya qısa bir müddət bağlıdır.' %}</p>
+                <a href="{% url 'core:home' %}">{% trans 'Ana səhifə' %}</a>
             </div>
         </div>
 

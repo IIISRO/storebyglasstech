@@ -348,6 +348,9 @@ a:hover{
     .logo {
         max-width: 160px;
     }
+    .footer-item2{
+        display: none!important;
+    }
 }
 .navbar-toggler{
     padding: 0 !important;

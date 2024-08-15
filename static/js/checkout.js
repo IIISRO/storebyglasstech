@@ -15,52 +15,52 @@ function addNewAddress(){
     $("#new_address_inputs").html(
         `
         <div class="billing-fields">
-            <h3>Ünvan Məlumatları</h3>
+            <h3>${transAddressDetail}</h3>
             <input type="text" hidden id="new_address">
             <div class="row mb-4 mt-4">
                 <div class="col-md-6 d-flex flex-column">
-                    <label class="">Ad
+                    <label class="">${transName}
                         &nbsp;<abbr class="required" title="required">*</abbr></label><input
                         id="addressfirstname" type="text" class="input-text " placeholder="" value="">
                 </div>
                 <div class="col-md-6 d-flex flex-column">
-                    <label>Soyad
+                    <label>${transSurname}
                         &nbsp;<abbr class="required" title="required">*</abbr></label><input
                         id="addresslastname" type="text" class="input-text " placeholder="" value="">
                 </div>
             </div>
             <div class="row mb-4">
                 <div class="col-md-12">
-                    <label class="">Ünvan başlığı
+                    <label class="">${transAddressHead}
                         &nbsp;<abbr class="required" title="required">*</abbr></label><input type="text" class="input-text "
                         id="addressline" placeholder="" value="">
                 </div>
             </div>
             <div class="row mb-4">
                 <div class="col-md-12 d-flex flex-column">
-                    <label>Ünvan
+                    <label>${transAddres}
                         &nbsp;<abbr class="required" title="required">*</abbr></label><input
-                        id="addressregion" type="text" class="input-text " placeholder="Rayon"
+                        id="addressregion" type="text" class="input-text " placeholder="${transRegion}"
                         value="">
                 </div>
                 <div class="col-md-12 mt-4 d-flex flex-column">
                     <input type="text" class="input-text "
-                    id="addressstreet" placeholder="Küçə/Məhəllə" value="">
+                    id="addressstreet" placeholder="${transStreet}" value="">
                 </div>
             </div>
             <div class="row mb-4">
                 <div class="col-md-6 d-flex flex-column">
-                    <label class="">Bina/Ev&nbsp;<abbr class="required" title="required">*</abbr></label><input
+                    <label class="">${transBuild}&nbsp;<abbr class="required" title="required">*</abbr></label><input
                     id="addressbuilding" type="text" class="input-text " placeholder="" value="">
                 </div>
                 <div class="col-md-6 d-flex flex-column">
-                    <label>Mənzil&nbsp;<abbr class="required" title="required">*</abbr></label><input
+                    <label>${transFlat}&nbsp;<abbr class="required" title="required">*</abbr></label><input
                     id="addressflat" type="text" class="input-text " placeholder="" value="">
                 </div>
             </div>
         </div>
     
-        <button type="button" data-toggle="modal" data-target="#addressListModal" class="mt-3 mb-5 ml-2 button">Ünvanlarım</button>
+        <button type="button" data-toggle="modal" data-target="#addressListModal" class="mt-3 mb-5 ml-2 button">${transAddresses}</button>
     
         `
     )
@@ -98,7 +98,7 @@ $( ".address_cart_small" ).each(function(index) {
                             <div class="card-body">
                                 <h5 class="card-title"><i class="fas fa-solid fa-location-dot"></i> ${address.address_line}</h5>
                                 <h6 class="card-subtitle mb-3 ml-3 mt-2 text-muted">${address.first_name} ${address.last_name}, ${address.region}, ${address.street}, ${address.building}, ${address.flat}</h6>
-                                <button type="button" data-toggle="modal" data-target="#addressListModal" class="mt-3 button">Başqa ünvan</button>
+                                <button type="button" data-toggle="modal" data-target="#addressListModal" class="mt-3 button">${transAnotherAddress}</button>
                             </div>
                         </div>
                         `)
@@ -139,11 +139,11 @@ function applyCoupon(){
     })
     .then((data)=>{
        if (data === 'You are have applied coupon'){
-            notfWrong('Artıq kupon var!');
+            notfWrong(transCouponHas);
        }else if(data == 'Coupon applied!'){
-            notfSuccess('Kupon əlavə edildi!');
+            notfSuccess(transCouponApplied);
         }else{
-            notfWrong('Kupon tapılmadı!');
+            notfWrong(transCouponNotFind);
         }
   
     })
@@ -184,7 +184,7 @@ function getItems(){
                 <td class="product-name">${item.product.title}&nbsp; <strong
                         class="product-quantity">×&nbsp;${item.quantity}</strong>
                         <dl class="variation">
-                        <dt class="variation-PosterSize">Poster Size:</dt>
+                        <dt class="variation-PosterSize">${transSize}:</dt>
                         <dd class="variation-PosterSize">
                             <p>${item.size.height}x${item.size.width}</p>
                         </dd>
@@ -193,7 +193,7 @@ function getItems(){
                             if(item.frame.id){
                                 let framInfo = 
                                 `
-                                <dt class="variation-PosterFrame">Çərçivə:</dt>
+                                <dt class="variation-PosterFrame">${transFrame}:</dt>
                                 <dd class="variation-PosterFrame">
                                     <p>${item.frame.title}</p>
                                 </dd>
@@ -204,7 +204,7 @@ function getItems(){
                             return ''
                             })()
                         }
-                        <dt class="variation-PosterFinish">Material:</dt>
+                        <dt class="variation-PosterFinish">${transMaterial}:</dt>
                         <dd class="variation-PosterFinish">
                         <p>${item.product.type}</p>
                         </dd>
@@ -232,10 +232,10 @@ function getItems(){
                 `
                 <tr id="cart-coupon" class="cart-coupon">
                     <th>${data.coupon.code}</th>
-                    <td data-title="Kupon">
+                    <td data-title="${transCoupon}">
                         <span class="price_code">
                             <span class="price-amount amount">
-                                <bdi id="">${data.coupon.discount_precent}% endirim</bdi>
+                                <bdi id="">${data.coupon.discount_precent}% ${transDiscount}</bdi>
                             </span>
                         </span>
                     </td>
@@ -249,7 +249,7 @@ function getItems(){
         itemsArea.append(
             `
             <tr id="cart-coupon" class="cart-coupon">
-                <th>Çatdırılma</th>
+                <th>${transDelivery}</th>
                 <td data-title="Kupon">
                     <span class="price_code">
                         <span class="price-amount amount">
@@ -262,7 +262,7 @@ function getItems(){
                                 }else{
 
                                 }
-                                return `<bdi id="">Pulsuz</bdi>`
+                                return `<bdi id="">${transFree}</bdi>`
                                 })()
                             }
                             

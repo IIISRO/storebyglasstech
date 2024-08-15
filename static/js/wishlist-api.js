@@ -16,74 +16,76 @@ async function fetchAndDisplayResults() {
 
     if (results.items.length > 0) {
         wishlistMobile.innerHTML = ""
-        wishlistTable.innerHTML = `
-     <thead>
-                    <tr>
-                        <th class="product-name" colspan="3">
-                            <span class="nobr">
-                                Məhsul </span>
-                        </th>
-                       
-                        <th class="product-add-to-cart">
-                            <span class="nobr">
-                            </span>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody class="wishlist-items-wrapper" id="wishlist">`
+        wishlistTable.innerHTML = 
+        `
+            <thead>
+                <tr>
+                    <th class="product-name" colspan="3">
+                        <span class="nobr">${transProduct} </span>
+                    </th>
+                    
+                    <th class="product-add-to-cart">
+                        <span class="nobr">
+                        </span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="wishlist-items-wrapper" id="wishlist">
+        `
         let wishlist = document.querySelector("#wishlist");
         wishlist.innerHTML = "";
 
         for (const item of results.items) {
-            wishlist.innerHTML += `
-      <tr>
-                        <td class="product-thumbnail">
-                            <a href="${item.product.url}">
-                                <div class="frame-wishlist">
-                               
-                                    
-                                    ${    
-                                        (function checkType() {
-                                        if(item.product.type==='MDF'){
-                                            let framInfo = 
-                                            `
-                                             <img fetchpriority="high" decoding="async" 
-                                    src="${item.product.image}"
-                                    class="product-thumb" alt="">
-                                            `
-                                            return framInfo
-        
-                                        }
-                                        else{
-                                            let framInfo = 
-                                            `
-                                         <img fetchpriority="high" decoding="async"  style="filter: brightness(1.2) contrast(1.1) blur(0.05px);"
-                                    src="${item.product.image}"
-                                    class="product-thumb" alt="">
-                                            `
-                                            return framInfo
-        
-                                        }
-                                        return ''
-                                        })()
-                                    }
-                                    </div> </a>
-                        </td>
-                        <td class="product-name text-center">
-                            <a class="" href="${item.product.url}">
-                               ${item.product.title} </a>
-                        </td>
-                       
-                        <td class="product-add-to-cart">
+            wishlist.innerHTML +=
+            `
+            <tr>
+                <td class="product-thumbnail">
+                    <a href="${item.product.url}">
+                        <div class="frame-wishlist">
+                        
+                            
+                            ${    
+                                (function checkType() {
+                                if(item.product.type==='MDF'){
+                                    let framInfo = 
+                                    `
+                                        <img fetchpriority="high" decoding="async" 
+                            src="${item.product.image}"
+                            class="product-thumb" alt="">
+                                    `
+                                    return framInfo
 
-                            <div class="view-btn-wrap d-flex justify-content-end">
-                                <a href="${item.product.url}" class="button-view"><i class="fa fa-eye"></i><span class="tooltip">Quick
-                                        View</span></a>
+                                }
+                                else{
+                                    let framInfo = 
+                                    `
+                                    <img fetchpriority="high" decoding="async"  style="filter: brightness(1.2) contrast(1.1) blur(0.05px);"
+                            src="${item.product.image}"
+                            class="product-thumb" alt="">
+                                    `
+                                    return framInfo
 
-                                <a href=""  data-id="${item.product.id}" class="add-to-cart removeFromWishlist"><i class="fa fa-trash text-white"></i></a>
-                            </div>
-                        </td>
-                    </tr>
+                                }
+                                return ''
+                                })()
+                            }
+                            </div> </a>
+                </td>
+                <td class="product-name text-center">
+                    <a class="" href="${item.product.url}">
+                        ${item.product.title} </a>
+                </td>
+                
+                <td class="product-add-to-cart">
+
+                    <div class="view-btn-wrap d-flex justify-content-end">
+                        <a href="${item.product.url}" class="button-view"><i class="fa fa-eye"></i><span class="tooltip">Quick
+                                View</span></a>
+
+                        <a href=""  data-id="${item.product.id}" class="add-to-cart removeFromWishlist"><i class="fa fa-trash text-white"></i></a>
+                    </div>
+                </td>
+            </tr>
       `
 
             wishlistMobile.innerHTML += `
@@ -141,8 +143,8 @@ async function fetchAndDisplayResults() {
     }
     else {
 
-        wishlistTable.innerHTML += `<div class=" alert alert-danger mx-2 my-2 text-center text-md">Sevimlilər siyahınız boşdur</div>`
-        wishlistMobile.innerHTML = `<div class=" alert alert-danger mx-2 my-2 text-center text-md">Sevimlilər siyahınız boşdur</div>`
+        wishlistTable.innerHTML += `<div class=" alert alert-danger mx-2 my-2 text-center text-md">${transEmptyWish}</div>`
+        wishlistMobile.innerHTML = `<div class=" alert alert-danger mx-2 my-2 text-center text-md">${transEmptyWish}</div>`
 
 
     }

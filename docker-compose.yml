@@ -1,0 +1,54 @@
+# Use postgres/example user/password credentials
+version: '3.1'
+
+services:
+  
+  db:
+    image:  postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    env_file: .env 
+
+    volumes:
+      - ./database:/var/lib/postgresql/data
+  pgadmin:
+      image: dpage/pgadmin4
+      container_name: storeglasstech-pgadmin #you can change this
+      depends_on:
+        - db
+      ports:
+        - "5051:80"
+      environment:
+        PGADMIN_DEFAULT_EMAIL: storebyglasstech@gmail.com
+        PGADMIN_DEFAULT_PASSWORD: storeglasstech1
+      restart: always
+  web:
+    container_name: storeglasstech
+    build: .
+    command:  gunicorn --bind 0.0.0.0:8000 storebyglasstech.wsgi 
+    volumes:
+      - ./media:/code/media
+      - ./static:/code/static
+    ports:
+      - 8000:8000
+    depends_on:
+      - 'pgadmin'
+    env_file: .env 
+
+  nginx:
+    build: ./nginx
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - ./static/:/code/static/
+      - ./media/:/code/media/
+    depends_on:
+      - web
+    
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080

@@ -60,6 +60,7 @@ class ProductListSerializer(serializers.ModelSerializer):
             'id',
             'title',
             'price',
+            'type',
             'actual_price',
             'image',
             'same_products',

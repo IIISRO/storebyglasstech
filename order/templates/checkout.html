@@ -2,7 +2,7 @@
 {% load i18n %}
 {% load static %}
     
-    {% block title %}<title>Sifariş | STOREGLASSTECH</title>{% endblock %}
+    {% block title %}<title>{% trans 'Sifariş' %} | STOREGLASSTECH</title>{% endblock %}
         
     {% block style %}<link rel="stylesheet" href="{% static 'css/checkout.css' %}">{% endblock %}
 
@@ -20,17 +20,17 @@
                         </path>
                     </svg>
                     <div  class="notice-banner-content">
-                        Kupon kodunuz var? <span class="showcoupon">Buraya klikləyin və endirimdən faydalanın</span> 
+                        {% trans 'Kupon kodunuz var? <span class="showcoupon">Buraya klikləyin və endirimdən faydalanın</span>' %} 
                     </div>
                 </div>
                 <div class="checkout_coupon form-coupon d-none mb-5">
-                    <p>Əgər kupon kodunuz varsa buraya daxil edə bilərsiniz.</p>
+                    <p>{% trans 'Əgər kupon kodunuz varsa buraya daxil edə bilərsiniz.' %}</p>
                     <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
                         <p class="form-row2 form-row2-first">
                             <input type="text" name="coupon_code" class="input-text" placeholder="Coupon code" id="coupon_code" value="">
                             </p>
                             <p class="form-row2 form-row2-last">
-                            <button onclick="applyCoupon()" type="submit" class="button-apply" name="apply_coupon" value="Apply coupon">Apply coupon</button>
+                            <button onclick="applyCoupon()" type="submit" class="button-apply" name="apply_coupon" value="Apply coupon">{% trans 'Tətbiq et' %}</button>
                             </p>
                     </div>
                  
@@ -60,52 +60,52 @@
                             </div>
                             <div id="new_address_inputs" class="row">
                                 <div class="billing-fields">
-                                    <h3>Ünvan Məlumatları</h3>
+                                    <h3>{% trans 'Ünvan Məlumatları' %}</h3>
                                     <input type="text" hidden id="new_address">
                                     <div class="row mb-4 mt-4">
                                         <div class="col-md-6 d-flex flex-column">
-                                            <label class="">Ad
+                                            <label class="">{% trans 'Ad' %}
                                                 &nbsp;<abbr class="required" title="required">*</abbr></label><input
                                                 id="addressfirstname" type="text" class="input-text " placeholder="" value="">
                                         </div>
                                         <div class="col-md-6 d-flex flex-column">
-                                            <label>Soyad
+                                            <label>{% trans 'Soyad' %}
                                                 &nbsp;<abbr class="required" title="required">*</abbr></label><input
                                                 id="addresslastname" type="text" class="input-text " placeholder="" value="">
                                         </div>
                                     </div>
                                     <div class="row mb-4">
                                         <div class="col-md-12">
-                                            <label class="">Ünvan başlığı
+                                            <label class="">{% trans 'Ünvan başlığı' %}
                                                 &nbsp;<abbr class="required" title="required">*</abbr></label><input type="text" class="input-text "
                                                 id="addressline" placeholder="" value="">
                                         </div>
                                     </div>
                                     <div class="row mb-4">
                                         <div class="col-md-12 d-flex flex-column">
-                                            <label>Ünvan
+                                            <label>{% trans 'Ünvan' %}
                                                 &nbsp;<abbr class="required" title="required">*</abbr></label><input
-                                                id="addressregion" type="text" class="input-text " placeholder="Rayon"
+                                                id="addressregion" type="text" class="input-text " placeholder="{% trans 'Rayon' %}"
                                                 value="">
                                         </div>
                                         <div class="col-md-12 mt-4 d-flex flex-column">
                                             <input type="text" class="input-text "
-                                            id="addressstreet" placeholder="Küçə/Məhəllə" value="">
+                                            id="addressstreet" placeholder="{% trans 'Küçə/Məhəllə' %}" value="">
                                         </div>
                                     </div>
                                     <div class="row mb-4">
                                         <div class="col-md-6 d-flex flex-column">
-                                            <label class="">Bina/Ev&nbsp;<abbr class="required" title="required">*</abbr></label><input
+                                            <label class="">{% trans 'Bina/Ev' %}&nbsp;<abbr class="required" title="required">*</abbr></label><input
                                             id="addressbuilding" type="text" class="input-text " placeholder="" value="">
                                         </div>
                                         <div class="col-md-6 d-flex flex-column">
-                                            <label>Mənzil&nbsp;<abbr class="required" title="required">*</abbr></label><input
+                                            <label>{% trans 'Mənzil' %}&nbsp;<abbr class="required" title="required">*</abbr></label><input
                                             id="addressflat" type="text" class="input-text " placeholder="" value="">
                                         </div>
                                     </div>
                                 </div>
     
-                                <button type="button" data-toggle="modal" data-target="#addressListModal" class="mt-3 mb-5 ml-2 button">Ünvanlarım</button>
+                                <button type="button" data-toggle="modal" data-target="#addressListModal" class="mt-3 mb-5 ml-2 button">{% trans 'Ünvanlarım' %}</button>
     
                             </div>
                             {% endif %}
@@ -114,11 +114,11 @@
                                 <div class="modal-dialog modal-dialog-scrollable">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="addressListModalLabel">Ünvanlarım</h5>
+                                            <h5 class="modal-title" id="addressListModalLabel">{% trans 'Ünvanlarım' %}</h5>
                                         </div>
                                         <div id="addresseslist" class="modal-body">
                                             {% if not default_address and not all_addresses%}
-                                            <div class="border border-gray-500 bg-gray-200 p-3 text-center font-size-sm">Qeyd olunmuş ünvanınız yoxdur</div>
+                                            <div class="border border-gray-500 bg-gray-200 p-3 text-center font-size-sm">{% trans 'Qeyd olunmuş ünvanınız yoxdur' %}</div>
                                             {% elif default_address %}
                                                 <div data-addressid="{{default_address.id}}" class="address_cart_small mb-2 card">
                                                     <div class="card-body">
@@ -138,8 +138,8 @@
     
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" onclick="addNewAddress()" class="button">Yeni ünvan</button>
-                                            <button type="button" data-dismiss="modal" id="addressSelectClose" class="button">Bağla</button>
+                                            <button type="button" onclick="addNewAddress()" class="button">{% trans 'Yeni ünvan' %}</button>
+                                            <button type="button" data-dismiss="modal" id="addressSelectClose" class="button">{% trans 'Bağla' %}</button>
                                         </div>
                                     </div>
                                 </div>
@@ -148,14 +148,14 @@
                     </div>
                     <div class="col-lg-3 mt-3 mt-md-0">
                         <div class="order-checkout">
-                            <h5 id="order_review_heading">Sifarişiniz</h5>
+                            <h5 id="order_review_heading">{% trans 'Sifarişiniz' %}</h5>
                         </div>
                         <div id="order_review" class="checkout-review-order">
                             <table class="shop_table checkout-review-order-table">
                                 <thead>
                                     <tr>
-                                        <th class="product-name">Məhsul</th>
-                                        <th class="product-total">Ümumi</th>
+                                        <th class="product-name">{% trans 'Məhsul' %}</th>
+                                        <th class="product-total">{% trans 'Ümumi' %}</th>
                                     </tr>
                                 </thead>
                                 <tbody id="productsStartLine">
@@ -166,7 +166,7 @@
                               
 
                                     <tr class="order-total">
-                                        <th>Cəmi</th>
+                                        <th>{% trans 'Cəmi' %}</th>
                                         <td>
                                             <del id="checkout-total"></del>
                                             <br>
@@ -214,17 +214,13 @@
 
                                     <div class="terms-and-conditions-wrapper">
                                         <div class="privacy-policy-text">
-                                            <p>Sifarişinizi təsdiqləmədən öncə 
-                                                <a href="{% url 'core:about' %}" class="privacy-policy-link" target="_blank">haqqımızda</a> mətnin oxuyub, şərtlər və iş saatları
-                                                haqqında tanış olmağınız lazımdır.
-                                                
-                                            </p>
+                                            <p>{% trans 'Sifarişinizi təsdiqləmədən öncə <a href="/about/" class="privacy-policy-link" target="_blank">haqqımızda</a> mətnin oxuyub, şərtlər və iş saatlarıhaqqında tanış olmağınız lazımdır.' %}</p>
                                         </div>
                                     </div>
 
 
                                     <button onclick="placeOrder()" type="button" class="button alt" name="woocommerce_checkout_place_order"
-                                        id="place_order" value="Place order" data-value="Place order">Sifariş ver</button>
+                                        id="place_order" value="Place order" data-value="Place order">{% trans 'Sifariş ver' %}</button>
 
                                     <input type="hidden" id="process-checkout-nonce" name="process-checkout-nonce"
                                         value="47ccd5781e"><input type="hidden" name="_wp_http_referer"
@@ -247,8 +243,30 @@
 
     {% block js %}
     <script>
+        var transAddressDetail ='{% trans "Ünvan Məlumatları" %}'
+        var transName = '{% trans "Ad" %}';
+        var transSurname = '{% trans "Soyad" %}';
+        var transAddressHead = '{% trans "Ünvan başlığı" %}';
+        var transAddres = '{% trans "Ünvan" %}';
+        var transRegion = '{% trans "Rayon" %}';
+        var transStreet = '{% trans "Küçə/Məhəllə" %}';
+        var transBuild = '{% trans "Bina/Ev" %}';
+        var transFlat = '{% trans "Mənzil" %}';
         var transAnotherAddress = '{% trans "Başqa ünvan" %}';
         var transAddresses = '{% trans "Ünvanlarım" %}';
+        var transSize = '{% trans "Ölçü" %}';
+        var transMaterial = '{% trans "Material" %}';
+        var transFrame = '{% trans "Çərçivə" %}';
+        var transCoupon = '{% trans "Kupon" %}';
+        var transDiscount = '{% trans "endirim" %}';
+        var transFree = '{% trans "pulsuz" %}';
+        var transDelivery = '{% trans "Çatdırılma" %}';
+        
+
+
+
+
+
         var payDeclineURL = '{% url "order:pay_declined" %}?valid=true';
     </script>
     <script src="{% static 'js/checkout.js' %}"></script>

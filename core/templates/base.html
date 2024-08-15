@@ -10,9 +10,9 @@
         {% block desc %}{% endblock %}
         
         {% block title %}{% endblock %}
-
+        <!-- favicon -->
+        <link rel="shortcut icon" type="image/png" href="{% static 'images/G-logo.png' %}">
         <!--CSS files-->
-
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
         <link rel="stylesheet" href="{% static 'css/header.css' %}">
         <link rel="stylesheet" href="{% static 'css/notification.css' %}">
@@ -82,7 +82,7 @@
                     </div>
                     <div class="header-search">
                         <form id="searchForm" role="search" method="get" class="product-search">
-                            <input type="search" class="search-field" id="searchInput" placeholder="Meshsul axtar..." value="" name="s" required="required">
+                            <input type="search" class="search-field" id="searchInput" placeholder="{% trans 'Məshsul axtar...' %}" value="" name="s" required="required">
                             <button type="submit" value="Search" class=""><i class="fa fa-search" aria-hidden="true"></i></button>
                         </form>
                     </div>
@@ -145,7 +145,7 @@
             <div class="container-fluid">
                 <div class="header-search-mobile">
                     <form role="search" method="get" class="product-search" action="">
-                        <input type="search" class="search-field" placeholder="Search for Posters..." value="" name="s"
+                        <input type="search" class="search-field" placeholder="{% trans 'Meshsul axtar...' %}" value="" name="s"
                             required="required">
                         <button type="submit" value="Search" class=""><i class="fa fa-search" aria-hidden="true"></i></button>
                         <input type="hidden" value="product">
@@ -159,7 +159,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{% url 'core:home' %}">Ana səhifə</a>
+                                <a class="nav-link active" aria-current="page" href="{% url 'core:home' %}">{% trans 'Ana səhifə' %}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'core:about' %}">{% trans "Haqqımızda" %}</a>
@@ -168,11 +168,11 @@
                            
                             <li class="nav-item dropdown prod-drop" style="position: relative;">
                                 <a class="nav-link" id="productLink" href="{% url 'product:products' category_slug='all' %}" role="button" aria-expanded="false">
-                                    Məhsullar
+                                    {% trans 'Məhsullar' %}
                                 </a>
                                   <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="{% url 'product:products' category_slug='all' %}?type=glass">Şüşə tablolar</a></li>
-                                    <li><a class="dropdown-item" href="{% url 'product:products' category_slug='all' %}?type=mdf">MDF tablolar</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'product:products' category_slug='all' %}?type=glass">{% trans 'Şüşə tablolar' %}</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'product:products' category_slug='all' %}?type=mdf">{% trans 'MDF tablolar' %}</a></li>
                                     <li><a class="dropdown-item" href="#">{% trans "Saatlar" %}</a></li>
                                     <li><a class="dropdown-item" href="#">{% trans "Özün yarat" %}</a></li>
                                    
@@ -224,7 +224,7 @@
             <div class="col-md-3 footer-item1">
                 <a href=""><img class="logo" src="{% static 'images/logo.png'%}"
                     alt=""></a>
-                <p class="mt-3">Storeglasstech, <a href="https://glasstech.az">glasstech</a> şirkətimizin yüksək keyfiyyətli şüşəlirindən hazırlanmış yüksək çap keyfiyyətinə sahib tablolar təqdim edir.</p>
+                <p class="mt-3">{% trans 'Storeglasstech, <a href="https://glasstech.az">glasstech</a> şirkətimizin yüksək keyfiyyətli şüşəlirindən hazırlanmış yüksək çap keyfiyyətinə sahib tablolar təqdim edir.' %}</p>
                 <ul class="social-icons mt-4 mb-4">
                 <li class="social_wrap"><span class="index" data-index="0" aria-hidden="true"></span><a href=""
                     class="social_link"><i class="fas fa fa-facebook"></i></a></li>
@@ -235,18 +235,18 @@
                 </ul>
 
                 <a href="tel:0(500)123-456" class="info-phone"><i class="fa fa-phone"></i>
-                <div class="phone-content"><span>Zəng:</span>
+                <div class="phone-content"><span>{% trans 'Zəng:' %}</span>
                     <div class="info_phone">0(500)123-456 </div>
                 </div>
                 </a>
             </div>
             <div class="col-md-2 footer-item2">
-                <h2 class="footer-list-title">Faydalı linklər</h2>
+                <h2 class="footer-list-title">{% trans 'Faydalı linklər' %}</h2>
                 <ul class="mt-3">
-                    <li><a href="{% url 'product:products' category_slug='all' %}?type=glass">Şüşə tablolar</a></li>
-                    <li><a href="{% url 'product:products' category_slug='all' %}?type=mdf">MDF tablolar</a></li>
-                    <li><a href="{% url 'core:contact' %}">Əlaqə</a></li>
-                    <li><a href="{% url 'account:profile' %}?p=orders">Sifarişləriniz</a></li>
+                    <li><a href="{% url 'product:products' category_slug='all' %}?type=glass">{% trans 'Şüşə tablolar' %}</a></li>
+                    <li><a href="{% url 'product:products' category_slug='all' %}?type=mdf">{% trans 'MDF tablolar' %}</a></li>
+                    <li><a href="{% url 'core:contact' %}">{% trans 'Əlaqə' %}</a></li>
+                    <li><a href="{% url 'account:profile' %}?p=orders">{% trans 'Sifarişləriniz' %}</a></li>
                 </ul>
             </div>
             <div class="col-md-2 footer-item2">
@@ -261,12 +261,12 @@
                 </ul>
             </div>
             <div class="col-md-3 footer-item2">
-                <h2 class="footer-list-title">Əlaqə</h2>
-                <p>Hər hansı bir sualınız vəya bizimlə bağlı problem yaşadığınız zaman əlaqəyə keçin tez bir zamanda sizə geri dönüş edəcəyik</p>
+                <h2 class="footer-list-title">{% trans 'Əlaqə' %}</h2>
+                <p>{% trans 'Hər hansı bir sualınız vəya bizimlə bağlı problem yaşadığınız zaman əlaqəyə keçin tez bir zamanda sizə geri dönüş edəcəyik' %}</p>
                 <hr>
                 <ul class="mt-3">
-                    <li>Bazar ertəsi - Cümə|9:00-18:00</li>
-                    <li><a href="https://maps.app.goo.gl/iLHFWRGgqZBzaYKD6?g_st=iw">28may kuc3 baku azerbaijan</a></li>
+                    <li>{% trans 'Bazar ertəsi - Cümə|9:00-18:00' %}</li>
+                    <li><a href="https://maps.app.goo.gl/iLHFWRGgqZBzaYKD6?g_st=iw">{% trans '28may kuc3 baku azerbaijan' %}</a></li>
                     <li><a href="mailto:contact@glasstech.com">contact@storeglasstech.az</a></li>
                     <li><a href="https://wa.me/55555555">+994 50 555 55 55</a></li>
                 </ul>
@@ -292,14 +292,14 @@
                 <ul class="mobile-nav">
                     <li class="w-100 d-flex align-items-center justify-content-between mobile-link mb-3 py-3" style="border-top: 1px solid #ccc; border-bottom: 1px solid #ccc;"><a
                         class=""
-                        href="{% url 'product:products' category_slug='all' %}">Məhsullar</a><a data-bs-toggle="offcanvas"href="#secondOffcanvas"> <i class="fa fa-chevron-right"></i></a></li>
+                        href="{% url 'product:products' category_slug='all' %}">{% trans 'Məhsullar' %}</a><a data-bs-toggle="offcanvas"href="#secondOffcanvas"> <i class="fa fa-chevron-right"></i></a></li>
             
                     <li class="mobile-link mb-3 py-2"><a class="w-100 d-flex align-items-center justify-content-between"
-                        href="{% url 'core:home' %}">Ana Səhifə<i class="fa fa-chevron-right"></i></a></li>
+                        href="{% url 'core:home' %}">{% trans 'Ana Səhifə' %}<i class="fa fa-chevron-right"></i></a></li>
                     <li class="mobile-link mb-3 py-2"><a class="w-100 d-flex align-items-center justify-content-between"
-                        href="{% url 'core:about' %}">Haqqımızda <i class="fa fa-chevron-right"></i></a></li>
+                        href="{% url 'core:about' %}">{% trans 'Haqqımızda' %} <i class="fa fa-chevron-right"></i></a></li>
                     <li class="mobile-link mb-3 py-2"><a class="w-100 d-flex align-items-center justify-content-between"
-                        href="{% url 'core:contact' %}">Bizimlə Əlaqə <i class="fa fa-chevron-right"></i></a></li>
+                        href="{% url 'core:contact' %}">{% trans 'Bizimlə Əlaqə' %} <i class="fa fa-chevron-right"></i></a></li>
                   </ul>
                 
     
@@ -315,10 +315,10 @@
             </div>
             <div class="offcanvas-body">
               <ul class="mobile-nav" id="mobile-cat">
-                <li class="mobile-link mb-4"><a class="" href="{% url 'product:products' category_slug='all' %}?type=glass">Şüşə tablolar</a></li>
-                <li class="mobile-link mb-4"><a class="" href="{% url 'product:products' category_slug='all' %}?type=mdf">MDF tablolar</a></li>
-                <li class="mobile-link mb-4"><a class="" href="#">Saatlar</a></li>
-                <li class="mobile-link mb-4"><a class="" href="#">Özün yarat</a></li>
+                <li class="mobile-link mb-4"><a class="" href="{% url 'product:products' category_slug='all' %}?type=glass">{% trans 'Şüşə tablolar' %}</a></li>
+                <li class="mobile-link mb-4"><a class="" href="{% url 'product:products' category_slug='all' %}?type=mdf">{% trans 'MDF tablolar' %}</a></li>
+                <li class="mobile-link mb-4"><a class="" href="#">{% trans 'Saatlar' %}</a></li>
+                <li class="mobile-link mb-4"><a class="" href="#">{% trans 'Özün yarat' %}</a></li>
               </ul>
             </div>
           </div>
@@ -373,12 +373,15 @@
             '{% endif %}'
 
             // notf
-            var notfAddedBasketMessage = 'Səbətə Əlavə Olundu';
-            var notfError = 'Xəta baş verdi!';
-            var notfDatasMiss = 'Məlumatlar tam deyil!';
+            var notfAddedBasketMessage = '{% trans "Səbətə Əlavə Olundu" %}';
+            var notfError = '{% trans "Xəta baş verdi" %}';
+            var notfDatasMiss = '{% trans "Məlumatlar tam deyil" %}';
             
             // trans elm
-        
+            var transCouponHas = "{% trans  'Artıq kupon var!' %}"
+            var transCouponApplied = "{% trans  'Kupon əlavə edildi!' %}"
+            var transCouponNotFind = "{% trans  'Kupon tapılmadı!' %}"
+
             // wish  counter
             function wishCounter(){
                 fetch('{% url "accountAPI:get_all_wish_item_number" %}',{
@@ -419,47 +422,47 @@
         </script>
         <!-- lang select -->
         <script>
-function changeLang(changeLangCode) {
-    loader.show();
-    var date = new Date();
-    date.setTime(date.getTime() + (350 * 24 * 60 * 60 * 1000));
-    document.cookie = `lang=${changeLangCode}; expires=${date.toUTCString()}; path=/;`;
+            function changeLang(changeLangCode) {
+                loader.show();
+                var date = new Date();
+                date.setTime(date.getTime() + (350 * 24 * 60 * 60 * 1000));
+                document.cookie = `lang=${changeLangCode}; expires=${date.toUTCString()}; path=/;`;
 
-    // Find the selected option and get the data-href attribute
-    const selectedOption = document.querySelector(`option[value="${changeLangCode}"]`);
-    const redirectUrl = selectedOption.dataset.href;
+                // Find the selected option and get the data-href attribute
+                const selectedOption = document.querySelector(`option[value="${changeLangCode}"]`);
+                const redirectUrl = selectedOption.dataset.href;
 
-    // Redirect to the appropriate URL
-    window.location.href = redirectUrl ? redirectUrl : window.location.href;
-}
+                // Redirect to the appropriate URL
+                window.location.href = redirectUrl ? redirectUrl : window.location.href;
+            }
 
-// Existing cookie management code
-const langCode = '{{ LANGUAGE_CODE }}';
-let cookieLangCode;
-var cookies = document.cookie.split(';');
-for (var i = 0; i < cookies.length; i++) {
-    var cookie = cookies[i];
-    while (cookie.charAt(0) === ' ') {
-        cookie = cookie.substring(1, cookie.length);
-    }
-    if (cookie.indexOf('lang=') === 0) {
-        cookieLangCode =  cookie.substring('lang='.length, cookie.length);
-    }
-}
-if (!cookieLangCode) {
-    cookieLangCode = langCode;
-}
-if (langCode != cookieLangCode) {
-    if (cookieLangCode === 'az') {
-        window.location.href = "{{request.path|slice:'3:'}}";
-    } else {
-        if (langCode === 'az') {
-            window.location.href = `/${cookieLangCode}{{request.path}}`;
-        } else {
-            window.location.href = `/${cookieLangCode}{{request.path|slice:'3:'}}`;
-        }
-    }
-}
+            // Existing cookie management code
+            const langCode = '{{ LANGUAGE_CODE }}';
+            let cookieLangCode;
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i];
+                while (cookie.charAt(0) === ' ') {
+                    cookie = cookie.substring(1, cookie.length);
+                }
+                if (cookie.indexOf('lang=') === 0) {
+                    cookieLangCode =  cookie.substring('lang='.length, cookie.length);
+                }
+            }
+            if (!cookieLangCode) {
+                cookieLangCode = langCode;
+            }
+            if (langCode != cookieLangCode) {
+                if (cookieLangCode === 'az') {
+                    window.location.href = "{{request.path|slice:'3:'}}";
+                } else {
+                    if (langCode === 'az') {
+                        window.location.href = `/${cookieLangCode}{{request.path}}`;
+                    } else {
+                        window.location.href = `/${cookieLangCode}{{request.path|slice:'3:'}}`;
+                    }
+                }
+            }
 
         </script>
         {% block js %}{% endblock %}

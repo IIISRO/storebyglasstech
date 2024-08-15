@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
+
     
-    {% block title %}<title>Səbətim | STOREGLASSTECH</title>{% endblock %}
+    {% block title %}<title>{% trans 'Səbətim' %} | STOREGLASSTECH</title>{% endblock %}
     
     {% block style %}<link rel="stylesheet" href="{% static 'css/cart.css' %}">{% endblock %}
 
@@ -18,10 +20,10 @@
                         <table class="cart_table w-100" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th class="product-name" data-title="Product" colspan="2">Məhsul</th>
-                                    <th class="product-price" data-title="Price">Qiymət</th>
-                                    <th class="product-quantity" data-title="Quantity">Say</th>
-                                    <th class="product-subtotal" data-title="Subtotal">Cəmi</th>
+                                    <th class="product-name" data-title="Product" colspan="2">{% trans 'Məhsul' %}</th>
+                                    <th class="product-price" data-title="Price">{% trans 'Qiymət' %}</th>
+                                    <th class="product-quantity" data-title="Quantity">{% trans 'Say' %}</th>
+                                    <th class="product-subtotal" data-title="Subtotal">{% trans 'Cəmi' %}</th>
                                 </tr>
                             </thead>
                             <tbody id="productsStartLine">
@@ -32,10 +34,10 @@
                                 <tr>
                                     <td colspan="6" class="actions coupon-sec">
                                         <div class="coupon">
-                                            <label for="coupon_code">Kupon:</label>  
+                                            <label for="coupon_code">{% trans 'Kupon:' %}</label>  
                                             <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" 
-                                            placeholder="Coupon code"> 
-                                            <button type="button" id="apply_coupon_btn" onclick="applyCoupon()" class="button" name="apply_coupon" value="Apply coupon">Tətbiq et</button>
+                                            placeholder="{% trans 'Kupon kodu' %}"> 
+                                            <button type="button" id="apply_coupon_btn" onclick="applyCoupon()" class="button" name="apply_coupon" value="Apply coupon">{% trans 'Tətbiq et' %}</button>
                                         </div>
                                     </td>
                                 </tr>
@@ -49,18 +51,18 @@
                 <div class="col-md-3">
                     <div class="cart-collaterals">
                         <div class="cart_totals ">
-                            <h2 class="sr-only">Ümumi səbət</h2>
+                            <h2 class="sr-only">{% trans 'Ümumi səbət' %}</h2>
 
                             <table cellspacing="0" class="cart_table2">
                                 <tbody>
                                     <tr class="cart_header">
                                         <th>
-                                            <h5>Səbətin cəmi</h5>
+                                            <h5>{% trans 'Səbətin cəmi' %}</h5>
                                         </th>
                                     </tr>
 
                                     <tr id="cart-subtotal" class="cart-subtotal">
-                                        <th>Subtotal</th>
+                                        <th>{% trans 'Ümumi' %}</th>
                                         <td data-title="Subtotal">
                                             <span class="price_code">
                                                 <span class="price-amount amount">
@@ -71,7 +73,7 @@
                                     </tr>
 
                                     <tr class="order-total">
-                                        <th>Total</th>
+                                        <th>{% trans 'Cəmi' %}</th>
                                         <td data-title="Total">
                                             <del id="basketPrice"></del>
                                             <br>
@@ -92,7 +94,7 @@
                             <div class="checkout-sec">
 
                                 <a href="{% url 'order:checkout' %}" class="checkout-button button py-2 d-block alt wc-forward">
-                                    Sifariş</a>
+                                    {% trans 'Sifariş' %}</a>
                             </div>
 
 
@@ -108,7 +110,11 @@
 
         {% block js %}
         <script>
-          
+        var transEmptyBasket = "{% trans 'Səbətiniz boşdur!' %}"
+        var transAdd = "{% trans 'Əlavə et' %}"
+        var transSize = '{% trans "Ölçü" %}';
+        var transMaterial = '{% trans "Material" %}';
+        var transFrame = '{% trans "Çərçivə" %}';
 
         </script>
         <script src="{% static 'js/cart.js' %}"></script>
