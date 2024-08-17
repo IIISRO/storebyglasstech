@@ -144,12 +144,11 @@
             <!--Header Search Mobile-->
             <div class="container-fluid">
                 <div class="header-search-mobile">
-                    <form role="search" method="get" class="product-search" action="">
-                        <input type="search" class="search-field" placeholder="{% trans 'Meshsul axtar...' %}" value="" name="s"
-                            required="required">
+                    <form id="searchForm2" role="search" method="get" class="product-search" action="">
+                        <input type="search" class="search-field" id="searchInput2" placeholder="{% trans 'Məshsul axtar...' %}" value="" name="s" required="required">
                         <button type="submit" value="Search" class=""><i class="fa fa-search" aria-hidden="true"></i></button>
-                        <input type="hidden" value="product">
                     </form>
+                 
                 </div>
             </div>
             <!--Navbar-->
@@ -463,6 +462,58 @@
                     }
                 }
             }
+
+            document.addEventListener('DOMContentLoaded', () => {
+    const searchForm = document.getElementById('searchForm');
+    searchForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
+        
+        const searchInput = document.getElementById('searchInput');
+        const searchQuery = searchInput.value.trim(); // Get the search query
+        const langCode = '{{ LANGUAGE_CODE }}';
+        let url=""
+        if (searchQuery !== '') {
+          if(langCode ==='az'){
+             url = new URL(`${location.origin}/products/all/`);
+           
+          }
+          else{
+             url = new URL(`${location.origin}/${langCode}/products/all/`);
+          }
+          const params = new URLSearchParams(url.search);
+          params.set('search', searchQuery); // Append search query to URL parameters
+          url.search = params.toString();
+          window.location.href = url.toString(); // Redirect to products page with search query
+        }
+    });
+  });
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchForm2 = document.getElementById('searchForm2');
+    searchForm2.addEventListener('submit', function(event) {
+      console.log("aaa");
+      
+        event.preventDefault(); // Prevent default form submission
+        
+        const searchInput2 = document.getElementById('searchInput2');
+        const searchQuery2 = searchInput2.value.trim(); // Get the search query
+        
+        const langCode = '{{ LANGUAGE_CODE }}';
+        let url=""
+        if (searchQuery2 !== '') {
+          if(langCode ==='az'){
+             url = new URL(`${location.origin}/products/all/`);
+           
+          }
+          else{
+             url = new URL(`${location.origin}/${langCode}/products/all/`);
+          }
+          const params = new URLSearchParams(url.search);
+          params.set('search', searchQuery); // Append search query to URL parameters
+          url.search = params.toString();
+          window.location.href = url.toString(); // Redirect to products page with search query
+        }
+    });
+  });
 
         </script>
         {% block js %}{% endblock %}

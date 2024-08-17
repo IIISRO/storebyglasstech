@@ -42,7 +42,6 @@ def create_order(request, basket, checkout_total, checkout_actual_total, delv_fe
                     delv_fee = round(float(delv_fee), 2),
                     order_price = round(float(checkout_total), 2),
                     order_actual_price = round(float(checkout_actual_total), 2),
-                    used_coupon = basket.coupon.code,
                     first_name = address.first_name,
                     last_name = address.last_name,
                     address_line = address.address_line,
@@ -52,8 +51,9 @@ def create_order(request, basket, checkout_total, checkout_actual_total, delv_fe
                     flat = address.flat,
                     )
             
-            if basket.coupon and basket.coupon.is_valid(user)[0]:
-                order.coupon = basket.coupon.code
+            if order.used_coupon and basket.coupon and basket.coupon.is_valid(user)[0]:
+                order.used_coupon = basket.coupon.code,
+
                 UsedCoupon.objects.create(user = user, coupon = basket.coupon)
                 order.save()
                 basket.coupon = None

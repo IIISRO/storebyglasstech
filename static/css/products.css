@@ -88,7 +88,7 @@ position: relative;
 /* background: rgba(0,0,0,.3); */
 background: linear-gradient(-180deg, rgba(255,255,255,0.50) 0%, rgba(0,0,0,0.40) 100%);
 }
-.product-item img {
+.product-img {
   object-fit: contain;
   max-width: 100%;
   max-height: 100%;
@@ -98,6 +98,45 @@ background: linear-gradient(-180deg, rgba(255,255,255,0.50) 0%, rgba(0,0,0,0.40)
   rgba(0, 0, 0, 0.3) 7px 7px 13px -3px, /* Larger shadow on the bottom-right */
   rgba(0, 0, 0, 0.4) -2px 2px 4px,      /* Shadow on the bottom-left */
   rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.frame-main {
+  display: inline-block;
+  position: relative;
+
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.main-frame-img{
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: cover;
+  box-sizing: border-box;
+  position: relative;
+  /* box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset; */
+  /* Inset shadow */
+
+  z-index: 0;
+}
+
+/* Glass overlay styling */
+.glass-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000000000;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Prevent interaction with the overlay */
+}
+
+.glass-overlay img{
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
 }
 
 .discount-tag {
@@ -167,23 +206,8 @@ row-gap: 40px;
 border: 1px solid #ccc;
 border-radius: 6px;
 }
-.glass-overlay{
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 10000000;
-}
-.glass-overlay img,.mdf-overlay img{
-  object-fit: contain;
-  width: 100%;
-  height: 100%;
-}
-.mdf-overlay{
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 10000000;
-}
+
+
 #mdf,#glass{
 box-sizing: border-box;
 display: flex;

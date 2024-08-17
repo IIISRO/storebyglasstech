@@ -280,7 +280,6 @@ ul {
     width: 100%;
     height: 100px;
     position: relative;
-    /* background: rgba(0, 0, 0, .3); */
     background: linear-gradient(-180deg, rgba(255, 255, 255, 0.50) 0%, rgba(0, 0, 0, 0.40) 100%);
 }
 .frame-wishlist-mobile{
@@ -292,11 +291,46 @@ ul {
     width: 100%;
     height: 300px;
     position: relative;
-    /* background: rgba(0, 0, 0, .3); */
     background: linear-gradient(-180deg, rgba(255, 255, 255, 0.50) 0%, rgba(0, 0, 0, 0.40) 100%);
 }
-.frame-wishlist img,.frame-wishlist-mobile img{
-    object-fit: contain;
+.frame-main {
+    display: inline-block;
+    position: relative;
+  
+    box-sizing: border-box;
+    height: 100%;
+  }
+  
+  .main-frame-img{
+    display: block;
+    width: auto;
     max-width: 100%;
+    height: auto;
     max-height: 100%;
-}
+    object-fit: cover;
+    box-sizing: border-box;
+    position: relative;
+    box-shadow: 
+    rgba(0, 0, 0, 0.4) 2px 2px 4px,       /* Shadow on the bottom-right */
+    rgba(0, 0, 0, 0.3) 7px 7px 13px -3px, /* Larger shadow on the bottom-right */
+    rgba(0, 0, 0, 0.4) -2px 2px 4px,      /* Shadow on the bottom-left */
+    rgba(0, 0, 0, 0.2) 0px -3px 0px inset; /* Inset shadow */
+  
+    z-index: 0;
+  }
+  
+  .glass-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000000000;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  
+  .glass-overlay img{
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+  }

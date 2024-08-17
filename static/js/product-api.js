@@ -18,13 +18,18 @@ function displayResults(results) {
                       if (product.type == "MDF") {
                         
                         items2.push(
-                          ` <img src="${product.image}" alt="">`
+                          ` <img class="product-img" src="${product.image}" alt="">`
                         );
                       } else {
                         
                         
                         items2.push(
-                          ` <img style="filter: brightness(1.2) contrast(1.1) blur(0.05px);" src="${product.image}" alt=""> `
+                          `
+                          <div class="frame-main">
+                          <div class="glass-overlay"><img src="/static/images/shadow11.png" alt=""></div> 
+                          <img class="product-img main-frame-img" src="${product.image}" alt=""> 
+                          </div>`
+
                         );
                       }
                       return items2.join("");
@@ -361,3 +366,4 @@ async function fetchAndDisplayResults(category, filters, pageNumber) {
   displayResults(responseData);
   createPagination(responseData.pagination.all_pages_num, pageNumber);
 }
+

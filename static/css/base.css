@@ -514,6 +514,7 @@ body{
 #loader {
 width: 60px;
 aspect-ratio: 1;
+z-index: 100000000000000 !important;
 display: flex;
 animation: l10-0 2s infinite steps(1);
 }

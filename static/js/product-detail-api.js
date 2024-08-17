@@ -12,12 +12,10 @@ function getDetail(){
     .then((data) => {
         if(data.type==="MDF"){
             $("#prod-selected").html(`<img src="/static/images/mdf.png">MDF Tablo Seçildi`);
-            $("#mdf-overlay").css('display', 'inline-block');
             $("#glass-overlay").css('display', 'none');
         }else{
             $("#prod-selected").html(`<img src="/static/images/glassico.png">Glass Tablo Seçildi`);
             $("#glass-overlay").css('display', 'inline-block');
-            $("#mdf-overlay").css('display', 'none');
 
         }
         // sekil
