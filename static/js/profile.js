@@ -12,13 +12,12 @@ $( document ).ready(function() {
     let urlParams = new URLSearchParams(window.location.search);
 
     if (urlParams.get('p')){
-
         $(".active").each(function( index ) {
             $( this ).removeClass('active')
         });
 
-        $(`#${urlParams.get('p')}`).addClass('active');
         $(`a[href="#${urlParams.get('p')}"]`).addClass('active');
+        $(`#${urlParams.get('p')}`).addClass('active');
 
         urlParams.delete('p');
         var url = new URL(window.location.href);
@@ -26,6 +25,7 @@ $( document ).ready(function() {
 
         window.history.replaceState({ id: "100" },"", url.toString());
 
+        
     }
     if (urlParams.get('apprv')){
        

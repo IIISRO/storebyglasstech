@@ -113,9 +113,16 @@ function updateTypeUI(selectedType) {
 
 async function filterProducts(category, filters, pageNumber) {
   loader.show();
-  let apiUrl = new URL(
-    `${location.origin}/api/v1/products/${category}/?page=${pageNumber}`
-  );
+  let apiUrl
+  if (langCode != 'az'){
+    apiUrl = new URL(
+      `${location.origin}/${langCode}/api/v1/products/${category}/?page=${pageNumber}`
+    );
+  }else{
+    apiUrl = new URL(
+      `${location.origin}/api/v1/products/${category}/?page=${pageNumber}`
+    );
+  }
 
   for (let key in filters) {
     if (Array.isArray(filters[key])) {
@@ -132,8 +139,13 @@ async function filterProducts(category, filters, pageNumber) {
 
   let responseData = await response.json();
   displayResults(responseData);
+  let newUrl;
+  if (langCode != 'az'){
+    newUrl = `${location.origin}/${langCode}/products/${category}/${apiUrl.search}`;
 
-  const newUrl = `${location.origin}/products/${category}/${apiUrl.search}`;
+  }else{
+    newUrl = `${location.origin}/products/${category}/${apiUrl.search}`;
+  }
   window.history.pushState({ path: newUrl }, "", newUrl);
 }
 
@@ -220,6 +232,7 @@ function preselectFiltersFromURL() {
     updateTypeUI(null);
   }
 
+  // artist select
   const artistParams = urlParams.getAll("artist");
   artistParams.forEach((artistParam) => {
     const artistCheckbox = document.querySelector(
@@ -229,6 +242,13 @@ function preselectFiltersFromURL() {
       artistCheckbox.checked = true;
     }
   });
+
+  // fill search
+  const searchParams = urlParams.get("search");
+  if (searchParams) {
+    document.getElementById('searchInput').value = searchParams
+    document.getElementById('searchInput2').value = searchParams
+  }
 }
 
 document.getElementById("filterSelect").addEventListener("change", function () {
@@ -338,6 +358,7 @@ function updatePage(pageNumber) {
   currentPage = pageNumber;
   const urlParams = new URLSearchParams(window.location.search);
   urlParams.set("page", pageNumber);
+  
   const newUrl = `${location.pathname}?${urlParams.toString()}`;
   window.history.pushState({ path: newUrl }, "", newUrl);
   handleFilterChange();
@@ -345,9 +366,17 @@ function updatePage(pageNumber) {
 
 async function fetchAndDisplayResults(category, filters, pageNumber) {
   loader.show();
-  let apiUrl = new URL(
-    `${location.origin}/api/v1/products/${category}/?page=${pageNumber}`
-  );
+  let apiUrl;
+  if (langCode != 'az'){
+    apiUrl = new URL(
+      `${location.origin}/${langCode}/api/v1/products/${category}/?page=${pageNumber}`
+    );
+  }else{
+    apiUrl = new URL(
+      `${location.origin}/api/v1/products/${category}/?page=${pageNumber}`
+    );
+  }
+  
 
   for (let key in filters) {
     if (Array.isArray(filters[key])) {
@@ -366,4 +395,36 @@ async function fetchAndDisplayResults(category, filters, pageNumber) {
   displayResults(responseData);
   createPagination(responseData.pagination.all_pages_num, pageNumber);
 }
+
+
+async function searchDynamic(params){
+  loader.show();
+
+  let apiUrl;
+  if (langCode != 'az'){
+    apiUrl = new URL(
+      `${location.origin}/${langCode}/api/v1/products/all/?page=1`
+    );
+  }else{
+    apiUrl = new URL(
+      `${location.origin}/api/v1/products/all/?page=1`
+    );
+  }
+  apiUrl.search = params.toString();
+
+  const url = new URL(window.location);
+  url.search = params.toString();
+  window.history.pushState({}, '', url);
+
+  const response = await fetch(apiUrl);
+  if (!response.ok) {
+    throw new Error("Network response was not ok");
+  }
+
+  let responseData = await response.json();
+  displayResults(responseData);
+  createPagination(responseData.pagination.all_pages_num, 1);
+
+}
+
 
