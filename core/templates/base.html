@@ -82,7 +82,7 @@
                     </div>
                     <div class="header-search">
                         <form id="searchForm" role="search" method="get" class="product-search">
-                            <input type="search" class="search-field" id="searchInput" placeholder="{% trans 'Məshsul axtar...' %}" value="" name="s" required="required">
+                            <input type="search" class="search-field" id="searchInput" placeholder="{% trans 'Məshsul axtar...' %}" value="" name="s" >
                             <button type="submit" value="Search" class=""><i class="fa fa-search" aria-hidden="true"></i></button>
                         </form>
                     </div>
@@ -145,7 +145,7 @@
             <div class="container-fluid">
                 <div class="header-search-mobile">
                     <form id="searchForm2" role="search" method="get" class="product-search" action="">
-                        <input type="search" class="search-field" id="searchInput2" placeholder="{% trans 'Məshsul axtar...' %}" value="" name="s" required="required">
+                        <input type="search" class="search-field" id="searchInput2" placeholder="{% trans 'Məshsul axtar...' %}" value="" name="s">
                         <button type="submit" value="Search" class=""><i class="fa fa-search" aria-hidden="true"></i></button>
                     </form>
                  
@@ -497,6 +497,8 @@
                         }else{
                             searchDynamic(params)
                         }
+                    }else if(url.pathname === window.location.pathname){
+                        window.location.href = window.location.origin + window.location.pathname
                     }
                 });
                
@@ -506,15 +508,17 @@
                     const searchInput2 = document.getElementById('searchInput2');
                     const searchQuery2 = searchInput2.value.trim(); 
                     event.preventDefault(); 
-                    if (searchQuery !== '') {
+                    if (searchQuery2 !== '') {
                         params.set('page', 1);
-                        params.set('search', searchQuery); 
+                        params.set('search', searchQuery2); 
                         if(url.pathname != window.location.pathname){
                             url.search = params.toString();
                             window.location.href = url.toString(); // Redirect to products page with search query
                         }else{
                             searchDynamic(params)
                         }
+                    }else if(url.pathname === window.location.pathname){
+                        window.location.href = window.location.origin + window.location.pathname
                     }
                 });
 
