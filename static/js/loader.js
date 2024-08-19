@@ -11,9 +11,9 @@ const loader = {
             divContainer.style.height = '100%';
             divContainer.style.zIndex = '9998';
             divContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.90)';
-            divContainer.style.display = 'flex';
-            divContainer.style.alignItems = 'center';
-            divContainer.style.justifyContent = 'center';
+            // divContainer.style.display = 'flex';
+            // divContainer.style.alignItems = 'center';
+            // divContainer.style.justifyContent = 'center';
 
             var div = document.createElement('div');
             div.setAttribute('id', 'loader')
@@ -24,6 +24,8 @@ const loader = {
             // div.style.height = '64px';
             // div.style.width = '64px';
             div.style.margin = 'auto';
+            div.style.top="50%"
+            div.style.left="50%"
             // div.style.border = '8px solid #e1e1e1';
             // div.style.borderRadius = '50%';
             // div.style.borderTop = '8px solid rgb(0, 150, 250)';
