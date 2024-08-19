@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-13 10:41+0000\n"
+"POT-Creation-Date: 2024-08-19 14:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -59,13 +59,13 @@ msgid "ŞƏXSİ MƏLUMATLARIM"
 msgstr "PERSONAL DATA"
 
 #: account/templates/profile.html:112 account/templates/profile.html:113
-#: core/templates/contact.html:118 order/templates/checkout.html:67
+#: core/templates/contact.html:136 order/templates/checkout.html:67
 #: order/templates/checkout.html:247
 msgid "Ad"
 msgstr "Name"
 
 #: account/templates/profile.html:117 account/templates/profile.html:118
-#: core/templates/contact.html:127 order/templates/checkout.html:72
+#: core/templates/contact.html:145 order/templates/checkout.html:72
 #: order/templates/checkout.html:248
 msgid "Soyad"
 msgstr "Surname"
@@ -74,8 +74,8 @@ msgstr "Surname"
 msgid "E-mail"
 msgstr "E-mail"
 
-#: account/templates/profile.html:128 core/templates/contact.html:69
-#: core/templates/contact.html:135
+#: account/templates/profile.html:128 core/templates/contact.html:68
+#: core/templates/contact.html:153
 msgid "Email"
 msgstr "Email"
 
@@ -97,7 +97,7 @@ msgstr ""
 "service. It is not mandatory and all except the <b>phone number</b> at any "
 "time you can change the cells."
 
-#: account/templates/profile.html:143 account/templates/profile.html:383
+#: account/templates/profile.html:143 account/templates/profile.html:388
 msgid "Düzəliş et"
 msgstr "Edit"
 
@@ -121,174 +121,174 @@ msgstr "Delivery"
 msgid "Bitmiş"
 msgstr "Finished"
 
-#: account/templates/profile.html:187
+#: account/templates/profile.html:192
 msgid "məhsula rəy ver"
 msgstr "rate the product"
 
-#: account/templates/profile.html:194
+#: account/templates/profile.html:199
 msgid "Rəy ver"
 msgstr "Rate"
 
-#: account/templates/profile.html:197
+#: account/templates/profile.html:202
 msgid "Rəy göndər"
 msgstr "Rate"
 
-#: account/templates/profile.html:221
+#: account/templates/profile.html:226
 msgid "Çatdırlma ilə"
 msgstr "With cargo"
 
-#: account/templates/profile.html:236
+#: account/templates/profile.html:241
 msgid "Heç bir sifarişiniz yoxdur."
 msgstr "You have no orders."
 
-#: account/templates/profile.html:249
+#: account/templates/profile.html:254
 msgid "ÜNVAN TƏNZİMLƏMƏLƏRİ"
 msgstr "ADDRESS CONFIGURATIONS"
 
-#: account/templates/profile.html:252 order/templates/checkout.html:108
+#: account/templates/profile.html:257 order/templates/checkout.html:108
 #: order/templates/checkout.html:117 order/templates/checkout.html:256
 msgid "Ünvanlarım"
 msgstr "Addresses"
 
-#: account/templates/profile.html:283 order/templates/checkout.html:141
+#: account/templates/profile.html:288 order/templates/checkout.html:141
 msgid "Yeni ünvan"
 msgstr "New address"
 
-#: account/templates/profile.html:288
+#: account/templates/profile.html:293
 msgid "Ad:"
 msgstr "Name:"
 
-#: account/templates/profile.html:289 core/templates/contact.html:123
+#: account/templates/profile.html:294 core/templates/contact.html:141
 msgid "Adınız"
 msgstr "Your name"
 
-#: account/templates/profile.html:292
+#: account/templates/profile.html:297
 msgid "Soyad:"
 msgstr "Surname:"
 
-#: account/templates/profile.html:293 core/templates/contact.html:131
+#: account/templates/profile.html:298 core/templates/contact.html:149
 msgid "Soyadınız"
 msgstr "Your surname"
 
-#: account/templates/profile.html:296
+#: account/templates/profile.html:301
 msgid "Ünvan Başlığı:"
 msgstr "Address title:"
 
-#: account/templates/profile.html:297
+#: account/templates/profile.html:302
 msgid "ünvan başlığı yaxınlığında ne var..."
 msgstr "what is near the address..."
 
-#: account/templates/profile.html:300
+#: account/templates/profile.html:305
 msgid "Rayon:"
 msgstr "Region:"
 
-#: account/templates/profile.html:301
+#: account/templates/profile.html:306
 msgid "rayon"
 msgstr "region"
 
-#: account/templates/profile.html:304
+#: account/templates/profile.html:309
 msgid "Küçə/Məhəllə:"
 msgstr "Street:"
 
-#: account/templates/profile.html:305
+#: account/templates/profile.html:310
 msgid "küçə"
 msgstr "street"
 
-#: account/templates/profile.html:308
+#: account/templates/profile.html:313
 msgid "Bina/Ev:"
 msgstr "Build:"
 
-#: account/templates/profile.html:309
+#: account/templates/profile.html:314
 msgid "bina nömrəsi"
 msgstr "build number"
 
-#: account/templates/profile.html:312
+#: account/templates/profile.html:317
 msgid "Mənzil:"
 msgstr "Flat:"
 
-#: account/templates/profile.html:313
+#: account/templates/profile.html:318
 msgid "qapı nömrəsi"
 msgstr "door number"
 
-#: account/templates/profile.html:318 order/templates/cart.html:114
+#: account/templates/profile.html:323 order/templates/cart.html:114
 msgid "Əlavə et"
 msgstr "Add"
 
-#: account/templates/profile.html:319 account/templates/profile.html:382
+#: account/templates/profile.html:324 account/templates/profile.html:387
 msgid "Ləğv et"
 msgstr "Cancel"
 
-#: account/templates/profile.html:330
+#: account/templates/profile.html:335
 msgid "ŞİFRƏ TƏNZİMLƏMƏSİ"
 msgstr "PASSWORD CONFIGURATION"
 
-#: account/templates/profile.html:334
+#: account/templates/profile.html:339
 msgid "Şifrəmi Dəyiş"
 msgstr "Change Password"
 
-#: account/templates/profile.html:335
+#: account/templates/profile.html:340
 msgid "Köhnə şifrə"
 msgstr "Old Password"
 
-#: account/templates/profile.html:336 account/templates/signin.html:56
+#: account/templates/profile.html:341 account/templates/signin.html:56
 msgid "Yeni şifrə"
 msgstr "New Password"
 
-#: account/templates/profile.html:337
+#: account/templates/profile.html:342
 msgid "Yeni şifrəni təsdiq edin"
 msgstr "Repeat new password"
 
-#: account/templates/profile.html:338
+#: account/templates/profile.html:343
 msgid "*Şifrə minimum 6 xanalı olmalıdır!"
 msgstr "*Password should include min 6 character!"
 
-#: account/templates/profile.html:341
+#: account/templates/profile.html:346
 msgid "Dəyiş"
 msgstr "Change"
 
-#: account/templates/profile.html:365
+#: account/templates/profile.html:370
 msgid "Email yanlışdır!"
 msgstr "Wrong email!"
 
-#: account/templates/profile.html:366
+#: account/templates/profile.html:371
 msgid "Məlumatlar yeniləndi!"
 msgstr "Changed!"
 
-#: account/templates/profile.html:367
+#: account/templates/profile.html:372
 msgid "Şifrə təkrarı doğru deyil!"
 msgstr "Password confirmation not match!"
 
-#: account/templates/profile.html:368
+#: account/templates/profile.html:373
 msgid "Köhnə şifrə yanlışdır!"
 msgstr "Uncorrect old password!"
 
-#: account/templates/profile.html:369 account/templates/profile.html:373
-#: account/templates/profile.html:374 account/templates/profile.html:376
-#: account/templates/profile.html:377
+#: account/templates/profile.html:374 account/templates/profile.html:378
+#: account/templates/profile.html:379 account/templates/profile.html:381
+#: account/templates/profile.html:382
 msgid "Şifrəniz yeniləndi!"
 msgstr "Password changed!"
 
-#: account/templates/profile.html:370
+#: account/templates/profile.html:375
 msgid "Yeni ünvan əlavə edildi!"
 msgstr "New address added!"
 
-#: account/templates/profile.html:371
+#: account/templates/profile.html:376
 msgid "Ünvan silindi!"
 msgstr "Address removed!"
 
-#: account/templates/profile.html:372
+#: account/templates/profile.html:377
 msgid "Daimi ünvan dəyişildi!"
 msgstr "Default address changed!"
 
-#: account/templates/profile.html:375
+#: account/templates/profile.html:380
 msgid "Sifarişiniz təsdiqləndi!"
 msgstr "Order confirmed!"
 
-#: account/templates/profile.html:380 order/templates/checkout.html:121
+#: account/templates/profile.html:385 order/templates/checkout.html:121
 msgid "Qeyd olunmuş ünvanınız yoxdur"
 msgstr "You do not have an address listed"
 
-#: account/templates/profile.html:381
+#: account/templates/profile.html:386
 msgid "Yadda saxla"
 msgstr "Save"
 
@@ -385,20 +385,20 @@ msgstr ""
 "Unfortunately, the page you are looking for is unavailable or closed for a "
 "short time."
 
-#: core/templates/404.html:121 core/templates/base.html:162
+#: core/templates/404.html:121 core/templates/base.html:161
 msgid "Ana səhifə"
 msgstr "Home"
 
-#: core/templates/about.html:7 core/templates/base.html:165
-#: core/templates/base.html:300
+#: core/templates/about.html:7 core/templates/base.html:164
+#: core/templates/base.html:296
 msgid "Haqqımızda"
 msgstr "About us"
 
-#: core/templates/base.html:85
+#: core/templates/base.html:85 core/templates/base.html:148
 msgid "Məshsul axtar..."
 msgstr "Search for products..."
 
-#: core/templates/base.html:93 core/templates/base.html:238
+#: core/templates/base.html:93 core/templates/base.html:235
 msgid "Zəng:"
 msgstr "Call:"
 
@@ -414,42 +414,38 @@ msgstr "Basket"
 msgid "Profil"
 msgstr "Profile"
 
-#: core/templates/base.html:148
-msgid "Meshsul axtar..."
-msgstr "Search for products..."
-
-#: core/templates/base.html:171 core/templates/base.html:295
+#: core/templates/base.html:170 core/templates/base.html:291
 #: product/templates/products.html:6 product/templates/products.html:41
 msgid "Məhsullar"
 msgstr "Products"
 
-#: core/templates/base.html:174 core/templates/base.html:246
-#: core/templates/base.html:318 core/templates/home.html:197
-#: core/templates/home.html:220
+#: core/templates/base.html:173 core/templates/base.html:243
+#: core/templates/base.html:314 core/templates/home.html:209
+#: core/templates/home.html:232
 msgid "Şüşə tablolar"
 msgstr "Glass paints"
 
-#: core/templates/base.html:175 core/templates/base.html:247
-#: core/templates/base.html:319 core/templates/home.html:201
-#: core/templates/home.html:230
+#: core/templates/base.html:174 core/templates/base.html:244
+#: core/templates/base.html:315 core/templates/home.html:213
+#: core/templates/home.html:242
 msgid "MDF tablolar"
 msgstr "MDF paints"
 
-#: core/templates/base.html:176 core/templates/base.html:320
-#: core/templates/home.html:205
+#: core/templates/base.html:175 core/templates/base.html:316
+#: core/templates/home.html:217
 msgid "Saatlar"
 msgstr "Clocks"
 
-#: core/templates/base.html:177 core/templates/base.html:321
+#: core/templates/base.html:176 core/templates/base.html:317
 msgid "Özün yarat"
 msgstr "Design it yourself"
 
-#: core/templates/base.html:183 core/templates/base.html:248
-#: core/templates/base.html:264 core/templates/contact.html:8
+#: core/templates/base.html:182 core/templates/base.html:245
+#: core/templates/base.html:261 core/templates/contact.html:8
 msgid "Əlaqə"
 msgstr "Contact"
 
-#: core/templates/base.html:227
+#: core/templates/base.html:226
 msgid ""
 "Storeglasstech, <a href=\"https://glasstech.az\">glasstech</a> şirkətimizin "
 "yüksək keyfiyyətli şüşəlirindən hazırlanmış yüksək çap keyfiyyətinə sahib "
@@ -458,15 +454,15 @@ msgstr ""
 "Storeglasstech, a part of our <a href=\"https://glasstech.az\">glasstech</a> "
 "company, offers high-quality paints made from our premium glass products."
 
-#: core/templates/base.html:244
+#: core/templates/base.html:241
 msgid "Faydalı linklər"
 msgstr "Usefull links"
 
-#: core/templates/base.html:249
+#: core/templates/base.html:246
 msgid "Sifarişləriniz"
 msgstr "Orders"
 
-#: core/templates/base.html:265
+#: core/templates/base.html:262
 msgid ""
 "Hər hansı bir sualınız vəya bizimlə bağlı problem yaşadığınız zaman əlaqəyə "
 "keçin tez bir zamanda sizə geri dönüş edəcəyik"
@@ -474,43 +470,39 @@ msgstr ""
 "If you have any questions or encounter any issues with us, please contact "
 "us, and we will get back to you as soon as possible."
 
-#: core/templates/base.html:268
-msgid "Bazar ertəsi - Cümə|9:00-18:00"
-msgstr ""
+#: core/templates/base.html:265 core/templates/contact.html:114
+msgid "Bazar ertəsi - Şənbə|9:00-18:00"
+msgstr "Monday - Saturday|9:00-18:00"
 
-#: core/templates/base.html:269
-msgid "28may kuc3 baku azerbaijan"
-msgstr ""
-
-#: core/templates/base.html:298 core/templates/home.html:7
+#: core/templates/base.html:294 core/templates/home.html:7
 msgid "Ana Səhifə"
 msgstr "Home"
 
-#: core/templates/base.html:302
+#: core/templates/base.html:298
 msgid "Bizimlə Əlaqə"
 msgstr "Contact us"
 
-#: core/templates/base.html:376
+#: core/templates/base.html:372
 msgid "Səbətə Əlavə Olundu"
 msgstr "Added to basket"
 
-#: core/templates/base.html:377
+#: core/templates/base.html:373
 msgid "Xəta baş verdi"
 msgstr "Error"
 
-#: core/templates/base.html:378
+#: core/templates/base.html:374
 msgid "Məlumatlar tam deyil"
 msgstr "Data not correct!"
 
-#: core/templates/base.html:381
+#: core/templates/base.html:377
 msgid "Artıq kupon var!"
 msgstr "Already have a coupon"
 
-#: core/templates/base.html:382
+#: core/templates/base.html:378
 msgid "Kupon əlavə edildi!"
 msgstr "Coupon applied!"
 
-#: core/templates/base.html:383
+#: core/templates/base.html:379
 msgid "Kupon tapılmadı!"
 msgstr "No active coupon"
 
@@ -530,76 +522,80 @@ msgstr ""
 msgid "Əlaqə Məlumatları"
 msgstr "Contact Details"
 
-#: core/templates/contact.html:45 core/templates/contact.html:143
+#: core/templates/contact.html:45 core/templates/contact.html:161
 msgid "Telefon"
 msgstr "Phone"
 
-#: core/templates/contact.html:93 order/templates/checkout.html:86
+#: core/templates/contact.html:103 order/templates/checkout.html:86
 #: order/templates/checkout.html:250
 msgid "Ünvan"
 msgstr "Address"
 
-#: core/templates/contact.html:96
+#: core/templates/contact.html:106
 msgid "County Hall, Bishop’s, SE1 7PB, United Kingdom"
 msgstr ""
 
-#: core/templates/contact.html:102
+#: core/templates/contact.html:111
+msgid "İş saatları"
+msgstr "Work hours"
+
+#: core/templates/contact.html:120
 msgid "Göz oxşayan tablolar"
 msgstr "Impressive paints"
 
-#: core/templates/contact.html:103
+#: core/templates/contact.html:121
 msgid "Endirimləri qaçırmayın"
 msgstr "Don't miss the discounts"
 
-#: core/templates/contact.html:104
+#: core/templates/contact.html:122
 msgid "Yüksək keyfiyyətli tabloları"
 msgstr "High Quality paints"
 
-#: core/templates/contact.html:107
+#: core/templates/contact.html:125
 msgid "İndi alın"
 msgstr "Buy now"
 
-#: core/templates/contact.html:113
+#: core/templates/contact.html:131
 msgid "İstənilən mövzu ilə əlaqədər əlaqəyə keçin"
 msgstr "Contact us regarding any topic."
 
-#: core/templates/contact.html:139
+#: core/templates/contact.html:157
 msgid "Email ünvanı"
 msgstr "E-mail address"
 
-#: core/templates/contact.html:147
+#: core/templates/contact.html:165
 msgid "Əlaqə nömrəsi"
 msgstr "Phone number"
 
-#: core/templates/contact.html:151
+#: core/templates/contact.html:169
 msgid "Mesaj"
 msgstr "Message"
 
-#: core/templates/contact.html:155
+#: core/templates/contact.html:173
 msgid "Mesajınız"
 msgstr "Your message"
 
-#: core/templates/contact.html:160
+#: core/templates/contact.html:178
 msgid "Göndər"
 msgstr "Send"
 
-#: core/templates/contact.html:223
+#: core/templates/contact.html:241
 msgid "Mesajınız göndərildi!"
 msgstr "Your message sent!"
 
-#: core/templates/contact.html:224
+#: core/templates/contact.html:242
 msgid "Bizimlə əlqayə keçdiyinizə görə təşəkkürlər."
 msgstr "Thanks for contact us."
 
-#: core/templates/contact.html:246
+#: core/templates/contact.html:264
 msgid "Xəta!"
 msgstr "Error!"
 
-#: core/templates/contact.html:247
+#: core/templates/contact.html:265
 msgid "Mesajınız göndərilmədi!"
 msgstr "Your message was not sent!"
 
-#: core/templates/contact.html:248
+#: core/templates/contact.html:266
 msgid "Yenidən yoxla"
 msgstr "Try again"
 
@@ -631,39 +627,39 @@ msgstr "Best seller"
 msgid "Bütün müştərilərimiz tərifindən bəyənilən ən seçilən tablolarımız"
 msgstr "Our most popular paintings that are appreciated by all our customers"
 
-#: core/templates/home.html:122
+#: core/templates/home.html:128
 msgid "Ən çox çeşİdlİ kateqorİya bİrİncİ sırada"
 msgstr "The category with the most variety is in the first"
 
-#: core/templates/home.html:123 core/templates/home.html:129
+#: core/templates/home.html:129 core/templates/home.html:135
 msgid "Kateqoriyası"
 msgstr "Category"
 
-#: core/templates/home.html:124 core/templates/home.html:130
+#: core/templates/home.html:130 core/templates/home.html:136
 msgid "Kateqoriyanın bol çeşidə sahib olan tablolarına göz atın."
 msgstr "Browse the category's wide variety of paints."
 
-#: core/templates/home.html:125 core/templates/home.html:131
+#: core/templates/home.html:131 core/templates/home.html:137
 msgid "Kateqoriyaya bax"
 msgstr "Browse category"
 
-#: core/templates/home.html:128
+#: core/templates/home.html:134
 msgid "Ən çox çeşİdlİ kateqorİya İkİncİ sırada"
 msgstr "The category with the most variety is in the second"
 
-#: core/templates/home.html:144 core/templates/home.html:271
+#: core/templates/home.html:150 core/templates/home.html:283
 msgid "Ən yeni"
 msgstr "The newest"
 
-#: core/templates/home.html:145
+#: core/templates/home.html:151
 msgid "Şüşə tablolarımız"
 msgstr "Glass paints"
 
-#: core/templates/home.html:209 core/templates/home.html:250
+#: core/templates/home.html:221 core/templates/home.html:262
 msgid "Özün hazırla"
 msgstr "Design it yourself"
 
-#: core/templates/home.html:221
+#: core/templates/home.html:233
 msgid ""
 "<a href=\"https://glasstech.az\">Glasstech</a> tərəfindən istehsal olunan "
 "yüksək keyfiyyətli şüşələrimizdən hazırlanan göz oxşayan tablolarımız."
@@ -671,19 +667,19 @@ msgstr ""
 "Eye-catching artworks made from high-quality glass produced by <a "
 "href=\"https://glasstech.az\">glasstech</a>."
 
-#: core/templates/home.html:222 core/templates/home.html:232
+#: core/templates/home.html:234 core/templates/home.html:244
 msgid "Tablolara bax"
 msgstr "Browse paints"
 
-#: core/templates/home.html:231
+#: core/templates/home.html:243
 msgid "Yüksək MDF, qüsursuz kəsim və göz oxşayan tablolarımız."
 msgstr "Our paints are made of high MDF, perfectly cut and eye-pleasing."
 
-#: core/templates/home.html:240
+#: core/templates/home.html:252
 msgid "Divar saatları"
 msgstr "Wall clocks"
 
-#: core/templates/home.html:241
+#: core/templates/home.html:253
 msgid ""
 "Dözümlu və estetik divar saatınızı hazırlayıb bir kliklə sifariş edə "
 "bilərsiniz."
@@ -691,12 +687,12 @@ msgstr ""
 "Make your durable and aesthetic wall clock and order it with one click you "
 "can"
 
-#: core/templates/home.html:242 core/templates/home.html:252
+#: core/templates/home.html:254 core/templates/home.html:264
 #: product/templates/products.html:21
 msgid "Hazırla"
 msgstr "Design"
 
-#: core/templates/home.html:251
+#: core/templates/home.html:263
 msgid ""
 "İstədiyiniz ölçü və materialda tablo hazırlayıb bir kliklə sifariş edə "
 "bilərsiniz"
@@ -704,23 +700,23 @@ msgstr ""
 "You can make a paint in the desired size and material and order it with one "
 "click"
 
-#: core/templates/home.html:272
+#: core/templates/home.html:284
 msgid "MDF tablolarımız"
-msgstr "MDF paints"
+msgstr "MDF Paints"
 
-#: core/templates/home.html:324
+#: core/templates/home.html:342
 msgid "Endirimli Məhsullar"
 msgstr "Discount Products"
 
-#: core/templates/home.html:325
+#: core/templates/home.html:343
 msgid "dək endİrİmlər"
 msgstr "off discount"
 
-#: core/templates/home.html:327
+#: core/templates/home.html:345
 msgid "Seçiminizi indi edin, endirmləri qaçırmayın!"
 msgstr "Make your choice now, don't miss the discounts!"
 
-#: core/templates/home.html:329
+#: core/templates/home.html:347
 msgid "Bütün məhsullar"
 msgstr "All products"
 
@@ -2077,8 +2073,10 @@ msgid ""
 "Sifarişinizi təsdiqləmədən öncə <a href=\"/about/\" class=\"privacy-policy-"
 "link\" target=\"_blank\">haqqımızda</a> mətnin oxuyub, şərtlər və iş "
 "saatlarıhaqqında tanış olmağınız lazımdır."
-msgstr "Before confirming your order, you should read the text <a href=\"/about/\" class=\"privacy-policy-"
-"link\" target=\"_blank\">about us</a> and familiarize yourself with the conditions and working hours."
+msgstr ""
+"Before confirming your order, you should read the text <a href=\"/about/\" "
+"class=\"privacy-policy-link\" target=\"_blank\">about us</a> and familiarize "
+"yourself with the conditions and working hours."
 
 #: order/templates/checkout.html:223
 msgid "Sifariş ver"
@@ -2139,14 +2137,17 @@ msgstr "Artists"
 msgid "Təəssüf ki,seçdiyiniz filterlərə uyğun məhsul tapılmadı!"
 msgstr "Unfortunately, no products matching your selected filters were found!"
 
-#: storebyglasstech/settings.py:129
+#: storebyglasstech/settings.py:168
 msgid "Azerbaijan"
 msgstr ""
 
-#: storebyglasstech/settings.py:130
+#: storebyglasstech/settings.py:169
 msgid "Russian"
 msgstr ""
 
-#: storebyglasstech/settings.py:131
+#: storebyglasstech/settings.py:170
 msgid "English"
 msgstr ""
+
+#~ msgid "Meshsul axtar..."
+#~ msgstr "Search for products..."
