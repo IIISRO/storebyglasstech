@@ -60,7 +60,7 @@ async function fetchAndDisplayResults() {
                                     let framInfo = 
                                     `
                                     <div class="frame-main">
-                          <div class="glass-overlay"><img src="/static/images/shadow11.png" alt=""></div> 
+                          <div class="glass-overlay"><img src="/static/images/shadow1.png" alt=""></div> 
                           <img fetchpriority="high" class="cart-thumbnail main-frame-img" id="" src="${item.product.image}" alt=""> 
                           </div>
                                   
@@ -113,7 +113,7 @@ async function fetchAndDisplayResults() {
                                     let framInfo = 
                                     `
                                     <div class="frame-main">
-                          <div class="glass-overlay" id="glass-overlay"><img src="/static/images/shadow11.png" alt=""></div> 
+                          <div class="glass-overlay" id="glass-overlay"><img src="/static/images/shadow1.png" alt=""></div> 
                           <img fetchpriority="high" class="cart-thumbnail" id="main-frame-img" src="${item.product.image}" alt=""> 
                           </div>
                                   

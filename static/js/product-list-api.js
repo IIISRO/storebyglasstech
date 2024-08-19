@@ -26,7 +26,7 @@ function displayResults(results) {
                         items2.push(
                           `
                           <div class="frame-main">
-                          <div class="glass-overlay"><img src="/static/images/shadow11.png" alt=""></div> 
+                          <div class="glass-overlay"><img src="/static/images/shadow1.png" alt=""></div> 
                           <img class="product-img main-frame-img" src="${product.image}" alt=""> 
                           </div>`
 
