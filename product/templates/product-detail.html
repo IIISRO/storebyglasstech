@@ -142,11 +142,17 @@
             <div class="col-sm-6 col-lg-3 mb-4">
               <div class="product-item">
                 <a href="/product/{{product.get_absolute_url}}">
-                  <div class="product-item-img">
-                    <img  style="filter: brightness(1.2) contrast(1.1) blur(0.05px);"
-                    src="{{product.image.url}}"
-                    alt="">
-                  </div>
+                    <div class="product-item-img">
+                        {% if product.type == 'GLASS'%}
+                        <div class="frame-main2">
+                         <div class="glass-overlay2"><img src="{% static 'images/shadow11.png'%}" alt=""></div>
+                           <img class="product-img main-frame-img2" src="{{product.image.url}}" alt=""> 
+                           </div>
+        
+                        {%else%}
+                        <img class="product-img main-frame-img2"  src="{{product.image.url}}" alt=""> 
+                        {%endif%}
+                      </div>
                   </a>
                   <div class="product-col-info p-2">
                     

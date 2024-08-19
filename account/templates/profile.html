@@ -176,9 +176,9 @@
                         {% for item in order.order_items.all %}
                         <div class="p-0 d-flex row w-100 m-0 mt-3">
                           <div class="col-md-8  w-100 d-flex" style="padding-left: 0;">
-                            <div class="order-item-img" style="width: 60px; height: 60px;position: relative;">
+                            <div class="order-item-img" style="position: relative;">
                               {% if item.product.type == "MDF" %}
-                               <a href="/product/{{item.product.get_absolute_url}}"><img width="60"  height="60" src="{{item.product.image.url}}" alt=""></a>
+                               <a href="/product/{{item.product.get_absolute_url}}"><img width="50"  height="50" src="{{item.product.image.url}}" alt=""></a>
                                {% else %}
                                <a href="/product/{{item.product.get_absolute_url}}">
                                 <div class="frame-main">

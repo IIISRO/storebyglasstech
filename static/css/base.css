@@ -154,8 +154,9 @@ a:hover{
 }
 
 .logo {
+    width: 120px;
     max-width: 250px;
-    height: 30px;
+    height: 60px;
 }
 
 .header-search {
