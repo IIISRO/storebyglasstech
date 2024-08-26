@@ -61,24 +61,52 @@ function getDetail(){
         $("#prod-detail").html(data.detail)
 
         // olculer
-        for(let size of data.sizes){
-            $("#size-list").append(
-                `
-                <li>
-                    <button class="size-element" 
-                    data-extra_price="${    
-                        (function checkExtra() {
-                        if(size.is_base){
-                            return 0
-                        }else if(data.type == 'GLASS'){
-                            return size.price_glass
-                        }else{return size.price_mdf}
-                        })()
-                    }" 
-                    data-id=${size.id} data-size="${size.height}*${size.width}">${size.height}x${size.width}
-                    </button>
-                </li>`)
-        }
+        // for(let size of data.sizes){
+        //     $("#size-list").append(
+        //         `
+        //         <li>
+        //             <button class="size-element" 
+        //             data-extra_price="${    
+        //                 (function checkExtra() {
+        //                 if(size.is_base){
+        //                     return 0
+        //                 }else if(data.type == 'GLASS'){
+        //                     return size.price_glass
+        //                 }else{return size.price_mdf}
+        //                 })()
+        //             }" 
+        //             data-id=${size.id} data-size="">${size.height}x${size.width}
+        //             </button>
+        //         </li>`)
+        // }
+        const percentages = [25, 35, 45, 55, 65, 75,85,95,100];
+
+for (let i = 0; i < data.sizes.length; i++) {
+    const size = data.sizes[i];
+
+    $("#size-list").append(
+        `
+        <li>
+            <button class="size-element" 
+                data-extra_price="${    
+                    (function checkExtra() {
+                    if(size.is_base){
+                        return 0;
+                    }else if(data.type == 'GLASS'){
+                        return size.price_glass;
+                    }else{
+                        return size.price_mdf;
+                    }
+                    })()
+                }" 
+                data-id="${size.id}" 
+                data-size="${percentages[i]}">
+                ${size.height}x${size.width}
+            </button>
+        </li>`
+    );
+}
+
         // qiymet
         if (data.has_discount){
             $("#prod-price").html(
@@ -118,33 +146,60 @@ function getDetail(){
         // olcu selectoru
         const sizes = document.querySelectorAll('.size-element');
         const mainFrame1 = document.getElementById("main-frame1");
+        const img = document.getElementById('sofaImage');
 
-        sizes.forEach(size => {
-            size.addEventListener('click', () => {
-                sizes.forEach(btn => btn.classList.remove('selected'));
-                size.classList.add('selected');
-                const selectedSize = size.getAttribute("data-size").split("*");
-                const width = selectedSize[0];
-                const height = selectedSize[1];
-
-                if (window.innerWidth <= 767) {
-                    mainFrame1.style.width = width * 0.5 + "px";
-                    mainFrame1.style.height = height * 0.5 + "px";
-                } else {
-                    mainFrame1.style.width = width * 0.8 + "px";
-                    mainFrame1.style.height = height * 0.8 + "px";
-                }
-                // size gore extra  qiymet
-                var extra_price = parseFloat(size.dataset.extra_price)
-                if(data.has_discount){
-                    $("#prod_base_price").html(`${(data.price + parseFloat(size.dataset.extra_price)).toFixed(2)} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i>`)
-                    extra_price = extra_price - ((extra_price * data.discount_amount) / 100)
-                }
-
-                $("#prod_actual_price").html(`${(data.actual_price + extra_price).toFixed(2)} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i>`)
+        function calculateSofaWidth() {
+            // Get the current width of the image
            
+            
+            sizes.forEach(size => {
+                size.addEventListener('click', () => {
+                    const currentImgWidth = img.clientWidth;
+    
+                    // Original image dimensions and sofa coordinates (adjust these as needed)
+                    const originalImgWidth = img.naturalWidth;
+                    const sofaLeftX = 150;  // Sofa's left coordinate in the original image
+                    const sofaRightX = 2250; // Sofa's right coordinate in the original image
+            
+                    // Calculate the width of the sofa in the original image
+                    const sofaWidthPx = sofaRightX - sofaLeftX;
+            
+                    // Calculate the sofa width as a percentage of the original image width
+                    const sofaWidthPercent = 75;
+            
+                    // Calculate the current width of the sofa based on the current image size
+                    const currentSofaWidthPx = (sofaWidthPercent / 100) * currentImgWidth;
+                    console.log(currentSofaWidthPx);
+                    console.log("1");
+                    
+                    sizes.forEach(btn => btn.classList.remove('selected'));
+                    size.classList.add('selected');
+                    const selectedSize = size.getAttribute("data-size");
+                    let leman=""
+                    console.log(selectedSize);
+                    
+                        mainFrame1.style.width = currentSofaWidthPx * (selectedSize/100) + "px";
+                        mainFrame1.style.height = currentSofaWidthPx * (selectedSize/100) + "px";
+                        leman=(currentSofaWidthPx * (selectedSize/100)) + "px"
+                        console.log(leman);
+                        
+                   
+                    // size gore extra  qiymet
+                    var extra_price = parseFloat(size.dataset.extra_price)
+                    if(data.has_discount){
+                        $("#prod_base_price").html(`${(data.price + parseFloat(size.dataset.extra_price)).toFixed(2)} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i>`)
+                        extra_price = extra_price - ((extra_price * data.discount_amount) / 100)
+                    }
+    
+                    $("#prod_actual_price").html(`${(data.actual_price + extra_price).toFixed(2)} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i>`)
+               
+                });
             });
-        });
+
+        }
+    
+        calculateSofaWidth(); 
+        
 
         // addtobasket duymesi
         var addBasketBTN = document.getElementById('basketadd');

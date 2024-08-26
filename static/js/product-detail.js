@@ -273,4 +273,3 @@ window.addEventListener('resize', adjustOverlayHeight);
 
 
 
-  
