@@ -18,7 +18,7 @@ function displayResults(results) {
                       if (product.type == "MDF") {
                         
                         items2.push(
-                          ` <img class="product-img" src="${product.image}" alt="">`
+                          ` <img class="product-img mdf-image" src="${product.image}" alt="">`
                         );
                       } else {
                         
@@ -85,12 +85,51 @@ function displayResults(results) {
             </div>
           </div>
       `;
+      
     }
+
     createPagination(results.pagination.all_pages_num, currentPage);
   } else {
     products.innerHTML += `<div class="alert alert-danger">${transNoProduct}</div>`;
   }
   loader.hide();
+  function adjustImages() {
+    setTimeout(() => {
+        const frameMains = document.querySelectorAll('.frame-main');
+        
+        frameMains.forEach(frameMain => {
+            const imgs = frameMain.querySelectorAll('.main-frame-img');
+            
+            imgs.forEach(img => {
+                if (img.complete) {
+                    adjustFrameHeight(frameMain, img);
+                } else {
+                    img.onload = function() {
+                        adjustFrameHeight(frameMain, img);
+                    };
+                }
+            });
+        });
+    }, 100); // Delay to allow the DOM to update
+}
+
+// Call this function whenever the page is loaded or navigated to
+adjustImages();
+
+
+    function adjustFrameHeight(frameMain, img) {
+        const frameMainHeight = frameMain.clientHeight;
+        const imgHeight = img.clientHeight;
+        console.log(frameMainHeight,imgHeight);
+
+        if (imgHeight < frameMainHeight) {
+            
+            frameMain.style.height = 'unset';  // Unset height if image is smaller
+        } else {
+            
+            frameMain.style.height = '100%';  // Set height to 100% if image is larger
+        }
+    }
 }
 
 function updateTypeUI(selectedType) {

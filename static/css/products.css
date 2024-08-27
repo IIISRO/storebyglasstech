@@ -106,6 +106,11 @@ background: linear-gradient(-180deg, rgba(255,255,255,0.50) 0%, rgba(0,0,0,0.40)
   position: relative;
   box-sizing: border-box;
   height: 100%;
+  box-shadow: 
+  rgba(0, 0, 0, 0.4) 2px 2px 4px,       /* Shadow on the bottom-right */
+  rgba(0, 0, 0, 0.3) 7px 7px 13px -3px, /* Larger shadow on the bottom-right */
+  rgba(0, 0, 0, 0.4) -2px 2px 4px,      /* Shadow on the bottom-left */
+  rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   overflow: hidden; /* Ensure content doesn't overflow the frame */
 }
 
@@ -131,11 +136,7 @@ background: linear-gradient(-180deg, rgba(255,255,255,0.50) 0%, rgba(0,0,0,0.40)
   z-index: 1000000;
   width: 100%;
   height: 100%;
-  box-shadow: 
-  rgba(0, 0, 0, 0.4) 2px 2px 4px,       /* Shadow on the bottom-right */
-  rgba(0, 0, 0, 0.3) 7px 7px 13px -3px, /* Larger shadow on the bottom-right */
-  rgba(0, 0, 0, 0.4) -2px 2px 4px,      /* Shadow on the bottom-left */
-  rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  
   max-width: 100%;
   max-height: 100%;
   pointer-events: none; /* Prevent interaction with the overlay */
@@ -232,10 +233,10 @@ font-size: 17px;
 #mdf{
 border-right: 1px solid #ccc;
 }
-.product-item:hover img{
+.product-item:hover .frame-main,.product-item:hover .mdf-image{
 transform: scale(1.05);
 }
-.product-item img{
+.product-item img,.frame-main{
 transition: all .4s ease-in-out;
 }
 .product-item{

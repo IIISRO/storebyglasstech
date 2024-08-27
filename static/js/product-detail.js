@@ -271,5 +271,86 @@ mainFrameImg.onload = function() {
 };
 window.addEventListener('resize', adjustOverlayHeight);
 
+function adjustImages() {
+    setTimeout(() => {
+        const frameMains = document.querySelectorAll('.frame-main2');
+        
+        frameMains.forEach(frameMain => {
+            const imgs = frameMain.querySelectorAll('.main-frame-img2');
+            
+            imgs.forEach(img => {
+                if (img.complete) {
+                    adjustFrameHeight(frameMain, img);
+                } else {
+                    img.onload = function() {
+                        adjustFrameHeight(frameMain, img);
+                    };
+                }
+            });
+        });
+    }, 100); // Delay to allow the DOM to update
+}
+
+// Call this function whenever the page is loaded or navigated to
+adjustImages();
 
 
+    function adjustFrameHeight(frameMain, img) {
+        const frameMainHeight = frameMain.clientHeight;
+        const imgHeight = img.clientHeight;
+        console.log(frameMainHeight,imgHeight);
+
+        if (imgHeight < frameMainHeight/2) {
+            
+            frameMain.style.height = 'unset';  // Unset height if image is smaller
+        } else {
+            
+            frameMain.style.height = '100%';  // Set height to 100% if image is larger
+        }
+    }
+
+
+
+
+
+ 
+    
+    function adjustImages2() {
+        setTimeout(() => {
+            const frameMain = document.querySelector('.frame-main');
+            
+                const img = document.getElementById('main-frame-img');
+                
+                    if (img.complete) {
+                        console.log("222");
+                        console.log(frameMain);
+                        console.log(img);
+                        
+                        
+                        
+                        adjustFrameHeight2(frameMain, img);
+                    } else {
+                        img.onload = function() {
+                            adjustFrameHeight2(frameMain, img);
+                        };
+                    }
+        }, 300); // Delay to allow the DOM to update
+    }
+    
+    // Call this function whenever the page is loaded or navigated to
+    adjustImages2();
+    
+    
+        function adjustFrameHeight2(frameMain, img) {
+            const frameMainHeight = frameMain.clientHeight;
+            const imgHeight = img.clientHeight;
+            console.log(frameMainHeight,imgHeight);
+    
+            if (imgHeight < frameMainHeight) {
+                
+                frameMain.style.height = 'unset';  // Unset height if image is smaller
+            } else {
+                
+                frameMain.style.height = '100%';  // Set height to 100% if image is larger
+            }
+        }

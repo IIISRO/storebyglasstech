@@ -1,16 +1,17 @@
-.product-item-img{
-    padding: 15px 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-    width: 100%;
-    height: 200px;
-    position: relative;
-    /* background: rgba(0,0,0,.3); */
-    background: linear-gradient(-180deg, rgba(255,255,255,0.50) 0%, rgba(0,0,0,0.40) 100%);
-    }
-    /* .product-item img {
+.product-item-img {
+  padding: 15px 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 200px;
+  position: relative;
+  /* background: rgba(0,0,0,.3); */
+  background: linear-gradient(-180deg, rgba(255, 255, 255, 0.50) 0%, rgba(0, 0, 0, 0.40) 100%);
+}
+
+/* .product-item img {
       object-fit: contain;
       max-width: 100%;
       max-height: 100%;
@@ -18,133 +19,167 @@
     .product-item:hover img{
         transform: scale(1.05);
         } */
-        .product-img {
-          object-fit: contain;
-          max-width: 100%;
-          max-height: 100%;
-          
-          box-shadow: 
-          rgba(0, 0, 0, 0.4) 2px 2px 4px,       /* Shadow on the bottom-right */
-          rgba(0, 0, 0, 0.3) 7px 7px 13px -3px, /* Larger shadow on the bottom-right */
-          rgba(0, 0, 0, 0.4) -2px 2px 4px,      /* Shadow on the bottom-left */
-          rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-        }
-        .frame-main {
-          display: inline-block;
-          position: relative;
-        
-          box-sizing: border-box;
-          height: 100%;
-        }
-        
-        .main-frame-img{
-          display: block;
-          width: auto;
-          max-width: 100%;
-          height: auto;
-          max-height: 100%;
-          object-fit: cover;
-          box-sizing: border-box;
-          position: relative;
-          /* box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset; */
-          box-shadow: 
-          rgba(0, 0, 0, 0.4) 2px 2px 4px,       /* Shadow on the bottom-right */
-          rgba(0, 0, 0, 0.3) 7px 7px 13px -3px, /* Larger shadow on the bottom-right */
-          rgba(0, 0, 0, 0.4) -2px 2px 4px,      /* Shadow on the bottom-left */
-          rgba(0, 0, 0, 0.2) 0px -3px 0px inset; /* Inset shadow */
-        
-          z-index: 0;
-        }
-        
-        /* Glass overlay styling */
-        .glass-overlay {
-          position: absolute;
-          top: 0;
-          left: 0;
-          z-index: 1000000000;
-          width: 100%;
-          height: 100%;
-          pointer-events: none; /* Prevent interaction with the overlay */
-        }
-        
-        .glass-overlay img{
-          width: 100%;
-          object-fit: cover;
-          height: 100%;
-        }
-        .product-item img{
-        transition: all .4s ease-in-out;
-        }
-        .product-item{
-        background-color: #fbfbfb;
-          box-shadow: rgb(0 0 0 / 12%) 0px 1px 2px 0px;
-          -webkit-transition: all 0.5s ease;
-          -moz-transition: all 0.5s ease;
-          -o-transition: all 0.5s ease;
-          -ms-transition: all 0.5s ease;
-          transition: all 0.5s ease;
-          position: relative;
-        }
-        .product-item h3 {
-          font-size: 0.9rem;
-        
-        }
-        
-        .product-item h3 a {
-          text-decoration: none;
-          color: #000;
-        }
-        
-.price-code {
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 26px;
-    color: #000;
-  }
-  .stage {
-    float: left;
-    height: 30px;
-    line-height: 40px;
-    position: relative;
-    margin: 0 1em 0.6em 0;
-    }
-    
-    .stage  a {
-    background:#ff0000;
-    color: #fff!important;
-    font-size: 14px;
-    text-decoration: none;
-    -webkit-border-top-left-radius: 6px;
-    -webkit-border-bottom-left-radius: 6px;
-    -moz-border-radius-topleft: 6px;
-    -moz-border-radius-bottomleft: 6px;
-    border-top-left-radius: 2px;
-    border-bottom-left-radius: 2px;
-    padding: 9px 10px;
-    }
-    .ads-sec2 h3, .ads-sec2 span, .ads-sec2 .slider-button{
-      text-align: end;
-    }
-    
-    .stage a:after {
-    content: "";
-    float: right;
-    width: 0;
-    height: 0;
-    margin-top: 2.8px;
-    border-top: 18px solid transparent;
-    border-left: 18px solid red;
-    border-bottom: 18px solid transparent;
-    }  
-    .product-item-price del{
-      font-size: 14px;
-      color: #333;
+.product-img {
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
+
+  box-shadow:
+    rgba(0, 0, 0, 0.4) 2px 2px 4px,
+    /* Shadow on the bottom-right */
+    rgba(0, 0, 0, 0.3) 7px 7px 13px -3px,
+    /* Larger shadow on the bottom-right */
+    rgba(0, 0, 0, 0.4) -2px 2px 4px,
+    /* Shadow on the bottom-left */
+    rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.mdf-image{
+  box-shadow:
+  rgba(0, 0, 0, 0.4) 2px 2px 4px,
+  /* Shadow on the bottom-right */
+  rgba(0, 0, 0, 0.3) 7px 7px 13px -3px,
+  /* Larger shadow on the bottom-right */
+  rgba(0, 0, 0, 0.4) -2px 2px 4px,
+  /* Shadow on the bottom-left */
+  rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}.frame-main {
+  display: flex; /* Use flexbox */
+  justify-content: center; /* Horizontally center */
+  align-items: center; /* Vertically center */
+  position: relative;
+  max-width: 90%;
+  box-sizing: border-box;
+  height: 100%;
+  box-shadow: 
+  rgba(0, 0, 0, 0.4) 2px 2px 4px,       /* Shadow on the bottom-right */
+  rgba(0, 0, 0, 0.3) 7px 7px 13px -3px, /* Larger shadow on the bottom-right */
+  rgba(0, 0, 0, 0.4) -2px 2px 4px,      /* Shadow on the bottom-left */
+  rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  overflow: hidden; /* Ensure content doesn't overflow the frame */
+}
+
+.main-frame-img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: cover;
+  box-sizing: border-box;
+  position: relative;
   
-    }
-    .product-item-price span{
-      font-size: 22px;
-      font-weight: 600;
-      color: red;
-      margin-top: -6px;
-      margin-left: 6px;
-    }
+ 
+  z-index: 0;
+}
+
+.glass-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the overlay */
+  z-index: 1000000;
+  width: 100%;
+  height: 100%;
+  
+  max-width: 100%;
+  max-height: 100%;
+  pointer-events: none; /* Prevent interaction with the overlay */
+}
+
+.glass-overlay img {
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+
+.product-item img {
+  transition: all .4s ease-in-out;
+}
+
+.product-item {
+  background-color: #fbfbfb;
+  box-shadow: rgb(0 0 0 / 12%) 0px 1px 2px 0px;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  position: relative;
+}
+
+.product-item h3 {
+  font-size: 0.9rem;
+
+}
+
+.product-item h3 a {
+  text-decoration: none;
+  color: #000;
+}
+
+.price-code {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 26px;
+  color: #000;
+}
+
+.stage {
+  float: left;
+  height: 30px;
+  line-height: 40px;
+  position: relative;
+  margin: 0 1em 0.6em 0;
+}
+
+.stage a {
+  background: #ff0000;
+  color: #fff !important;
+  font-size: 14px;
+  text-decoration: none;
+  -webkit-border-top-left-radius: 6px;
+  -webkit-border-bottom-left-radius: 6px;
+  -moz-border-radius-topleft: 6px;
+  -moz-border-radius-bottomleft: 6px;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+  padding: 9px 10px;
+}
+
+.ads-sec2 h3,
+.ads-sec2 span,
+.ads-sec2 .slider-button {
+  text-align: end;
+}
+
+.stage a:after {
+  content: "";
+  float: right;
+  width: 0;
+  height: 0;
+  margin-top: 2.8px;
+  border-top: 18px solid transparent;
+  border-left: 18px solid red;
+  border-bottom: 18px solid transparent;
+}
+
+.product-item-price del {
+  font-size: 14px;
+  color: #333;
+
+}
+
+.product-item-price span {
+  font-size: 22px;
+  font-weight: 600;
+  color: red;
+  margin-top: -6px;
+  margin-left: 6px;
+}
+
+.product-item:hover .frame-main,.product-item:hover .mdf-image{
+  transform: scale(1.05) !important;
+  }
+  .product-item img,.frame-main{
+  transition: all .4s ease-in-out;
+  }

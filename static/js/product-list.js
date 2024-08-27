@@ -138,9 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const glassOverlay = glassOverlays[index];  // Match the corresponding overlay with the image
             if (glassOverlay && img) {
                 glassOverlay.style.height = img.clientHeight + 'px';  // Adjust overlay height
-                console.log(`Adjusted height to ${img.clientHeight}px for overlay ${index}`);
-            } else {
-                console.log(`No matching overlay for image ${index}`);
+               
             }
         });
     }
@@ -161,7 +159,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         Promise.all(loadImages).then(() => {
             adjustOverlayHeight();
-            console.log("All images loaded, overlays adjusted");
         });
     }
 
