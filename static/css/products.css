@@ -88,6 +88,7 @@ position: relative;
 /* background: rgba(0,0,0,.3); */
 background: linear-gradient(-180deg, rgba(255,255,255,0.50) 0%, rgba(0,0,0,0.40) 100%);
 }
+
 .product-img {
   object-fit: contain;
   max-width: 100%;
@@ -106,11 +107,7 @@ background: linear-gradient(-180deg, rgba(255,255,255,0.50) 0%, rgba(0,0,0,0.40)
   position: relative;
   box-sizing: border-box;
   height: 100%;
-  box-shadow: 
-  rgba(0, 0, 0, 0.4) 2px 2px 4px,       /* Shadow on the bottom-right */
-  rgba(0, 0, 0, 0.3) 7px 7px 13px -3px, /* Larger shadow on the bottom-right */
-  rgba(0, 0, 0, 0.4) -2px 2px 4px,      /* Shadow on the bottom-left */
-  rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  
   overflow: hidden; /* Ensure content doesn't overflow the frame */
 }
 

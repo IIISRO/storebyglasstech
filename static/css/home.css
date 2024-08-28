@@ -20,29 +20,17 @@
         transform: scale(1.05);
         } */
 .product-img {
-  object-fit: contain;
+  box-shadow: 
+  rgba(0, 0, 0, 0.4) 2px 2px 4px,       /* Shadow on the bottom-right */
+  rgba(0, 0, 0, 0.3) 7px 7px 13px -3px, /* Larger shadow on the bottom-right */
+  rgba(0, 0, 0, 0.4) -2px 2px 4px,      /* Shadow on the bottom-left */
+  rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   max-width: 100%;
   max-height: 100%;
 
-  box-shadow:
-    rgba(0, 0, 0, 0.4) 2px 2px 4px,
-    /* Shadow on the bottom-right */
-    rgba(0, 0, 0, 0.3) 7px 7px 13px -3px,
-    /* Larger shadow on the bottom-right */
-    rgba(0, 0, 0, 0.4) -2px 2px 4px,
-    /* Shadow on the bottom-left */
-    rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+ 
 }
-.mdf-image{
-  box-shadow:
-  rgba(0, 0, 0, 0.4) 2px 2px 4px,
-  /* Shadow on the bottom-right */
-  rgba(0, 0, 0, 0.3) 7px 7px 13px -3px,
-  /* Larger shadow on the bottom-right */
-  rgba(0, 0, 0, 0.4) -2px 2px 4px,
-  /* Shadow on the bottom-left */
-  rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-}.frame-main {
+.frame-main {
   display: flex; /* Use flexbox */
   justify-content: center; /* Horizontally center */
   align-items: center; /* Vertically center */
@@ -50,11 +38,7 @@
   max-width: 90%;
   box-sizing: border-box;
   height: 100%;
-  box-shadow: 
-  rgba(0, 0, 0, 0.4) 2px 2px 4px,       /* Shadow on the bottom-right */
-  rgba(0, 0, 0, 0.3) 7px 7px 13px -3px, /* Larger shadow on the bottom-right */
-  rgba(0, 0, 0, 0.4) -2px 2px 4px,      /* Shadow on the bottom-left */
-  rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  
   overflow: hidden; /* Ensure content doesn't overflow the frame */
 }
 
@@ -64,8 +48,9 @@
   max-width: 100%;
   height: auto;
   max-height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   box-sizing: border-box;
+  
   position: relative;
   
  

@@ -43,34 +43,11 @@ async function fetchAndDisplayResults() {
                     <a href="${item.product.url}">
                         <div class="frame-wishlist">
                         
-                            
-                            ${    
-                                (function checkType() {
-                                if(item.product.type==='MDF'){
-                                    let framInfo = 
-                                    `
                                         <img fetchpriority="high" decoding="async" 
                             src="${item.product.image}"
                             class="product-thumb main-frame-img" alt="">
-                                    `
-                                    return framInfo
-
-                                }
-                                else{
-                                    let framInfo = 
-                                    `
-                                    <div class="frame-main">
-                          <div class="glass-overlay"><img src="/static/images/shadow11.png" alt=""></div> 
-                          <img fetchpriority="high" class="cart-thumbnail main-frame-img" id="" src="${item.product.image}" alt=""> 
-                          </div>
-                                  
-                                    `
-                                    return framInfo
-
-                                }
-                                return ''
-                                })()
-                            }
+                                   
+                            
                             </div> </a>
                 </td>
                 <td class="product-name text-center">
@@ -97,33 +74,10 @@ async function fetchAndDisplayResults() {
                             <a href="${item.product.url}">
                                 <div class="frame-wishlist-mobile">
                                 
-                                 ${    
-                                (function checkType() {
-                                if(item.product.type==='MDF'){
-                                    let framInfo = 
-                                    `
                                         <img fetchpriority="high" decoding="async" 
                             src="${item.product.image}"
                             class="product-thumb" alt="">
-                                    `
-                                    return framInfo
-
-                                }
-                                else{
-                                    let framInfo = 
-                                    `
-                                    <div class="frame-main">
-                          <div class="glass-overlay" id="glass-overlay"><img src="/static/images/shadow11.png" alt=""></div> 
-                          <img fetchpriority="high" class="cart-thumbnail" id="main-frame-img" src="${item.product.image}" alt=""> 
-                          </div>
                                   
-                                    `
-                                    return framInfo
-
-                                }
-                                return ''
-                                })()
-                            }
                                      </div></a>
                         </div>
 
@@ -199,53 +153,3 @@ function removeWish(productid) {
         })
 
 }
-document.addEventListener('DOMContentLoaded', function() {
-    // Function to adjust overlay height
-    function adjustOverlayHeight() {
-        const mainFrameImgs = document.querySelectorAll('.main-frame-img');
-        const glassOverlays = document.querySelectorAll('.glass-overlay');
-
-        mainFrameImgs.forEach((img, index) => {
-            const glassOverlay = glassOverlays[index];  // Match the corresponding overlay with the image
-            if (glassOverlay && img) {
-                glassOverlay.style.height = img.clientHeight + 'px';  // Adjust overlay height
-                console.log(`Adjusted height to ${img.clientHeight}px for overlay ${index}`);
-            } else {
-                console.log(`No matching overlay for image ${index}`);
-            }
-        });
-    }
-
-    // Function to handle image loading
-    function handleImages() {
-        const mainFrameImgs = document.querySelectorAll('.main-frame-img');
-
-        const loadImages = Array.from(mainFrameImgs).map(img => 
-            new Promise((resolve) => {
-                if (img.complete) {
-                    resolve();
-                } else {
-                    img.onload = resolve;
-                }
-            })
-        );
-
-        Promise.all(loadImages).then(() => {
-            adjustOverlayHeight();
-            console.log("All images loaded, overlays adjusted");
-        });
-    }
-
-    // Call the handleImages function to adjust heights
-    handleImages();
-
-    // Adjust height when the window is resized
-    window.addEventListener('resize', adjustOverlayHeight);
-
-    // Observe changes in the DOM if images or overlays are added dynamically
-    const observer = new MutationObserver(() => {
-        handleImages();
-    });
-
-    observer.observe(document.body, { childList: true, subtree: true });
-});

@@ -71,20 +71,12 @@
 
       <div class="trending-products mt-5 row">
         {% for product in trend_products %}
-        <div class="col-sm-6 col-lg-3 mb-4">
+        <div class="col-sm-6 col-lg-4 col-xxl-3 col-xl-4 mb-4">
           <div class="product-item">
             <a href="product/{{product.get_absolute_url}}">
               <div class="product-item-img">
-                {% if product.type == 'GLASS'%}
-                <div class="frame-main" id="main-frame">
-                 <div class="glass-overlay"><img src="{% static 'images/shadow11.png'%}" alt=""></div>
-                   <img class="product-img main-frame-img" src="{{product.image.url}}" alt=""> 
-                   </div>
-
-                   
-                {%else%}
+               
                 <img class="product-img main-frame-img mdf-image"  src="{{product.image.url}}" alt=""> 
-                {%endif%}
               </div>
               </a>
               <div class="product-col-info p-2">
@@ -153,19 +145,13 @@
         </div>
         <div class="trending-products mt-5 row">
           {% for product in least_glass %}
-          <div class="col-sm-6 col-lg-3 mb-4">
+          <div class="col-sm-6 col-lg-4 col-xxl-3 col-xl-4 mb-4">
             <div class="product-item">
               <a href="product/{{product.get_absolute_url}}">
                 <div class="product-item-img">
-                 {% if product.type == 'GLASS'%}
-                 <div class="frame-main" id="main-frame">
-                  <div class="glass-overlay"><img src="{% static 'images/shadow11.png'%}" alt=""></div>
-                    <img class="product-img main-frame-img" src="{{product.image.url}}" alt=""> 
-                    </div>
-
-                 {%else%}
+               
                  <img class="product-img  mdf-image"  src="{{product.image.url}}" alt=""> 
-                 {%endif%}
+             
                 </div>
                 </a>
                 <div class="product-col-info p-2">
@@ -286,19 +272,13 @@
         </div>
         <div class="trending-products mt-5 row">
           {% for product in least_mdf %}
-          <div class="col-sm-6 col-lg-3 mb-4">
+          <div class="col-sm-6 col-lg-4 col-xxl-3 col-xl-4 mb-4">
             <div class="product-item">
               <a href="product/{{product.get_absolute_url}}">
                 <div class="product-item-img">
-                  {% if product.type == 'GLASS'%}
-                 <div class="frame-main" id="main-frame">
-                  <div class="glass-overlay"><img src="{% static 'images/shadow11.png'%}" alt=""></div>
-                    <img class="product-img main-frame-img" src="{{product.image.url}}" alt=""> 
-                    </div>
-
-                 {%else%}
+                  
                  <img class="product-img  mdf-image"  src="{{product.image.url}}" alt=""> 
-                 {%endif%}
+               
                 </div>
                 </a>
                 <div class="product-col-info p-2">
@@ -349,19 +329,13 @@
         </div>
         <div class="best-seller-items row">
           {% for product in discounted_products %}
-          <div class="col-sm-6 col-lg-4 col-xl-3 mb-4">
+          <div class="col-sm-6 col-lg-4 col-xxl-3 col-xl-4 mb-4">
             <div class="product-item">
               <a href="product/{{product.get_absolute_url}}">
                 <div class="product-item-img">
-                  {% if product.type == 'GLASS'%}
-                 <div class="frame-main" id="main-frame">
-                  <div class="glass-overlay"><img src="{% static 'images/shadow11.png'%}" alt=""></div>
-                    <img class="product-img main-frame-img" src="{{product.image.url}}" alt=""> 
-                    </div>
-
-                 {%else%}
+                 
                  <img class="product-img"  src="{{product.image.url}}" alt=""> 
-                 {%endif%}
+              
                 </div>
                 </a>
                 <div class="product-col-info p-2">
@@ -538,7 +512,7 @@
       <h4>Latest Blogs</h4>
       <div class="blogs-container mt-4">
         <div class="row">
-          <div class="col-md-6 col-12 col-sm-6 col-lg-3 mb-4">
+          <div class="col-md-6 col-12 col-sm-6 col-lg-4 col-xxl-3 col-xl-4 mb-4">
             <a href="" class="w-100 blog-item mb-4">
               <img class="blog-img"
                 src="https://demo.themerox.com/posterlaab-3/wp-content/uploads/2023/03/posterlaab-blog-GWD-scaled.jpg"
@@ -565,7 +539,7 @@
           </div>
 
 
-          <div class="col-md-6 col-12 col-sm-6 col-lg-3 mb-4">
+          <div class="col-md-6 col-12 col-sm-6 col-lg-4 col-xxl-3 col-xl-4 mb-4">
             <a href="" class="w-100 blog-item mb-4">
               <img class="blog-img"
                 src="https://demo.themerox.com/posterlaab-3/wp-content/uploads/2023/03/posterlaab-blog-GWD-scaled.jpg"
@@ -591,7 +565,7 @@
             </a>
           </div>
 
-          <div class="col-md-6 col-12 col-sm-6 col-lg-3 mb-4">
+          <div class="col-md-6 col-12 col-sm-6 col-lg-4 col-xxl-3 col-xl-4 mb-4">
             <a href="" class="w-100 blog-item mb-4">
               <img class="blog-img"
                 src="https://demo.themerox.com/posterlaab-3/wp-content/uploads/2023/03/posterlaab-blog-GWD-scaled.jpg"
@@ -617,7 +591,7 @@
             </a>
           </div>
 
-          <div class="col-md-6 col-12 col-sm-6 col-lg-3 mb-4">
+          <div class="col-md-6 col-12 col-sm-6 col-lg-4 col-xxl-3 col-xl-4 mb-4">
             <a href="" class="w-100 blog-item mb-4">
               <img class="blog-img"
                 src="https://demo.themerox.com/posterlaab-3/wp-content/uploads/2023/03/posterlaab-blog-GWD-scaled.jpg"

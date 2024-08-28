@@ -8,32 +8,11 @@ function displayResults(results) {
   if (results.products.length > 0) {
     for (const product of results.products) {
       products.innerHTML += `
-      <div class="col-sm-6 col-xl-3 mb-4">
+      <div class="col-sm-6 col-xxl-3 col-xl-4  mb-4">
             <div class="product-item">
               <a href="${product.url}">
                 <div class="product-item-img" style="position:relative;">
-
-                    ${(function Items2() {
-                      let items2 = [];
-                      if (product.type == "MDF") {
-                        
-                        items2.push(
-                          ` <img class="product-img mdf-image" src="${product.image}" alt="">`
-                        );
-                      } else {
-                        
-                        
-                        items2.push(
-                          `
-                          <div class="frame-main">
-                          <div class="glass-overlay"><img src="/static/images/shadow11.png" alt=""></div> 
-                          <img class="product-img main-frame-img" src="${product.image}" alt=""> 
-                          </div>`
-
-                        );
-                      }
-                      return items2.join("");
-                    })()}
+                  <img class="product-img mdf-image" src="${product.image}" alt="">
                     
                 
                  
@@ -93,44 +72,9 @@ function displayResults(results) {
     products.innerHTML += `<div class="alert alert-danger">${transNoProduct}</div>`;
   }
   loader.hide();
-  function adjustImages() {
-    setTimeout(() => {
-        const frameMains = document.querySelectorAll('.frame-main');
-        
-        frameMains.forEach(frameMain => {
-            const imgs = frameMain.querySelectorAll('.main-frame-img');
-            
-            imgs.forEach(img => {
-                if (img.complete) {
-                    adjustFrameHeight(frameMain, img);
-                } else {
-                    img.onload = function() {
-                        adjustFrameHeight(frameMain, img);
-                    };
-                }
-            });
-        });
-    }, 100); // Delay to allow the DOM to update
+ 
 }
 
-// Call this function whenever the page is loaded or navigated to
-adjustImages();
-
-
-    function adjustFrameHeight(frameMain, img) {
-        const frameMainHeight = frameMain.clientHeight;
-        const imgHeight = img.clientHeight;
-        console.log(frameMainHeight,imgHeight);
-
-        if (imgHeight < frameMainHeight) {
-            
-            frameMain.style.height = 'unset';  // Unset height if image is smaller
-        } else {
-            
-            frameMain.style.height = '100%';  // Set height to 100% if image is larger
-        }
-    }
-}
 
 function updateTypeUI(selectedType) {
   document.querySelectorAll(".type-list li").forEach((typeItem) => {

@@ -177,16 +177,8 @@
                         <div class="p-0 d-flex row w-100 m-0 mt-3">
                           <div class="col-md-8  w-100 d-flex" style="padding-left: 0;">
                             <div class="order-item-img" style="position: relative;">
-                              {% if item.product.type == "MDF" %}
                                <a href="/product/{{item.product.get_absolute_url}}"><img width="50"  height="50" src="{{item.product.image.url}}" alt=""></a>
-                               {% else %}
-                               <a href="/product/{{item.product.get_absolute_url}}">
-                                <div class="frame-main">
-                                <div class="glass-overlay"><img src="{% static 'images/shadow11.png'%}" alt=""></div>
-                                <img class="main-frame-img" src="{{item.product.image.url}}" alt="">
-                                </div>
-                              </a>
-                               {% endif %}
+                              
                             </div>
                            
                             <div class="order-name"><a href="/product/{{item.product.get_absolute_url}}"><h4>{{item.product.title}}</h4></a><span type="button" data-toggle="modal" data-target="#{{item.product.slug}}">{% trans 'məhsula rəy ver' %}</span></div>

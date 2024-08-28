@@ -259,55 +259,50 @@ document.addEventListener('DOMContentLoaded', () => {
 
 let mainFrameImg=document.getElementById('main-frame-img')
 
-let glassOverlay=document.getElementById("glass-overlay");
-function adjustOverlayHeight() {
-    glassOverlay.style.height = mainFrameImg.clientHeight + 'px';
-  }
 mainFrameImg.onload = function() {
     document.getElementById('loading-spinner').style.display = 'none';
     this.style.display = 'block';
     
-    adjustOverlayHeight();
 };
-window.addEventListener('resize', adjustOverlayHeight);
+// window.addEventListener('resize', adjustOverlayHeight);
 
-function adjustImages() {
-    setTimeout(() => {
-        const frameMains = document.querySelectorAll('.frame-main2');
+// function adjustImages() {
+//     setTimeout(() => {
+//         const frameMains = document.querySelectorAll('.frame-main2');
         
-        frameMains.forEach(frameMain => {
-            const imgs = frameMain.querySelectorAll('.main-frame-img2');
+//         frameMains.forEach(frameMain => {
+//             const imgs = frameMain.querySelectorAll('.main-frame-img2');
             
-            imgs.forEach(img => {
-                if (img.complete) {
-                    adjustFrameHeight(frameMain, img);
-                } else {
-                    img.onload = function() {
-                        adjustFrameHeight(frameMain, img);
-                    };
-                }
-            });
-        });
-    }, 100); // Delay to allow the DOM to update
-}
+//             imgs.forEach(img => {
+//                 if (img.complete) {
+//                     adjustFrameHeight(frameMain, img);
+//                 } else {
+//                     img.onload = function() {
+//                         adjustFrameHeight(frameMain, img);
+//                     };
+//                 }
+//             });
+//         });
+//     }, 100); // Delay to allow the DOM to update
+// }
 
-// Call this function whenever the page is loaded or navigated to
-adjustImages();
+// // Call this function whenever the page is loaded or navigated to
+// adjustImages();
 
 
-    function adjustFrameHeight(frameMain, img) {
-        const frameMainHeight = frameMain.clientHeight;
-        const imgHeight = img.clientHeight;
-        console.log(frameMainHeight,imgHeight);
+//     function adjustFrameHeight(frameMain, img) {
+//         const frameMainHeight = frameMain.clientHeight;
+//         const imgHeight = img.clientHeight;
+//         console.log(frameMainHeight,imgHeight);
 
-        if (imgHeight < frameMainHeight/2) {
+//         if (imgHeight < frameMainHeight/2) {
             
-            frameMain.style.height = 'unset';  // Unset height if image is smaller
-        } else {
+//             frameMain.style.height = 'unset';  // Unset height if image is smaller
+//         } else {
             
-            frameMain.style.height = '100%';  // Set height to 100% if image is larger
-        }
-    }
+//             frameMain.style.height = '100%';  // Set height to 100% if image is larger
+//         }
+//     }
 
 
 
@@ -315,42 +310,42 @@ adjustImages();
 
  
     
-    function adjustImages2() {
-        setTimeout(() => {
-            const frameMain = document.querySelector('.frame-main');
+    // function adjustImages2() {
+    //     setTimeout(() => {
+    //         const frameMain = document.querySelector('.frame-main');
             
-                const img = document.getElementById('main-frame-img');
+    //             const img = document.getElementById('main-frame-img');
                 
-                    if (img.complete) {
-                        console.log("222");
-                        console.log(frameMain);
-                        console.log(img);
+    //                 if (img.complete) {
+    //                     console.log("222");
+    //                     console.log(frameMain);
+    //                     console.log(img);
                         
                         
                         
-                        adjustFrameHeight2(frameMain, img);
-                    } else {
-                        img.onload = function() {
-                            adjustFrameHeight2(frameMain, img);
-                        };
-                    }
-        }, 300); // Delay to allow the DOM to update
-    }
+    //                     adjustFrameHeight2(frameMain, img);
+    //                 } else {
+    //                     img.onload = function() {
+    //                         adjustFrameHeight2(frameMain, img);
+    //                     };
+    //                 }
+    //     }, 300); // Delay to allow the DOM to update
+    // }
     
-    // Call this function whenever the page is loaded or navigated to
-    adjustImages2();
+    // // Call this function whenever the page is loaded or navigated to
+    // adjustImages2();
     
     
-        function adjustFrameHeight2(frameMain, img) {
-            const frameMainHeight = frameMain.clientHeight;
-            const imgHeight = img.clientHeight;
-            console.log(frameMainHeight,imgHeight);
+    //     function adjustFrameHeight2(frameMain, img) {
+    //         const frameMainHeight = frameMain.clientHeight;
+    //         const imgHeight = img.clientHeight;
+    //         console.log(frameMainHeight,imgHeight);
     
-            if (imgHeight < frameMainHeight) {
+    //         if (imgHeight < frameMainHeight) {
                 
-                frameMain.style.height = 'unset';  // Unset height if image is smaller
-            } else {
+    //             frameMain.style.height = 'unset';  // Unset height if image is smaller
+    //         } else {
                 
-                frameMain.style.height = '100%';  // Set height to 100% if image is larger
-            }
-        }
+    //             frameMain.style.height = '100%';  // Set height to 100% if image is larger
+    //         }
+    //     }

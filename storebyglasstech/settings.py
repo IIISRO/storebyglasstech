@@ -23,8 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-uvn6r6p7n0v4!4@+9xk+oe*#46zlvvqb04g)l67oes^wjvtprl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False if os.environ.get('DEBUG') else True 
-# DEBUG=True
+# DEBUG = False if os.environ.get('DEBUG') else True 
+DEBUG=True
 
 
 ALLOWED_HOSTS = ['*']
@@ -136,8 +136,8 @@ DATABASES = {
         'NAME': os.environ.get('POSTGRES_DB','storeglasstechDB'),
         'USER': os.environ.get('POSTGRES_USER','storeglasstech'),
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD','de$?dwd33!wewedw23@o8'),
-        # 'HOST':'localhost',
-        'HOST': os.environ.get('POSTGRES_HOST','localhost'),
+        'HOST':'localhost',
+        # 'HOST': os.environ.get('POSTGRES_HOST','localhost'),
         'PORT': os.environ.get('POSTGRES_PORT','5432'),
     }
 }

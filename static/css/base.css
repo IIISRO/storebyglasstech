@@ -152,7 +152,12 @@ a:hover{
         display: none !important;
     }
 }
-
+@media (min-width: 1400px) {
+    .col-xxl-3 {
+        flex: 0 0 auto !important;
+        width: 25% !important;
+    }
+  }
 .logo {
     width: 120px;
     max-width: 250px;

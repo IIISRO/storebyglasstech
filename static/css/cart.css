@@ -86,6 +86,12 @@
 .cart_table .product-thumbnail {
     min-width: 32px;
 }
+@media(min-width:1024px){
+    .cart_table .product-thumbnail{
+    max-width: 200px;
+
+    }
+}
 .cart_table td{
     padding: 20px 20px;
 }
