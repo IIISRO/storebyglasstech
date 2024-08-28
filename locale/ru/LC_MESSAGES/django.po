@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-19 14:31+0000\n"
+"POT-Creation-Date: 2024-08-28 07:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -395,6 +395,50 @@ msgstr "Главная страница"
 msgid "Haqqımızda"
 msgstr "О нас"
 
+#: core/templates/about.html:17
+msgid "Yüksək keyfiyyət və göz oxşayan tablolar."
+msgstr "Картины качественные и интересные."
+
+#: core/templates/about.html:18
+msgid "İstənilən ölçü, şəkil, qiymətə uyğun tablonuzu seçin və sifariş verin."
+msgstr "Выбирайте картину любого размера, рисунка, цены и заказывайте."
+
+#: core/templates/about.html:20 core/templates/home.html:47
+#: core/templates/home.html:53
+msgid "İndi al"
+msgstr "Купите сейчас"
+
+#: core/templates/about.html:36
+msgid "Biz yüksək çap və material keyfiyyətinə sahib tablolar hazırlayırıq."
+msgstr "Мы производим высококачественные печатные и материальные картины."
+
+#: core/templates/about.html:47
+msgid ""
+"“Store glasstech” şirkəti yerli bazarda şüşə məhsulları sənayesində  17 "
+"ildir fəaliyyət göstərən ‘’Glasstech’’  şirkətinin bir qoludur."
+msgstr "<b>Store Glasstech</b> является частью компании <b>Glasstech</b>, которая уже 17 лет работает в индустрии стеклянных изделий на местном рынке."
+
+#: core/templates/about.html:53
+msgid "Missiyamız"
+msgstr "Наша миссия"
+
+#: core/templates/about.html:55
+msgid ""
+"Şirkətin yaranmağındakı ən önəmli səbəb alıcılarımıza hazır şüşə tablolar və "
+"hazır hədiyyəlik şüşə məhsullarını çox qısa bir zaman zərfində hazırlayaraq "
+"online sifarişlər əsasında təqdim etməkdir."
+msgstr "Главная цель создания компании — предоставление нашим клиентам готовых стеклянных картин и подарочных изделий из стекла, которые изготавливаются в кратчайшие сроки и предлагаются на основе онлайн-заказов."
+
+#: core/templates/about.html:59
+msgid "Üstünlüklərimiz"
+msgstr "Наши преимущества"
+
+#: core/templates/about.html:61
+msgid ""
+"Bu səhifədə müştərilərimiz hətta öz seçdikləri şəkilləri belə sayta "
+"yükləyərək tablolarını yarada bilər və onlayn şəkildə sifariş edə bilərlər."
+msgstr "На этой странице наши клиенты могут даже загружать свои изображения на сайт, создавать свои картины и заказывать их онлайн."
+
 #: core/templates/base.html:85 core/templates/base.html:148
 msgid "Məshsul axtar..."
 msgstr "Поиск продукта..."
@@ -421,19 +465,19 @@ msgid "Məhsullar"
 msgstr "Продукты"
 
 #: core/templates/base.html:173 core/templates/base.html:243
-#: core/templates/base.html:314 core/templates/home.html:209
-#: core/templates/home.html:232
+#: core/templates/base.html:314 core/templates/home.html:210
+#: core/templates/home.html:233
 msgid "Şüşə tablolar"
 msgstr "Стеклянные панели"
 
 #: core/templates/base.html:174 core/templates/base.html:244
-#: core/templates/base.html:315 core/templates/home.html:213
-#: core/templates/home.html:242
+#: core/templates/base.html:315 core/templates/home.html:214
+#: core/templates/home.html:243
 msgid "MDF tablolar"
 msgstr "Панели ДПВ"
 
 #: core/templates/base.html:175 core/templates/base.html:316
-#: core/templates/home.html:217
+#: core/templates/home.html:218
 msgid "Saatlar"
 msgstr "Часы"
 
@@ -483,27 +527,27 @@ msgstr "Главная страница"
 msgid "Bizimlə Əlaqə"
 msgstr "Связаться с нами"
 
-#: core/templates/base.html:372
+#: core/templates/base.html:375
 msgid "Səbətə Əlavə Olundu"
 msgstr "Добавлено в корзину"
 
-#: core/templates/base.html:373
+#: core/templates/base.html:376
 msgid "Xəta baş verdi"
 msgstr "Произошла ошибка"
 
-#: core/templates/base.html:374
+#: core/templates/base.html:377
 msgid "Məlumatlar tam deyil"
 msgstr "Данные неполные"
 
-#: core/templates/base.html:377
+#: core/templates/base.html:380
 msgid "Artıq kupon var!"
 msgstr "Купон уже имеется!"
 
-#: core/templates/base.html:378
+#: core/templates/base.html:381
 msgid "Kupon əlavə edildi!"
 msgstr "Купон добавлен!"
 
-#: core/templates/base.html:379
+#: core/templates/base.html:382
 msgid "Kupon tapılmadı!"
 msgstr "Купон не найден!"
 
@@ -536,7 +580,6 @@ msgid "County Hall, Bishop’s, SE1 7PB, United Kingdom"
 msgstr ""
 
 #: core/templates/contact.html:111
-#| msgid "Divar saatları"
 msgid "İş saatları"
 msgstr "Настенные часы"
 
@@ -608,10 +651,6 @@ msgstr "Стеклянные картины"
 msgid "Şüşə dən hazılanmış tablolar"
 msgstr "Картины изготовленные из стекла"
 
-#: core/templates/home.html:47 core/templates/home.html:53
-msgid "İndi al"
-msgstr "Купите сейчас"
-
 #: core/templates/home.html:51
 msgid "MDF Tablolar"
 msgstr "Картины из ДВП"
@@ -628,40 +667,39 @@ msgstr "Проданные больше всего"
 msgid "Bütün müştərilərimiz tərifindən bəyənilən ən seçilən tablolarımız"
 msgstr "Наши самые популярные картины, которые понравились всем нашим клиентам"
 
-#: core/templates/home.html:128
+#: core/templates/home.html:129
 msgid "Ən çox çeşİdlİ kateqorİya bİrİncİ sırada"
 msgstr "Самая разнообразная категория на первом месте"
 
-#: core/templates/home.html:129 core/templates/home.html:135
+#: core/templates/home.html:130 core/templates/home.html:136
 msgid "Kateqoriyası"
 msgstr "Категория"
 
-#: core/templates/home.html:130 core/templates/home.html:136
-msgid "Kateqoriyanın bol çeşidə sahib olan tablolarına göz atın."
-msgstr ""
-"Ознакомьтесь с картинами, имеющими широкий ассортимент в данной категории."
-
 #: core/templates/home.html:131 core/templates/home.html:137
+msgid "Kateqoriyanın bol çeşidə sahib olan tablolarına göz atın."
+msgstr "Ознакомьтесь с картинами, имеющими широкий выбор в данной категории."
+
+#: core/templates/home.html:132 core/templates/home.html:138
 msgid "Kateqoriyaya bax"
 msgstr "Посмотреть категорию"
 
-#: core/templates/home.html:134
+#: core/templates/home.html:135
 msgid "Ən çox çeşİdlİ kateqorİya İkİncİ sırada"
 msgstr "Вторая по разнообразию категория"
 
-#: core/templates/home.html:150 core/templates/home.html:283
+#: core/templates/home.html:151 core/templates/home.html:284
 msgid "Ən yeni"
 msgstr "Новинки"
 
-#: core/templates/home.html:151
+#: core/templates/home.html:152
 msgid "Şüşə tablolarımız"
 msgstr "Наши стеклянные картины"
 
-#: core/templates/home.html:221 core/templates/home.html:262
+#: core/templates/home.html:222 core/templates/home.html:263
 msgid "Özün hazırla"
 msgstr "Создайте сами"
 
-#: core/templates/home.html:233
+#: core/templates/home.html:234
 msgid ""
 "<a href=\"https://glasstech.az\">Glasstech</a> tərəfindən istehsal olunan "
 "yüksək keyfiyyətli şüşələrimizdən hazırlanan göz oxşayan tablolarımız."
@@ -669,21 +707,21 @@ msgstr ""
 "Производитель <a href=\"https://glasstech.az\">Glasstech</a> привлекательные "
 "картины из нашего высококачественного стекла."
 
-#: core/templates/home.html:234 core/templates/home.html:244
+#: core/templates/home.html:235 core/templates/home.html:245
 msgid "Tablolara bax"
 msgstr "Посмотреть картины"
 
-#: core/templates/home.html:243
-msgid "Yüksək MDF, qüsursuz kəsim və göz oxşayan tablolarımız."
+#: core/templates/home.html:244
+msgid "MDF, qüsursuz kəsim və göz oxşayan tablolarımız."
 msgstr ""
 "Наши картины из высококачественного ДПВ, с идеальной отделкой и "
 "привлекательным дизайном."
 
-#: core/templates/home.html:252
+#: core/templates/home.html:253
 msgid "Divar saatları"
 msgstr "Настенные часы"
 
-#: core/templates/home.html:253
+#: core/templates/home.html:254
 msgid ""
 "Dözümlu və estetik divar saatınızı hazırlayıb bir kliklə sifariş edə "
 "bilərsiniz."
@@ -691,12 +729,12 @@ msgstr ""
 "Вы можете создать и заказать настенные часы, отличающиеся долговечностью и "
 "эстетичным дизайном, в один клик."
 
-#: core/templates/home.html:254 core/templates/home.html:264
+#: core/templates/home.html:255 core/templates/home.html:265
 #: product/templates/products.html:21
 msgid "Hazırla"
 msgstr "Создать"
 
-#: core/templates/home.html:263
+#: core/templates/home.html:264
 msgid ""
 "İstədiyiniz ölçü və materialda tablo hazırlayıb bir kliklə sifariş edə "
 "bilərsiniz"
@@ -704,23 +742,23 @@ msgstr ""
 "Вы можете создать картину любого размера и материала и заказать ее в один "
 "клик."
 
-#: core/templates/home.html:284
+#: core/templates/home.html:285
 msgid "MDF tablolarımız"
 msgstr "Наши ДПВ картины"
 
-#: core/templates/home.html:342
+#: core/templates/home.html:343
 msgid "Endirimli Məhsullar"
 msgstr "Скидочные товары"
 
-#: core/templates/home.html:343
+#: core/templates/home.html:344
 msgid "dək endİrİmlər"
 msgstr "до скидок"
 
-#: core/templates/home.html:345
+#: core/templates/home.html:346
 msgid "Seçiminizi indi edin, endirmləri qaçırmayın!"
 msgstr "Сделайте выбор сейчас, не упустите скидки!"
 
-#: core/templates/home.html:347
+#: core/templates/home.html:348
 msgid "Bütün məhsullar"
 msgstr "Все товары"
 

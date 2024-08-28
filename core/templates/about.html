@@ -14,11 +14,10 @@
         <div class="container-fluid py-5 py-md-0">
             <div class="row d-flex align-items-center">
                 <div class="col-md-6">
-                    <h1>World Leading Posters & Arts Selling Company</h1>
-                    <p class="mt-3">Due to the impact of the latest EU tariff policy, Orders over 150€ require the buyer
-                        to pay all the posters elements</p>
+                    <h1>{% trans "Yüksək keyfiyyət və göz oxşayan tablolar." %}</h1>
+                    <p class="mt-3">{% trans "İstənilən ölçü, şəkil, qiymətə uyğun tablonuzu seçin və sifariş verin." %}</p>
                     <a class="shop-btn py-2 px-4 mt-3 d-block" href="">
-                        Shop Now
+                        {% trans "İndi al" %}
                     </a>
                 </div>
                 <div class="col-md-6 d-flex justify-content-end">
@@ -34,7 +33,7 @@
 
     <div class="w-100 section2 py-5">
         <div class="container-fluid py-5 d-flex flex-column align-items-center">
-            <h3>We print collectible metal posters that make this really sweet.</h3>
+            <h3>{% trans "Biz yüksək çap və material keyfiyyətinə sahib tablolar hazırlayırıq." %}</h3>
             <div class="row mt-4 ">
                 <div class="col-md-6">
                     <img class="w-100" src="{% static 'images/about-us1.jpeg' %}"
@@ -43,17 +42,23 @@
                 <div class="col-md-6">
                     <div class="row">
                         <div class="col-md-6">
-                            <h4>Our mission</h4>
+                            <h4>STOREGLASSTECH</h4>
                             <p class="mt-2">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit culpa
-                                voluptatibus totam unde quis quasi dolor molestias amet esse cumque?
+                                {% trans "“Store glasstech” şirkəti yerli bazarda şüşə məhsulları sənayesində  17 ildir fəaliyyət göstərən ‘’Glasstech’’  şirkətinin bir qoludur." %} 
+
+                                
                             </p>
                         </div>
                         <div class="col-md-6">
-                            <h4>Our mission</h4>
+                            <h4>{% trans "Missiyamız" %}</h4>
                             <p class="mt-2">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit culpa
-                                voluptatibus totam unde quis quasi dolor molestias amet esse cumque?
+                                {% trans "Şirkətin yaranmağındakı ən önəmli səbəb alıcılarımıza hazır şüşə tablolar və hazır hədiyyəlik şüşə məhsullarını çox qısa bir zaman zərfində hazırlayaraq online sifarişlər əsasında təqdim etməkdir." %}  
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>{% trans "Üstünlüklərimiz" %}</h4>
+                            <p class="mt-2">
+                                {% trans "Bu səhifədə müştərilərimiz hətta öz seçdikləri şəkilləri belə sayta yükləyərək tablolarını yarada bilər və onlayn şəkildə sifariş edə bilərlər." %}
                             </p>
                         </div>
                     </div>
@@ -63,7 +68,7 @@
     </div>
 
 
-    <div class="clients w-100 py-5">
+    <!-- <div class="clients w-100 py-5">
         <div class="container-fluid pb-5">
             <h4 class="text-center mb-5">Our Business Partners</h4>
             <div id="owl-demo6" class="owl-carousel d-block owl-theme mt-4">
@@ -101,7 +106,7 @@
                 
             </div>
         </div>
-    </div>
+    </div> -->
     {% endblock %}
 
 

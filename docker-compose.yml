@@ -41,9 +41,12 @@ services:
     restart: always
     ports:
       - 80:80
+      - 443:443
     volumes:
       - ./static/:/code/static/
       - ./media/:/code/media/
+      - ./ssl_certificate.crt:/code/ssl_certificate.crt
+      - ./ssl_certificate.key:/code/ssl_certificate.key
     depends_on:
       - web
     
@@ -52,3 +55,4 @@ services:
     restart: always
     ports:
       - 8080:8080
+

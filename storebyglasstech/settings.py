@@ -23,8 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-uvn6r6p7n0v4!4@+9xk+oe*#46zlvvqb04g)l67oes^wjvtprl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = False if os.environ.get('DEBUG') else True 
-DEBUG=True
+DEBUG = False if os.environ.get('DEBUG') else True 
+# DEBUG=True
 
 
 ALLOWED_HOSTS = ['*']
@@ -68,38 +68,43 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost",
-#     "http://localhost:8001",
-#     'http://178.128.207.194'
-# ]
-# CORS_ALLOW_METHODS = [
-#     "DELETE",
-#     "GET",
-#     "OPTIONS",
-#     "PATCH",
-#     "POST",
-#     "PUT",
-# ]
-# CORS_ALLOW_HEADERS = [
-#     "accept",
-#     "accept-encoding",
-#     "authorization",
-#     "content-type",
-#     "dnt",
-#     "origin",
-#     "user-agent",
-#     "x-csrftoken",
-#     "x-requested-with",
-# ]
-# CSRF_TRUSTED_ORIGINS = [
-#     "http://localhost",
-#     "http://localhost:8001/",
-#     'http://178.128.207.194'
-    
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
-# ]
+# CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    "https://storeglasstech.az",
+    "https://www.storeglasstech.az",
+]
+CORS_ALLOW_METHODS = [
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+]
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "accept-encoding",
+    "authorization",
+    "content-type",
+    "dnt",
+    "origin",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+]
+CSRF_TRUSTED_ORIGINS = [ 
+    "https://storeglasstech.az",
+    "https://www.storeglasstech.az",
+    ]
+ALLOWED_ORIGINS = [ 
+    "https://storeglasstech.az",
+    "https://www.storeglasstech.az",
+    ]
+
+# CSRF_COOKIE_HTTPONLY = True
+# CSRF_COOKIE_SECURE = True
 
 ROOT_URLCONF = 'storebyglasstech.urls'
 
@@ -131,8 +136,8 @@ DATABASES = {
         'NAME': os.environ.get('POSTGRES_DB','storeglasstechDB'),
         'USER': os.environ.get('POSTGRES_USER','storeglasstech'),
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD','de$?dwd33!wewedw23@o8'),
-        'HOST':'localhost',
-        # 'HOST': os.environ.get('POSTGRES_HOST','localhost'),
+        # 'HOST':'localhost',
+        'HOST': os.environ.get('POSTGRES_HOST','localhost'),
         'PORT': os.environ.get('POSTGRES_PORT','5432'),
     }
 }
@@ -390,5 +395,5 @@ EMAIL_BACKEND = 'storebyglasstech.email_backend.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'market.bhc@gmail.com'
-EMAIL_HOST_PASSWORD = 'rqxqkpypjuecirfa'
+EMAIL_HOST_USER = 'storebyglasstech@gmail.com'
+EMAIL_HOST_PASSWORD = 'ksxdqywvxgdurjgi'

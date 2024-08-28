@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-19 14:33+0000\n"
+"POT-Creation-Date: 2024-08-28 07:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -394,6 +394,50 @@ msgstr "Home"
 msgid "Haqqımızda"
 msgstr "About us"
 
+#: core/templates/about.html:17
+msgid "Yüksək keyfiyyət və göz oxşayan tablolar."
+msgstr "High quality and eye-catching paintings."
+
+#: core/templates/about.html:18
+msgid "İstənilən ölçü, şəkil, qiymətə uyğun tablonuzu seçin və sifariş verin."
+msgstr "Choose your painting of any size, picture, price and order."
+
+#: core/templates/about.html:20 core/templates/home.html:47
+#: core/templates/home.html:53
+msgid "İndi al"
+msgstr "Buy now"
+
+#: core/templates/about.html:36
+msgid "Biz yüksək çap və material keyfiyyətinə sahib tablolar hazırlayırıq."
+msgstr "We produce high-quality printed and material paintings."
+
+#: core/templates/about.html:47
+msgid ""
+"“Store glasstech” şirkəti yerli bazarda şüşə məhsulları sənayesində  17 "
+"ildir fəaliyyət göstərən ‘’Glasstech’’  şirkətinin bir qoludur."
+msgstr "<b>Store Glasstech</b> is a part of <b>Glasstech</b>, a company that has been operating in the glass products industry for 17 years in the local market."
+
+#: core/templates/about.html:53
+msgid "Missiyamız"
+msgstr "Our mission"
+
+#: core/templates/about.html:55
+msgid ""
+"Şirkətin yaranmağındakı ən önəmli səbəb alıcılarımıza hazır şüşə tablolar və "
+"hazır hədiyyəlik şüşə məhsullarını çox qısa bir zaman zərfində hazırlayaraq "
+"online sifarişlər əsasında təqdim etməkdir."
+msgstr "The primary reason for establishing the company is to provide our customers with ready-made glass paintings and gift glass products, prepared in a very short time and offered based on online orders."
+
+#: core/templates/about.html:59
+msgid "Üstünlüklərimiz"
+msgstr "Our advantages"
+
+#: core/templates/about.html:61
+msgid ""
+"Bu səhifədə müştərilərimiz hətta öz seçdikləri şəkilləri belə sayta "
+"yükləyərək tablolarını yarada bilər və onlayn şəkildə sifariş edə bilərlər."
+msgstr "On this page, our customers can even upload their own selected images to the site, create their paintings, and order them online."
+
 #: core/templates/base.html:85 core/templates/base.html:148
 msgid "Məshsul axtar..."
 msgstr "Search for products..."
@@ -420,19 +464,19 @@ msgid "Məhsullar"
 msgstr "Products"
 
 #: core/templates/base.html:173 core/templates/base.html:243
-#: core/templates/base.html:314 core/templates/home.html:209
-#: core/templates/home.html:232
+#: core/templates/base.html:314 core/templates/home.html:210
+#: core/templates/home.html:233
 msgid "Şüşə tablolar"
 msgstr "Glass paints"
 
 #: core/templates/base.html:174 core/templates/base.html:244
-#: core/templates/base.html:315 core/templates/home.html:213
-#: core/templates/home.html:242
+#: core/templates/base.html:315 core/templates/home.html:214
+#: core/templates/home.html:243
 msgid "MDF tablolar"
 msgstr "MDF paints"
 
 #: core/templates/base.html:175 core/templates/base.html:316
-#: core/templates/home.html:217
+#: core/templates/home.html:218
 msgid "Saatlar"
 msgstr "Clocks"
 
@@ -482,27 +526,27 @@ msgstr "Home"
 msgid "Bizimlə Əlaqə"
 msgstr "Contact us"
 
-#: core/templates/base.html:372
+#: core/templates/base.html:375
 msgid "Səbətə Əlavə Olundu"
 msgstr "Added to basket"
 
-#: core/templates/base.html:373
+#: core/templates/base.html:376
 msgid "Xəta baş verdi"
 msgstr "Error"
 
-#: core/templates/base.html:374
+#: core/templates/base.html:377
 msgid "Məlumatlar tam deyil"
 msgstr "Data not correct!"
 
-#: core/templates/base.html:377
+#: core/templates/base.html:380
 msgid "Artıq kupon var!"
 msgstr "Already have a coupon"
 
-#: core/templates/base.html:378
+#: core/templates/base.html:381
 msgid "Kupon əlavə edildi!"
 msgstr "Coupon applied!"
 
-#: core/templates/base.html:379
+#: core/templates/base.html:382
 msgid "Kupon tapılmadı!"
 msgstr "No active coupon"
 
@@ -607,10 +651,6 @@ msgstr "GLASS paints"
 msgid "Şüşə dən hazılanmış tablolar"
 msgstr "Paints made of glass"
 
-#: core/templates/home.html:47 core/templates/home.html:53
-msgid "İndi al"
-msgstr "Buy now"
-
 #: core/templates/home.html:51
 msgid "MDF Tablolar"
 msgstr "MDF Paints"
@@ -627,39 +667,39 @@ msgstr "Best seller"
 msgid "Bütün müştərilərimiz tərifindən bəyənilən ən seçilən tablolarımız"
 msgstr "Our most popular paintings that are appreciated by all our customers"
 
-#: core/templates/home.html:128
+#: core/templates/home.html:129
 msgid "Ən çox çeşİdlİ kateqorİya bİrİncİ sırada"
 msgstr "The category with the most variety is in the first"
 
-#: core/templates/home.html:129 core/templates/home.html:135
+#: core/templates/home.html:130 core/templates/home.html:136
 msgid "Kateqoriyası"
 msgstr "Category"
 
-#: core/templates/home.html:130 core/templates/home.html:136
+#: core/templates/home.html:131 core/templates/home.html:137
 msgid "Kateqoriyanın bol çeşidə sahib olan tablolarına göz atın."
 msgstr "Browse the category's wide variety of paints."
 
-#: core/templates/home.html:131 core/templates/home.html:137
+#: core/templates/home.html:132 core/templates/home.html:138
 msgid "Kateqoriyaya bax"
 msgstr "Browse category"
 
-#: core/templates/home.html:134
+#: core/templates/home.html:135
 msgid "Ən çox çeşİdlİ kateqorİya İkİncİ sırada"
 msgstr "The category with the most variety is in the second"
 
-#: core/templates/home.html:150 core/templates/home.html:283
+#: core/templates/home.html:151 core/templates/home.html:284
 msgid "Ən yeni"
 msgstr "The newest"
 
-#: core/templates/home.html:151
+#: core/templates/home.html:152
 msgid "Şüşə tablolarımız"
 msgstr "Glass paints"
 
-#: core/templates/home.html:221 core/templates/home.html:262
+#: core/templates/home.html:222 core/templates/home.html:263
 msgid "Özün hazırla"
 msgstr "Design it yourself"
 
-#: core/templates/home.html:233
+#: core/templates/home.html:234
 msgid ""
 "<a href=\"https://glasstech.az\">Glasstech</a> tərəfindən istehsal olunan "
 "yüksək keyfiyyətli şüşələrimizdən hazırlanan göz oxşayan tablolarımız."
@@ -667,19 +707,19 @@ msgstr ""
 "Eye-catching artworks made from high-quality glass produced by <a "
 "href=\"https://glasstech.az\">glasstech</a>."
 
-#: core/templates/home.html:234 core/templates/home.html:244
+#: core/templates/home.html:235 core/templates/home.html:245
 msgid "Tablolara bax"
 msgstr "Browse paints"
 
-#: core/templates/home.html:243
-msgid "Yüksək MDF, qüsursuz kəsim və göz oxşayan tablolarımız."
+#: core/templates/home.html:244
+msgid "MDF, qüsursuz kəsim və göz oxşayan tablolarımız."
 msgstr "Our paints are made of high MDF, perfectly cut and eye-pleasing."
 
-#: core/templates/home.html:252
+#: core/templates/home.html:253
 msgid "Divar saatları"
 msgstr "Wall clocks"
 
-#: core/templates/home.html:253
+#: core/templates/home.html:254
 msgid ""
 "Dözümlu və estetik divar saatınızı hazırlayıb bir kliklə sifariş edə "
 "bilərsiniz."
@@ -687,12 +727,12 @@ msgstr ""
 "Make your durable and aesthetic wall clock and order it with one click you "
 "can"
 
-#: core/templates/home.html:254 core/templates/home.html:264
+#: core/templates/home.html:255 core/templates/home.html:265
 #: product/templates/products.html:21
 msgid "Hazırla"
 msgstr "Design"
 
-#: core/templates/home.html:263
+#: core/templates/home.html:264
 msgid ""
 "İstədiyiniz ölçü və materialda tablo hazırlayıb bir kliklə sifariş edə "
 "bilərsiniz"
@@ -700,23 +740,23 @@ msgstr ""
 "You can make a paint in the desired size and material and order it with one "
 "click"
 
-#: core/templates/home.html:284
+#: core/templates/home.html:285
 msgid "MDF tablolarımız"
 msgstr "MDF Paints"
 
-#: core/templates/home.html:342
+#: core/templates/home.html:343
 msgid "Endirimli Məhsullar"
 msgstr "Discount Products"
 
-#: core/templates/home.html:343
+#: core/templates/home.html:344
 msgid "dək endİrİmlər"
 msgstr "off discount"
 
-#: core/templates/home.html:345
+#: core/templates/home.html:346
 msgid "Seçiminizi indi edin, endirmləri qaçırmayın!"
 msgstr "Make your choice now, don't miss the discounts!"
 
-#: core/templates/home.html:347
+#: core/templates/home.html:348
 msgid "Bütün məhsullar"
 msgstr "All products"
 
