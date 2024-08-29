@@ -58,9 +58,9 @@ def send_contact_email(request):
     if data:
         try:
             subject = 'support'
-            message = f"Ad:{data['name']}\nSoyad:{data['surname']}\nEmail:{data['email']}\nTelefon:{data['phone']}\nMesaj:\n{data['message']}"
+            message = f"Ad: {data['name']}\nSoyad: {data['surname']}\nEmail: {data['email']}\nTelefon: {data['phone']}\nMesaj: \n{data['message']}"
             from_email = settings.EMAIL_HOST_USER
-            recipient_list = ['ilgarshukuroff@gmail.com']
+            recipient_list = ['storebyglasstech@gmail.com']
             send_mail(subject, message, from_email, recipient_list)
             return HttpResponse(status=200)
         except: 
