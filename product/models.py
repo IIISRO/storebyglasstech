@@ -115,6 +115,10 @@ class Size(AbstractModel):
         if self == prod.sizes.order_by(f'price_{prod.type.lower()}').first():
             return True
         return False
+    
+    @property
+    def mkv(self):
+        return self.height * self.width
 
 
 class Category(AbstractModel):

@@ -123,7 +123,11 @@ class ProductSerializer(serializers.ModelSerializer):
     
     def get_sizes(self, obj):
         self.context['product'] = obj
-        return ProductSizeSerializer(obj.sizes.order_by(f'price_{obj.type.lower()}'), many = True, context = self.context).data
+        # return ProductSizeSerializer(obj.sizes.order_by(f'price_{obj.type.lower()}'), many = True, context = self.context).data
+        sizes = obj.sizes.all()
+        sizes = sorted(sizes, key=lambda size: size.mkv, reverse=False)
+        return ProductSizeSerializer(sizes, many = True, context = self.context).data
+
     
     def get_frames(self, obj):
         return ProductFrameSerializer(obj.frames, many = True).data
