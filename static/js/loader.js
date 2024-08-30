@@ -38,16 +38,15 @@ const loader = {
             this.__loader = divContainer
             document.body.appendChild(this.__loader);
         }
-        this.__loader.style.display="flex";
-        $('body').css({'overflow':'hidden'});
+        this.__loader.style.display = "flex";
+        $('body').css({ 'overflow': 'hidden' });
     },
-    hide: function(){
-        if(this.__loader!=null)
-        {
-            this.__loader.style.visibility="hidden";
-            $('body').css({'overflow':'visible'});
-            this.__loader.style.display="flex"
-            
+    hide: function () {
+        if (this.__loader != null) {
+            this.__loader.style.visibility = "hidden";
+            $('body').css({ 'overflow': 'visible' });
+            this.__loader.style.display = "flex"
+
         }
     }
 }

@@ -19,24 +19,24 @@
         <div class="row" style="--bs-gutter-x: 0;">
             <div class="col-xl-7 product-image-sec p-0">
                 <div class=" d-flex align-items-start tabs">
-                    <ul class="nav nav-pills flex-column nav-pills align-items-end" id="pills-tab" role="tablist">
+                    <ul class="nav nav-pills nav-pills align-items-end" id="pills-tab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link  fw-semibold active position-relative" id="pills-home-tab"
+                            <button class="nav-link fw-semibold  active position-relative" id="pills-home-tab"
                                 data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab"
                                 aria-controls="pills-home" aria-selected="true">
                                 <img src="{% static 'images/home-ico.png'%}" alt="">
                             </button>
                         </li>
-
+                    
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link  fw-semibold position-relative" id="pills-profile-tab"
+                            <button class="nav-link fw-semibold  position-relative" id="pills-profile-tab"
                                 data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab"
                                 aria-controls="pills-profile" aria-selected="false">
-                                <img src="https://www.tablohane.com/Content/Images/Design/studioicon2.png" alt="">
+                                <img src="{% static 'images/studioicon2.png'%}" alt="">
                             </button>
                         </li>
-                    
                     </ul>
+                    
                     <div class="tab-content w-100" id="pills-tabContent">
                         <div id="prod-selected" class="pd-product-type product-color-1">
                            
@@ -50,7 +50,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="tab-pane  fade show first active" id="pills-home" role="tabpanel"
+                        <div class="tab-pane  fade  show first active " id="pills-home" role="tabpanel"
                             aria-labelledby="pills-home-tab">
 
                           
@@ -59,30 +59,31 @@
                                     <div id="loading-spinner"></div>
 
                         </div>
-                        <div class="tab-pane fade  " id="pills-profile" role="tabpanel"
+                        <div class="tab-pane fade" id="pills-profile" role="tabpanel"
                             aria-labelledby="pills-profile-tab">
-                            <div class="wall-overlay"><img src="{% static 'images/shadow.png' %}" alt=""></div>
+                            <div id="loading-spinner2"></div>
+                            <div id="tab-content2" style="width: 100%;height: 100%; display: none;">
+                                   <div class="wall-overlay"><img src="{% static 'images/shadow.png' %}" alt=""></div>
                             <div class="sofa-section">
                                 <div class="sofa-color-sec">
-                                    <input type="text" name="preferredHex" id="preferredHex" value="#B90B27">
-                                    <label for="preferredHex" id="label1">KOLTUK RENGI</label>
+                                    <input type="text" name="preferredHex" id="preferredHex" value="#ffffff">
                                 </div>
-                               <img src="{% static 'images/000000.png'%}" alt="" class="sofa" id="sofaImage">
+                               <img  src="{% static 'images/ffffff.png'%}" alt="" class="sofa" id="sofaImage">
                             </div>
-                            <!-- <img class="floor"
-                                src="https://static.vecteezy.com/system/resources/thumbnails/011/124/815/small/wooden-floor-isolate-png.png"
-                                alt=""> -->
-                            
                             <div class="frame" id="main-frame1">
-                                <img class="main-product-image"
-                                    src="{% static 'images/prod-img.avif'%}"
+                                <img class="main-product-image" id="main-frame-image"
+                                    src=""
                                     alt="">
 
                             </div>
                             <div class="wall-color">
                                 <input type="text" name="preferredHex1" id="preferredHex1" value="rgba(0,0,0,0.2)">
-                                <label for="preferredHex1" id="label2">DUVAR RENGI</label>
                             </div>
+                            </div>
+                         
+                            
+                            
+                         
                         </div>
 
                     </div>
@@ -109,7 +110,7 @@
                 </ul>
                 <div class="has-cart-message mt-3 d-flex align-items-center justify-content-end" id="cartMessage">
                 </div>
-                <div id="prod-price" class="d-flex  align-items-center justify-content-between  mt-2 mb-4 mb-md-0" style="gap: 20px;">
+                <div id="prod-price" class="d-flex flex-column flex-md-row align-items-end align-items-md-center justify-content-between  mt-2 mb-4 mb-md-0" style="gap: 20px;">
                        
                 </div>
                 <div class="basket-col d-flex align-items-end  align-items-lg-center flex-column flex-lg-row justify-content-end mt-4">

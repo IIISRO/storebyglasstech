@@ -1,9 +1,4 @@
-// $( document ).ready(function() {
-//   loader.hide();
-// });
 
-
-/*Select Picker*/
 $(function () {
     $('.selectpicker').selectpicker();
   });

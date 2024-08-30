@@ -1,44 +1,48 @@
 #notification-area {
-    position:fixed;
-    top:20px;
-    right:10px;
-    width:250px;
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-end;
-    z-index: 9999999;
+  position: fixed;
+  top: 20px;
+  right: 10px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  z-index: 9999999;
 
+}
+
+#notification-area .notification {
+  position: relative;
+  padding: 10px 10px;
+  background: #111;
+  color: #f5f5f5;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 5px;
+  margin: 5px 0px;
+  opacity: 0;
+  left: 20px;
+  animation: showNotification 500ms ease-in-out forwards;
+}
+
+@keyframes showNotification {
+  to {
+    opacity: 1;
+    left: 0px;
   }
-  #notification-area .notification {
-    position:relative;
-    padding:10px 10px;
-    background:#111;
-    color:#f5f5f5;
-    font-size:14px;
-    font-weight:600;
-    border-radius:5px;
-    margin:5px 0px;
-    opacity:0;
-    left:20px;
-    animation:showNotification 500ms ease-in-out forwards;
-  }
-  @keyframes showNotification {
-    to {
-      opacity:1;
-      left:0px;
-    }
-  }
-  #notification-area .notification.success {
-    opacity: 90%!important;
-    -webkit-box-shadow: 0px 0px 41px 5px #10143eab;
-    -moz-box-shadow: 0px 0px 41px 5px #10143eab;
-    box-shadow: 0px 0px 41px 5px #10143eab;
-    background:#10143e;
-  }
-  #notification-area .notification.wrong {
-    opacity: 90%!important;
-    -webkit-box-shadow: 0px 0px 41px 5px rgba(255, 68, 0, 0.735);
-    -moz-box-shadow: 0px 0px 41px 5px rgba(255, 68, 0, 0.735);
-    box-shadow: 0px 0px 41px 5px rgba(255, 68, 0, 0.735);
-    background:orangered;
-  }
+}
+
+#notification-area .notification.success {
+  opacity: 90% !important;
+  -webkit-box-shadow: 0px 0px 41px 5px #10143eab;
+  -moz-box-shadow: 0px 0px 41px 5px #10143eab;
+  box-shadow: 0px 0px 41px 5px #10143eab;
+  background: #10143e;
+}
+
+#notification-area .notification.wrong {
+  opacity: 90% !important;
+  -webkit-box-shadow: 0px 0px 41px 5px rgba(255, 68, 0, 0.735);
+  -moz-box-shadow: 0px 0px 41px 5px rgba(255, 68, 0, 0.735);
+  box-shadow: 0px 0px 41px 5px rgba(255, 68, 0, 0.735);
+  background: orangered;
+}

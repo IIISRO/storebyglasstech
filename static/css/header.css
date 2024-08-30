@@ -52,7 +52,6 @@
 
 .slider-title {
     z-index: 5;
-    font-family: Outfit;
     height: auto;
     width: auto;
     color: rgb(228, 234, 234);
@@ -77,7 +76,6 @@
 
 .slider-text {
     z-index: 6;
-    font-family: Outfit;
     height: auto;
     color: rgb(228, 234, 234);
     text-decoration: none;
@@ -110,7 +108,6 @@
 .slider-button {
     z-index: 7;
     background-color: #10143e;
-    font-family: Outfit;
     height: auto;
     width: max-content;
     color: #fff;
@@ -191,7 +188,8 @@
     position: relative;
     color: #fff;
     background-size: cover;
-    background-repeat: no-repeat;;
+    background-repeat: no-repeat;
+    ;
     border-radius: 10px;
     background-image: url('../images/mdf-slide.png');
 }
@@ -199,7 +197,8 @@
 .ads-sec2 {
     height: 260px;
     background-size: cover;
-    background-repeat: no-repeat;;
+    background-repeat: no-repeat;
+    ;
     display: flex;
     flex-direction: column;
     align-items: end;
@@ -330,13 +329,16 @@ Trending Section
     border-radius: 30px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    flex: 1; /* Allows the button to grow based on its content */
-    white-space: nowrap; /* Prevents text wrapping */
-    text-align: center; /* Centers the text inside the button */
+    flex: 1;
+    /* Allows the button to grow based on its content */
+    white-space: nowrap;
+    /* Prevents text wrapping */
+    text-align: center;
+    /* Centers the text inside the button */
 }
 
-@media(max-width:767px){
-    .tab-btn{
+@media(max-width:767px) {
+    .tab-btn {
         font-size: 13px !important;
     }
 }
@@ -350,14 +352,16 @@ Trending Section
     background-color: #1d2cca;
     color: #fff;
 }
-@media(max-width:991px){
-    .bootstrap-select>.dropdown-toggle::after{
+
+@media(max-width:991px) {
+    .bootstrap-select>.dropdown-toggle::after {
         color: #10143e !important;
         -webkit-text-stroke: #fff !important;
     }
 }
-@media(min-width:992px){
-    .mobile-lang{
+
+@media(min-width:992px) {
+    .mobile-lang {
         display: none !important;
     }
 }
@@ -392,13 +396,15 @@ Trending Section
     bottom: -10%;
     width: max-content;
 }
-.content-header{
+
+.content-header {
     color: #10143e;
     font-size: 28px;
     font-weight: 600;
     line-height: 36px;
 }
-.content-half{
+
+.content-half {
     padding-left: 60px;
     padding-right: 20px;
     background: #f5f5f5;
@@ -407,20 +413,23 @@ Trending Section
     justify-content: center;
 
 }
-.content-text{
+
+.content-text {
     font-size: 16px;
     color: #3c3f5f;
     font-weight: 400;
     line-height: 26px;
 }
-.content-read-btn{
+
+.content-read-btn {
     color: #1d2cca;
     font-size: 16px;
     text-decoration: none;
     font-weight: 500;
     line-height: 26px;
 }
-.content-read-btn i{
+
+.content-read-btn i {
     margin-left: 7px;
 }
 
@@ -429,13 +438,13 @@ Trending Section
 /*Best Seller Section*/
 
 
-.best-seller-container{
+.best-seller-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    /* height: 550px; */
 }
-.best-seller-ads{
+
+.best-seller-ads {
     height: 100%;
     display: flex;
     align-items: center;
@@ -443,31 +452,31 @@ Trending Section
     flex-direction: column;
     border-radius: 10px;
     padding: 50px 20px 0 20px;
-    background-image: url('https://demo.themerox.com/posterlaab-3/wp-content/uploads/2023/06/posterlaab-40-Sale-Off.jpg');
+    background-image: url('../images/posterlaab-40-Sale-Off.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
-.best-seller-items{
+
+.best-seller-items {
     grid-column-start: 2;
     grid-column-end: 5;
-    /* display: grid; */
-    /* grid-template-columns: repeat(4,1fr); */
-    /* gap: 15px; */
 }
-.ads-small-text{
+
+.ads-small-text {
     font-size: 14px;
     font-weight: 500;
     line-height: 22px;
     color: #10143e;
 }
-.ads-header{
+
+.ads-header {
     font-size: 24px;
     font-weight: 600;
     text-transform: uppercase;
     color: #10143e;
 }
 
-.ads-button{
+.ads-button {
     background: #1d2cca;
     font-size: 16px;
     text-decoration: none;
@@ -483,33 +492,36 @@ Trending Section
 /*Trending Ads*/
 
 
-.trend-ads{
+.trend-ads {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
     height: 250px;
 }
 
-.ads1,.ads2{
+.ads1,
+.ads2 {
     width: 100%;
     height: 100%;
     padding-left: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-image: url('https://demo.themerox.com/posterlaab-3/wp-content/uploads/2023/06/posterlaab-Banner1.jpg');
+    background-image: url('../images/posterlaab-Banner1.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 10px;
 }
-.ads-small-header{
+
+.ads-small-header {
     font-size: 16px;
     font-weight: 500;
     line-height: 24px;
     color: #1d2cca;
     text-transform: uppercase;
 }
-.ad-header{
+
+.ad-header {
     font-size: 30px;
     font-weight: 600;
     color: #10143e;
@@ -523,9 +535,9 @@ Trending Section
 .swiper {
     width: 100%;
     height: 100%;
-  }
+}
 
-  .swiper-slide {
+.swiper-slide {
     text-align: center;
     font-size: 18px;
     background: #fff;
@@ -534,27 +546,30 @@ Trending Section
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
+}
 
 
 
-  .comment-user{
+.comment-user {
     width: 65px;
     height: 65px;
     object-fit: cover;
     border-radius: 100%;
-  }
-  .rating-stars{
+}
+
+.rating-stars {
     display: flex;
     align-items: center;
     gap: 3px;
     justify-content: center;
-    
-  }
-  .rating-stars i{
+
+}
+
+.rating-stars i {
     font-size: 13px;
-  }
-  .comment-text{
+}
+
+.comment-text {
     font-size: 24px;
     font-weight: 500;
     line-height: 38px;
@@ -562,36 +577,42 @@ Trending Section
     color: #3c3f5f;
     width: 80%;
     margin: auto;
-  }
-  .comment-user-name{
+}
+
+.comment-user-name {
     font-size: 18px;
     font-weight: 500;
     line-height: 28px;
     margin-bottom: 2px;
     color: #3c3f5f;
-  }
-  .comment-user-status{
+}
+
+.comment-user-status {
     font-size: 16px;
     line-height: 20px;
     color: #3c3f5f;
     margin-top: 10px;
-  }
-  .swiper-button-prev,.swiper-button-next{
+}
+
+.swiper-button-prev,
+.swiper-button-next {
     width: 11px !important;
     height: 12px !important;
     color: rgb(102, 102, 102) !important;
-  }
-  .swiper-button-next:after, .swiper-button-prev:after{
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
     font-size: 20px !important;
     font-weight: 700 !important;
-  }
+}
 
 
-  /*Subscribe*/
+/*Subscribe*/
 
 
-  .subscribe-container{
-    background-image: url('https://demo.themerox.com/posterlaab-3/wp-content/uploads/2023/06/Get-our-emails-for-info-on-new-items-1.jpg');
+.subscribe-container {
+    background-image: url('../images/Get-our-emails-for-info-on-new-items-1.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     height: 250px;
@@ -601,8 +622,9 @@ Trending Section
     flex-direction: column;
     justify-content: center;
     padding-left: 80px;
-  }
-  .subscribe-input{
+}
+
+.subscribe-input {
     color: #3c3f5f;
     border: 1px solid #e1e2ef;
     padding: 0.7rem 1rem;
@@ -611,12 +633,14 @@ Trending Section
     border-radius: 30px;
     background-color: #fff;
 
-  }
-  .subscribe-input:focus{
+}
+
+.subscribe-input:focus {
     border: 1px solid #e1e2ef;
     outline: none;
-  }
-  .subscribe-button{
+}
+
+.subscribe-button {
     height: 54px;
     padding: 0 30px;
     font-size: 16px;
@@ -628,30 +652,32 @@ Trending Section
     border-radius: 100px;
     border: none;
     outline: none;
-  }
+}
 
 
 
-  /*Blogs*/
+/*Blogs*/
 
 
-  .blog-item{
+.blog-item {
     display: block;
     text-decoration: none;
     width: 100%;
     display: flex;
-    box-shadow: 0px 10px 10px 0px rgba(22,22,22,0.03);
+    box-shadow: 0px 10px 10px 0px rgba(22, 22, 22, 0.03);
     height: 430px;
     flex-direction: column;
-  }
-  .blog-img{
+}
+
+.blog-img {
     width: 100%;
     height: 220px;
     object-fit: cover;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
-.blog-card-content{
+
+.blog-card-content {
     position: relative;
     padding: 20px 10px 20px 20px;
     border: 1px solid #E2E7EF;
@@ -659,22 +685,27 @@ Trending Section
     height: 210px;
     border-radius: 0 0 12px 12px;
 }
-.meta{
+
+.meta {
     display: flex;
     align-items: center;
     gap: 10px;
 }
-.comment-count,.post-category{
+
+.comment-count,
+.post-category {
     font-size: 14px;
     font-weight: 400;
     line-height: 22px;
     color: #000;
 }
-.post-category::before{
+
+.post-category::before {
     content: "/";
     padding-right: 10px;
 }
-.blog-item-header{
+
+.blog-item-header {
     font-size: 16px;
     font-weight: 700;
     line-height: 20px;
@@ -682,12 +713,14 @@ Trending Section
     margin-top: 10px;
     color: #000;
 }
-.blog-item-text{
+
+.blog-item-text {
     margin-top: 10px;
     margin-bottom: 10px;
     color: #000;
 }
-.blog-read-btn{
+
+.blog-read-btn {
     font-size: 16px;
     font-weight: 500;
     text-decoration: underline;
@@ -699,18 +732,20 @@ Trending Section
 
 
 
-.hot-deals-container{
+.hot-deals-container {
     border: 1px solid #e1e2ef;
     border-radius: 5px;
     padding: 34px 20px 40px 20px;
 }
-.hot-deals-header{
-        color: #10143e;
-        font-size: 28px;
-        font-weight: 600;
-        line-height: 36px;
+
+.hot-deals-header {
+    color: #10143e;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 36px;
 }
-.header-sec p{
+
+.header-sec p {
     color: #3c3f5f;
 }
 
@@ -719,36 +754,41 @@ Trending Section
 /*Responsive best seller*/
 
 
-@media(max-width:1024px){
-    
-    .best-seller-container{
+@media(max-width:1024px) {
+
+    .best-seller-container {
         height: auto !important;
-display: block;
+        display: block;
     }
-    .best-seller-ads{
+
+    .best-seller-ads {
         height: 400px;
         margin-bottom: 20px;
     }
-   
+
 }
-@media(min-width:767px) and (max-width:1024px){
-    .best-seller-ads{
+
+@media(min-width:767px) and (max-width:1024px) {
+    .best-seller-ads {
         display: none;
     }
-    .best-seller-items{
-        grid-template-columns: repeat(4,1fr);
+
+    .best-seller-items {
+        grid-template-columns: repeat(4, 1fr);
     }
 }
-@media(max-width:767px){
-    .best-seller-items{
-        grid-template-columns: repeat(2,1fr);
+
+@media(max-width:767px) {
+    .best-seller-items {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
-@media(max-width:575px){
-    .best-seller-items{
+
+@media(max-width:575px) {
+    .best-seller-items {
         /* width: 90%; */
         margin: auto;
-        grid-template-columns: repeat(1,1fr);
+        grid-template-columns: repeat(1, 1fr);
     }
 }
 
@@ -756,36 +796,47 @@ display: block;
 
 
 /*Responsive main section*/
-@media(max-width:767px){
-    .slider-img,.slider-img img,.slider_carousel{
+@media(max-width:767px) {
+
+    .slider-img,
+    .slider-img img,
+    .slider_carousel {
         height: 500px;
     }
-    .slider-title{
+
+    .slider-title {
         font-size: 40px;
     }
-    .ads{
+
+    .ads {
         margin-top: 20px !important;
     }
-    .caption{
+
+    .caption {
         width: 100%;
     }
-    .slider-title,.slider-text{
+
+    .slider-title,
+    .slider-text {
         white-space: unset !important;
         width: 100%;
     }
 }
 
 /*Trend ads*/
-@media(max-width:991px){
-    .trend-ads{
-        grid-template-columns: repeat(1,1fr);
+@media(max-width:991px) {
+    .trend-ads {
+        grid-template-columns: repeat(1, 1fr);
         gap: 30px;
         height: auto;
     }
-    .ads1,.ads2{
+
+    .ads1,
+    .ads2 {
         height: 250px;
     }
-    .ad-header{
+
+    .ad-header {
         font-size: 20px;
     }
 
@@ -794,19 +845,21 @@ display: block;
 /*Trending items*/
 
 
-@media(min-width:576px) and (max-width:767px){
-    .trending-products{
-        grid-template-columns: repeat(2,1fr);
+@media(min-width:576px) and (max-width:767px) {
+    .trending-products {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
-@media(min-width:768px) and (max-width:1024px){
-    
-    .trending-products{
-        grid-template-columns: repeat(3,1fr);
+
+@media(min-width:768px) and (max-width:1024px) {
+
+    .trending-products {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
-@media(max-width:575px){
-    .trending-products{
+
+@media(max-width:575px) {
+    .trending-products {
         display: block;
         /* width: 90%; */
         margin: auto;
@@ -815,8 +868,8 @@ display: block;
 
 
 /*Blogs*/
-@media(max-width:768px){
-    .blogs-container{
+@media(max-width:768px) {
+    .blogs-container {
         width: 90%;
         margin: auto;
     }
@@ -824,63 +877,73 @@ display: block;
 
 /*Tabs*/
 
-@media(max-width:991px){
-    .tab-buttons{
+@media(max-width:991px) {
+    .tab-buttons {
         position: static;
         justify-content: start;
-        overflow-x:scroll;
+        overflow-x: scroll;
         width: 100% !important;
         margin-bottom: 30px;
     }
-    .content.show{
-        grid-template-columns: repeat(1,1fr);
+
+    .content.show {
+        grid-template-columns: repeat(1, 1fr);
         height: auto;
     }
-    .content-half{
-        padding: 30px ;
+
+    .content-half {
+        padding: 30px;
     }
 }
 
 
 /*Comments*/
 
-@media(max-width:991px){
-    .comment-text{
+@media(max-width:991px) {
+    .comment-text {
         font-size: 18px;
     }
-    .subscribe-header{
+
+    .subscribe-header {
         flex-direction: column;
     }
-    .subscribe-container{
+
+    .subscribe-container {
         padding: 20px;
         height: unset;
     }
-    .subs-header2{
+
+    .subs-header2 {
         align-items: center;
 
     }
-    .subscribe-input{
+
+    .subscribe-input {
         width: 90%;
         margin: auto;
         height: 43px;
     }
-    .subs-input{
+
+    .subs-input {
         margin: auto;
         display: flex;
         align-items: center;
         margin-bottom: 20px;
     }
-    .subscribe-button{
+
+    .subscribe-button {
         height: 43px;
         width: 90% !important;
 
     }
-    .subs-btn{
+
+    .subs-btn {
         display: flex;
         align-items: center;
         justify-content: center;
     }
-    .subscribe-header h5{
+
+    .subscribe-header h5 {
         text-align: center;
     }
 }

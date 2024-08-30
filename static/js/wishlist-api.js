@@ -16,8 +16,8 @@ async function fetchAndDisplayResults() {
 
     if (results.items.length > 0) {
         wishlistMobile.innerHTML = ""
-        wishlistTable.innerHTML = 
-        `
+        wishlistTable.innerHTML =
+            `
             <thead>
                 <tr>
                     <th class="product-name" colspan="3">
@@ -37,7 +37,7 @@ async function fetchAndDisplayResults() {
 
         for (const item of results.items) {
             wishlist.innerHTML +=
-            `
+                `
             <tr>
                 <td class="product-thumbnail">
                     <a href="${item.product.url}">

@@ -1,24 +1,24 @@
-function getBasketItems(){
+function getBasketItems() {
     loader.show()
     var api_url = basketAPI
 
-    async function Products(api_url=api_url) {
+    async function Products(api_url = api_url) {
         const response = await fetch(api_url, {
             method: 'GET', // *GET, POST, PUT, DELETE, etc.
         });
-        
+
         return response.json(); // parses JSON response into native JavaScript objects
     }
-    
-    
+
+
     Products(api_url)
-    .then((data) => {
-        if (data.items.length > 0){
-            const itemsArea = $("#productsStartLine")
-            itemsArea.html('');
-            let items = data.items
-            for(let item of items){
-                itemHTML = `  
+        .then((data) => {
+            if (data.items.length > 0) {
+                const itemsArea = $("#productsStartLine")
+                itemsArea.html('');
+                let items = data.items
+                for (let item of items) {
+                    itemHTML = `  
                 <tr class="cart_item">
                     <td class="product-thumbnail">
                         <a href="${item.product.url}">
@@ -38,22 +38,21 @@ function getBasketItems(){
                             <dd class="variation-PosterSize">
                                 <p>${item.size.height}x${item.size.width}</p>
                             </dd>
-                            ${    
-                                (function checkFrame() {
-                                if(item.frame.id){
-                                    let framInfo = 
+                            ${(function checkFrame() {
+                            if (item.frame.id) {
+                                let framInfo =
                                     `
                                     <dt class="variation-PosterFrame">${transFrame}:</dt>
                                     <dd class="variation-PosterFrame">
                                         <p>${item.frame.title}</p>
                                     </dd>
                                     `
-                                    return framInfo
+                                return framInfo
 
-                                }
-                                return ''
-                                })()
                             }
+                            return ''
+                        })()
+                        }
                             <dt class="variation-PosterFinish">${transMaterial}:</dt>
                             <dd class="variation-PosterFinish">
                             <p>${item.product.type}</p>
@@ -87,11 +86,10 @@ function getBasketItems(){
                         <span class="price_code">
                             <span class="price-amount amount">
                                 <bdi>
-                                    ${    
-                                        (function subtotal() {
-                                            return `${(item.item_actual_price * item.quantity).toFixed(2)} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i>`
-                                        })()
-                                    }
+                                    ${(function subtotal() {
+                            return `${(item.item_actual_price * item.quantity).toFixed(2)} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i>`
+                        })()
+                        }
                                 </bdi>
                             </span>
                         </span>
@@ -105,17 +103,17 @@ function getBasketItems(){
 
                
                 `
-                itemsArea.append(itemHTML)
-            }
+                    itemsArea.append(itemHTML)
+                }
 
-            if(data.coupon && data.coupon.is_valid[0]){
-                $("#coupon_code").attr("disabled",true);
-                $("#coupon_code").val(data.coupon.code);
-                $(`<button type="button" id="remove_coupon_btn" onclick="removeCoupon()" class="button" name="apply_coupon" value="Apply coupon"><i class="fa fa-trash"></i></button>`).insertAfter("#apply_coupon_btn")
-                $("#apply_coupon_btn").remove();
-                if(!$("#cart-coupon").length){
-                    $(
-                    `
+                if (data.coupon && data.coupon.is_valid[0]) {
+                    $("#coupon_code").attr("disabled", true);
+                    $("#coupon_code").val(data.coupon.code);
+                    $(`<button type="button" id="remove_coupon_btn" onclick="removeCoupon()" class="button" name="apply_coupon" value="Apply coupon"><i class="fa fa-trash"></i></button>`).insertAfter("#apply_coupon_btn")
+                    $("#apply_coupon_btn").remove();
+                    if (!$("#cart-coupon").length) {
+                        $(
+                            `
                     <tr id="cart-coupon" class="cart-coupon">
                         <th>${data.coupon.code}</th>
                         <td data-title="Kupon">
@@ -127,86 +125,86 @@ function getBasketItems(){
                         </td>
                     </tr>
                     `
-                    ).insertAfter('#cart-subtotal')
+                        ).insertAfter('#cart-subtotal')
+                    }
+
                 }
 
-            }
+                $("#basketActualPrice").html(`${data.basket_price.toFixed(2)} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i>`)
 
-            $("#basketActualPrice").html(`${data.basket_price.toFixed(2)} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i>`)
-            
-            if(data.basket_actual_price != data.basket_price){
-                $("#basketPrice").html(`${data.basket_price.toFixed(2)} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i>`)
-            }else{
-                $("#basketPrice").html('')
-            }
-
-            $("#basketTotal").html(`${data.basket_actual_price.toFixed(2)} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i>`)
-
-         
-            
-
-            // quantity validator
-            $('.number-product').each(function() {
-                let num = parseInt($(this).val());
-                if(num === 0 || isNaN(num)||$(this).val().substring(0,1)==0){
-                    $(this).val(1)
-                }else if(num >= 1){
-                    $(`#product-${$(this).data('itemid')}-deacrease`).prop('disabled', false);
+                if (data.basket_actual_price != data.basket_price) {
+                    $("#basketPrice").html(`${data.basket_price.toFixed(2)} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i>`)
+                } else {
+                    $("#basketPrice").html('')
                 }
-                if($(this).val() == 1){
-                    $(`#product-${$(this).data('itemid')}-deacrease`).prop('disabled', true);
-                }
-                $(this).on('input', function() {
-                    let quantity = $(this).val()
-                    quantity = quantity.replace(/[^0-9]/g, '');
-                    $(this).val(quantity)
+
+                $("#basketTotal").html(`${data.basket_actual_price.toFixed(2)} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i>`)
+
+
+
+
+                // quantity validator
+                $('.number-product').each(function () {
                     let num = parseInt($(this).val());
-                    if(num === 0 || isNaN(num)||$(this).val().substring(0,1)==0){
+                    if (num === 0 || isNaN(num) || $(this).val().substring(0, 1) == 0) {
                         $(this).val(1)
-                    }else if(num >= 1){
+                    } else if (num >= 1) {
                         $(`#product-${$(this).data('itemid')}-deacrease`).prop('disabled', false);
                     }
-                    if($(this).val() == 1){
+                    if ($(this).val() == 1) {
                         $(`#product-${$(this).data('itemid')}-deacrease`).prop('disabled', true);
                     }
-                    });
-                });
-                $('.number-product').each(function() {
-                    $(this).on('change', function() {
+                    $(this).on('input', function () {
                         let quantity = $(this).val()
-                        updateBasket($(this).data('itemid'),  quantity)
+                        quantity = quantity.replace(/[^0-9]/g, '');
+                        $(this).val(quantity)
+                        let num = parseInt($(this).val());
+                        if (num === 0 || isNaN(num) || $(this).val().substring(0, 1) == 0) {
+                            $(this).val(1)
+                        } else if (num >= 1) {
+                            $(`#product-${$(this).data('itemid')}-deacrease`).prop('disabled', false);
+                        }
+                        if ($(this).val() == 1) {
+                            $(`#product-${$(this).data('itemid')}-deacrease`).prop('disabled', true);
+                        }
                     });
                 });
-        }else{
-            const emptyBasket = 
-            `
+                $('.number-product').each(function () {
+                    $(this).on('change', function () {
+                        let quantity = $(this).val()
+                        updateBasket($(this).data('itemid'), quantity)
+                    });
+                });
+            } else {
+                const emptyBasket =
+                    `
             <div class="emptydiv">
                 <div class="alert alert-danger justify-content-center has-cart d-flex align-items-center"><i class="fa fa-info"></i> ${transEmptyBasket}</div>
             </div>
             `
-            $("#basket_container").html(emptyBasket)
-            
+                $("#basket_container").html(emptyBasket)
 
-        }
-    })
-    .finally(() => {
-        loader.hide()
-    })
+
+            }
+        })
+        .finally(() => {
+            loader.hide()
+        })
 }
 
 getBasketItems()
 
 var num;
-function increaseCount(itemid){
+function increaseCount(itemid) {
     num = parseInt($(`#product-${itemid}-count`).val());
     $(`#product-${itemid}-count`).val(num + 1);
 
     if (num >= 1) {
         $(`#product-${itemid}-deacrease`).prop('disabled', false);
     }
-    updateBasket(itemid,  $(`#product-${itemid}-count`).val())
+    updateBasket(itemid, $(`#product-${itemid}-count`).val())
 }
-function decreaseCount(itemid){
+function decreaseCount(itemid) {
     num = parseInt($(`#product-${itemid}-count`).val());
     if (num > 1) {
         $(`#product-${itemid}-count`).val(num - 1);
@@ -214,72 +212,72 @@ function decreaseCount(itemid){
     if (num == 2) {
         $(`#product-${itemid}-deacrease`).prop('disabled', true);
     }
-    updateBasket(itemid,  $(`#product-${itemid}-count`).val())
-    
+    updateBasket(itemid, $(`#product-${itemid}-count`).val())
+
 }
-function applyCoupon(){
+function applyCoupon() {
     loader.show();
 
-    fetch(couponAPI,{
-        method:"POST",
+    fetch(couponAPI, {
+        method: "POST",
         headers: {
             "X-CSRFToken": csrf,
             "Accept": "application/json",
             'Content-Type': 'application/json'
-          },
-        body:JSON.stringify({
+        },
+        body: JSON.stringify({
 
             'action': 'apply',
             'code': $("#coupon_code").val()
 
         })
     })
-    .then((response)=>{
-        return response.json()
+        .then((response) => {
+            return response.json()
 
-    })
-    .then((data)=>{
-       if (data === 'You are have applied coupon'){
-            notfWrong(transCouponHas);
-       }else if(data == 'Coupon applied!'){
-            notfSuccess(transCouponApplied);
-        }else{
-            notfWrong(transCouponNotFind);
-        }
-  
-    })
-    .finally(() => {
-        getBasketItems()
-        loader.hide();
-    });
+        })
+        .then((data) => {
+            if (data === 'You are have applied coupon') {
+                notfWrong(transCouponHas);
+            } else if (data == 'Coupon applied!') {
+                notfSuccess(transCouponApplied);
+            } else {
+                notfWrong(transCouponNotFind);
+            }
+
+        })
+        .finally(() => {
+            getBasketItems()
+            loader.hide();
+        });
 }
 
-function removeCoupon(){
+function removeCoupon() {
     loader.show();
 
-    fetch(couponAPI,{
-        method:"POST",
+    fetch(couponAPI, {
+        method: "POST",
         headers: {
             "X-CSRFToken": csrf,
             "Accept": "application/json",
             'Content-Type': 'application/json'
-          },
-        body:JSON.stringify({
+        },
+        body: JSON.stringify({
 
             'action': 'remove',
 
         })
     })
-  
-    .finally(() => {
-        $("#coupon_code").attr("disabled",false);
-        $("#coupon_code").val('');
-        $(`<button type="button" id="apply_coupon_btn" onclick="applyCoupon()" class="button" name="apply_coupon" value="Apply coupon">${transAdd}</button>`).insertAfter("#remove_coupon_btn")
-        $("#remove_coupon_btn").remove();
-        $("#cart-coupon").remove();
 
-        getBasketItems()
-        loader.hide();
-    });
+        .finally(() => {
+            $("#coupon_code").attr("disabled", false);
+            $("#coupon_code").val('');
+            $(`<button type="button" id="apply_coupon_btn" onclick="applyCoupon()" class="button" name="apply_coupon" value="Apply coupon">${transAdd}</button>`).insertAfter("#remove_coupon_btn")
+            $("#remove_coupon_btn").remove();
+            $("#cart-coupon").remove();
+
+            getBasketItems()
+            loader.hide();
+        });
 }
 

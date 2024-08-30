@@ -1,17 +1,17 @@
-let showBtn=document.querySelector('.showcoupon')
-let coupon_form=document.querySelector('.form-coupon')
+let showBtn = document.querySelector('.showcoupon')
+let coupon_form = document.querySelector('.form-coupon')
 
-showBtn.addEventListener('click',()=>{
-    let result=showBtn.classList.toggle('active')
-    if(result){
+showBtn.addEventListener('click', () => {
+    let result = showBtn.classList.toggle('active')
+    if (result) {
         coupon_form.classList.remove('d-none')
     }
-    else{
+    else {
         coupon_form.classList.add('d-none')
     }
 })
 
-function addNewAddress(){
+function addNewAddress() {
     $("#new_address_inputs").html(
         `
         <div class="billing-fields">
@@ -68,32 +68,32 @@ function addNewAddress(){
     $("#addressSelectClose").click();
 }
 
-$( ".address_cart_small" ).each(function(index) {
-    $(this).on("click", function(){
+$(".address_cart_small").each(function (index) {
+    $(this).on("click", function () {
         loader.show();
-        
-        fetch(`/api/v1/account/set_default/address/${$(this).data('addressid')}/`,{
-            method:"post",
+
+        fetch(`/api/v1/account/set_default/address/${$(this).data('addressid')}/`, {
+            method: "post",
             headers: {
                 "X-CSRFToken": csrf,
                 "Accept": "application/json",
                 'Content-Type': 'application/json'
             }
-            
-        })
-        .then((response)=>{
-            
-            return response.json()
-        })
-        .then((data)=>{
 
-            if(data){
-                if($('#new_address_inputs').html() != '') {
-                    $('#new_address_inputs').html('')
-                }
-                for(let address of data){
-                    if(address.is_default){
-                        $("#default_address").html(`
+        })
+            .then((response) => {
+
+                return response.json()
+            })
+            .then((data) => {
+
+                if (data) {
+                    if ($('#new_address_inputs').html() != '') {
+                        $('#new_address_inputs').html('')
+                    }
+                    for (let address of data) {
+                        if (address.is_default) {
+                            $("#default_address").html(`
                         <div class="address_cart card">
                             <div class="card-body">
                                 <h5 class="card-title"><i class="fas fa-solid fa-location-dot"></i> ${address.address_line}</h5>
@@ -102,56 +102,56 @@ $( ".address_cart_small" ).each(function(index) {
                             </div>
                         </div>
                         `)
+                        }
                     }
                 }
-            }
 
-        })
-        .finally(()=>{
-            $("#addressSelectClose").click();
-            return loader.hide();
+            })
+            .finally(() => {
+                $("#addressSelectClose").click();
+                return loader.hide();
 
 
-        })
-    }); 
+            })
+    });
 });
 
-function applyCoupon(){
+function applyCoupon() {
     loader.show();
 
-    fetch(couponAPI,{
-        method:"POST",
+    fetch(couponAPI, {
+        method: "POST",
         headers: {
             "X-CSRFToken": csrf,
             "Accept": "application/json",
             'Content-Type': 'application/json'
-          },
-        body:JSON.stringify({
+        },
+        body: JSON.stringify({
 
             'action': 'apply',
             'code': $("#coupon_code").val()
 
         })
     })
-    .then((response)=>{
-        return response.json()
+        .then((response) => {
+            return response.json()
 
-    })
-    .then((data)=>{
-       if (data === 'You are have applied coupon'){
-            notfWrong(transCouponHas);
-       }else if(data == 'Coupon applied!'){
-            notfSuccess(transCouponApplied);
-        }else{
-            notfWrong(transCouponNotFind);
-        }
-  
-    })
-    .finally(() => {
-        getItems();
-        $("#checkout_coupon").remove();
-        loader.hide();
-    });
+        })
+        .then((data) => {
+            if (data === 'You are have applied coupon') {
+                notfWrong(transCouponHas);
+            } else if (data == 'Coupon applied!') {
+                notfSuccess(transCouponApplied);
+            } else {
+                notfWrong(transCouponNotFind);
+            }
+
+        })
+        .finally(() => {
+            getItems();
+            $("#checkout_coupon").remove();
+            loader.hide();
+        });
 }
 
 let checkoutTotal = 0.00;
@@ -159,27 +159,27 @@ let checkoutActualTotal = 0.00;
 let delvFee = 0.00;
 let payMethod = 'cart';
 
-function getItems(){
+function getItems() {
     loader.show()
     var api_url = basketAPI
 
-    async function Products(api_url=api_url) {
+    async function Products(api_url = api_url) {
         const response = await fetch(api_url, {
             method: 'GET', // *GET, POST, PUT, DELETE, etc.
         });
-        
+
         return response.json(); // parses JSON response into native JavaScript objects
     }
-    
-    
+
+
     Products(api_url)
-    .then((data) => {
-        const itemsArea = $("#productsStartLine")
-        itemsArea.html('');
-        let items = data.items
-        for(let item of items){
-            itemHTML = 
-            `  
+        .then((data) => {
+            const itemsArea = $("#productsStartLine")
+            itemsArea.html('');
+            let items = data.items
+            for (let item of items) {
+                itemHTML =
+                    `  
             <tr class="cart_item">
                 <td class="product-name">${item.product.title}&nbsp; <strong
                         class="product-quantity">×&nbsp;${item.quantity}</strong>
@@ -188,22 +188,21 @@ function getItems(){
                         <dd class="variation-PosterSize">
                             <p>${item.size.height}x${item.size.width}</p>
                         </dd>
-                        ${    
-                            (function checkFrame() {
-                            if(item.frame.id){
-                                let framInfo = 
+                        ${(function checkFrame() {
+                        if (item.frame.id) {
+                            let framInfo =
                                 `
                                 <dt class="variation-PosterFrame">${transFrame}:</dt>
                                 <dd class="variation-PosterFrame">
                                     <p>${item.frame.title}</p>
                                 </dd>
                                 `
-                                return framInfo
+                            return framInfo
 
-                            }
-                            return ''
-                            })()
                         }
+                        return ''
+                    })()
+                    }
                         <dt class="variation-PosterFinish">${transMaterial}:</dt>
                         <dd class="variation-PosterFinish">
                         <p>${item.product.type}</p>
@@ -222,14 +221,14 @@ function getItems(){
 
             
             `
-            itemsArea.append(itemHTML)
-        }
-        // kupon
-        if(data.coupon && data.coupon.is_valid[0]){
-            $("#coupon-notice").css("display",'none');
-            if(!$("#cart-coupon").length){
-                itemsArea.append(
-                `
+                itemsArea.append(itemHTML)
+            }
+            // kupon
+            if (data.coupon && data.coupon.is_valid[0]) {
+                $("#coupon-notice").css("display", 'none');
+                if (!$("#cart-coupon").length) {
+                    itemsArea.append(
+                        `
                 <tr id="cart-coupon" class="cart-coupon">
                     <th>${data.coupon.code}</th>
                     <td data-title="${transCoupon}">
@@ -241,30 +240,29 @@ function getItems(){
                     </td>
                 </tr>
                 `
-                )
-            }
+                    )
+                }
 
-        }
-        // catdirilma
-        itemsArea.append(
-            `
+            }
+            // catdirilma
+            itemsArea.append(
+                `
             <tr id="cart-coupon" class="cart-coupon">
                 <th>${transDelivery}</th>
                 <td data-title="Kupon">
                     <span class="price_code">
                         <span class="price-amount amount">
-                            ${    
-                                (function checkDelvFee() {
-                                if(delvFee > 0.00){
-                                    
-                                    return `<bdi id="">${delvFee.toFixed(2)} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i></bdi>`
+                            ${(function checkDelvFee() {
+                    if (delvFee > 0.00) {
 
-                                }else{
+                        return `<bdi id="">${delvFee.toFixed(2)} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i></bdi>`
 
-                                }
-                                return `<bdi id="">${transFree}</bdi>`
-                                })()
-                            }
+                    } else {
+
+                    }
+                    return `<bdi id="">${transFree}</bdi>`
+                })()
+                }
                             
                         </span>
                     </span>
@@ -273,30 +271,30 @@ function getItems(){
             `
             )
 
-        // total price
-        checkoutTotal = data.basket_price + delvFee
-        checkoutActualTotal = data.basket_actual_price + delvFee
+            // total price
+            checkoutTotal = data.basket_price + delvFee
+            checkoutActualTotal = data.basket_actual_price + delvFee
 
-        if(checkoutTotal != checkoutActualTotal){
-            $("#checkout-total").html(`${checkoutTotal.toFixed(2)} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i></bdi>`)
-        }
+            if (checkoutTotal != checkoutActualTotal) {
+                $("#checkout-total").html(`${checkoutTotal.toFixed(2)} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i></bdi>`)
+            }
 
-        $("#checkout-actual_total").html(`${checkoutActualTotal.toFixed(2)} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i></bdi>`)
+            $("#checkout-actual_total").html(`${checkoutActualTotal.toFixed(2)} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i></bdi>`)
 
-         
-            
 
-          
-    })
-    .finally(() => {
-        loader.hide()
-    })
+
+
+
+        })
+        .finally(() => {
+            loader.hide()
+        })
 }
 
 getItems()
 
 
-function placeOrder(){
+function placeOrder() {
     checkAddress()
 }
 
@@ -306,9 +304,9 @@ function placeOrder(){
 
 
 // check address
-function checkAddress(){
+function checkAddress() {
     loader.show();
-    if($("#new_address").length){
+    if ($("#new_address").length) {
         const addressFirstname = $("#addressfirstname");
         const addressLastname = $("#addresslastname");
         const addressLine = $("#addressline");
@@ -317,75 +315,74 @@ function checkAddress(){
         const addressBuilding = $("#addressbuilding");
         const addressFlat = $("#addressflat");
 
-        if(!addressFirstname.val() || !addressLastname.val() ||
-        !addressLine.val() || !addressRegion.val() ||
-        !addressStreet.val() || !addressBuilding.val() || !addressFlat.val()){
+        if (!addressFirstname.val() || !addressLastname.val() ||
+            !addressLine.val() || !addressRegion.val() ||
+            !addressStreet.val() || !addressBuilding.val() || !addressFlat.val()) {
             loader.hide();
             return notfWrong(notfDatasMiss);
         }
-        
-        fetch(addAddressAPI,{
-            method:"POST",
+
+        fetch(addAddressAPI, {
+            method: "POST",
             headers: {
                 "X-CSRFToken": csrf,
                 "Accept": "application/json",
                 'Content-Type': 'application/json'
             },
-            body:JSON.stringify({
-            'first_name': addressFirstname.val(),
-            'last_name': addressLastname.val(),
-            'address_line': addressLine.val(),
-            'region': addressRegion.val(),
-            'street': addressStreet.val(),
-            'building': addressBuilding.val(),
-            'flat': addressFlat.val(),
-            'is_default': true
+            body: JSON.stringify({
+                'first_name': addressFirstname.val(),
+                'last_name': addressLastname.val(),
+                'address_line': addressLine.val(),
+                'region': addressRegion.val(),
+                'street': addressStreet.val(),
+                'building': addressBuilding.val(),
+                'flat': addressFlat.val(),
+                'is_default': true
             })
         })
-        .then((response)=>{
-            if(response.status == 201){
-                createOrder();
-                return response.json()
-            }else{
-                return checkoutErrorDetect()
-            }
-        })
+            .then((response) => {
+                if (response.status == 201) {
+                    createOrder();
+                    return response.json()
+                } else {
+                    return checkoutErrorDetect()
+                }
+            })
 
-    }else{
+    } else {
         createOrder();
     }
 }
 
 
 // createOrder
-function createOrder(){
+function createOrder() {
     loader.show()
-    if(checkoutActualTotal){
-        if(langCode==='az'){
+    if (checkoutActualTotal) {
+        if (langCode === 'az') {
             var approveURL = `${window.location.origin}/checkout/approved/${userBasketID}/${checkoutTotal}/${checkoutActualTotal}/${delvFee}/`
-        }else{
+        } else {
             var approveURL = `${window.location.origin}/${langCode}/checkout/approved/${userBasketID}/${checkoutTotal}/${checkoutActualTotal}/${delvFee}/`
         }
-        if(payMethod === 'cash'){
-            fetch(approveURL,{
-                method:"POST",
+        if (payMethod === 'cash') {
+            fetch(approveURL, {
+                method: "POST",
                 headers: {
                     "Accept": "application/json",
                     'Content-Type': 'application/json'
                 },
             })
-      
-            .then((response) => {
-                if(response.ok){
-                    window.location.href = approveURL
-                }else{
-                    return checkoutErrorDetect()
-                }
 
-            })
-            
-        }else{
-            console.log(approveURL)
+                .then((response) => {
+                    if (response.ok) {
+                        window.location.href = approveURL
+                    } else {
+                        return checkoutErrorDetect()
+                    }
+
+                })
+
+        } else {
             // fetch('https://api.payriff.com/api/v2/createOrder',{
             //     method:"POST",
             //     headers: {
@@ -406,33 +403,32 @@ function createOrder(){
             //         },
             //         "merchant": "ES1093507"
             //     }),
-            
+
             // })
-      
+
             // .then((response) => {
             //     return response.json()
-    
+
             // })
             // .then((data) => {
             //     window.location.href = data.payload.paymentUrl
-            
+
             // });
         }
-     
 
-    }else{
+
+    } else {
         return checkoutErrorDetect()
     }
 }
 
-function checkoutErrorDetect(){
+function checkoutErrorDetect() {
     loader.hide();
     notfWrong(notfError);
-    setTimeout(function(){
+    setTimeout(function () {
         window.location.href = window.location.href;
-    },1500);
+    }, 1500);
 
 }
 
 
-    

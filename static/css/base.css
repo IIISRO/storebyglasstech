@@ -1,6 +1,8 @@
 .navbar-brand img {
     width: 250px;
-}.nav-tabs .nav-item{
+}
+
+.nav-tabs .nav-item {
     width: 20%;
 }
 
@@ -8,41 +10,48 @@
     position: relative;
     height: 3.125em;
 }
-a:hover{
+
+a:hover {
     text-decoration: none !important;
 }
-.offcanvas{
+
+.offcanvas {
     background-color: #10143e !important;
     color: #fff;
     z-index: 100000000000 !important;
 }
-.offcanvas-start{
+
+.offcanvas-start {
     z-index: 10000000000 !important;
 }
 
 
-.mobile-nav{
+.mobile-nav {
     margin: 0;
     padding: 0;
     list-style: none;
 }
-.mobile-link a{
+
+.mobile-link a {
     text-decoration: none;
     color: #fff;
     font-size: 16px;
     font-weight: 500;
 }
-.mobile-link a i{
-  font-size: 17px;
-  color: #fff;
-  -webkit-text-stroke: 1px white;
+
+.mobile-link a i {
+    font-size: 17px;
+    color: #fff;
+    -webkit-text-stroke: 1px white;
 }
-.secondOffcanvas .mobile-link{
+
+.secondOffcanvas .mobile-link {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.mobile-toggle{
+
+.mobile-toggle {
     width: 30px;
     height: 30px;
     color: #fff;
@@ -50,7 +59,8 @@ a:hover{
     background: transparent;
     border: none;
     outline: none;
-  }
+}
+
 .header-search form input {
     font-size: 14px;
     width: 100%;
@@ -65,9 +75,11 @@ a:hover{
 .navbar {
     background: #10143e;
 }
-.navbar-expand-lg .navbar-nav .dropdown-menu{
+
+.navbar-expand-lg .navbar-nav .dropdown-menu {
     z-index: 10000000;
 }
+
 .bootstrap-select>.dropdown-toggle {
     background: transparent !important;
     border: none;
@@ -75,9 +87,11 @@ a:hover{
     outline: none;
     color: #fff;
 }
-.prod-drop:hover .dropdown-menu{
+
+.prod-drop:hover .dropdown-menu {
     display: block;
 }
+
 .bootstrap-select>.dropdown-toggle::after {
     border-right: none !important;
     border-left: none !important;
@@ -113,8 +127,7 @@ a:hover{
 }
 
 * {
-    font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    ;
+    font-family: "Poppins", sans-serif;
 }
 
 .nav-link {
@@ -152,12 +165,14 @@ a:hover{
         display: none !important;
     }
 }
+
 @media (min-width: 1400px) {
     .col-xxl-3 {
         flex: 0 0 auto !important;
         width: 25% !important;
     }
-  }
+}
+
 .logo {
     width: 120px;
     max-width: 250px;
@@ -354,42 +369,52 @@ a:hover{
     .logo {
         max-width: 160px;
     }
-    .footer-item2{
-        display: none!important;
+
+    .footer-item2 {
+        display: none !important;
     }
 }
-.navbar-toggler{
+
+.navbar-toggler {
     padding: 0 !important;
     margin-right: 13px;
 }
-.navbar-toggler:focus{
+
+.navbar-toggler:focus {
     box-shadow: none !important;
 }
+
 .offcanvas {
     transition: transform 0.3s linear !important;
 }
-.btn-close{
-background: transparent url('../images/close.png') center / 1em auto no-repeat !important;
-opacity: 1 !important;
+
+.btn-close {
+    background: transparent url('../images/close.png') center / 1em auto no-repeat !important;
+    opacity: 1 !important;
 }
+
+
 /*Responsive navbar*/
 
-@media(max-width:767px){
-    .logo{
+@media(max-width:767px) {
+    .logo {
         width: 150px;
-        height: 20px;
+        height: auto;
         max-width: unset;
         margin-left: 10px;
     }
-    .header-actions .count-badge{
+
+    .header-actions .count-badge {
         width: 15px;
         height: 15px;
         font-size: 12px;
     }
-    .header-actions .title{
+
+    .header-actions .title {
         font-size: 11px;
     }
-    .header-actions i{
+
+    .header-actions i {
         font-size: 1rem;
     }
 }
@@ -400,18 +425,17 @@ opacity: 1 !important;
 
 /*Footer*/
 
-.footer{
+.footer {
     background: #10143e;
     color: #fff;
 }
 
-.footer-item1 p{
+.footer-item1 p {
     color: #fff;
-    /* margin-top: 1rem; */
     font-size: 16px;
 }
 
-.social-icons{
+.social-icons {
     list-style: none;
     display: flex;
     align-items: center;
@@ -421,7 +445,8 @@ opacity: 1 !important;
     margin-bottom: 0;
     padding: 0;
 }
-.social-icons li a{
+
+.social-icons li a {
     display: flex;
     width: 32px;
     height: 32px;
@@ -434,78 +459,93 @@ opacity: 1 !important;
     text-decoration: none;
     cursor: pointer;
 }
-.info-phone{
+
+.info-phone {
     display: flex;
     align-items: center;
     gap: 2rem;
     text-decoration: none;
     color: #fff;
 }
-.info-phone i{
+
+.info-phone i {
     font-size: 32px;
 }
-.info-phone span{
+
+.info-phone span {
     font-size: 14px;
 }
-.info_phone{
+
+.info_phone {
     font-weight: 600;
     font-size: 18px;
 }
-.footer-list-title{
+
+.footer-list-title {
     font-weight: 600;
     font-size: 18px;
 }
-.footer-item2 ul{
-    list-style: none; margin: 0;
+
+.footer-item2 ul {
+    list-style: none;
+    margin: 0;
     padding: 0;
     list-style: none;
-  
+
 }
-.footer-item2 ul li{
+
+.footer-item2 ul li {
     margin-bottom: 0.5rem;
 }
-.footer-item2 ul li a{
+
+.footer-item2 ul li a {
     color: #fff;
     text-decoration: none;
 }
-.download-sec{
+
+.download-sec {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
 }
-.download-sec img{
+
+.download-sec img {
     border-radius: 10px;
 }
-.divider{
+
+.divider {
     width: 100%;
     border-top: 1px solid #e1e2ef;
 }
-.powered a{
+
+.powered a {
     text-decoration: none;
     color: #fff;
     font-weight: 600;
 }
-img{
+
+img {
     object-fit: cover;
 }
 
 
-body{ 
-    height:100vh; 
-    margin:0; 
-    display:flex; 
-    flex-direction:column; 
-  }
-  
-  .footer{
-    margin-top:auto; 
-  }
-  .row{
+body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer {
+    margin-top: auto;
+}
+
+.row {
     margin-left: 0 !important;
     width: 100% !important;
-  }
+}
 
-  .lazyload {
+.lazyload {
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
 }
@@ -513,41 +553,72 @@ body{
 .lazyloaded {
     opacity: 1;
 }
-.mobile-lang,.bootstrap-select .dropdown-menu{
+
+.mobile-lang,
+.bootstrap-select .dropdown-menu {
     z-index: 1000000000000 !important;
 }
 
 #loader {
-width: 60px;
-aspect-ratio: 1;
-z-index: 100000000000000 !important;
-display: flex;
-animation: l10-0 2s infinite steps(1);
+    width: 60px;
+    aspect-ratio: 1;
+    z-index: 100000000000000 !important;
+    display: flex;
+    animation: l10-0 2s infinite steps(1);
 }
+
 #loader::before,
 #loader::after {
-content: "";
-flex: 1;
-animation: 
-    l10-1 1s infinite linear alternate,
-    l10-2 2s infinite steps(1) -.5s;
+    content: "";
+    flex: 1;
+    animation:
+        l10-1 1s infinite linear alternate,
+        l10-2 2s infinite steps(1) -.5s;
 }
+
 #loader::after {
---s:-1,-1;
+    --s: -1, -1;
 }
+
 @keyframes l10-0 {
-0%  {transform: scaleX(1)  rotate(0deg)}
-50% {transform: scaleX(-1) rotate(-90deg)}
+    0% {
+        transform: scaleX(1) rotate(0deg)
+    }
+
+    50% {
+        transform: scaleX(-1) rotate(-90deg)
+    }
 }
+
 @keyframes l10-1 {
-0%,
-5%   {transform:scale(var(--s,1)) translate(0px)   perspective(150px) rotateY(0deg) }
-33%  {transform:scale(var(--s,1)) translate(-10px) perspective(150px) rotateX(0deg) }
-66%  {transform:scale(var(--s,1)) translate(-10px) perspective(150px) rotateX(-180deg)}
-95%,
-100% {transform:scale(var(--s,1)) translate(0px)   perspective(150px) rotateX(-180deg)}
+
+    0%,
+    5% {
+        transform: scale(var(--s, 1)) translate(0px) perspective(150px) rotateY(0deg)
+    }
+
+    33% {
+        transform: scale(var(--s, 1)) translate(-10px) perspective(150px) rotateX(0deg)
+    }
+
+    66% {
+        transform: scale(var(--s, 1)) translate(-10px) perspective(150px) rotateX(-180deg)
+    }
+
+    95%,
+    100% {
+        transform: scale(var(--s, 1)) translate(0px) perspective(150px) rotateX(-180deg)
+    }
 }
+
 @keyframes l10-2 {
-0%  {background:#514b82;border-radius: 0}
-50% {background:#25b09b;border-radius: 100px 0 0 100px}
+    0% {
+        background: #514b82;
+        border-radius: 0
+    }
+
+    50% {
+        background: #25b09b;
+        border-radius: 100px 0 0 100px
+    }
 }

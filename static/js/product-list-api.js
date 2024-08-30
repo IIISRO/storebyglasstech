@@ -4,7 +4,7 @@ let currentPage = 1;
 function displayResults(results) {
   let products = document.querySelector("#products");
   products.innerHTML = "";
- 
+
   if (results.products.length > 0) {
     for (const product of results.products) {
       products.innerHTML += `
@@ -13,50 +13,45 @@ function displayResults(results) {
               <a href="${product.url}">
                 <div class="product-item-img" style="position:relative;">
                   <img class="product-img mdf-image" src="${product.image}" alt="">
-                    
-                
-                 
                 </div>
                 </a>
                 <div class="product-col-info p-2">
                   
-                  <h3 class="product-item-title mt-2"><a href="">${
-                    product.title
-                  }</a></h3>
+                  <h3 class="product-item-title mt-2"><a href="">${product.title}</a></h3>
                   <div class="product-item-price-section">
                   
                     ${(function Items() {
-                      let items = [];
+          let items = [];
 
-                      if (product.has_discount) {
-                        items.push(`
+          if (product.has_discount) {
+            items.push(`
                         ${(function Items2() {
-                          let items2 = [];
-                            items2.push(
-                              `  <div class="product-item-price  d-flex flex-column "><div class="stage"><a href="">${product.discount_amount}%</a></div>`
-                            );
-                          return items2.join("");
-                        })()}
+                let items2 = [];
+                items2.push(
+                  `  <div class="product-item-price  d-flex flex-column "><div class="stage"><a href="">${product.discount_amount}%</a></div>`
+                );
+                return items2.join("");
+              })()}
                         
                      <div class="d-flex align-items-center justify-content-end">
                       <del>${product.price.toFixed(
-                        2
-                      )} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i></del>
+                2
+              )} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i></del>
                       <span>${product.actual_price.toFixed(
-                        2
-                      )} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i></span>
+                2
+              )} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i></span>
                      </div>
                     </div>
                         `);
-                      } else {
-                        items.push(
-                          `<div class="product-item-price d-flex align-items-center justify-content-end"> <span class="text-dark">${product.actual_price.toFixed(
-                            2
-                          )} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i></span>`
-                        );
-                      }
-                      return items.join("");
-                    })()}
+          } else {
+            items.push(
+              `<div class="product-item-price d-flex align-items-center justify-content-end"> <span class="text-dark">${product.actual_price.toFixed(
+                2
+              )} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i></span>`
+            );
+          }
+          return items.join("");
+        })()}
                      
                   </div>
                 </div>
@@ -64,7 +59,7 @@ function displayResults(results) {
             </div>
           </div>
       `;
-      
+
     }
 
     createPagination(results.pagination.all_pages_num, currentPage);
@@ -72,7 +67,7 @@ function displayResults(results) {
     products.innerHTML += `<div class="alert alert-danger">${transNoProduct}</div>`;
   }
   loader.hide();
- 
+
 }
 
 
@@ -97,11 +92,11 @@ function updateTypeUI(selectedType) {
 async function filterProducts(category, filters, pageNumber) {
   loader.show();
   let apiUrl
-  if (langCode != 'az'){
+  if (langCode != 'az') {
     apiUrl = new URL(
       `${location.origin}/${langCode}/api/v1/products/${category}/?page=${pageNumber}`
     );
-  }else{
+  } else {
     apiUrl = new URL(
       `${location.origin}/api/v1/products/${category}/?page=${pageNumber}`
     );
@@ -123,10 +118,10 @@ async function filterProducts(category, filters, pageNumber) {
   let responseData = await response.json();
   displayResults(responseData);
   let newUrl;
-  if (langCode != 'az'){
+  if (langCode != 'az') {
     newUrl = `${location.origin}/${langCode}/products/${category}/${apiUrl.search}`;
 
-  }else{
+  } else {
     newUrl = `${location.origin}/products/${category}/${apiUrl.search}`;
   }
   window.history.pushState({ path: newUrl }, "", newUrl);
@@ -278,8 +273,8 @@ function createPagination(totalPages, currentPage) {
     li.className = isDisabled
       ? "disabled"
       : currentPage === pageNumber
-      ? "active"
-      : "";
+        ? "active"
+        : "";
     if (!isDisabled) {
       li.addEventListener("click", () => {
         if (currentPage !== pageNumber) {
@@ -341,7 +336,7 @@ function updatePage(pageNumber) {
   currentPage = pageNumber;
   const urlParams = new URLSearchParams(window.location.search);
   urlParams.set("page", pageNumber);
-  
+
   const newUrl = `${location.pathname}?${urlParams.toString()}`;
   window.history.pushState({ path: newUrl }, "", newUrl);
   handleFilterChange();
@@ -350,16 +345,16 @@ function updatePage(pageNumber) {
 async function fetchAndDisplayResults(category, filters, pageNumber) {
   loader.show();
   let apiUrl;
-  if (langCode != 'az'){
+  if (langCode != 'az') {
     apiUrl = new URL(
       `${location.origin}/${langCode}/api/v1/products/${category}/?page=${pageNumber}`
     );
-  }else{
+  } else {
     apiUrl = new URL(
       `${location.origin}/api/v1/products/${category}/?page=${pageNumber}`
     );
   }
-  
+
 
   for (let key in filters) {
     if (Array.isArray(filters[key])) {
@@ -380,15 +375,15 @@ async function fetchAndDisplayResults(category, filters, pageNumber) {
 }
 
 
-async function searchDynamic(params){
+async function searchDynamic(params) {
   loader.show();
 
   let apiUrl;
-  if (langCode != 'az'){
+  if (langCode != 'az') {
     apiUrl = new URL(
       `${location.origin}/${langCode}/api/v1/products/all/?page=1`
     );
-  }else{
+  } else {
     apiUrl = new URL(
       `${location.origin}/api/v1/products/all/?page=1`
     );
