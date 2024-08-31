@@ -102,7 +102,7 @@ def create_order(request, basket, checkout_total, checkout_actual_total, delv_fe
                     )
 
             from_email = settings.EMAIL_HOST_USER
-            recipient_list = ['contact@bhc.market']
+            recipient_list = ['storebyglasstech@gmail.com']
             send_mail(subject, message, from_email, recipient_list)
             return redirect(f"{reverse_lazy('account:profile')}?p=orders&apprv=true")
         raise Http404
