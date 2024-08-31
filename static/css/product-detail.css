@@ -286,7 +286,7 @@
   justify-content: center;
   position: relative;
   padding: 15px;
-  background-image: url('/mnt/data/image.png');
+  /* background-image: url('/mnt/data/image.png'); */
   background-size: cover;
   background-repeat: no-repeat;
   box-sizing: border-box;
