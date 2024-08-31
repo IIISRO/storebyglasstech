@@ -1,0 +1,893 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- favicon -->
+	<link rel="shortcut icon" type="image/png" href="../../static/images/G-logo.png">
+	<!-- google font -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+    <!-- fontawsome -->
+	<link rel="stylesheet" href="../../static/fontawesome-free-6.5.1-web/css/all.min.css">
+    <!-- bootstrap -->
+	<link rel="stylesheet" href="../../static/bootstrap/css/bootstrap.min.css">
+
+    <style>
+        nav{
+            background-color: #020075;
+            width: 100;
+        }
+
+        .orders-list-table{
+            max-height: 70vh;
+            overflow: auto;
+        }
+        .status-list-table{
+            color: whitesmoke;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            background-color: #2f82e0;
+            border-right: 1px solid rgb(255, 255, 255);
+        }
+        .status-list-table:last-child{
+            border: none;
+            border-top-right-radius: 25px;
+            border-bottom-right-radius: 25px;
+        }
+        .status-list-table:first-child{
+            border-top-left-radius: 25px;
+            border-bottom-left-radius: 25px;
+        }
+        .orders-list-table{
+            border-right: 1px solid rgba(134, 134, 134, 0.458);
+        }
+        .orders-list-table:last-child{
+            border:none;
+        }
+        .next-step-btn{
+             width: 100%;
+             border-radius: 25px;
+             padding: 10px;
+             border: none;
+             background-color: transparent;
+             outline: none!important;
+             transition: all ease 0.5s;
+        }
+        .delv-btn{
+            color: #020075;
+            background-color: #2f82e0;
+        }
+        .delv-btn:hover{
+            background-color: #020075;
+            color: #2f82e0;
+        }
+        .finish-btn{
+            color: #2f82e0;
+            border: 2px solid #2f82e0;
+        }
+        .finish-btn:hover{
+            border: 2px solid #020075;
+            background-color: #020075;
+            color: #2f82e0;
+        }
+        .finished-btn{
+            background-color: #020075;
+            color: #2f82e0;
+        }
+        .card-text{
+            background: none;
+            border: none;
+            outline: none!important;
+        }
+
+        .addressDetailModal p, .customerlModal p{
+            border: 1px solid rgba(65, 65, 65, 0.188);
+            border-radius: 3px;
+            padding: 5px;
+        }
+        a{
+            color: black;
+        }
+
+    </style>
+    <title>Sifariş ekranı</title>
+</head>
+<body>
+    <nav>
+        <div class="row">
+            <div class="d-flex justify-content-center align-items-center col-3">
+                <img height="80px"  src="../../static/images/G-logo.png" alt="">
+            </div>
+            <div class="d-flex justify-content-center align-items-center col-6">
+                <div style="color: white; font-family: sans-serif;" class="d-flex flex-column justify-content-center align-items-center" id="date"></div>
+
+            </div>
+            <div style="color: white;" class="d-flex flex-column justify-content-center align-items-center col-3">
+                <h4>Sifariş ekranı</h4>
+                <small>V1.0.0b</small>
+                <p>Powered By - <a style="color: white;" href="https://ungravity.com/">Ungravity&copy;</a></p>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="status-list-table col-4">Yeni Sifarişlər[<span id="newOrdersCount">{{new_orders.count}}</span>]</div>
+            <div class="status-list-table col-4">Çatdırılmada[<span id="onDelvOrdersCount">{{ondelivery_orders.count}}</span>]</div>
+            <div class="status-list-table col-4">Bitmişlər[<span id="finishedOrdersCount">{{daily_finished_orders.count}}</span>]</div>
+        </div>
+        <hr>
+        <div class="row">
+            <div id="new-orders-table" class="orders-list-table col-4">
+                {% for new_order in new_orders %}
+                <div class="mb-5 card">
+                    <div class="d-flex justify-content-between card-header">#{{new_order.number}} <small>{{new_order.date}}</small></div>
+                    <div class="card-body">
+                        {% for item in new_order.order_items.all %}
+                        <h5 class="card-title">x{{item.quantity}} <a href="/product/{{item.product.get_absolute_url}}">{{item.product.title}}</a></h5>
+                        <ul>
+                            <li>Ölçü: {{item.size}}</li>
+                            <li>Material: {{item.product.type}}</li>
+                        </ul>
+                        {% endfor %}
+                        <small>{{new_order.order_actual_price}}AZN</small> |
+                        <small>{% if new_order.pay_method == "cash" %}<b><i class="fa-solid fa-money-bills"></i> {{new_order.pay_method | upper }}</b>{% else %}<b><i class="fa-solid fa-credit-card"></i> {{new_order.pay_method | upper }}</b>{% endif %}</small>
+                        <hr>
+                        <button  type="button" data-toggle="modal" data-target="#addressDetailModal{{new_order.id}}" class="card-text"><i class="fa-solid fa-location-dot"></i> {{new_order.address_line}}</button><br>
+                        <!-- addres  modali -->
+                        <div class="addressDetailModal modal fade" id="addressDetailModal{{new_order.id}}" tabindex="-1" aria-labelledby="addressDetailModal{{new_order.id}}Label" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="addressDetailModal{{new_order.id}}Label">Çatdırılma ünvanı</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-6">
+                                              <h6>Ad:</h6>
+                                              <p>{{new_order.first_name}}</p>
+                                            </div>
+                                            <div class="col-6">
+                                              <h6>Soyad:</h6>
+                                              <p>{{new_order.last_name}}</p>
+                                            </div>
+                                            <div class="col-12">
+                                              <h6>Ünvan Başlığı:</h6>
+                                              <p>{{new_order.address_line}}</p>
+                                            </div>
+                                            <div class="col-12">
+                                              <h6>Rayon:</h6>
+                                              <p>{{new_order.region}}</p>
+                                            </div>
+                                            <div class="col-12">
+                                              <h6>Küçə/Məhəllə:</h6>
+                                              <p>{{new_order.street}}</p>
+                                            </div>
+                                            <div class="col-6">
+                                              <h6>Bina/Ev:</h6>
+                                              <p>{{new_order.building}}</p>
+                                            </div>
+                                            <div class="col-6">
+                                              <h6>Mənzil:</h6>
+                                              <p>{{new_order.flat}}</p>
+                                            </div>
+                                          </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button type="button" data-dismiss="modal" class="modal-close btn">Bağla</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button  type="button" data-toggle="modal" data-target="#customerlModal{{new_order.id}}" class="card-text"><i class="fa-solid fa-user"></i> {{new_order.user.number}}</button>
+                        <!-- musteri  modali -->
+                        <div class="customerlModal modal fade" id="customerlModal{{new_order.id}}" tabindex="-1" aria-labelledby="customerlModal{{new_order.id}}Label" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="customerlModal{{new_order.id}}Label">Müştəri məlumatları</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-6">
+                                              <h6>Ad:</h6>
+                                              <p>{% if new_order.user.first_name %}{{ new_order.user.first_name }}{% else %}--------{% endif %}</p>
+                                            </div>
+                                            <div class="col-6">
+                                              <h6>Soyad:</h6>
+                                              <p>{% if new_order.user.last_name %}{{ new_order.user.last_name }}{% else %}--------{% endif %}</p>
+                                            </div>
+                                            <div class="col-6">
+                                              <h6>Nömrə:</h6>
+                                              <p>{{new_order.user.number}}</p>
+                                            </div>
+                                            <div class="col-6">
+                                              <h6>Email:</h6>
+                                              <p>{% if new_order.user.email %}{{ new_order.user.email }}{% else %}--------{% endif %}</p>
+                                            </div>
+                                          </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                    <button type="button" data-dismiss="modal" class="modal-close btn">Bağla</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" data-status="Delivery" data-order_id="{{ new_order.id }}" onclick="changeOrderStatus(this)" class="mt-2 delv-btn next-step-btn">Çatdırılma <i class="fa-solid fa-truck"></i></button>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div id="delv-orders-table" class="orders-list-table col-4">
+                {% for ondelv_order in ondelivery_orders %}
+                <div class="mb-5 card">
+                  <div class="d-flex justify-content-between card-header">#{{ondelv_order.number}} <small>{{ondelv_order.date}}</small></div>
+                  <div class="card-body">
+                    {% for item in ondelv_order.order_items.all %}
+                    <h5 class="card-title">x{{item.quantity}} <a href="/product/{{item.product.get_absolute_url}}">{{item.product.title}}</a></h5>
+                    <ul>
+                        <li>Ölçü: {{item.size}}</li>
+                        <li>Material: {{item.product.type}}</li>
+                    </ul>
+                    {% endfor %}
+                    <small>{{ondelv_order.order_actual_price}}AZN</small> |
+                    <small>{% if ondelv_order.pay_method == "cash" %}<b><i class="fa-solid fa-money-bills"></i> {{ondelv_order.pay_method | upper }}</b>{% else %}<b><i class="fa-solid fa-credit-card"></i> {{ondelv_order.pay_method | upper }}</b>{% endif %}</small>
+
+                    <hr>
+                    <button  type="button" data-toggle="modal" data-target="#addressDetailModal{{ondelv_order.id}}" class="card-text"><i class="fa-solid fa-location-dot"></i> {{ondelv_order.address_line}}</button><br>
+                    <!-- addres  modali -->
+                    <div class="addressDetailModal modal fade" id="addressDetailModal{{ondelv_order.id}}" tabindex="-1" aria-labelledby="addressDetailModal{{ondelv_order.id}}Label" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="addressDetailModal{{ondelv_order.id}}Label">Çatdırılma ünvanı</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-6">
+                                          <h6>Ad:</h6>
+                                          <p>{{ondelv_order.first_name}}</p>
+                                        </div>
+                                        <div class="col-6">
+                                          <h6>Soyad:</h6>
+                                          <p>{{ondelv_order.last_name}}</p>
+                                        </div>
+                                        <div class="col-12">
+                                          <h6>Ünvan Başlığı:</h6>
+                                          <p>{{ondelv_order.address_line}}</p>
+                                        </div>
+                                        <div class="col-12">
+                                          <h6>Rayon:</h6>
+                                          <p>{{ondelv_order.region}}</p>
+                                        </div>
+                                        <div class="col-12">
+                                          <h6>Küçə/Məhəllə:</h6>
+                                          <p>{{ondelv_order.street}}</p>
+                                        </div>
+                                        <div class="col-6">
+                                          <h6>Bina/Ev:</h6>
+                                          <p>{{ondelv_order.building}}</p>
+                                        </div>
+                                        <div class="col-6">
+                                          <h6>Mənzil:</h6>
+                                          <p>{{ondelv_order.flat}}</p>
+                                        </div>
+                                      </div>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" data-dismiss="modal" class="modal-close btn">Bağla</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button  type="button" data-toggle="modal" data-target="#customerlModal{{ondelv_order.id}}" class="card-text"><i class="fa-solid fa-user"></i> {{ondelv_order.user.number}}</button>
+                    <!-- musteri  modali -->
+                    <div class="customerlModal modal fade" id="customerlModal{{ondelv_order.id}}" tabindex="-1" aria-labelledby="customerlModal{{ondelv_order.id}}Label" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="customerlModal{{ondelv_order.id}}Label">Müştəri məlumatları</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-6">
+                                          <h6>Ad:</h6>
+                                          <p>{% if ondelv_order.user.first_name %}{{ ondelv_order.user.first_name }}{% else %}--------{% endif %}</p>
+                                        </div>
+                                        <div class="col-6">
+                                          <h6>Soyad:</h6>
+                                          <p>{% if ondelv_order.user.last_name %}{{ ondelv_order.user.last_name }}{% else %}--------{% endif %}</p>
+                                        </div>
+                                        <div class="col-6">
+                                          <h6>Nömrə:</h6>
+                                          <p>{{ondelv_order.user.number}}</p>
+                                        </div>
+                                        <div class="col-6">
+                                          <h6>Email:</h6>
+                                          <p>{% if ondelv_order.user.email %}{{ ondelv_order.user.email }}{% else %}--------{% endif %}</p>
+                                        </div>
+                                      </div>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" data-dismiss="modal" class="modal-close btn">Bağla</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" data-status="Finished" data-order_id="{{ ondelv_order.id }}" onclick="changeOrderStatus(this)" class="mt-2 finish-btn next-step-btn">Tamamla <i class="fa-regular fa-circle-check"></i></button>
+                  </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div id="finished-orders-table" class="orders-list-table col-4">
+                {% for finished_order in daily_finished_orders %}
+                <div class="mb-5 card">
+                    <div class="d-flex justify-content-between card-header">#{{finished_order.number}} <small>{{finished_order.date}}</small></div>
+                    <div class="card-body">
+                      {% for item in finished_order.order_items.all %}
+                      <h5 class="card-title">x{{item.quantity}} <a href="/product/{{item.product.get_absolute_url}}">{{item.product.title}}</a></h5>
+                      <ul>
+                          <li>Ölçü: {{item.size}}</li>
+                          <li>Material: {{item.product.type}}</li>
+                      </ul>
+                      {% endfor %}
+                      <small>{{finished_order.order_actual_price}}AZN</small> |
+                      <small>{% if finished_order.pay_method == "cash" %}<b><i class="fa-solid fa-money-bills"></i> {{finished_order.pay_method | upper }}</b>{% else %}<b><i class="fa-solid fa-credit-card"></i> {{finished_order.pay_method | upper }}</b>{% endif %}</small>
+
+                      <hr>
+                      <button  type="button" data-toggle="modal" data-target="#addressDetailModal{{finished_order.id}}" class="card-text"><i class="fa-solid fa-location-dot"></i> {{finished_order.address_line}}</button><br>
+                      <!-- addres  modali -->
+                      <div class="addressDetailModal modal fade" id="addressDetailModal{{finished_order.id}}" tabindex="-1" aria-labelledby="addressDetailModal{{finished_order.id}}Label" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-scrollable">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h5 class="modal-title" id="addressDetailModal{{finished_order.id}}Label">Çatdırılma ünvanı</h5>
+                                  </div>
+                                  <div class="modal-body">
+                                      <div class="row">
+                                          <div class="col-6">
+                                            <h6>Ad:</h6>
+                                            <p>{{finished_order.first_name}}</p>
+                                          </div>
+                                          <div class="col-6">
+                                            <h6>Soyad:</h6>
+                                            <p>{{finished_order.last_name}}</p>
+                                          </div>
+                                          <div class="col-12">
+                                            <h6>Ünvan Başlığı:</h6>
+                                            <p>{{finished_order.address_line}}</p>
+                                          </div>
+                                          <div class="col-12">
+                                            <h6>Rayon:</h6>
+                                            <p>{{finished_order.region}}</p>
+                                          </div>
+                                          <div class="col-12">
+                                            <h6>Küçə/Məhəllə:</h6>
+                                            <p>{{finished_order.street}}</p>
+                                          </div>
+                                          <div class="col-6">
+                                            <h6>Bina/Ev:</h6>
+                                            <p>{{finished_order.building}}</p>
+                                          </div>
+                                          <div class="col-6">
+                                            <h6>Mənzil:</h6>
+                                            <p>{{finished_order.flat}}</p>
+                                          </div>
+                                        </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                  <button type="button" data-dismiss="modal" class="modal-close btn">Bağla</button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <button type="button" data-toggle="modal" data-target="#customerlModal{{finished_order.id}}" class="card-text"><i class="fa-solid fa-user"></i> {{finished_order.user.number}}</button>
+                      <!-- musteri  modali -->
+                      <div class="customerlModal modal fade" id="customerlModal{{finished_order.id}}" tabindex="-1" aria-labelledby="customerlModal{{finished_order.id}}Label" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-scrollable">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h5 class="modal-title" id="customerlModal{{finished_order.id}}Label">Müştəri məlumatları</h5>
+                                  </div>
+                                  <div class="modal-body">
+                                      <div class="row">
+                                          <div class="col-6">
+                                            <h6>Ad:</h6>
+                                            <p>{% if finished_order.user.first_name %}{{ finished_order.user.first_name }}{% else %}--------{% endif %}</p>
+                                          </div>
+                                          <div class="col-6">
+                                            <h6>Soyad:</h6>
+                                            <p>{% if finished_order.user.last_name %}{{ finished_order.user.last_name }}{% else %}--------{% endif %}</p>
+                                          </div>
+                                          <div class="col-6">
+                                            <h6>Nömrə:</h6>
+                                            <p>{{finished_order.user.number}}</p>
+                                          </div>
+                                          <div class="col-6">
+                                            <h6>Email:</h6>
+                                            <p>{% if finished_order.user.email %}{{ finished_order.user.email }}{% else %}--------{% endif %}</p>
+                                          </div>
+                                        </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                  <button type="button" data-dismiss="modal" class="modal-close btn">Bağla</button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <p class="mb-0 text-center mt-2 finished-btn next-step-btn">Tamamlandı <i class="fa-solid fa-circle-check"></i></p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <audio style="display:none;"  id="confSound">
+      <source src='{% static "order_conf.mp3" %}' type="audio/mpeg">
+    </audio>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="../../static/bootstrap/js/bootstrap.min.js"></script>
+{% csrf_token %}
+
+<script>
+function updateClock() {
+    var currentTime = new Date();
+
+    var hours = currentTime.getHours();
+    var minutes = currentTime.getMinutes();
+    var seconds = currentTime.getSeconds();
+
+    hours = (hours < 10 ? "0" : "") + hours;
+    minutes = (minutes < 10 ? "0" : "") + minutes;
+    seconds = (seconds < 10 ? "0" : "") + seconds;
+
+    var day = currentTime.getDate();
+    var month = currentTime.getMonth() + 1; // Note: Months are zero-indexed, so January is 0
+    var year = currentTime.getFullYear();
+
+    $("#date").html(`<span>${day}/${month}/${year}</span><span>${hours}:${minutes}:${seconds}</span>`);
+}
+setInterval(updateClock, 1000);
+
+</script>
+
+
+
+<script>
+  function getOrders(){
+    var api_url = "{% url 'orderAPI:orderslist' %}"
+
+    async function Orders(api_url=api_url) {
+        const response = await fetch(api_url, {
+            method: 'GET', // *GET, POST, PUT, DELETE, etc.
+        });
+        
+        return response.json(); // parses JSON response into native JavaScript objects
+    }
+    
+    
+    Orders(api_url)
+    .then((data) => {
+        if (data){
+            let newOrdersTable = $("#new-orders-table")
+            let delvOrdersTable = $("#delv-orders-table")
+            let finishedOrdersTable = $("#finished-orders-table")
+
+            finishedOrdersTable.html('')
+            delvOrdersTable.html('')
+            newOrdersTable.html('')
+            $("#newOrdersCount").text(data.new_orders.length)
+            $("#onDelvOrdersCount").text(data.ondelivery_orders.length)
+            $("#finishedOrdersCount").text(data.daily_finished_orders.length)
+
+            for(let finishedOrder of data.daily_finished_orders){
+              var finishedOrderCARD = 
+              `
+              <div class="mb-5 card">
+                    <div class="d-flex justify-content-between card-header">#${finishedOrder.number} <small>${finishedOrder.date}</small></div>
+                    <div class="card-body">
+                      {% for item in finished_order.orderitem_set.all %}
+                      {% endfor %}
+                      ${
+                        (function listProducts() {
+                          let orderProducts = []
+                          for(let product of finishedOrder.products){
+                            orderProducts.push(`
+                            <h5 class="card-title">x${product.quantity} <a href="/product/${product.product.url}">${product.product.title}</a></h5>
+                            <ul>
+                                <li>Ölçü: ${product.size}</li>
+                                <li>Material: ${product.product.type}</li>
+                            </ul>
+                            `)
+                          }
+                          return orderProducts.join('');
+                        
+                        })()
+                      }
+                      <small>${finishedOrder.order_actual_price}AZN</small> |
+                      <small>
+                        ${
+                          (function checkPayMethod() {
+                              if(finishedOrder.pay_method === "cash"){
+                                return `<b><i class="fa-solid fa-money-bills"></i>}</b>`
+                              }
+                              return `<b><i class="fa-solid fa-credit-card"></i>}</b>`
+
+                          
+                          })()
+                        }
+                      </small>
+
+                      
+                      <hr>
+                      <button  type="button" data-toggle="modal" data-target="#addressDetailModal${finishedOrder.id}" class="card-text"><i class="fa-solid fa-location-dot"></i> ${finishedOrder.address_line}</button><br>
+                      <!-- addres  modali -->
+                      <div class="addressDetailModal modal fade" id="addressDetailModal${finishedOrder.id}" tabindex="-1" aria-labelledby="addressDetailModal${finishedOrder.id}Label" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-scrollable">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h5 class="modal-title" id="addressDetailModal${finishedOrder.id}Label">Çatdırılma ünvanı</h5>
+                                  </div>
+                                  <div class="modal-body">
+                                      <div class="row">
+                                          <div class="col-6">
+                                            <h6>Ad:</h6>
+                                            <p>${finishedOrder.first_name}</p>
+                                          </div>
+                                          <div class="col-6">
+                                            <h6>Soyad:</h6>
+                                            <p>${finishedOrder.last_name}</p>
+                                          </div>
+                                          <div class="col-12">
+                                            <h6>Ünvan Başlığı:</h6>
+                                            <p>${finishedOrder.address_line}</p>
+                                          </div>
+                                          <div class="col-12">
+                                            <h6>Rayon:</h6>
+                                            <p>${finishedOrder.region}</p>
+                                          </div>
+                                          <div class="col-12">
+                                            <h6>Küçə/Məhəllə:</h6>
+                                            <p>${finishedOrder.street}</p>
+                                          </div>
+                                          <div class="col-6">
+                                            <h6>Bina/Ev:</h6>
+                                            <p>${finishedOrder.building}</p>
+                                          </div>
+                                          <div class="col-6">
+                                            <h6>Mənzil:</h6>
+                                            <p>${finishedOrder.flat}</p>
+                                          </div>
+                                        </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                  <button type="button" data-dismiss="modal" class="modal-close btn">Bağla</button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <button type="button" data-toggle="modal" data-target="#customerlModal${finishedOrder.id}" class="card-text"><i class="fa-solid fa-user"></i> ${finishedOrder.user.number}</button>
+                      <!-- musteri  modali -->
+                      <div class="customerlModal modal fade" id="customerlModal${finishedOrder.id}" tabindex="-1" aria-labelledby="customerlModal${finishedOrder.id}Label" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-scrollable">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h5 class="modal-title" id="customerlModal${finishedOrder.id}Label">Müştəri məlumatları</h5>
+                                  </div>
+                                  <div class="modal-body">
+                                      <div class="row">
+                                          <div class="col-6">
+                                            <h6>Ad:</h6>
+                                            <p>${finishedOrder.user.first_name || '--------' }</p>
+                                          </div>
+                                          <div class="col-6">
+                                            <h6>Soyad:</h6>
+                                            <p>${finishedOrder.user.last_name || '--------' }</p>
+                                          </div>
+                                          <div class="col-6">
+                                            <h6>Nömrə:</h6>
+                                            <p>${finishedOrder.user.number}</p>
+                                          </div>
+                                          <div class="col-6">
+                                            <h6>Email:</h6>
+                                            <p>${finishedOrder.email || '--------' }</p>
+                                          </div>
+                                        </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                  <button type="button" data-dismiss="modal" class="modal-close btn">Bağla</button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <p class="mb-0 text-center mt-2 finished-btn next-step-btn">Tamamlandı <i class="fa-solid fa-circle-check"></i></p>
+                    </div>
+                </div>
+              `
+              finishedOrdersTable.append(finishedOrderCARD)
+            }
+            for(let delvOrder of data.ondelivery_orders){
+              var delvOrderCARD = 
+              `
+              <div class="mb-5 card">
+                    <div class="d-flex justify-content-between card-header">#${delvOrder.number} <small>${delvOrder.date}</small></div>
+                    <div class="card-body">
+                      {% for item in finished_order.orderitem_set.all %}
+                      {% endfor %}
+                      ${
+                        (function listProducts() {
+                          let orderProducts = []
+                          for(let product of delvOrder.products){
+                            orderProducts.push(`
+                            <h5 class="card-title">x${product.quantity} <a href="/product/${product.product.url}">${product.product.title}</a></h5>
+                            <ul>
+                                <li>Ölçü: ${product.size}</li>
+                                <li>Material: ${product.product.type}</li>
+                            </ul>
+                            `)
+                          }
+                          return orderProducts.join('');
+                        
+                        })()
+                      }
+                      <small>${delvOrder.order_actual_price}AZN</small> |
+                      <small>
+                        ${
+                          (function checkPayMethod() {
+                              if(delvOrder.pay_method === "cash"){
+                                return `<b><i class="fa-solid fa-money-bills"></i></b>`
+                              }
+                              return `<b><i class="fa-solid fa-credit-card"></i></b>`
+
+                          
+                          })()
+                        }
+                      </small>
+                      <hr>
+                      <button  type="button" data-toggle="modal" data-target="#addressDetailModal${delvOrder.id}" class="card-text"><i class="fa-solid fa-location-dot"></i> ${delvOrder.address_line}</button><br>
+                      <!-- addres  modali -->
+                      <div class="addressDetailModal modal fade" id="addressDetailModal${delvOrder.id}" tabindex="-1" aria-labelledby="addressDetailModal${delvOrder.id}Label" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-scrollable">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h5 class="modal-title" id="addressDetailModal${delvOrder.id}Label">Çatdırılma ünvanı</h5>
+                                  </div>
+                                  <div class="modal-body">
+                                      <div class="row">
+                                          <div class="col-6">
+                                            <h6>Ad:</h6>
+                                            <p>${delvOrder.first_name}</p>
+                                          </div>
+                                          <div class="col-6">
+                                            <h6>Soyad:</h6>
+                                            <p>${delvOrder.last_name}</p>
+                                          </div>
+                                          <div class="col-12">
+                                            <h6>Ünvan Başlığı:</h6>
+                                            <p>${delvOrder.address_line}</p>
+                                          </div>
+                                          <div class="col-12">
+                                            <h6>Rayon:</h6>
+                                            <p>${delvOrder.region}</p>
+                                          </div>
+                                          <div class="col-12">
+                                            <h6>Küçə/Məhəllə:</h6>
+                                            <p>${delvOrder.street}</p>
+                                          </div>
+                                          <div class="col-6">
+                                            <h6>Bina/Ev:</h6>
+                                            <p>${delvOrder.building}</p>
+                                          </div>
+                                          <div class="col-6">
+                                            <h6>Mənzil:</h6>
+                                            <p>${delvOrder.flat}</p>
+                                          </div>
+                                        </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                  <button type="button" data-dismiss="modal" class="modal-close btn">Bağla</button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <button type="button" data-toggle="modal" data-target="#customerlModal${delvOrder.id}" class="card-text"><i class="fa-solid fa-user"></i> ${delvOrder.user.number}</button>
+                      <!-- musteri  modali -->
+                      <div class="customerlModal modal fade" id="customerlModal${delvOrder.id}" tabindex="-1" aria-labelledby="customerlModal${delvOrder.id}Label" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-scrollable">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h5 class="modal-title" id="customerlModal${delvOrder.id}Label">Müştəri məlumatları</h5>
+                                  </div>
+                                  <div class="modal-body">
+                                      <div class="row">
+                                          <div class="col-6">
+                                            <h6>Ad:</h6>
+                                            <p>${delvOrder.user.first_name || '--------' }</p>
+                                          </div>
+                                          <div class="col-6">
+                                            <h6>Soyad:</h6>
+                                            <p>${delvOrder.user.last_name || '--------' }</p>
+                                          </div>
+                                          <div class="col-6">
+                                            <h6>Nömrə:</h6>
+                                            <p>${delvOrder.user.number}</p>
+                                          </div>
+                                          <div class="col-6">
+                                            <h6>Email:</h6>
+                                            <p>${delvOrder.email || '--------' }</p>
+                                          </div>
+                                        </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                  <button type="button" data-dismiss="modal" class="modal-close btn">Bağla</button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <button type="button" data-status="Finished" data-order_id="${delvOrder.id}" onclick="changeOrderStatus(this)" class="mt-2 finish-btn next-step-btn">Tamamla <i class="fa-regular fa-circle-check"></i></button>
+                    </div>
+                </div>
+              `
+              delvOrdersTable.append(delvOrderCARD)
+            }
+            for(let newOrder of data.new_orders){
+              var newOrderCARD = 
+              `
+              <div class="mb-5 card">
+                    <div class="d-flex justify-content-between card-header">#${newOrder.number} <small>${newOrder.date}</small></div>
+                    <div class="card-body">
+                      {% for item in finished_order.orderitem_set.all %}
+                      {% endfor %}
+                      ${
+                        (function listProducts() {
+                          let orderProducts = []
+                          for(let product of newOrder.products){
+                            orderProducts.push(`
+                            <h5 class="card-title">x${product.quantity} <a href="/product/${product.product.url}">${product.product.title}</a></h5>
+                            <ul>
+                                <li>Ölçü: ${product.size}</li>
+                                <li>Material: ${product.product.type}</li>
+                            </ul>
+                            `)
+                          }
+                          return orderProducts.join('');
+                        
+                        })()
+                      }
+                      <small>${newOrder.order_actual_price}AZN</small> |
+                      <small>
+                        ${
+                          (function checkPayMethod() {
+                              if(newOrder.pay_method === "cash"){
+                                return `<b><i class="fa-solid fa-money-bills"></i></b>`
+                              }
+                              return `<b><i class="fa-solid fa-credit-card"></i></b>`
+                          })()
+                        }
+                      </small>
+                      <hr>
+                      <button  type="button" data-toggle="modal" data-target="#addressDetailModal${newOrder.id}" class="card-text"><i class="fa-solid fa-location-dot"></i> ${newOrder.address_line}</button><br>
+                      <!-- addres  modali -->
+                      <div class="addressDetailModal modal fade" id="addressDetailModal${newOrder.id}" tabindex="-1" aria-labelledby="addressDetailModal${newOrder.id}Label" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-scrollable">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h5 class="modal-title" id="addressDetailModal${newOrder.id}Label">Çatdırılma ünvanı</h5>
+                                  </div>
+                                  <div class="modal-body">
+                                      <div class="row">
+                                          <div class="col-6">
+                                            <h6>Ad:</h6>
+                                            <p>${newOrder.first_name}</p>
+                                          </div>
+                                          <div class="col-6">
+                                            <h6>Soyad:</h6>
+                                            <p>${newOrder.last_name}</p>
+                                          </div>
+                                          <div class="col-12">
+                                            <h6>Ünvan Başlığı:</h6>
+                                            <p>${newOrder.address_line}</p>
+                                          </div>
+                                          <div class="col-12">
+                                            <h6>Rayon:</h6>
+                                            <p>${newOrder.region}</p>
+                                          </div>
+                                          <div class="col-12">
+                                            <h6>Küçə/Məhəllə:</h6>
+                                            <p>${newOrder.street}</p>
+                                          </div>
+                                          <div class="col-6">
+                                            <h6>Bina/Ev:</h6>
+                                            <p>${newOrder.building}</p>
+                                          </div>
+                                          <div class="col-6">
+                                            <h6>Mənzil:</h6>
+                                            <p>${newOrder.flat}</p>
+                                          </div>
+                                        </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                  <button type="button" data-dismiss="modal" class="modal-close btn">Bağla</button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <button type="button" data-toggle="modal" data-target="#customerlModal${newOrder.id}" class="card-text"><i class="fa-solid fa-user"></i> ${newOrder.user.number}</button>
+                      <!-- musteri  modali -->
+                      <div class="customerlModal modal fade" id="customerlModal${newOrder.id}" tabindex="-1" aria-labelledby="customerlModal${newOrder.id}Label" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-scrollable">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h5 class="modal-title" id="customerlModal${newOrder.id}Label">Müştəri məlumatları</h5>
+                                  </div>
+                                  <div class="modal-body">
+                                      <div class="row">
+                                          <div class="col-6">
+                                            <h6>Ad:</h6>
+                                            <p>${newOrder.user.first_name || '--------' }</p>
+                                          </div>
+                                          <div class="col-6">
+                                            <h6>Soyad:</h6>
+                                            <p>${newOrder.user.last_name || '--------' }</p>
+                                          </div>
+                                          <div class="col-6">
+                                            <h6>Nömrə:</h6>
+                                            <p>${newOrder.user.number}</p>
+                                          </div>
+                                          <div class="col-6">
+                                            <h6>Email:</h6>
+                                            <p>${newOrder.email || '--------' }</p>
+                                          </div>
+                                        </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                  <button type="button" data-dismiss="modal" class="modal-close btn">Bağla</button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <button type="button" data-status="Delivery" data-order_id="${newOrder.id}" onclick="changeOrderStatus(this)" class="mt-2 delv-btn next-step-btn">Çatdırılma <i class="fa-solid fa-truck"></i></button>
+                    </div>
+                </div>
+              `
+              newOrdersTable.append(newOrderCARD)
+            }
+
+
+        }
+    })
+  }
+
+  function changeOrderStatus(button){
+    let orderID = $(button).data('order_id');
+    let status = $(button).data('status');
+
+    fetch(`/api/v1/order/order/update/${orderID}/`,{
+      method:"PATCH",
+      headers: {
+        "X-CSRFToken": document.querySelector('[name=csrfmiddlewaretoken]').value,
+        "Accept": "application/json",
+        'Content-Type': 'application/json'
+        },
+      body:JSON.stringify({
+        'status':  status
+      })
+    })
+    .then((response)=>{
+      return response
+    })
+    .finally(()=>{
+      getOrders()
+    })
+
+  }
+</script>
+
+</html>

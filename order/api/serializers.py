@@ -80,15 +80,30 @@ class BasketSerializer(serializers.ModelSerializer):
         
 class OrderItemSerializer(serializers.ModelSerializer):
     product = serializers.SerializerMethodField()
+    size = serializers.SerializerMethodField()
+    frame = serializers.SerializerMethodField()
+    
     class Meta:
         model = OrderItem
         fields = (
+            'id',
             'product', 
-            'quantity',
-            'price'
+            'size',
+            'frame',
+            'item_price',
+            'item_actual_price',
+            'quantity'
             )
+    
     def get_product(self, obj):
-        return obj.product.title
+        return ProductSerializer(obj.product).data
+    
+    def get_size(self, obj):
+        self.context['product'] = obj.product
+        return ProductSizeSerializer(obj.size, context = self.context).data
+    
+    def get_frame(self, obj):
+        return ProductFrameSerializer(obj.frame).data
     
 class GetOrderSerializer(serializers.ModelSerializer):
     products = serializers.SerializerMethodField()
@@ -100,11 +115,10 @@ class GetOrderSerializer(serializers.ModelSerializer):
             'id',
             'number',
             'products',
-            'discount', 
-            'coupon',
+            'used_coupon',
             'delv_fee',
-            'payed_amount',
-            'pay_method',
+            'order_price',
+            'order_actual_price',
             'first_name',
             'last_name',
             'address_line',
@@ -117,7 +131,7 @@ class GetOrderSerializer(serializers.ModelSerializer):
             'user'
         )
     def get_products(self, obj):
-        return OrderItemSerializer(obj.orderitem_set.all(), many=True).data
+        return OrderItemSerializer(obj.order_items.all(), many=True).data
     def get_user(self, obj):
         user = {
             'number': obj.user.number,

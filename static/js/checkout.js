@@ -383,37 +383,37 @@ function createOrder() {
                 })
 
         } else {
-            // fetch('https://api.payriff.com/api/v2/createOrder',{
-            //     method:"POST",
-            //     headers: {
-            //         "Authorization": "57F3BC6184394CE19BEB715408F74D39",
-            //         "Accept": "application/json",
-            //         'Content-Type': 'application/json'
-            //     },
-            //     body:JSON.stringify({
-            //         "body": {
-            //         "amount": checkoutActualTotal,
-            //         "approveURL": approveURL,
-            //         "cancelURL": window.location.href,
-            //         "currencyType": "AZN",
-            //         "declineURL": window.location.origin+payDeclineURL,
-            //         "description": "Satish",
-            //         "directPay": true,
-            //         "language": "AZ",
-            //         },
-            //         "merchant": "ES1093507"
-            //     }),
+            fetch('https://api.payriff.com/api/v2/createOrder',{
+                method:"POST",
+                headers: {
+                    "Authorization": "57F3BC6184394CE19BEB715408F74D39",
+                    "Accept": "application/json",
+                    'Content-Type': 'application/json'
+                },
+                body:JSON.stringify({
+                    "body": {
+                    "amount": checkoutActualTotal,
+                    "approveURL": approveURL,
+                    "cancelURL": window.location.href,
+                    "currencyType": "AZN",
+                    "declineURL": window.location.origin+payDeclineURL,
+                    "description": "Satish",
+                    "directPay": true,
+                    "language": "AZ",
+                    },
+                    "merchant": "ES1093507"
+                }),
 
-            // })
+            })
 
-            // .then((response) => {
-            //     return response.json()
+            .then((response) => {
+                return response.json()
 
-            // })
-            // .then((data) => {
-            //     window.location.href = data.payload.paymentUrl
+            })
+            .then((data) => {
+                window.location.href = data.payload.paymentUrl
 
-            // });
+            });
         }
 
 

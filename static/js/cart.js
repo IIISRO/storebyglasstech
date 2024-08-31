@@ -13,6 +13,7 @@ function getBasketItems() {
 
     Products(api_url)
         .then((data) => {
+            console.log(data)
             if (data.items.length > 0) {
                 const itemsArea = $("#productsStartLine")
                 itemsArea.html('');
