@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-29 19:01+0000\n"
+"POT-Creation-Date: 2024-08-31 10:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -535,27 +535,27 @@ msgstr "Главная страница"
 msgid "Bizimlə Əlaqə"
 msgstr "Связаться с нами"
 
-#: core/templates/base.html:375
+#: core/templates/base.html:374
 msgid "Səbətə Əlavə Olundu"
 msgstr "Добавлено в корзину"
 
-#: core/templates/base.html:376
+#: core/templates/base.html:375
 msgid "Xəta baş verdi"
 msgstr "Произошла ошибка"
 
-#: core/templates/base.html:377
+#: core/templates/base.html:376
 msgid "Məlumatlar tam deyil"
 msgstr "Данные неполные"
 
-#: core/templates/base.html:380
+#: core/templates/base.html:379
 msgid "Artıq kupon var!"
 msgstr "Купон уже имеется!"
 
-#: core/templates/base.html:381
+#: core/templates/base.html:380
 msgid "Kupon əlavə edildi!"
 msgstr "Купон добавлен!"
 
-#: core/templates/base.html:382
+#: core/templates/base.html:381
 msgid "Kupon tapılmadı!"
 msgstr "Купон не найден!"
 
@@ -2151,6 +2151,38 @@ msgstr "бесплатно"
 #: order/templates/checkout.html:263
 msgid "Çatdırılma"
 msgstr "Доставка"
+
+#: product/templates/product-detail.html:104
+msgid "Ölçülər"
+msgstr "Размер"
+
+#: product/templates/product-detail.html:117
+msgid "Səbətə at"
+msgstr "Добавить в корзину"
+
+#: product/templates/product-detail.html:134
+msgid "OXŞAR MƏHSULLAR"
+msgstr "ПОХОЖИЕ ПРОДУКТЫ"
+
+#: product/templates/product-detail.html:182
+msgid "Məhsul haqqında"
+msgstr "О продукте"
+
+#: product/templates/product-detail.html:184
+msgid "Rəylər"
+msgstr "Oтзывов"
+
+#: product/templates/product-detail.html:206
+msgid "RƏYLƏR"
+msgstr "Oтзывов"
+
+#: product/templates/product-detail.html:232
+msgid "Heç bir rəy yoxdur."
+msgstr "У вас нет отзывов."
+
+#: product/templates/product-detail.html:251
+msgid "Səbətinizdə bu məhsuldan var!"
+msgstr "У вас есть этот товар в корзине!"
 
 #: product/templates/products.html:19
 msgid "Öz dizaynını et!"

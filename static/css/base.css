@@ -348,12 +348,17 @@ a:hover {
     .header-search {
         width: 27% !important;
     }
+    .info_phone {
+        font-weight: 400;
+        font-size: 14px!important;
+    }
 }
 
 @media(min-width:992px) {
     .header-search-mobile {
         display: none;
     }
+    
 }
 
 @media(max-width:767px) {
@@ -373,6 +378,7 @@ a:hover {
     .footer-item2 {
         display: none !important;
     }
+    
 }
 
 .navbar-toggler {

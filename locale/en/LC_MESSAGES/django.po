@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-29 19:01+0000\n"
+"POT-Creation-Date: 2024-08-31 10:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -535,27 +535,27 @@ msgstr "Home"
 msgid "Bizimlə Əlaqə"
 msgstr "Contact us"
 
-#: core/templates/base.html:375
+#: core/templates/base.html:374
 msgid "Səbətə Əlavə Olundu"
 msgstr "Added to basket"
 
-#: core/templates/base.html:376
+#: core/templates/base.html:375
 msgid "Xəta baş verdi"
 msgstr "Error"
 
-#: core/templates/base.html:377
+#: core/templates/base.html:376
 msgid "Məlumatlar tam deyil"
 msgstr "Data not correct!"
 
-#: core/templates/base.html:380
+#: core/templates/base.html:379
 msgid "Artıq kupon var!"
 msgstr "Already have a coupon"
 
-#: core/templates/base.html:381
+#: core/templates/base.html:380
 msgid "Kupon əlavə edildi!"
 msgstr "Coupon applied!"
 
-#: core/templates/base.html:382
+#: core/templates/base.html:381
 msgid "Kupon tapılmadı!"
 msgstr "No active coupon"
 
@@ -2150,6 +2150,38 @@ msgstr "free"
 #: order/templates/checkout.html:263
 msgid "Çatdırılma"
 msgstr "Delivery"
+
+#: product/templates/product-detail.html:104
+msgid "Ölçülər"
+msgstr "Sizes"
+
+#: product/templates/product-detail.html:117
+msgid "Səbətə at"
+msgstr "Add basket"
+
+#: product/templates/product-detail.html:134
+msgid "OXŞAR MƏHSULLAR"
+msgstr "RELEATED PRODUCTS"
+
+#: product/templates/product-detail.html:182
+msgid "Məhsul haqqında"
+msgstr "About product"
+
+#: product/templates/product-detail.html:184
+msgid "Rəylər"
+msgstr "Comments"
+
+#: product/templates/product-detail.html:206
+msgid "RƏYLƏR"
+msgstr "COMMENTS"
+
+#: product/templates/product-detail.html:232
+msgid "Heç bir rəy yoxdur."
+msgstr "There have no comment."
+
+#: product/templates/product-detail.html:251
+msgid "Səbətinizdə bu məhsuldan var!"
+msgstr "You have this product in your cart!"
 
 #: product/templates/products.html:19
 msgid "Öz dizaynını et!"

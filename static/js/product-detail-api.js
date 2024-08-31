@@ -10,14 +10,7 @@ function getDetail() {
     }
     Products(api_url)
         .then((data) => {
-            if (data.type === "MDF") {
-                $("#prod-selected").html(`<img src="/static/images/mdf.png">MDF Tablo Seçildi`);
-                $("#glass-overlay").css('display', 'none');
-            } else {
-                $("#prod-selected").html(`<img src="/static/images/glassico.png">Glass Tablo Seçildi`);
-                $("#glass-overlay").css('display', 'inline-block');
-
-            }
+      
             // sekil
             $("#main-frame-img").attr('src', data.image);
             $("#main-frame-image").attr('src', data.image);
@@ -63,8 +56,10 @@ function getDetail() {
 
             //size
 
-            const percentages = [25, 35, 45, 55, 65, 75, 85, 95, 100];
-
+            const percentages = [15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
+           
+            
+            // const percentages = distributePercentages(data.sizes.length);
             for (let i = 0; i < data.sizes.length; i++) {
                 const size = data.sizes[i];
 
@@ -126,7 +121,7 @@ function getDetail() {
 
             // in bassket message
             if (data.in_cart) {
-                $("#cartMessage").html(`<div class="d-flex alert alert-success has-cart align-items-center"><i class="fa fa-info"></i> Səbətinizdə bu məhsuldan var!</div>`);
+                $("#cartMessage").html(`<div class="d-flex alert alert-success has-cart align-items-center"><i class="fa fa-info"></i> ${transInBasket}</div>`);
             }
 
 
@@ -137,33 +132,12 @@ function getDetail() {
 
             function calculateSofaWidth() {
                 // Get the current width of the image
-
-
+                const tabProfile = document.getElementById('pills-profile')
                 sizes.forEach(size => {
                     size.addEventListener('click', () => {
-                        const currentImgWidth = img.clientWidth;
-
-                        // Original image dimensions and sofa coordinates (adjust these as needed)
-                        const originalImgWidth = img.naturalWidth;
-                        const sofaLeftX = 150;  // Sofa's left coordinate in the original image
-                        const sofaRightX = 2250; // Sofa's right coordinate in the original image
-
-                        // Calculate the width of the sofa in the original image
-                        const sofaWidthPx = sofaRightX - sofaLeftX;
-
-                        // Calculate the sofa width as a percentage of the original image width
-                        const sofaWidthPercent = 75;
-
-                        // Calculate the current width of the sofa based on the current image size
-                        const currentSofaWidthPx = (sofaWidthPercent / 100) * currentImgWidth;
-
                         sizes.forEach(btn => btn.classList.remove('selected'));
                         size.classList.add('selected');
                         const selectedSize = size.getAttribute("data-size");
-
-                        mainFrame1.style.width = currentSofaWidthPx * (selectedSize / 100) + "px";
-                        // mainFrame1.style.height = currentSofaWidthPx * (selectedSize / 100) + "px";
-
 
                         // size gore extra  qiymet
                         var extra_price = parseFloat(size.dataset.extra_price)
@@ -173,7 +147,31 @@ function getDetail() {
                         }
 
                         $("#prod_actual_price").html(`${(data.actual_price + extra_price).toFixed(2)} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i>`)
-
+                        
+                        // olcu
+                        if(tabProfile.classList.contains('active')  && sizes.length > 1){
+                            const currentImgWidth = img.clientWidth;
+    
+                            // Original image dimensions and sofa coordinates (adjust these as needed)
+                            const originalImgWidth = img.naturalWidth;
+                            const sofaLeftX = 150;  // Sofa's left coordinate in the original image
+                            const sofaRightX = 2250; // Sofa's right coordinate in the original image
+    
+                            // Calculate the width of the sofa in the original image
+                            const sofaWidthPx = sofaRightX - sofaLeftX;
+    
+                            // Calculate the sofa width as a percentage of the original image width
+                            const sofaWidthPercent = 75;
+    
+                            // Calculate the current width of the sofa based on the current image size
+                            const currentSofaWidthPx = (sofaWidthPercent / 100) * currentImgWidth;
+    
+                            mainFrame1.style.width = currentSofaWidthPx * (selectedSize / 100) + "px";
+                            // mainFrame1.style.height = currentSofaWidthPx * (selectedSize / 100) + "px";
+    
+    
+                            
+                        }
                     });
                 });
 
@@ -255,3 +253,16 @@ basketAddButton.addEventListener("click", () => {
 
 })
 
+// function distributePercentages(count) {
+//     let percentages = [];
+
+//     let increment = (100 - 20) / (count - 1); // 20, %20 için
+
+//     percentages.push(20);
+
+//     for (let i = 1; i < count; i++) {
+//         percentages.push(percentages[i - 1] + increment);
+//     }
+
+//     return percentages;
+// }

@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
   {% block title %}<title id="head-prod-title"></title>{% endblock %}
 
@@ -38,9 +39,7 @@
                     </ul>
                     
                     <div class="tab-content w-100" id="pills-tabContent">
-                        <div id="prod-selected" class="pd-product-type product-color-1">
-                           
-                        </div>
+                       
                         <div class="prod-categories">
                             <div style="display: block;">
                                 <ul id="prod-types">
@@ -52,7 +51,6 @@
                         </div>
                         <div class="tab-pane  fade  show first active " id="pills-home" role="tabpanel"
                             aria-labelledby="pills-home-tab">
-
                           
                                 <img id="main-frame-img" style="display: none;" src=""
                                     alt="">
@@ -103,7 +101,7 @@
                     <li><button style="background-image: url('https://img.freepik.com/free-photo/weathered-while-wall-surface-textured_23-2148210236.jpg?size=626&ext=jpg&ga=GA1.1.876311657.1717677308&semt=ais_user');" data-frame="https://i.pinimg.com/originals/2e/8f/00/2e8f000a5e7c8c419420f181c1235609.png"><div class="active-overlay"><i class="fa fa-check"></i></div></button></li>
                     <li><button style="background-image: url('https://img.freepik.com/free-photo/wood-with-coarse-surface-chipping_23-2148394666.jpg?size=626&ext=jpg&ga=GA1.1.876311657.1717677308&semt=ais_user');" data-frame="https://i.pinimg.com/originals/2e/8f/00/2e8f000a5e7c8c419420f181c1235609.png"><div class="active-overlay"><i class="fa fa-check"></i></div></button></li>
                 </ul> -->
-                <span class="size-title mt-4">Size</span>
+                <span class="size-title mt-4">{% trans "Ölçülər" %}</span>
                 <ul id="size-list" class="size-list">
                   
                     
@@ -116,7 +114,7 @@
                 <div class="basket-col d-flex align-items-end  align-items-lg-center flex-column flex-lg-row justify-content-end mt-4">
                    
                    <div class="d-flex align-items-center" style="gap: 20px;">
-                    <button type="button" class="basketadd py-3" data-prod_id="" id="basketadd"><i class="fa fa-shopping-cart"></i> Səbətə at</button>
+                    <button type="button" class="basketadd py-3" data-prod_id="" id="basketadd"><i class="fa fa-shopping-cart"></i> {% trans "Səbətə at" %}</button>
                     <button data-prod_id="" class="like-btn" id="like">
                         <img class="like-img" src="{% static 'images/heart2.png'%}" alt="">
                     </button>
@@ -133,7 +131,7 @@
 <div class="product-type-in w-100 py-5">
     <div class="container-fluid">
         <div class="pt-in-header">
-            <div title="farklı ürün çeşitleri" class="title-h3">OXŞAR MƏHSULLAR</div>
+            <div title="farklı ürün çeşitleri" class="title-h3">{% trans "OXŞAR MƏHSULLAR" %}</div>
         </div>
         <div class="row">
             {% for product in releated_products %}
@@ -181,9 +179,9 @@
     <nav class="mt-3">
         <div class="nav nav-tabs mb-2 " id="nav-tab" role="tablist">
             <button class="nav-link active" id="nav-first-tab" data-bs-toggle="tab" data-bs-target="#nav-first"
-                type="button" role="tab" aria-controls="nav-first" aria-selected="true">Məhsul haqqında</button>
+                type="button" role="tab" aria-controls="nav-first" aria-selected="true">{% trans "Məhsul haqqında" %}</button>
             <button class="nav-link" id="nav-second-tab" data-bs-toggle="tab" data-bs-target="#nav-second"
-                type="button" role="tab" aria-controls="nav-second" aria-selected="false">Rəylər</button>
+                type="button" role="tab" aria-controls="nav-second" aria-selected="false">{% trans "Rəylər" %}</button>
          
         </div>
     </nav>
@@ -205,7 +203,7 @@
         </div>
         <div class="tab-pane fade" id="nav-second" role="tabpanel" aria-labelledby="nav-second-tab">
             <div class="d-flex w-full align-items-center justify-content-between">
-                <div title="farklı ürün çeşitleri" class="title-h2 mt-3 mb-3">RƏYLƏR</div>
+                <div title="farklı ürün çeşitleri" class="title-h2 mt-3 mb-3">{% trans "RƏYLƏR" %}</div>
             </div>
             {% if comments %}
             {% for comment in comments %}
@@ -231,7 +229,7 @@
             </div>
             {% endfor %}
             {% else %}
-            <div class="border border-gray-500 bg-gray-200 p-3 text-center font-size-sm">Heç bir rəy yoxdur.</div>
+            <div class="border border-gray-500 bg-gray-200 p-3 text-center font-size-sm">{% trans "Heç bir rəy yoxdur." %}</div>
             {% endif %}
         </div>
        
@@ -248,8 +246,9 @@
 <script>
     var productDetailAPI = "{% url 'productAPI:api-product-detail' category_slug=category_slug product_slug=product_slug %}";
     var addBasketAPI = "{% url 'orderAPI:addbasket' %}";
-
     var addWishAPI = "{% url 'accountAPI:addwishlist' %}";
+
+    var transInBasket = "{% trans 'Səbətinizdə bu məhsuldan var!' %}"
 
 </script>
 <script src="https://bgrins.github.io/spectrum/spectrum.js"></script>
