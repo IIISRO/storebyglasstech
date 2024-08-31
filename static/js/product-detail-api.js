@@ -162,7 +162,7 @@ function getDetail() {
                         const selectedSize = size.getAttribute("data-size");
 
                         mainFrame1.style.width = currentSofaWidthPx * (selectedSize / 100) + "px";
-                        mainFrame1.style.height = currentSofaWidthPx * (selectedSize / 100) + "px";
+                        // mainFrame1.style.height = currentSofaWidthPx * (selectedSize / 100) + "px";
 
 
                         // size gore extra  qiymet
