@@ -212,7 +212,7 @@
                     <div class="card-meta">
                         <div class="meta-item post-author">
                             <div class="author-avatar bg-cover" style="background-image: url('/static/images/customer.png'); background-size: 65px;"></div>
-                            <a href="#" class="author-name">{% if comment.user.get_full_name %} {{ comment.user.get_full_name }} {% else %} İstifadəçi {% endif %}</a>
+                            <a href="#" class="author-name">{% if comment.user.get_full_name %} {{ comment.user.get_full_name }} {% else %} {% trans "İstifadəçi" %} {% endif %}</a>
                         </div>
                         <span class="meta-item"> {{ comment.date }} </span>
                     </div>

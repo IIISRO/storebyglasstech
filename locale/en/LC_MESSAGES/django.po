@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-31 10:06+0000\n"
+"POT-Creation-Date: 2024-08-31 11:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2174,6 +2174,10 @@ msgstr "Comments"
 #: product/templates/product-detail.html:206
 msgid "RƏYLƏR"
 msgstr "COMMENTS"
+
+#: product/templates/product-detail.html:215
+msgid "İstifadəçi"
+msgstr "User"
 
 #: product/templates/product-detail.html:232
 msgid "Heç bir rəy yoxdur."
