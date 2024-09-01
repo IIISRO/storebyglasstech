@@ -177,22 +177,42 @@ $(document).ready(function () {
         'ffff00.png',
 
     ];
-
+    let loader_L = document.getElementById('loading-spinner3');
+    loader_L.style.display = 'none';
     $("#preferredHex").on('change', function () {
         var colorVal = $("#preferredHex").val().replace('#', '');
-
-        let elements = document.querySelectorAll('.sofa-section img');
-
+    
+        let element = document.getElementById('sofaImage');
+        
+    
         let newImage = `${colorVal}.png`;
-
+       
+    
         if (imageList.includes(newImage)) {
-            elements.forEach(function (element) {
-                element.src = `${location.origin}/static/images/${colorVal}.png`;
-            });
+            // Show the loader
+            loader_L.style.display = 'block';
+            
+            // Set the image source
+            element.src = `${location.origin}/static/images/${colorVal}.png`;
+            tabContent.style.display="none"
+    
+            // Listen for the image load event to hide the loader
+            element.onload = function () {
+                loader_L.style.display = 'none';
+                tabContent.style.display = 'block';
+            };
+    
+            // Handle any error if the image fails to load
+            element.onerror = function () {
+                loader_L.style.display = 'none';
+                console.error("Failed to load image:", newImage);
+            };
+    
         } else {
             console.warn("Image not found in the list for the selected color:", colorVal);
         }
     });
+    
 });
 
 
