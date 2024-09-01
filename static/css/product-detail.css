@@ -671,7 +671,8 @@ ul {
 }
 
 #loading-spinner,
-#loading-spinner2 {
+#loading-spinner2,
+#loading-spinner3 {
   position: absolute;
   top: 50%;
   left: 50%;
