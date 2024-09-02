@@ -386,7 +386,7 @@ function createOrder() {
             fetch('https://api.payriff.com/api/v2/createOrder',{
                 method:"POST",
                 headers: {
-                    "Authorization": "57F3BC6184394CE19BEB715408F74D39",
+                    "Authorization": "0B793B59F96C4059A0C13A0554DC2152",
                     "Accept": "application/json",
                     'Content-Type': 'application/json'
                 },
@@ -401,7 +401,7 @@ function createOrder() {
                     "directPay": true,
                     "language": "AZ",
                     },
-                    "merchant": "ES1093507"
+                    "merchant": "ES1093632"
                 }),
 
             })
