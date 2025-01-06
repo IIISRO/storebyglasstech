@@ -81,7 +81,8 @@ function getDetail() {
                     })()
                     }" 
                         data-id="${size.id}" 
-                        data-size="${percentage}">
+                        data-size="${size.width}"
+                        data-height=${size.height}">
                         ${size.height}x${size.width}
                     </button>
                 </li>`
@@ -137,7 +138,8 @@ function getDetail() {
                     size.addEventListener('click', () => {
                         sizes.forEach(btn => btn.classList.remove('selected'));
                         size.classList.add('selected');
-                        const selectedSize = size.getAttribute("data-size");
+                        const selectedSize = parseFloat(size.getAttribute("data-size"));
+                        const selectedHeight = parseFloat(size.getAttribute("data-height"));
 
                         // size gore extra  qiymet
                         var extra_price = parseFloat(size.dataset.extra_price)
@@ -164,9 +166,12 @@ function getDetail() {
                             const sofaWidthPercent = 75;
     
                             // Calculate the current width of the sofa based on the current image size
-                            const currentSofaWidthPx = (sofaWidthPercent / 100) * currentImgWidth;
-    
-                            mainFrame1.style.width = currentSofaWidthPx * (selectedSize / 100) + "px";
+                            const currentSofaWidthPx =0.5 * currentImgWidth;
+                            console.log(currentSofaWidthPx,selectedHeight);
+                            mainFrame1.style.width = (currentSofaWidthPx * (((selectedSize * 100)/currentSofaWidthPx)/100)) + "px";
+                            mainFrame1.style.maxWidth = (currentSofaWidthPx ) + "px";
+                            mainFrame1.style.height = selectedHeight+ "px";
+                            mainFrame1.style.maxHeight = 250+ "px";
                             // mainFrame1.style.height = currentSofaWidthPx * (selectedSize / 100) + "px";
     
     
