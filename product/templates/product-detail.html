@@ -22,18 +22,20 @@
                 <div class=" d-flex align-items-start tabs">
                     <ul class="nav nav-pills nav-pills align-items-end" id="pills-tab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link fw-semibold  active position-relative" id="pills-home-tab"
+                            <button class="nav-link nav-button1 fw-semibold  active position-relative" id="pills-home-tab"
                                 data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab"
                                 aria-controls="pills-home" aria-selected="true">
                                 <img src="{% static 'images/home-ico.png'%}" alt="">
                             </button>
                         </li>
                     
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link fw-semibold  position-relative" id="pills-profile-tab"
+                        <li class="nav-item" role="presentation" title="öz interyerinizdə yoxlayın">
+                            <button class="nav-link fw-semibold nav-text position-relative" id="pills-profile-tab"
                                 data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab"
                                 aria-controls="pills-profile" aria-selected="false">
                                 <img src="{% static 'images/studioicon2.png'%}" alt="">
+                                <span style="margin: 0 10px;">öz interyerinizdə yoxlayın
+                                </span>
                             </button>
                         </li>
                     </ul>
@@ -66,6 +68,8 @@
                             <div class="sofa-section">
                                 <div class="sofa-color-sec">
                                     <input type="text" name="preferredHex" id="preferredHex" value="#ffffff">
+                                    <span style="color:#fff;padding:5px 10px;border-radius:10px">divan rəngini seçin
+                                    </span>
                                 </div>
                                <img  src="{% static 'images/ffffff.png'%}" alt="" class="sofa" id="sofaImage">
                                <div id="loader1" style="display: none;">...</div>
@@ -78,6 +82,8 @@
                             </div>
                             <div class="wall-color">
                                 <input type="text" name="preferredHex1" id="preferredHex1" value="rgba(0,0,0,0.2)">
+                                <span style="color:#fff;padding:5px 10px;border-radius:10px">divar rəngini seçin
+                                </span>
                             </div>
                             </div>
                          

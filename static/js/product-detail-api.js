@@ -168,7 +168,7 @@ function getDetail() {
                             // Calculate the current width of the sofa based on the current image size
                             const currentSofaWidthPx =0.5 * currentImgWidth;
                             console.log(currentSofaWidthPx,selectedHeight);
-                            mainFrame1.style.width = (currentSofaWidthPx * (((selectedSize * 100)/currentSofaWidthPx)/100)) + "px";
+                            mainFrame1.style.width = ((currentSofaWidthPx * (((selectedSize*2 * 100)/currentSofaWidthPx)/100))) + "px ";
                             mainFrame1.style.maxWidth = (currentSofaWidthPx ) + "px";
                             mainFrame1.style.height = selectedHeight+ "px";
                             mainFrame1.style.maxHeight = 250+ "px";
