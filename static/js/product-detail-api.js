@@ -130,12 +130,15 @@ function getDetail() {
             const sizes = document.querySelectorAll('.size-element');
             const mainFrame1 = document.getElementById("main-frame-image");
             const img = document.getElementById('sofaImage');
+            const frame3=document.getElementById('main-frame1')
 
             function calculateSofaWidth() {
                 // Get the current width of the image
                 const tabProfile = document.getElementById('pills-profile')
                 sizes.forEach(size => {
                     size.addEventListener('click', () => {
+                        frame3.classList.add("frame-active");
+
                         sizes.forEach(btn => btn.classList.remove('selected'));
                         size.classList.add('selected');
                         const selectedSize = parseFloat(size.getAttribute("data-size"));
@@ -173,7 +176,6 @@ function getDetail() {
                             mainFrame1.style.height = ((currentSofaWidthPx * (((selectedHeight*10 * 100)/2700)/100))) + "px ";
                             mainFrame1.style.maxHeight = 250+ "px";
                             // mainFrame1.style.height = currentSofaWidthPx * (selectedSize / 100) + "px";
-    
     
                             
                         }

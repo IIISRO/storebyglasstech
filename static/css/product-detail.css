@@ -338,6 +338,9 @@
 }
 @media(min-width:1200px){
   .frame{
+    top: 90px;
+  }
+  .frame-active{
     top: 120px !important;
   }
 }
