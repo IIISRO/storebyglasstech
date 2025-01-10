@@ -160,14 +160,14 @@ function handleFilterChange() {
   filterProducts(category, filters, currentPage);
   updateTypeUI(filters["type"]);
 }
-const productsSection = document.getElementById('products-section');
+
 
 document.querySelectorAll(".categories-list li a").forEach((categoryItem) => {
   categoryItem.addEventListener("click", (e) => {
     e.preventDefault();
 
-    if (productsSection) {
-      productsSection.scrollIntoView({ behavior: 'smooth' }); 
+    if (productSection) {
+      productSection.scrollIntoView({ behavior: 'smooth' }); 
     }
     document.querySelectorAll(".categories-list li a").forEach((item) => {
       item.classList.remove("selected");
