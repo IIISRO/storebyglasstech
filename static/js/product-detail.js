@@ -188,8 +188,18 @@ $(document).ready(function () {
         $("#preferredHex").spectrum("destroy");
         initializeSpectrum();
     });
+    $('.sofa-color-sec button').on('click', function () {
+        $("#preferredHex").spectrum("toggle");
+        return false;
+    });
+
 });
+
 $(document).ready(function () {
+   $('.wall-color button').on('click', function () {
+    $("#preferredHex1").spectrum("toggle");
+    return false;
+});
     $("#preferredHex1").spectrum({
         preferredFormat: "hex",
         showInput: true,
@@ -251,16 +261,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     buttons.forEach(button => {
         button.addEventListener('click', () => {
-            // Remove the 'selected' class from all buttons
+           
 
             buttons.forEach(btn => btn.classList.remove('selected'));
 
-            // Add the 'selected' class to the clicked button
+            
             button.classList.add('selected');
 
             const frameUrl = button.getAttribute("data-frame");
 
-            // Update the main frame background with the selected frame
+            
             if (frameUrl === "none") {
                 mainFrame.style.backgroundImage = "none";
                 mainFrame.style.background = "none";

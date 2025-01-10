@@ -151,7 +151,7 @@ function getDetail() {
                         $("#prod_actual_price").html(`${(data.actual_price + extra_price).toFixed(2)} <i class="font-weight-bold fas fa-xs fa-solid fa-manat-sign"></i>`)
                         
                         // olcu
-                        if(tabProfile.classList.contains('active')  && sizes.length > 1){
+                        if(tabProfile.classList.contains('active')  && sizes.length > 0){
                             const currentImgWidth = img.clientWidth;
     
                             // Original image dimensions and sofa coordinates (adjust these as needed)
