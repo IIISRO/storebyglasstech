@@ -325,25 +325,76 @@
   left: -30px;
   
   width: 100%;
-  height: 250px;
+  height: 200px;
+  max-height: 250px;
   z-index: 10000;
 }
+.frame-active{
+  width: 100% !important;
+  left: -7% !important;
+}
+@media(min-width:2000px){
+  .frame{
+    max-height: 400px !important;
+    height: 300px !important; 
+    top: 50px !important;
+  }
+  .frame-active{
+    top: 10% !important;
+    left: -4% !important;
+  }
+}
+@media(min-width:1200px){
+  .frame {
+    display: inline-block;
+    position: absolute;
+    top: 19px;
+    left: 20%;
+    
+    width: 50%;
+    height: 200px;
+    max-height: 250px;
+    z-index: 10000;
+  }
+}
+
 @media(min-width:768px) and (max-width:1199px){
   .frame {
     top: 50px !important;
-    left: -50px;
+    left: -40px !important;
     width: 100%;
     height: 200px;
   }
 }
-@media(min-width:1200px){
+@media(min-width:1200px) and (max-width:1999px){
   .frame{
-    top: 90px;
+    top: 90px; 
   }
   .frame-active{
-    top: 120px !important;
+    top: 25% !important;
   }
 }
+@media(max-width:400px){
+  .frame-active{
+    top: 25% !important;
+    left: -25px !important;
+    height: 90px;
+  }
+  .frame{
+    left: -20px !important;
+  }
+}
+@media(min-width:400px) and (max-width:767px){
+  .frame-active{
+    top: 20% !important;
+    left: -25px !important;
+    height: 90px;
+  }
+  .frame{
+    left: -20px !important;
+  }
+}
+
 .frame-main {
   display: flex;
   justify-content: center;
@@ -1230,8 +1281,8 @@ a {
   }
 
   .frame {
-    left: -35px;
-    top: 16%;
+    left: -20px;
+    top: 17%;
     /* max-width: 100px;
     width: 100px; */
     height: 90px;

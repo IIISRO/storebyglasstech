@@ -175,6 +175,19 @@ function getDetail() {
                             mainFrame1.style.maxWidth = (currentSofaWidthPx ) + "px";
                             mainFrame1.style.height = ((currentSofaWidthPx * (((selectedHeight*10 * 100)/2700)/100))) + "px ";
                             mainFrame1.style.maxHeight = 250+ "px";
+                            if(window.innerWidth < 767){
+                                frame3.style.height="100px"
+                            if(mainFrame1.style.height > frame3.style.height){
+                            
+                                frame3.style.height=mainFrame1.style.height
+                                console.log(frame3.style.height)
+                                frame3.style.maxHeight = 150+ "px";
+                                console.log("1111")
+                            }
+                            else{
+                                frame3.style.height="100px"
+                            }
+                            }
                             // mainFrame1.style.height = currentSofaWidthPx * (selectedSize / 100) + "px";
     
                             
