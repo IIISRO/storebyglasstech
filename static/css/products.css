@@ -10,7 +10,11 @@
   padding-left: 50px !important;
   transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s
 }
-
+@media(max-width:767px){
+  body{
+    overflow-x: hidden !important;
+  }
+}
 .products-ad h2 {
   font-size: 36px;
   font-weight: 600;
