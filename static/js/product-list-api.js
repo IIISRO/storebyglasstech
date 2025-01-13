@@ -165,11 +165,22 @@ function handleFilterChange() {
 document.querySelectorAll(".categories-list li a").forEach((categoryItem) => {
   categoryItem.addEventListener("click", (e) => {
     e.preventDefault();
-    if(window.innerWidth<767){
-      if (productSection) {
-        productSection.scrollIntoView({ behavior: 'smooth' }); 
-      }
-    }
+    // if(window.innerWidth<767){
+    //   if (productSection) {
+    //     productSection.scrollIntoView({ behavior: 'smooth' }); 
+    //   }
+    // }
+
+      if (window.innerWidth < 767) {
+      if (productSection) {      
+        const topOffset = productSection.getBoundingClientRect().top + window.pageYOffset;
+        console.log(topOffset)
+        window.scrollTo({        
+          top: topOffset,
+          behavior: 'smooth'   
+        });
+      }  }
+  
    
     document.querySelectorAll(".categories-list li a").forEach((item) => {
       item.classList.remove("selected");
