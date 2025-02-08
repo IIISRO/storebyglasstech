@@ -79,6 +79,9 @@
     rgba(0, 0, 0, 0.4) -2px 2px 4px,
     rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 
 .discount-tag {

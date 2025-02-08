@@ -171,15 +171,33 @@ document.querySelectorAll(".categories-list li a").forEach((categoryItem) => {
     //   }
     // }
 
-      if (window.innerWidth < 767) {
-      if (productSection) {      
-        const topOffset = productSection.getBoundingClientRect().top + window.pageYOffset;
-        console.log(topOffset)
-        window.scrollTo({        
-          top: topOffset,
-          behavior: 'smooth'   
-        });
-      }  }
+    function smoothScrollTo(targetPosition) {
+      const startPosition = window.scrollY;
+      const distance = targetPosition - startPosition;
+      let startTime = null;
+    
+      function animation(currentTime) {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const run = ease(timeElapsed, startPosition, distance, 500);
+        window.scrollTo(0, run);
+        if (timeElapsed < 500) requestAnimationFrame(animation);
+      }
+    
+      function ease(t, b, c, d) {
+        t /= d / 2;
+        if (t < 1) return (c / 2) * t * t + b;
+        t--;
+        return (-c / 2) * (t * (t - 2) - 1) + b;
+      }
+    
+      requestAnimationFrame(animation);
+    }
+    
+    // Usage:
+    const topOffset = productSection.getBoundingClientRect().top + window.scrollY;
+    smoothScrollTo(topOffset);
+    
   
    
     document.querySelectorAll(".categories-list li a").forEach((item) => {
